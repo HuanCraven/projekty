@@ -25,6 +25,7 @@
   .chip[data-sc="SC5"].active{background:var(--sc5);}
   .chip[data-sc="SC8"].active{background:var(--sc8);}
   .chip[data-tr].active{background:#374151;}
+  .chip[data-view].active{background:#1f4e5f;}
   .searchwrap{display:flex; justify-content:center;}
   #search{width:100%; max-width:420px; padding:8px 14px; border:1px solid var(--line); border-radius:999px; font-size:.9rem; background:#fff;}
   #count{text-align:center; font-size:.75rem; color:var(--muted);}
@@ -76,6 +77,25 @@
   .difbox b{font-size:.8rem;}
   .loni{font-style:italic; color:var(--muted); font-size:.85rem;}
   footer{ text-align:center; font-size:.75rem; color:var(--muted); padding:20px;}
+  .printbtn{position:sticky; top:0; float:right; background:#eef0f3; border:none; border-radius:999px; height:34px; padding:0 12px; font-size:.8rem; cursor:pointer; margin-right:8px;}
+  /* rejstřík kamenů */
+  #kamlist summary{list-style:none;}
+  #kamlist summary::-webkit-details-marker{display:none;}
+  #kamlist{max-width:760px; margin:0 auto;}
+  #kamlist h3{margin:18px 0 6px; font-size:1rem;}
+  #kamlist .kd{background:#fff !important; border:1px solid var(--line) !important; border-radius:10px !important; padding:2px 12px !important; margin-bottom:6px !important;}
+  .temlink{color:var(--accent); cursor:pointer; text-decoration:underline;}
+  .temrow{margin-top:8px; font-size:.83rem;}
+  /* tisk karty */
+  @media print{
+    body.print-card header, body.print-card .toolbar, body.print-card main,
+    body.print-card footer, body.print-card #bubble, body.print-card .closebtn,
+    body.print-card .printbtn{display:none !important;}
+    body.print-card #overlay{position:static; display:block !important; background:none;}
+    body.print-card #detail{max-height:none; overflow:visible; width:100%; max-width:100%; border-radius:0; padding:0;}
+    body.print-card .chipsmini{display:none !important;}
+    body.print-card #detail details{break-inside:avoid;}
+  }
 </style>
 </head>
 <body>
@@ -85,6 +105,10 @@
 </header>
 
 <div class="toolbar">
+  <div class="chips" id="viewChips">
+    <span class="chip active" data-view="temata">Témata</span>
+    <span class="chip" data-view="kameny">Rejstřík kamenů</span>
+  </div>
   <div class="chips" id="scChips">
     <span class="chip active" data-sc="vse">Vše</span>
     <span class="chip" data-sc="SC4">SC4 Odolnost</span>
@@ -101,7 +125,7 @@
   <div id="count"></div>
 </div>
 
-<main><div class="grid" id="grid"></div></main>
+<main><div class="grid" id="grid"></div><div id="kamlist" style="display:none"></div></main>
 
 <div id="overlay"><div id="detail"></div></div>
 <div id="bubble"></div>
@@ -114,7 +138,13 @@ const KAM = {"1.2.4.2": {"n": "Reflektuji průběh cíleného učení", "u2": "U
 const SCN = {SC4:"SC4 Rozvíjím svou odolnost", SC1:"SC1 Umím se učit", SC5:"SC5 Buduji dobré vztahy", SC8:"SC8 Mám život ve svých rukou"};
 const COL = {SC4:["var(--sc4)","var(--sc4bg)"], SC1:["var(--sc1)","var(--sc1bg)"], SC5:["var(--sc5)","var(--sc5bg)"], SC8:["var(--sc8)","var(--sc8bg)"]};
 const TRT = {"obě":"2. i 3. trojročí","2":"jen 2. trojročí","3":"jen 3. trojročí"};
-let fSC="vse", fTR="vse", q="";
+let fSC="vse", fTR="vse", q="", view="temata";
+// index: kámen -> témata
+const KIDX = {};
+for(const t of DATA){
+  for(const k of t.vedouci){ const c=k.split(" ")[0].replace(/\.$/,""); (KIDX[c]=KIDX[c]||{lead:[],side:[]}).lead.push(t); }
+  for(const k of t.vedlejsi){ const c=k.split(" ")[0].replace(/\.$/,""); (KIDX[c]=KIDX[c]||{lead:[],side:[]}).side.push(t); }
+}
 
 const grid=document.getElementById("grid"), count=document.getElementById("count");
 const overlay=document.getElementById("overlay"), detail=document.getElementById("detail");
@@ -122,7 +152,39 @@ const overlay=document.getElementById("overlay"), detail=document.getElementById
 function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
 function hay(t){return norm([t.nazev,t.anotace,t.vedouci.join(" "),t.vedlejsi.join(" "),t.aktivity.join(" "),(t.znalosti||[]).join(" ")].join(" "));}
 
+function renderKam(){
+  const nq=norm(q);
+  const grpName = {"1":"ScioCíl 1: Umím se učit","4":"ScioCíl 4: Rozvíjím svou odolnost","5":"ScioCíl 5: Buduji dobré vztahy","8":"ScioCíl 8: Mám život ve svých rukou"};
+  const codes = Object.keys(KAM).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+  let html="", cnt=0, lastG="";
+  for(const c of codes){
+    const sc = "SC"+c.split(".")[0];
+    if(fSC!=="vse" && sc!==fSC) continue;
+    const info = KAM[c];
+    if(nq && !norm(c+" "+info.n+" "+info.u2+" "+info.u3).includes(nq)) continue;
+    cnt++;
+    const g = c.split(".")[0];
+    if(g!==lastG){ html+=`<h3 style="color:var(--${sc.toLowerCase()})">${grpName[g]}</h3>`; lastG=g; }
+    const idx = KIDX[c]||{lead:[],side:[]};
+    let body="";
+    if(info.u2) body+=`<div class="urov"><b>Úroveň 2 (2. trojročí):</b> ${info.u2}</div>`;
+    if(info.u3) body+=`<div class="urov"><b>Úroveň 3 (3. trojročí):</b> ${info.u3}</div>`;
+    const chips=["p","z","s","d"].filter(x=>info[x]).map(x=>`<button onclick="bub(event,'${c}','${x}')">${MTIT[x]}</button>`).join("");
+    if(chips) body+=`<div class="chipsmini">${chips}</div>`;
+    const lk = ts=>ts.map(t=>`<span class="temlink" onclick="openD(${t.id})">${t.id}. ${t.nazev}</span>`).join(", ");
+    if(idx.lead.length) body+=`<div class="temrow"><b>Stěžejní v:</b> ${lk(idx.lead)}</div>`;
+    if(idx.side.length) body+=`<div class="temrow"><b>Vedlejší v:</b> ${lk(idx.side)}</div>`;
+    if(!idx.lead.length && !idx.side.length) body+=`<div class="temrow" style="color:var(--muted)">Zatím bez tématu.</div>`;
+    html+=`<details class="kd" style="--accent:var(--${sc.toLowerCase()});--accentbg:var(--${sc.toLowerCase()}bg)"><summary>${c} ${info.n}</summary><div class="kdb">${body}</div></details>`;
+  }
+  document.getElementById("kamlist").innerHTML=html;
+  count.textContent=`Zobrazeno ${cnt} ze ${Object.keys(KAM).length} kamenů`;
+}
 function render(){
+  document.getElementById("grid").style.display = view==="temata" ? "" : "none";
+  document.getElementById("kamlist").style.display = view==="kameny" ? "" : "none";
+  document.getElementById("trChips").style.display = view==="temata" ? "" : "none";
+  if(view==="kameny"){ renderKam(); return; }
   const nq=norm(q);
   const items=DATA.filter(t=>
     (fSC==="vse"||t.skupina===fSC) &&
@@ -173,6 +235,7 @@ function openD(id){
   detail.style.setProperty("--accent",c);
   const sec=(title,body,open=false)=>`<details${open?" open":""}><summary>${title}</summary>${body}</details>`;
   let h=`<button class="closebtn" onclick="closeD()">✕</button>
+    <button class="printbtn" onclick="printD()">🖨 Tisk</button>
     <div class="num">Téma ${t.id} · ${SCN[t.skupina]} · ${TRT[t.urovne]}</div>
     <h2>${t.nazev}</h2>
     <div class="anot">${t.anotace}</div>`;
@@ -190,8 +253,20 @@ function openD(id){
   overlay.classList.add("open");
   document.body.style.overflow="hidden";
   detail.scrollTop=0;
+  history.replaceState(null,"","#"+t.id);
 }
-function closeD(){overlay.classList.remove("open"); document.body.style.overflow=""; bubble.style.display="none";}
+function closeD(){overlay.classList.remove("open"); document.body.style.overflow=""; bubble.style.display="none"; history.replaceState(null,"",location.pathname+location.search);}
+function printD(){
+  detail.querySelectorAll("details").forEach(d=>d.open=true);
+  document.body.classList.add("print-card");
+  window.print();
+}
+window.addEventListener("afterprint",()=>document.body.classList.remove("print-card"));
+function openFromHash(){
+  const m=location.hash.match(/^#(\d+)$/);
+  if(m){ const id=parseInt(m[1]); if(DATA.some(t=>t.id===id)) openD(id); }
+}
+window.addEventListener("hashchange",openFromHash);
 overlay.addEventListener("click",e=>{if(e.target===overlay) closeD();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape") closeD();});
 
@@ -206,7 +281,13 @@ document.getElementById("trChips").addEventListener("click",e=>{
   [...e.currentTarget.children].forEach(ch=>ch.classList.toggle("active",ch===e.target));
   render();});
 document.getElementById("search").addEventListener("input",e=>{q=e.target.value; render();});
+document.getElementById("viewChips").addEventListener("click",e=>{
+  if(!e.target.dataset.view) return;
+  view=e.target.dataset.view;
+  [...e.currentTarget.children].forEach(ch=>ch.classList.toggle("active",ch===e.target));
+  render();});
 render();
+openFromHash();
 </script>
 </body>
 </html>
