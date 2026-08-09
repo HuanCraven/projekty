@@ -32,6 +32,15 @@ python3 tools/build_xlsx.py    # -> vystupy/Projektova_temata.xlsx
 node tools/build_docx.js       # -> vystupy/Katalog_projektovych_temat.docx
 ```
 
+Poprvé je potřeba doinstalovat závislosti (`build_web.py` žádné nemá):
+
+```bash
+pip install openpyxl && npm install
+```
+
+`build_xlsx.py` při běhu vypíše kontrolu pokrytí kamenů — očekávaný stav je
+„Nepokryté kameny (1): 5.2.3.3".
+
 3. Commitni a pushni — GitHub Pages web obnoví do minuty.
 
 `index.html` nikdy needituj ručně — příští generace by změny přepsala.

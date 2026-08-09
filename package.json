@@ -1,0 +1,12 @@
+{
+  "name": "projekty-katalog",
+  "version": "1.0.0",
+  "description": "Katalog projektových témat podle ScioCílů — generátor Word výstupu",
+  "private": true,
+  "scripts": {
+    "build:docx": "node tools/build_docx.js"
+  },
+  "dependencies": {
+    "docx": "^9.7.1"
+  }
+}
