@@ -5,10 +5,6 @@ Katalog 50 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
 
 Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
 
-> ⚠️ **Než spustíš `tools/build_web.py`, čti dál.** Nasazený `index.html`
-> (verze 2026.08.07-02) obsahuje záložku **Hlasování**, kterou generátor
-> zatím neumí vytvořit. Přegenerování by ji smazalo. Viz „Známá past" níže.
-
 ## Struktura
 
 | cesta | co je | edituje se ručně? |
@@ -49,19 +45,20 @@ node tools/build_docx.js       # -> vystupy/Katalog_projektovych_temat.docx
   vztahy a hranice) a č. 40 (Právo pro život).
 - Kontrolu pokrytí kamenů hlásí `build_xlsx.py` (záměrně nepokrytý jen 5.2.3.3).
 
-## Známá past: záložka Hlasování vs. generátor
+## Záložka Hlasování
 
-Nasazený `index.html` obsahuje třetí záložku **Hlasování** (hlasování učitelů
-o tématech s váhou 1–8 + rezervace témat). Běží na Supabase projektu
-`projekty-hlasovani`; v HTML je jen *publishable* klíč, nic tajného.
+Třetí záložka webu — učitelé seřadí až 8 témat (první volba má nejvyšší váhu)
+a rezervují si téma (jedno téma = jeden učitel). Data jdou do Supabase projektu
+`projekty-hlasovani`, tabulky `votes`, `vote_results`, `assignments`.
+V HTML je jen *publishable* klíč, nic tajného.
 
-**`tools/build_web.py` o téhle záložce neví.** Byla do `index.html` doplněná
-ručně (verze 2026.08.07-02) a generátor je starší. Důsledek:
+Modul je **součástí generátoru** (`build_web.py`) — CSS, sekce `#hlas`,
+načtení Supabase SDK z CDN i funkce `initHlas()` a spol. Přegenerování
+`index.html` ho tedy zachová. Po každém buildu se vyplatí ověřit:
 
+```bash
+grep -c Hlasování index.html    # očekávej 2
 ```
-python3 tools/build_web.py   # ← přepíše index.html a Hlasování ZMIZÍ
-```
 
-Dokud není modul zapracovaný do generátoru, platí: buď `build_web.py`
-nespouštěj, nebo si po přegenerování záložku vrať zpět (a ověř, že v
-`index.html` je řetězec „Hlasování").
+Jméno hlasujícího si drží prohlížeč v `localStorage` (klíč `hlasName`).
+Když se SDK nenačte (offline), záložka zobrazí varovný řádek místo pádu.

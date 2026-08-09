@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# Node (tools/build_docx.js vyžaduje balíček docx)
+node_modules/
+
+# OS
+Thumbs.db
+.DS_Store

@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.03-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.07-02"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -124,6 +124,27 @@ HTML = """<!DOCTYPE html>
   #kamlist .kd{background:#fff !important; border:1px solid var(--line) !important; border-radius:10px !important; padding:2px 12px !important; margin-bottom:6px !important;}
   .temlink{color:var(--accent); cursor:pointer; text-decoration:underline;}
   .temrow{margin-top:8px; font-size:.83rem;}
+  /* hlasování a rezervace */
+  #hlas{max-width:600px; margin:0 auto;}
+  #hlas h3{max-width:560px; margin:16px auto 8px; font-size:.95rem;}
+  #hlas p.muted{max-width:560px; margin:0 auto 8px; font-size:.8rem;}
+  .muted{color:var(--muted);}
+  .hlasbox{max-width:480px; margin:0 auto 14px;}
+  .hlasbox input, #hlasSearch{width:100%; padding:8px 12px; border:1px solid var(--line); border-radius:8px; font-size:.9rem; background:#fff;}
+  .hlascol{max-width:560px; margin:0 auto 10px;}
+  .hlaslist{max-height:320px; overflow-y:auto;}
+  .hlasrow{display:flex; align-items:center; justify-content:space-between; gap:8px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; margin-bottom:6px; background:#fff; font-size:.85rem; cursor:pointer;}
+  .hlasrow.picked{border-color:#1f4e5f; background:#eef4f6;}
+  .hlasnum{font-weight:700; min-width:22px; text-align:center; color:#1f4e5f;}
+  #hlasMine{list-style:none; max-width:560px; margin:0 auto 10px; padding:0;}
+  #hlasMine li{display:flex; align-items:center; gap:8px; padding:6px 8px; border-bottom:1px solid var(--line); font-size:.85rem;}
+  #hlasMine button{border:1px solid var(--line); background:#fff; border-radius:6px; padding:2px 8px; font-size:.75rem; cursor:pointer;}
+  #hlasSubmit{display:block; margin:10px auto; background:#1f4e5f; color:#fff; border:none; border-radius:999px; padding:9px 22px; font-size:.9rem; cursor:pointer;}
+  #hlasMsg{text-align:center; font-size:.82rem; color:var(--muted); margin-top:4px;}
+  #toggleResults{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
+  #rezList{max-width:560px; margin:0 auto;}
+  #rezList .hlasrow{cursor:default;}
+  #rezList button{border:1px solid var(--line); background:#fff; border-radius:999px; padding:4px 12px; font-size:.78rem; cursor:pointer;}
   /* tisk karty */
   @media print{
     body.print-card header, body.print-card .toolbar, body.print-card main,
@@ -146,6 +167,7 @@ HTML = """<!DOCTYPE html>
   <div class="seg"><div class="inner" id="viewChips">
     <span class="chip active" data-view="temata">Témata</span>
     <span class="chip" data-view="kameny">Rejstřík kamenů</span>
+    <span class="chip" data-view="hlas">Hlasování</span>
   </div></div>
   <hr class="tooldiv">
   <div class="chips filtry" id="scChips">
@@ -164,13 +186,37 @@ HTML = """<!DOCTYPE html>
   <div id="count"></div>
 </div>
 
-<main><div class="grid" id="grid"></div><div id="kamlist" style="display:none"></div></main>
+<main><div class="grid" id="grid"></div><div id="kamlist" style="display:none"></div>
+<div id="hlas" style="display:none">
+  <p class="muted" id="hlasWarn" style="display:none; text-align:center; font-size:.8rem;">⚠ Modul hlasování se nenačetl — zkontroluj připojení k internetu a obnov stránku.</p>
+  <div class="hlasbox"><label>Jméno a příjmení<br><input id="hlasName" type="text" placeholder="např. Jan Novák"></label></div>
+
+  <h3>Vyber a seřaď až 8 témat — první volba má nejvyšší váhu</h3>
+  <div class="hlascol"><input id="hlasSearch" type="search" placeholder="Hledat téma…">
+    <div class="hlaslist" id="hlasPickList"></div></div>
+
+  <h3>Moje pořadí</h3>
+  <ol id="hlasMine"></ol>
+  <button id="hlasSubmit">Uložit hlasy</button>
+  <div id="hlasMsg"></div>
+
+  <hr class="tooldiv">
+  <h3>Rezervace tématu</h3>
+  <p class="muted">Jedno téma = jeden učitel. Klepnutím vyplň jméno výše, pak rezervuj nebo uvolni.</p>
+  <div id="rezList"></div>
+
+  <hr class="tooldiv">
+  <button id="toggleResults">Zobrazit výsledky hlasování</button>
+  <div id="hlasResults" style="display:none"></div>
+</div>
+</main>
 
 <div id="overlay"><div id="detail"></div></div>
 <div id="bubble"></div>
 
 <footer>ScioŠkola · katalog projektových témat · verze __VERSION__</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const DATA = __DATA__;
 const KAM = __KAM__;
@@ -184,6 +230,9 @@ for(const t of DATA){
   for(const k of t.vedouci){ const c=k.split(" ")[0].replace(/\\.$/,""); (KIDX[c]=KIDX[c]||{lead:[],side:[]}).lead.push(t); }
   for(const k of t.vedlejsi){ const c=k.split(" ")[0].replace(/\\.$/,""); (KIDX[c]=KIDX[c]||{lead:[],side:[]}).side.push(t); }
 }
+
+const sb = window.supabase ? window.supabase.createClient("https://iluznnvfvlpstipylhgg.supabase.co", "sb_publishable_brVec8GeC-v5GiiPuIHmoA_Kmp1zPLo") : null;
+let myPicks = [], hlasInit = false, resultsShown = false;
 
 const grid=document.getElementById("grid"), count=document.getElementById("count");
 const overlay=document.getElementById("overlay"), detail=document.getElementById("detail");
@@ -222,8 +271,16 @@ function renderKam(){
 function render(){
   document.getElementById("grid").style.display = view==="temata" ? "" : "none";
   document.getElementById("kamlist").style.display = view==="kameny" ? "" : "none";
+  document.getElementById("hlas").style.display = view==="hlas" ? "" : "none";
   document.getElementById("trChips").style.display = view==="temata" ? "" : "none";
+  document.getElementById("scChips").style.display = view==="hlas" ? "none" : "";
+  document.querySelector(".searchwrap").style.display = view==="hlas" ? "none" : "";
+  count.style.display = view==="hlas" ? "none" : "";
   if(view==="kameny"){ renderKam(); return; }
+  if(view==="hlas"){
+    if(!hlasInit){ hlasInit=true; initHlas(); } else { loadMyVotes(); renderRez(); }
+    return;
+  }
   const nq=norm(q);
   const items=DATA.filter(t=>
     (fSC==="vse"||t.skupina===fSC) &&
@@ -309,6 +366,117 @@ window.addEventListener("hashchange",openFromHash);
 overlay.addEventListener("click",e=>{if(e.target===overlay) closeD();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape") closeD();});
 
+function initHlas(){
+  if(!sb) document.getElementById("hlasWarn").style.display="";
+  const nameEl = document.getElementById("hlasName");
+  nameEl.value = localStorage.getItem("hlasName") || "";
+  nameEl.addEventListener("change", e=>{ localStorage.setItem("hlasName", e.target.value.trim()); loadMyVotes(); renderRez(); });
+  document.getElementById("hlasSearch").addEventListener("input", renderPickList);
+  document.getElementById("hlasSubmit").addEventListener("click", submitVotes);
+  document.getElementById("toggleResults").addEventListener("click", toggleResults);
+  renderPickList();
+  renderMine();
+  loadMyVotes();
+  renderRez();
+}
+function renderPickList(){
+  const nq = norm(document.getElementById("hlasSearch").value);
+  const items = DATA.filter(t=> !nq || hay(t).includes(nq));
+  document.getElementById("hlasPickList").innerHTML = items.map(t=>{
+    const i = myPicks.indexOf(t.id);
+    return `<div class="hlasrow ${i>=0?"picked":""}" onclick="togglePick(${t.id})">
+      <span>${t.id}. ${t.nazev}</span><span class="hlasnum">${i>=0?(i+1)+".":"+"}</span></div>`;
+  }).join("");
+}
+function togglePick(id){
+  const i = myPicks.indexOf(id);
+  if(i>=0) myPicks.splice(i,1);
+  else{
+    if(myPicks.length>=8){ alert("Max. 8 témat — nejdřív nějaké odeber."); return; }
+    myPicks.push(id);
+  }
+  renderPickList(); renderMine();
+}
+function movePick(i,d){
+  const j=i+d; if(j<0||j>=myPicks.length) return;
+  [myPicks[i],myPicks[j]]=[myPicks[j],myPicks[i]];
+  renderPickList(); renderMine();
+}
+function renderMine(){
+  const ol = document.getElementById("hlasMine");
+  ol.innerHTML = myPicks.map((id,i)=>{
+    const t = DATA.find(x=>x.id===id);
+    return `<li><b>${i+1}.</b> ${t?t.nazev:id}
+      <button onclick="movePick(${i},-1)" ${i===0?"disabled":""}>↑</button>
+      <button onclick="movePick(${i},1)" ${i===myPicks.length-1?"disabled":""}>↓</button>
+      <button onclick="togglePick(${id})">✕</button></li>`;
+  }).join("") || `<li style="color:var(--muted); border-bottom:none;">Zatím nic nevybráno — klepni na téma v seznamu nahoře.</li>`;
+}
+async function loadMyVotes(){
+  if(!sb) return;
+  const name = document.getElementById("hlasName").value.trim();
+  if(!name){ myPicks=[]; renderPickList(); renderMine(); return; }
+  const {data,error} = await sb.from("votes").select("topic_id,rank").eq("teacher",name).order("rank");
+  if(!error && data) myPicks = data.map(r=>r.topic_id);
+  renderPickList(); renderMine();
+}
+async function submitVotes(){
+  const msg = document.getElementById("hlasMsg");
+  if(!sb){ msg.textContent="Hlasování není momentálně dostupné."; return; }
+  const name = document.getElementById("hlasName").value.trim();
+  if(!name){ msg.textContent="Vyplň jméno."; return; }
+  if(!myPicks.length){ msg.textContent="Vyber aspoň jedno téma."; return; }
+  localStorage.setItem("hlasName", name);
+  msg.textContent = "Ukládám…";
+  await sb.from("votes").delete().eq("teacher",name);
+  const rows = myPicks.map((id,i)=>({teacher:name, topic_id:id, rank:i+1}));
+  const {error} = await sb.from("votes").insert(rows);
+  msg.textContent = error ? "Chyba: "+error.message : "Uloženo ✓ ("+rows.length+" hlasů)";
+}
+async function renderRez(){
+  const el = document.getElementById("rezList");
+  if(!sb){ el.innerHTML = `<p class="muted">Rezervace nejsou momentálně dostupné.</p>`; return; }
+  const {data} = await sb.from("assignments").select("topic_id,teacher");
+  const map = {}; (data||[]).forEach(r=>map[r.topic_id]=r.teacher);
+  const name = document.getElementById("hlasName").value.trim();
+  el.innerHTML = DATA.map(t=>{
+    const who = map[t.id];
+    let action;
+    if(!who) action = `<button onclick="reserve(${t.id})">Rezervovat</button>`;
+    else if(name && who===name) action = `<button onclick="unreserve(${t.id})">Uvolnit</button>`;
+    else action = `<span class="muted">obsazeno: ${who}</span>`;
+    return `<div class="hlasrow"><span>${t.id}. ${t.nazev}</span>${action}</div>`;
+  }).join("");
+}
+async function reserve(id){
+  if(!sb) return;
+  const name = document.getElementById("hlasName").value.trim();
+  if(!name){ alert("Nejdřív vyplň jméno nahoře."); return; }
+  localStorage.setItem("hlasName", name);
+  const {error} = await sb.from("assignments").insert({topic_id:id, teacher:name});
+  if(error) alert("Téma už má někdo rezervované.");
+  renderRez();
+}
+async function unreserve(id){
+  if(!sb) return;
+  const name = document.getElementById("hlasName").value.trim();
+  await sb.from("assignments").delete().eq("topic_id",id).eq("teacher",name);
+  renderRez();
+}
+async function toggleResults(){
+  resultsShown = !resultsShown;
+  const box = document.getElementById("hlasResults");
+  box.style.display = resultsShown ? "" : "none";
+  document.getElementById("toggleResults").textContent = resultsShown ? "Skrýt výsledky" : "Zobrazit výsledky hlasování";
+  if(!resultsShown) return;
+  if(!sb){ box.innerHTML = `<p class="muted">Výsledky nejsou momentálně dostupné.</p>`; return; }
+  const {data} = await sb.from("vote_results").select("*");
+  box.innerHTML = (data||[]).map(r=>{
+    const t = DATA.find(x=>x.id===r.topic_id);
+    return `<div class="hlasrow" style="cursor:default"><span>${t?t.id+". "+t.nazev:r.topic_id}</span><span>${r.skore} b. (${r.pocet_hlasu} hlasů)</span></div>`;
+  }).join("") || `<p class="muted">Zatím žádné hlasy.</p>`;
+}
+
 document.getElementById("scChips").addEventListener("click",e=>{
   if(!e.target.dataset.sc) return;
   fSC=e.target.dataset.sc;
@@ -333,5 +501,5 @@ openFromHash();
 """
 
 html = HTML.replace("__DATA__", DATA).replace("__KAM__", KAM).replace("__VERSION__", VERSION)
-open("index.html", "w", encoding="utf-8").write(html)
+open("index.html", "w", encoding="utf-8", newline="\n").write(html)
 print(f"OK index.html ({len(html)//1024} kB, {len(topics)} témat, verze {VERSION})")
