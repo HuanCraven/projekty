@@ -1,0 +1,7 @@
+{
+  "_naplneni": "Seznam sboru pro přihlášení do hlasování. Uprav a přegeneruj: python3 tools/build_web.py",
+  "_pocet": "Kolik témat může učitel vést. Nepovinné, výchozí 1.",
+  "ucitele": [
+    { "prijmeni": "UKÁZKA – nahraď skutečnými příjmeními", "pocet": 1 }
+  ]
+}

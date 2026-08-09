@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.07-02"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.09-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -29,6 +29,14 @@ DATA = json.dumps(topics, ensure_ascii=False)
 import os
 _kam_path = "kameny.json" if os.path.exists("kameny.json") else "data/kameny.json"
 KAM = json.dumps(json.load(open(_kam_path, encoding="utf-8")), ensure_ascii=False)
+
+# seznam sboru pro přihlášení do hlasování (nepovinný — bez něj se hlasovat nedá)
+_uc_path = "data/ucitele.json"
+_uc = json.load(open(_uc_path, encoding="utf-8")).get("ucitele", []) if os.path.exists(_uc_path) else []
+_uc = [u for u in _uc if u.get("prijmeni")]
+_uc.sort(key=lambda u: u["prijmeni"].lower())
+UCITELE = json.dumps([{"prijmeni": u["prijmeni"], "pocet": int(u.get("pocet", 1))} for u in _uc],
+                     ensure_ascii=False)
 
 HTML = """<!DOCTYPE html>
 <html lang="cs">
@@ -142,6 +150,16 @@ HTML = """<!DOCTYPE html>
   #hlasSubmit{display:block; margin:10px auto; background:#1f4e5f; color:#fff; border:none; border-radius:999px; padding:9px 22px; font-size:.9rem; cursor:pointer;}
   #hlasMsg{text-align:center; font-size:.82rem; color:var(--muted); margin-top:4px;}
   #toggleResults{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
+  #toggleNavrh{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
+  #navrhBox{max-width:600px; margin:0 auto;}
+  #navrhBox table{width:100%; border-collapse:collapse; font-size:.82rem; margin-top:8px;}
+  #navrhBox th, #navrhBox td{text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top;}
+  #navrhBox th{font-size:.72rem; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:600;}
+  #navrhBox td.volba{white-space:nowrap; font-weight:600;}
+  #navrhBox tr.fix td.volba{color:#1f4e5f;}
+  #navrhBox tr.nic td{color:var(--muted); font-style:italic;}
+  .navrhSouhrn{background:#eef4f6; border-radius:10px; padding:10px 12px; font-size:.83rem; margin-top:10px;}
+  .navrhSouhrn b{color:#1f4e5f;}
   #rezList{max-width:560px; margin:0 auto;}
   #rezList .hlasrow{cursor:default;}
   #rezList button{border:1px solid var(--line); background:#fff; border-radius:999px; padding:4px 12px; font-size:.78rem; cursor:pointer;}
@@ -189,7 +207,7 @@ HTML = """<!DOCTYPE html>
 <main><div class="grid" id="grid"></div><div id="kamlist" style="display:none"></div>
 <div id="hlas" style="display:none">
   <p class="muted" id="hlasWarn" style="display:none; text-align:center; font-size:.8rem;">⚠ Modul hlasování se nenačetl — zkontroluj připojení k internetu a obnov stránku.</p>
-  <div class="hlasbox"><label>Jméno a příjmení<br><input id="hlasName" type="text" placeholder="např. Jan Novák"></label></div>
+  <div class="hlasbox"><label>Přihlaš se pod svým příjmením<br><select id="hlasName"></select></label></div>
 
   <h3>Vyber a seřaď až 8 témat — první volba má nejvyšší váhu</h3>
   <div class="hlascol"><input id="hlasSearch" type="search" placeholder="Hledat téma…">
@@ -208,6 +226,13 @@ HTML = """<!DOCTYPE html>
   <hr class="tooldiv">
   <button id="toggleResults">Zobrazit výsledky hlasování</button>
   <div id="hlasResults" style="display:none"></div>
+
+  <hr class="tooldiv">
+  <h3>Návrh rozdělení témat</h3>
+  <p class="muted">Rozdělí témata tak, aby byl součet preferencí co největší.
+  Už zarezervovaná témata bere jako dané. Nic nikam nezapíše — je to jen podklad.</p>
+  <button id="toggleNavrh">Spočítat návrh</button>
+  <div id="navrhBox" style="display:none"></div>
 </div>
 </main>
 
@@ -220,6 +245,7 @@ HTML = """<!DOCTYPE html>
 <script>
 const DATA = __DATA__;
 const KAM = __KAM__;
+const UCITELE = __UCITELE__;
 const SCN = {SC4:"SC4 Rozvíjím svou odolnost", SC1:"SC1 Umím se učit", SC5:"SC5 Buduji dobré vztahy", SC8:"SC8 Mám život ve svých rukou"};
 const COL = {SC4:["var(--sc4)","var(--sc4bg)"], SC1:["var(--sc1)","var(--sc1bg)"], SC5:["var(--sc5)","var(--sc5bg)"], SC8:["var(--sc8)","var(--sc8bg)"]};
 const TRT = {"obě":"2. i 3. trojročí","2":"jen 2. trojročí","3":"jen 3. trojročí"};
@@ -369,11 +395,22 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape") closeD();});
 function initHlas(){
   if(!sb) document.getElementById("hlasWarn").style.display="";
   const nameEl = document.getElementById("hlasName");
-  nameEl.value = localStorage.getItem("hlasName") || "";
-  nameEl.addEventListener("change", e=>{ localStorage.setItem("hlasName", e.target.value.trim()); loadMyVotes(); renderRez(); });
+  // seznam sboru; bez něj se hlasovat nedá (jinak by vznikaly hlasy na překlepy)
+  const ulozene = localStorage.getItem("hlasName") || "";
+  const zname = UCITELE.some(u=>u.prijmeni===ulozene) ? ulozene : "";
+  nameEl.innerHTML = '<option value="">— vyber své příjmení —</option>' +
+    UCITELE.map(u=>`<option${u.prijmeni===zname?" selected":""}>${u.prijmeni}</option>`).join("");
+  if(!UCITELE.length){
+    nameEl.innerHTML = '<option value="">Seznam sboru není vyplněný</option>';
+    nameEl.disabled = true;
+    document.getElementById("hlasMsg").textContent =
+      "Hlasování zatím není otevřené — chybí seznam sboru (data/ucitele.json).";
+  }
+  nameEl.addEventListener("change", e=>{ localStorage.setItem("hlasName", e.target.value); loadMyVotes(); renderRez(); });
   document.getElementById("hlasSearch").addEventListener("input", renderPickList);
   document.getElementById("hlasSubmit").addEventListener("click", submitVotes);
   document.getElementById("toggleResults").addEventListener("click", toggleResults);
+  document.getElementById("toggleNavrh").addEventListener("click", toggleNavrh);
   renderPickList();
   renderMine();
   loadMyVotes();
@@ -424,7 +461,8 @@ async function submitVotes(){
   const msg = document.getElementById("hlasMsg");
   if(!sb){ msg.textContent="Hlasování není momentálně dostupné."; return; }
   const name = document.getElementById("hlasName").value.trim();
-  if(!name){ msg.textContent="Vyplň jméno."; return; }
+  if(!name){ msg.textContent="Nejdřív se přihlaš — vyber své příjmení."; return; }
+  if(!UCITELE.some(u=>u.prijmeni===name)){ msg.textContent="Neznámé příjmení."; return; }
   if(!myPicks.length){ msg.textContent="Vyber aspoň jedno téma."; return; }
   localStorage.setItem("hlasName", name);
   msg.textContent = "Ukládám…";
@@ -451,7 +489,7 @@ async function renderRez(){
 async function reserve(id){
   if(!sb) return;
   const name = document.getElementById("hlasName").value.trim();
-  if(!name){ alert("Nejdřív vyplň jméno nahoře."); return; }
+  if(!name){ alert("Nejdřív se přihlaš — vyber své příjmení nahoře."); return; }
   localStorage.setItem("hlasName", name);
   const {error} = await sb.from("assignments").insert({topic_id:id, teacher:name});
   if(error) alert("Téma už má někdo rezervované.");
@@ -477,6 +515,109 @@ async function toggleResults(){
   }).join("") || `<p class="muted">Zatím žádné hlasy.</p>`;
 }
 
+/* --- návrh rozdělení témat -------------------------------------------------
+   Maďarský algoritmus (Kuhn–Munkres) — najde rozdělení s největším součtem
+   preferencí, ne jen slušný odhad. Ověřeno proti hrubé síle. */
+function hungarian(a, n, m){
+  const u=new Array(n+1).fill(0), v=new Array(m+1).fill(0);
+  const p=new Array(m+1).fill(0), way=new Array(m+1).fill(0);
+  for(let i=1;i<=n;i++){
+    p[0]=i; let j0=0;
+    const minv=new Array(m+1).fill(Infinity), used=new Array(m+1).fill(false);
+    do{
+      used[j0]=true;
+      const i0=p[j0]; let delta=Infinity, j1=0;
+      for(let j=1;j<=m;j++) if(!used[j]){
+        const cur=a[i0][j]-u[i0]-v[j];
+        if(cur<minv[j]){ minv[j]=cur; way[j]=j0; }
+        if(minv[j]<delta){ delta=minv[j]; j1=j; }
+      }
+      for(let j=0;j<=m;j++){
+        if(used[j]){ u[p[j]]+=delta; v[j]-=delta; }
+        else minv[j]-=delta;
+      }
+      j0=j1;
+    } while(p[j0]!==0);
+    do{ const j1=way[j0]; p[j0]=p[j1]; j0=j1; } while(j0);
+  }
+  const res=new Array(n+1).fill(0);
+  for(let j=1;j<=m;j++) if(p[j]) res[p[j]]=j;
+  return res;
+}
+function rozdel(slots, topics, score){
+  const n=slots.length, m=topics.length;
+  if(!n||!m) return [];
+  const flip = n>m;                       // algoritmus vyžaduje řádků <= sloupců
+  const R=flip?m:n, C=flip?n:m;
+  const a=Array.from({length:R+1},()=>new Array(C+1).fill(0));
+  for(let i=1;i<=R;i++) for(let j=1;j<=C;j++){
+    const s = flip ? score(slots[j-1],topics[i-1]) : score(slots[i-1],topics[j-1]);
+    a[i][j] = -s;                         // minimalizace záporných bodů = maximalizace
+  }
+  const res=hungarian(a,R,C), out=[];
+  for(let i=1;i<=R;i++){
+    const j=res[i]; if(!j) continue;
+    const slot  = flip?slots[j-1]:slots[i-1];
+    const topic = flip?topics[i-1]:topics[j-1];
+    const s=score(slot,topic);
+    if(s>0) out.push({slot,topic,score:s});   // 0 = o téma nikdo nestojí
+  }
+  return out;
+}
+async function toggleNavrh(){
+  const box=document.getElementById("navrhBox"), btn=document.getElementById("toggleNavrh");
+  const open = box.style.display==="none";
+  box.style.display = open ? "" : "none";
+  btn.textContent = open ? "Skrýt návrh" : "Spočítat návrh";
+  if(!open) return;
+  if(!sb){ box.innerHTML=`<p class="muted">Návrh není momentálně dostupný.</p>`; return; }
+  box.innerHTML=`<p class="muted">Počítám…</p>`;
+  const [{data:votes},{data:rez}] = await Promise.all([
+    sb.from("votes").select("teacher,topic_id,rank"),
+    sb.from("assignments").select("topic_id,teacher")
+  ]);
+  const hlasy=votes||[], rezervace=rez||[];
+  if(!hlasy.length && !rezervace.length){ box.innerHTML=`<p class="muted">Zatím nikdo nehlasoval.</p>`; return; }
+
+  // body: první volba 8, poslední 1
+  const bod={};
+  for(const h of hlasy) bod[h.teacher+"|"+h.topic_id] = 9-h.rank;
+
+  // rezervace jsou dané — učiteli uberou jeden slot, tématu možnost jít jinam
+  const pevne = rezervace.map(r=>({ucitel:r.teacher, id:r.topic_id, fix:true, body:bod[r.teacher+"|"+r.topic_id]||0}));
+  const obsazena = new Set(rezervace.map(r=>r.topic_id));
+  const zbyva = {};
+  for(const u of UCITELE) zbyva[u.prijmeni] = u.pocet;
+  for(const r of rezervace) if(zbyva[r.teacher]!==undefined) zbyva[r.teacher]--;
+
+  // sloty = učitel × zbývající kapacita
+  const slots=[];
+  for(const u of UCITELE) for(let k=0;k<Math.max(0,zbyva[u.prijmeni]);k++) slots.push(u.prijmeni);
+  const volna = DATA.map(t=>t.id).filter(id=>!obsazena.has(id));
+  const navrh = rozdel(slots, volna, (ucitel,id)=>bod[ucitel+"|"+id]||0)
+                  .map(x=>({ucitel:x.slot, id:x.topic, fix:false, body:x.score}));
+
+  const vse=[...pevne,...navrh].sort((a,b)=>a.ucitel.localeCompare(b.ucitel,"cs"));
+  const nazev=id=>{ const t=DATA.find(x=>x.id===id); return t?`${t.id}. ${t.nazev}`:id; };
+  const poradi=(u,id)=>{ const h=hlasy.find(x=>x.teacher===u&&x.topic_id===id); return h?h.rank+". volba":"nehlasoval"; };
+
+  let html=`<table><tr><th>Učitel</th><th>Téma</th><th>Volba</th></tr>`;
+  for(const r of vse) html+=`<tr class="${r.fix?"fix":""}"><td>${r.ucitel}</td><td>${nazev(r.id)}${r.fix?" <span class='muted'>(rezervováno)</span>":""}</td><td class="volba">${poradi(r.ucitel,r.id)}</td></tr>`;
+  const bezTematu = UCITELE.map(u=>u.prijmeni).filter(u=>!vse.some(r=>r.ucitel===u));
+  for(const u of bezTematu) html+=`<tr class="nic"><td>${u}</td><td>— bez tématu —</td><td class="volba">—</td></tr>`;
+  html+=`</table>`;
+
+  const prvni=vse.filter(r=>poradi(r.ucitel,r.id)==="1. volba").length;
+  const soucet=vse.reduce((a,r)=>a+r.body,0);
+  const nehlasovali=UCITELE.map(u=>u.prijmeni).filter(u=>!hlasy.some(h=>h.teacher===u));
+  html+=`<div class="navrhSouhrn">Rozděleno <b>${vse.length}</b> témat ze ${DATA.length}.
+    První volbu dostalo <b>${prvni}</b> z ${vse.length}. Součet preferencí <b>${soucet}</b> bodů.`;
+  if(bezTematu.length) html+=`<br>Bez tématu: ${bezTematu.join(", ")}.`;
+  if(nehlasovali.length) html+=`<br>Zatím nehlasovali: ${nehlasovali.join(", ")}.`;
+  html+=`</div>`;
+  box.innerHTML=html;
+}
+
 document.getElementById("scChips").addEventListener("click",e=>{
   if(!e.target.dataset.sc) return;
   fSC=e.target.dataset.sc;
@@ -500,6 +641,7 @@ openFromHash();
 </html>
 """
 
-html = HTML.replace("__DATA__", DATA).replace("__KAM__", KAM).replace("__VERSION__", VERSION)
+html = (HTML.replace("__DATA__", DATA).replace("__KAM__", KAM)
+            .replace("__UCITELE__", UCITELE).replace("__VERSION__", VERSION))
 open("index.html", "w", encoding="utf-8", newline="\n").write(html)
 print(f"OK index.html ({len(html)//1024} kB, {len(topics)} témat, verze {VERSION})")
