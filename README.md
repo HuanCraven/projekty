@@ -1,9 +1,13 @@
 # Projekty 2026/27 — katalog témat podle ScioCílů
 
-Katalog 40 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
+Katalog 50 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
 1. pololetí 2026/27, ScioCíle 4, 1, 5 a 8, úrovně 2 a 3 (2. a 3. trojročí).
 
 Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
+
+> ⚠️ **Než spustíš `tools/build_web.py`, čti dál.** Nasazený `index.html`
+> (verze 2026.08.07-02) obsahuje záložku **Hlasování**, kterou generátor
+> zatím neumí vytvořit. Přegenerování by ji smazalo. Viz „Známá past" níže.
 
 ## Struktura
 
@@ -12,6 +16,7 @@ Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
 | `index.html` | webový katalog (vše v jednom souboru) | **NE — generuje se** |
 | `data/temata_sc{4,1,5,8}.json` | témata: název, kameny, anotace, aktivity, diferenciace | ano — zdroj pravdy |
 | `data/znalosti_v3.json` | tvrdé znalosti + didaktické tipy k tématům (klíč = id tématu) | ano — zdroj pravdy |
+| `data/kameny.json` | rejstřík stavebních kamenů ScioCílů (zdroj pro záložku Rejstřík) | zřídka — referenční |
 | `tools/build_web.py` | generátor `index.html` | zřídka |
 | `tools/build_docx.js` | generátor Word katalogu (`vystupy/`) — vyžaduje npm balíček `docx` | zřídka |
 | `tools/build_xlsx.py` | generátor Excel tabulky (`vystupy/`) — vyžaduje `openpyxl` | zřídka |
@@ -43,3 +48,20 @@ node tools/build_docx.js       # -> vystupy/Katalog_projektovych_temat.docx
 - Většina témat je společná pro obě trojročí; jen pro 3. trojročí: č. 26 (Láska,
   vztahy a hranice) a č. 40 (Právo pro život).
 - Kontrolu pokrytí kamenů hlásí `build_xlsx.py` (záměrně nepokrytý jen 5.2.3.3).
+
+## Známá past: záložka Hlasování vs. generátor
+
+Nasazený `index.html` obsahuje třetí záložku **Hlasování** (hlasování učitelů
+o tématech s váhou 1–8 + rezervace témat). Běží na Supabase projektu
+`projekty-hlasovani`; v HTML je jen *publishable* klíč, nic tajného.
+
+**`tools/build_web.py` o téhle záložce neví.** Byla do `index.html` doplněná
+ručně (verze 2026.08.07-02) a generátor je starší. Důsledek:
+
+```
+python3 tools/build_web.py   # ← přepíše index.html a Hlasování ZMIZÍ
+```
+
+Dokud není modul zapracovaný do generátoru, platí: buď `build_web.py`
+nespouštěj, nebo si po přegenerování záložku vrať zpět (a ověř, že v
+`index.html` je řetězec „Hlasování").
