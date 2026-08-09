@@ -1,0 +1,314 @@
+[
+  {
+    "id": 21,
+    "nazev": "Komunikační laboratoř",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.3.1.1 Umím mluvit",
+      "5.3.1.2 Domlouvám se s jinými"
+    ],
+    "vedlejsi": [
+      "5.3.2.2 Komunikuji asertivně",
+      "5.1.1.10 Poskytuji a přijímám zpětnou vazbu",
+      "1.1.2.2 Učím se s pomocí jiných"
+    ],
+    "urovne": "obě",
+    "anotace": "Mluvit umí každý — domluvit se je umění. Intenzivní trénink mluveného projevu, aktivního naslouchání a vedení dialogu: od řeči těla přes strukturu vystoupení po debatní souboje. Děti si natáčejí a rozebírají vlastní projevy a krok za krokem je zlepšují.",
+    "aktivity": [
+      "Rétorická cvičení: hlas, artikulace, tréma, řeč těla; minutové improvizované proslovy",
+      "Trénink aktivního naslouchání: parafráze, doptávání, rozhovory ve dvojicích s reflexí",
+      "Debatní turnaj: pravidla věcné argumentace, obhajoba přidělených (i nesympatických) stanovisek",
+      "Analýza slavných projevů a rozhovorů (řečnické triky, práce s publikem)",
+      "Závěrečné vystoupení: připravený proslov či moderovaná diskuse před publikem"
+    ],
+    "dif2": "Hravá průprava: dramatické hry, vyprávění příběhů, mluvení před malou skupinou.",
+    "dif3": "Argumentace a debata, strukturovaná prezentace, vedení diskuse, zvládání nesouhlasu a trémy.",
+    "loni": ""
+  },
+  {
+    "id": 22,
+    "nazev": "Konflikt jako příležitost",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.1.1.9 Řeším konflikty"
+    ],
+    "vedlejsi": [
+      "5.3.2.1 Komunikuji s respektem",
+      "5.1.1.6 Hlídám si hranice",
+      "4.2.2.2 Zvládám stres"
+    ],
+    "urovne": "obě",
+    "anotace": "Konflikty k životu patří — rozhoduje, jak je řešíme. Projekt zkoumá, jak spory vznikají a eskalují, a trénuje cesty k řešení: rozlišení pozic a zájmů, deeskalaci, kompromis, konsenzus i mediaci. Modelové situace vycházejí ze skutečného života školy a děti si vyzkoušejí i roli mediátora.",
+    "aktivity": [
+      "Anatomie konfliktu: fáze eskalace na příkladech z filmů a ze života, vlastní konfliktní styly",
+      "Hraní rolí: modelové spory (rozdělení práce, půjčená věc, pomluvy) a jejich řešení různými styly",
+      "Mediátorský výcvik: struktura mediace, nestrannost, vedení stran k dohodě — trénink na scénkách",
+      "Pozice vs. zájem: vyjednávací hry (dělení pomeranče, obchodní simulace)",
+      "Zavedení či posílení peer mediace ve škole: služba dětských mediátorů"
+    ],
+    "dif2": "Pojmenování emocí v konfliktu, jednoduché kroky ke smíru, dohody ve skupině.",
+    "dif3": "Vyjednávací strategie, mediace, eskalační dynamika ve skupinách i online, konflikt hodnot vs. konflikt zájmů.",
+    "loni": ""
+  },
+  {
+    "id": 23,
+    "nazev": "Parta, tlak a odvaha vybočit",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.1.1.3 Přizpůsobím se nebo odolám sociálnímu tlaku",
+      "5.1.1.4 Funguji ve skupinách"
+    ],
+    "vedlejsi": [
+      "5.1.1.2 Někam patřím a přijímám ostatní",
+      "5.2.1.2 Odolám manipulaci a toxicitě ve vztazích",
+      "4.2.2.4 Sdílím a říkám si o pomoc"
+    ],
+    "urovne": "obě",
+    "anotace": "Proč děláme věci, které bychom sami neudělali? Projekt o síle skupiny: konformita, stádní chování, efekt přihlížejícího, skupinové role — a odvaha se ozvat. Skrze experimenty, hry a skutečné příběhy děti zkoumají, jak skupiny fungují, jak vzniká vyčleňování a co s tím může udělat jednotlivec.",
+    "aktivity": [
+      "Rekonstrukce slavných experimentů (Asch — konformita, efekt přihlížejícího) v bezpečné školní verzi",
+      "Skupinové role v akci: týmové úkoly s pozorovateli, rozbor kdo jakou roli zaujal",
+      "Příběhy odvahy vybočit: whistlebloweři, zachránci, ten kdo se zastal — beseda či dokument",
+      "Mapování školního kolektivu: kdy je nám spolu dobře, kdo zůstává stranou, drobné inkluzivní činy",
+      "Kampaň proti vyčleňování a šikaně navržená dětmi"
+    ],
+    "dif2": "Kamarádství a férovost v partě, rozpoznání ubližování, jak přizvat toho, kdo stojí stranou.",
+    "dif3": "Sociálně-psychologické experimenty a jejich etika, manipulace v partě i online, šikana a kyberšikana, civilní odvaha.",
+    "loni": ""
+  },
+  {
+    "id": 24,
+    "nazev": "Přátelství pod mikroskopem",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.2.2.1 Vybírám si přátele",
+      "5.2.2.2 Buduji kvalitní přátelství"
+    ],
+    "vedlejsi": [
+      "5.1.1.1 Vnímám a přijímám druhé",
+      "5.2.1.1 Buduji vztahy založené na důvěře",
+      "5.2.1.4 Napravuji narušené vztahy"
+    ],
+    "urovne": "obě",
+    "anotace": "Co dělá z kamaráda přítele a proč některá přátelství vydrží celý život? Projekt zkoumá vznik, údržbu i opravy přátelství: důvěru, vzájemnost, loajalitu, ale i hádky a usmíření. Kombinuje psychologii vztahů s uměleckým a literárním zpracováním a s praktickými výzvami v reálných vztazích dětí.",
+    "aktivity": [
+      "Mapa mých vztahů: okruhy blízkosti, co od koho čerpám a co dávám",
+      "Velká přátelství v literatuře a filmu: co je drželo pohromadě, rozbor krizí a usmíření",
+      "Dílna omluvy a odpuštění: jak vypadá plnohodnotná omluva, scénky nápravy vztahu",
+      "Přátelská výzva: konkrétní investice do skutečného vztahu (dopis, společný zážitek, podpora)",
+      "Mezigenerační rozhovory: co o přátelství vědí prarodiče a lidé s celoživotními přáteli",
+      "Věda o přátelství: co říkají výzkumy (Dunbarovo číslo, Harvardská studie štěstí) a vlastní miniprůzkum ve škole"
+    ],
+    "dif2": "Co je kamarádství, sdílení a půjčování, řešení drobných sporů, přijímání odlišností.",
+    "dif3": "Hloubka vs. počet vztahů, důvěra a zrada, přátelství online, proměny přátelství v dospívání.",
+    "loni": ""
+  },
+  {
+    "id": 25,
+    "nazev": "Moje kořeny",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.2.3.1 Mám své místo v rodině"
+    ],
+    "vedlejsi": [
+      "5.2.3.2 Přispívám k fungování domácnosti",
+      "5.1.1.5 Nakládám s hranicemi a autoritou",
+      "1.1.2.2 Učím se s pomocí jiných",
+      "5.2.3.4 I v rodině ctím hranice"
+    ],
+    "urovne": "obě",
+    "anotace": "Odkud jsem a kdo jsou moji lidé? Děti pátrají po historii vlastní rodiny — rodokmen, rodinné příběhy, fotografie, recepty a tradice — a zároveň zkoumají, jak rodina funguje dnes: role, pravidla, hranice i vlastní podíl na chodu domácnosti. Projekt citlivě pracuje s rozmanitostí rodinných uspořádání.",
+    "aktivity": [
+      "Tvorba rodokmenu a časové osy rodiny, práce s archivy, fotografiemi a dokumenty",
+      "Nahrávání rozhovorů s prarodiči a příbuznými (metoda orální historie)",
+      "Rodinné poklady: recepty, předměty, tradice a jejich příběhy — společná výstava",
+      "Velké dějiny v malých příbězích: co rodina zažila za války, revoluce, stěhování",
+      "Domácnost v mých rukou: týdenní závazek péče o konkrétní oblast doma a jeho reflexe"
+    ],
+    "dif2": "Blízká rodina a její příběhy, jednoduché rodokmeny, tradice a svátky, pomoc doma.",
+    "dif3": "Genealogické pátrání v archivech, rodinná paměť a velké dějiny, role a hranice v rodině, proměny rodiny v čase.",
+    "loni": "Historie rodiny; Příběhy kolem nás"
+  },
+  {
+    "id": 26,
+    "nazev": "Láska, vztahy a hranice",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.2.4.1 Navazuji partnerské vztahy",
+      "5.2.4.2 Buduji kvalitní a plnohodnotný partnerský vztah"
+    ],
+    "vedlejsi": [
+      "5.2.1.2 Odolám manipulaci a toxicitě ve vztazích",
+      "5.2.1.3 Čelím násilí, zneužívání a vydírání ve vztazích",
+      "5.1.1.6 Hlídám si hranice",
+      "5.2.4.3 Překonávám obtíže v partnerském vztahu"
+    ],
+    "urovne": "3",
+    "anotace": "Zamilovanost, randění, souhlas, hranice — témata, která dospívající řeší, ať s nimi pracujeme, nebo ne. Projekt otevírá bezpečný prostor pro rozhovor o partnerských vztazích: co je zdravý vztah, jak vypadají červené vlajky, jak funguje souhlas a kde hledat pomoc, když se vztah zvrtne.",
+    "aktivity": [
+      "Zdravý vs. nezdravý vztah: třídění situací, červené vlajky, práce s příběhy a filmy",
+      "Souhlas srozumitelně: scénky a diskuse o hranicích, respektu a odmítnutí (např. metodika „čaj“)",
+      "Beseda s odborníkem (Konsent, psycholog, linka důvěry): manipulace, kybergrooming, kde hledat pomoc",
+      "Láska v kultuře: proměny partnerství napříč dobou a kulturami, romantické mýty vs. realita",
+      "Anonymní schránka otázek a diskusní kruhy oddělené i společné"
+    ],
+    "dif2": "—",
+    "dif3": "Určeno primárně 3. trojročí; citlivě moderovaná diskuse, spolupráce s odborníky, respekt k různému tempu dospívání.",
+    "loni": ""
+  },
+  {
+    "id": 27,
+    "nazev": "Svět v nás: kulturní mozaika",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.1.2.3 Přizpůsobím se v odlišném socio-kulturním prostředí"
+    ],
+    "vedlejsi": [
+      "5.3.3.2 Domluvím se v cizojazyčném prostředí",
+      "5.1.1.1 Vnímám a přijímám druhé",
+      "8.2.3.4 Dopravuji se"
+    ],
+    "urovne": "obě",
+    "anotace": "Co je „normální“? Záleží, kde jste se narodili. Projekt zkoumá kulturní rozmanitost světa — zvyky, jídlo, jazyky, gesta, hodnoty — a učí děti pohybovat se v odlišném prostředí s respektem a zvědavostí. Ideálně zahrnuje skutečná setkání s lidmi z jiných kultur.",
+    "aktivity": [
+      "Kulturní expedice po vlastním městě: vietnamská tržnice, mešita, ukrajinská komunita, cizokrajné restaurace",
+      "Setkání s cizinci žijícími v ČR: rozhovory o kulturních šocích a rozdílech",
+      "Simulační hra kulturního nedorozumění (Bafá bafá apod.): zažít, jaké to je být cizincem",
+      "Světová kuchyně: vaření jídel různých kultur s vyprávěním o jejich původu",
+      "Kulturní průvodce: co by měl vědět návštěvník naší země / naší školy — tvorba pro skutečné zahraniční hosty"
+    ],
+    "dif2": "Poznávání kultur skrze jídlo, svátky, hry a příběhy; hostitelská zdvořilost.",
+    "dif3": "Kulturní dimenze a hodnoty, stereotypy a předsudky, migrace a její příběhy, orientace v zahraničí naostro.",
+    "loni": "Kontinenty, státy, města; Humanitární mise"
+  },
+  {
+    "id": 28,
+    "nazev": "Společenská akademie",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.1.2.1 Ovládám společenská pravidla",
+      "5.1.2.2 Navazuji kontakty"
+    ],
+    "vedlejsi": [
+      "5.3.1.4 Ovládám komunikační kanály",
+      "5.3.1.1 Umím mluvit",
+      "8.2.3.3 Obstarávám si věci a zařizuji služby",
+      "5.1.1.7 Respektuji či překračuji hranice"
+    ],
+    "urovne": "obě",
+    "anotace": "Jak se neztratit mezi lidmi: od pozdravu a small talku po chování v divadle, v restauraci či na úřadě. Projekt hravou formou trénuje společenskou obratnost v reálných situacích — vyvrcholením je společenský večer, který děti samy zorganizují, a výpravy „do společnosti“ naostro.",
+    "aktivity": [
+      "Etiketa v akci: scénky běžných situací (představování, telefonát, e-mail, návštěva) a jejich rozbor",
+      "Výprava naostro: objednat si v restauraci, zeptat se na cestu, vyřídit věc na úřadě či v obchodě",
+      "Návštěva divadla či koncertu se vším všudy: oblečení, chování, přestávka",
+      "Small talk trénink: navazování rozhovoru s neznámými lidmi (bezpečně, např. se seniory v domově)",
+      "Společenský večer pořádaný dětmi: pozvánky, dress code, uvítání hostů, moderování"
+    ],
+    "dif2": "Základy slušnosti hravě: pozdrav, prosba, poděkování, stolování, chování na veřejnosti.",
+    "dif3": "Formální komunikace (e-mail, telefonát, pohovor), společenské akce, kulturní rozdíly v etiketě, sebejistota v nových situacích.",
+    "loni": ""
+  },
+  {
+    "id": 29,
+    "nazev": "Domluvím se ve světě",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.3.3.1 Mluvím anglicky",
+      "5.3.3.2 Domluvím se v cizojazyčném prostředí"
+    ],
+    "vedlejsi": [
+      "5.3.3.3 Tvořím cizojazyčné texty",
+      "1.1.2.1 Čtu a naslouchám",
+      "8.2.3.4 Dopravuji se"
+    ],
+    "urovne": "obě",
+    "anotace": "Čtyři týdny, kdy je angličtina nástrojem, ne předmětem. Projekt simuluje situace, kde se bez domluvy neobejdete: cestování, nakupování, seznamování, řešení problémů. Děti trénují mluvení bez strachu z chyb, strategie „domluvím se i s málem“ a chytré využití překladačů a AI.",
+    "aktivity": [
+      "Simulace letiště, hotelu, restaurace a nádraží: hraní situací kompletně v angličtině",
+      "Město jako učebna: plnění úkolů v terénu vyžadujících angličtinu (rozhovor s turistou, průvodcování)",
+      "Videohovory či dopisování s partnerskou zahraniční školou / zahraničními dobrovolníky",
+      "Překladačová olympiáda: kdy technologie pomůže a kdy selže; domluva „bez společného jazyka“",
+      "Anglický den ve škole: děti připraví program, kdy se od rána do odpoledne mluví jen anglicky"
+    ],
+    "dif2": "Jednoduché fráze a scénky, hry se slovíčky, odvaha promluvit, gesta a obrázky jako podpora.",
+    "dif3": "Plynulá konverzace v simulacích, opisné strategie, formální vs. neformální projev, samostatné zvládnutí situace v terénu.",
+    "loni": ""
+  },
+  {
+    "id": 30,
+    "nazev": "Online já: vztahy za obrazovkou",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.2.1.5 Rozlišuji mezi lidským a syntetickým vztahem"
+    ],
+    "vedlejsi": [
+      "8.2.4.2 Omezuji nebezpečí a rizika digitálních technologií",
+      "5.2.1.2 Odolám manipulaci a toxicitě ve vztazích",
+      "5.3.1.4 Ovládám komunikační kanály"
+    ],
+    "urovne": "obě",
+    "anotace": "Kdo jsme online a s kým se to vlastně bavíme? Projekt zkoumá vztahy v digitálním světě: přátelství na dálku, komunikaci přes zprávy, sebeprezentaci na sítích, kyberšikanu — a nově i „vztahy“ s AI společníky. Děti hledají rovnováhu mezi digitálním a skutečným kontaktem.",
+    "aktivity": [
+      "Rozbor komunikace přes zprávy: co se ztrácí bez tónu hlasu a mimiky, nedorozumění a emoji",
+      "Moje digitální stopa: co o mně internet ví, sebeprezentace vs. realita na sociálních sítích",
+      "AI kamarád na zkoušku: řízený experiment s chatbotem a diskuse — co umí a co nikdy nenahradí",
+      "Kyberšikana a kybergrooming: rozpoznání, obrana, kde hledat pomoc (beseda s odborníkem)",
+      "Týden vědomé komunikace: kdy volím zprávu, kdy hovor a kdy osobní setkání — experiment s pravidly"
+    ],
+    "dif2": "Bezpečné základy: s kým se bavím online, co nesdílím, komu se svěřím při nepříjemném zážitku.",
+    "dif3": "Psychologie sociálních sítí, parasociální a syntetické vztahy, sexting a rizika sdílení, digitální rovnováha.",
+    "loni": ""
+  },
+  {
+    "id": 42,
+    "nazev": "Století extrémů: lidé ve 20. století",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.1.1.3 Přizpůsobím se nebo odolám sociálnímu tlaku"
+    ],
+    "vedlejsi": [
+      "5.1.1.1 Vnímám a přijímám druhé",
+      "5.2.1.2 Odolám manipulaci a toxicitě ve vztazích",
+      "1.1.1.3 Posoudím kvalitu zdroje učení",
+      "5.2.3.1 Mám své místo v rodině"
+    ],
+    "urovne": "obě",
+    "anotace": "Dvě světové války, holokaust, komunismus, rok 1968 i 1989 — moderní dějiny nahlížené skrze vztahy a rozhodnutí konkrétních lidí. Proč většina mlčela a někdo se vzepřel? Jak funguje propaganda a strach? Projekt pracuje s příběhy pamětníků, rodinnou pamětí a dobovými prameny; historie tu slouží jako zrcadlo dnešku.",
+    "aktivity": [
+      "Časová osa 20. století z rodinných příběhů: co zažili praprarodiče (válka, kolektivizace, emigrace, sametová revoluce)",
+      "Práce s pamětnickými nahrávkami (Paměť národa) a pozvání pamětníka do školy",
+      "Rozbor propagandy: dobové plakáty, týdeníky a noviny — jak se vyrábí nepřítel; paralely s dnešní manipulací",
+      "Příběhy odvahy a selhání: Wintonovy děti, bratři Mašínové, Charta 77 — diskuse o hranicích odvahy a přizpůsobení",
+      "Exkurze: Terezín, Vojna u Příbrami, Muzeum paměti XX. století či místní místa paměti"
+    ],
+    "dif2": "Každodennost dětí ve 20. století (škola, hry, nedostatek), rodinné příběhy, citlivé dávkování těžkých témat.",
+    "dif3": "Mechanismy totalit (propaganda, strach, kolaborace, odboj), holokaust, srovnání nacismu a komunismu, paralely se současnými dezinformacemi.",
+    "loni": "Dějiny 20. století; Historie rodiny"
+  },
+  {
+    "id": 50,
+    "nazev": "Mladí a staří: most mezi generacemi",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.1.1.1 Vnímám a přijímám druhé"
+    ],
+    "vedlejsi": [
+      "5.1.2.2 Navazuji kontakty",
+      "5.2.3.1 Mám své místo v rodině",
+      "5.3.1.2 Domlouvám se s jinými",
+      "1.1.2.2 Učím se s pomocí jiných"
+    ],
+    "urovne": "obě",
+    "anotace": "Co nás mohou naučit lidé, kteří žijí sedmdesát let před námi — a co my je? Projekt staví skutečný most mezi generacemi: pravidelná setkávání se seniory, rozhovory o životě dřív, společná tvorba a „digitální ordinace“, kde děti učí seniory s telefony. Zkoumá i stárnutí samotné a předsudky o něm — protože staří budeme jednou všichni.",
+    "aktivity": [
+      "Pravidelné návštěvy domova seniorů či klubu: společné hry, čtení, tvoření — vztah, ne jednorázová akce",
+      "Digitální ordinace: děti učí seniory s mobilem, fotkami a videohovory — role učitele naruby",
+      "Rozhovory o životě dřív: dětství bez internetu, práce, láska, ceny — zápis vzpomínek jako dar",
+      "Stáří na vlastní kůži: simulace (ztížené brýle, rukavice, zátěž) a rozbor mýtů o stáří (ageismus)",
+      "Mezigenerační slavnost: společné vaření receptů ze starých časů, výstava vzpomínek, vystoupení pro hosty"
+    ],
+    "dif2": "Hravé setkávání, společné čtení, hry a tvoření, zvídavé rozhovory s babičkami a dědečky.",
+    "dif3": "Biologie a psychologie stárnutí, demografické stárnutí ČR (data, grafy), ageismus, systém péče o seniory, dlouhodobý dobrovolnický vztah.",
+    "loni": ""
+  }
+]

@@ -1,0 +1,337 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
+import json, re
+
+VERSION = "2026.08.03-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+
+topics = []
+for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
+    topics += json.load(open(f, encoding="utf-8"))
+topics.sort(key=lambda t: t["id"])
+v3 = json.load(open("data/znalosti_v3.json", encoding="utf-8"))
+
+def strip_source(s):
+    s = re.sub(r"^ŠVP \(Ú[23/Ú]+\):\s*", "", s)
+    s = re.sub(r"^RVP – ", "", s)
+    return s
+
+def strip_didaktika(s):
+    return re.sub(r"^Didaktika SC\d:\s*", "", s)
+
+for t in topics:
+    ext = v3.get(str(t["id"]), {})
+    t["znalosti"] = [strip_source(z) for z in ext.get("znalosti", []) if not z.startswith("—")] + \
+                    [z for z in ext.get("znalosti", []) if z.startswith("—")]
+    t["didaktika"] = [strip_didaktika(d) for d in ext.get("didaktika", [])]
+
+DATA = json.dumps(topics, ensure_ascii=False)
+import os
+_kam_path = "kameny.json" if os.path.exists("kameny.json") else "data/kameny.json"
+KAM = json.dumps(json.load(open(_kam_path, encoding="utf-8")), ensure_ascii=False)
+
+HTML = """<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projekty 2026/27 – katalog témat</title>
+<style>
+  :root{
+    --bg:#f6f5f2; --card:#ffffff; --ink:#1f2933; --muted:#6b7280; --line:#e5e2dc;
+    --sc4:#b9770e; --sc1:#1f618d; --sc5:#922b21; --sc8:#1e8449;
+    --sc4bg:#fdf3e3; --sc1bg:#e8f1f8; --sc5bg:#faeceb; --sc8bg:#e9f7ee;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.5;}
+  header{background:#1f4e5f; color:#fff; padding:22px 16px 18px; text-align:center;}
+  header h1{font-size:1.35rem; letter-spacing:.02em;}
+  header p{opacity:.75; font-size:.85rem; margin-top:4px;}
+  .toolbar{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line); box-shadow:0 3px 12px rgba(0,0,0,.07); padding:10px 12px 12px; display:flex; flex-direction:column; gap:8px;}
+  .seg{display:flex; justify-content:center;}
+  .seg .inner{display:inline-flex; border:1px solid var(--line); border-radius:10px; overflow:hidden;}
+  .seg .chip{border:none; border-radius:0; padding:7px 18px; font-weight:600; background:#fff;}
+  .seg .chip.active{background:#1f4e5f; color:#fff;}
+  .tooldiv{border:none; border-top:1px solid var(--line); margin:2px 24px;}
+  .filtry .chip{font-size:.76rem; padding:4px 10px; background:var(--bg);}
+  .chips{display:flex; gap:6px; flex-wrap:wrap; justify-content:center;}
+  .chip{border:1px solid var(--line); background:#fff; border-radius:999px; padding:5px 12px; font-size:.82rem; cursor:pointer; user-select:none; white-space:nowrap;}
+  .chip.active{color:#fff; border-color:transparent;}
+  .chip[data-sc="vse"].active{background:#1f4e5f;}
+  .chip[data-sc="SC4"].active{background:var(--sc4);}
+  .chip[data-sc="SC1"].active{background:var(--sc1);}
+  .chip[data-sc="SC5"].active{background:var(--sc5);}
+  .chip[data-sc="SC8"].active{background:var(--sc8);}
+  .chip[data-tr].active{background:#374151;}
+  
+  .searchwrap{display:flex; justify-content:center;}
+  #search{width:100%; max-width:420px; padding:8px 14px; border:1px solid var(--line); border-radius:999px; font-size:.9rem; background:#fff;}
+  #count{text-align:center; font-size:.75rem; color:var(--muted);}
+  main{max-width:1060px; margin:0 auto; padding:16px 12px 60px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); grid-auto-rows:1fr; gap:12px;}
+  .card{background:var(--card); border:1px solid var(--line); border-left:5px solid var(--accent); border-radius:12px; padding:14px 16px; cursor:pointer; transition:box-shadow .15s, transform .15s; display:flex; flex-direction:column;}
+  .card:hover{box-shadow:0 4px 14px rgba(0,0,0,.08); transform:translateY(-1px);}
+  .card .num{font-size:.72rem; color:var(--muted);}
+  .card h3{font-size:1.02rem; margin:2px 0 6px;}
+  .tagrow{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:8px;}
+  .tag{font-size:.68rem; padding:2px 8px; border-radius:999px; background:var(--accentbg); color:var(--accent); font-weight:600;}
+  .tag.tr{background:#eef0f3; color:#4b5563; font-weight:500;}
+  .card p{font-size:.83rem; color:#374151; flex:1;}
+  .kam{margin-top:8px; font-size:.72rem; color:var(--muted);}
+  /* detail */
+  #overlay{position:fixed; inset:0; background:rgba(15,23,32,.55); z-index:50; display:none; align-items:flex-end; justify-content:center;}
+  #overlay.open{display:flex;}
+  #detail{background:#fff; width:100%; max-width:760px; max-height:92vh; overflow-y:auto; border-radius:18px 18px 0 0; padding:20px 20px 40px; -webkit-overflow-scrolling:touch;}
+  @media(min-width:780px){ #overlay{align-items:center;} #detail{border-radius:18px; max-height:88vh;} }
+  #detail .num{color:var(--muted); font-size:.8rem;}
+  #detail h2{font-size:1.3rem; margin:2px 0 10px; color:var(--accent);}
+  #detail .anot{font-size:.95rem; margin-bottom:14px;}
+  #detail ul{padding-left:18px; font-size:.88rem; margin-top:6px;}
+  #detail li{margin-bottom:4px;}
+  #detail li.lead{font-weight:600;}
+  /* kámen s úrovněmi */
+  .kd{border:none !important; background:transparent !important; margin:0 0 2px 0 !important; padding:0 !important;}
+  .kd>summary{padding:5px 0 !important; justify-content:flex-start !important; font-size:.88rem !important; text-transform:none !important; letter-spacing:0 !important; font-weight:400 !important; color:var(--ink) !important;}
+  .kd>summary.lead{font-weight:600 !important;}
+  .kd>summary::before{content:"▸"; color:var(--accent); margin-right:6px; transition:transform .15s; display:inline-block;}
+  .kd[open]>summary::before{transform:rotate(90deg);}
+  .kd>summary::after{content:"" !important;}
+  .kdb{background:#f6f8f9; border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:8px 12px 10px; margin:2px 0 8px 14px; font-size:.83rem;}
+  .kdb b{color:var(--accent);}
+  .kdb .urov{margin-bottom:6px;}
+  .chipsmini{display:flex; gap:5px; flex-wrap:wrap; margin-top:6px;}
+  .chipsmini button{border:1px solid var(--line); background:#fff; border-radius:999px; padding:2px 9px; font-size:.68rem; cursor:pointer; color:#4b5563;}
+  .chipsmini button:hover{border-color:var(--accent); color:var(--accent);}
+  #bubble{position:fixed; z-index:99; max-width:min(480px, calc(100vw - 32px)); background:#1f2933; color:#f3f4f6; border-radius:12px; padding:12px 14px; font-size:.82rem; line-height:1.45; box-shadow:0 8px 30px rgba(0,0,0,.35); display:none;}
+  #bubble b{display:block; margin-bottom:4px; color:#93c5fd;}
+  #detail details{border:1px solid var(--line); border-radius:10px; margin-top:8px; padding:0 12px; background:#fbfbfa;}
+  #detail details[open]{padding-bottom:10px; background:#fff;}
+  #detail summary{cursor:pointer; padding:10px 0; font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:#374151; font-weight:600; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+  #detail summary::-webkit-details-marker{display:none;}
+  #detail summary::after{content:"▾"; color:var(--muted); transition:transform .15s;}
+  #detail details[open] summary::after{transform:rotate(180deg);}
+  .closebtn{position:sticky; top:0; float:right; background:#eef0f3; border:none; border-radius:999px; width:34px; height:34px; font-size:1rem; cursor:pointer;}
+  .difbox{background:#f7f7f5; border-radius:10px; padding:10px 12px; margin-top:6px; font-size:.85rem;}
+  .difbox b{font-size:.8rem;}
+  .loni{font-style:italic; color:var(--muted); font-size:.85rem;}
+  footer{ text-align:center; font-size:.75rem; color:var(--muted); padding:20px;}
+  .printbtn{position:sticky; top:0; float:right; background:#eef0f3; border:none; border-radius:999px; height:34px; padding:0 12px; font-size:.8rem; cursor:pointer; margin-right:8px;}
+  /* rejstřík kamenů */
+  #kamlist summary{list-style:none;}
+  #kamlist summary::-webkit-details-marker{display:none;}
+  #kamlist{max-width:760px; margin:0 auto;}
+  #kamlist h3{margin:18px 0 6px; font-size:1rem;}
+  #kamlist .kd{background:#fff !important; border:1px solid var(--line) !important; border-radius:10px !important; padding:2px 12px !important; margin-bottom:6px !important;}
+  .temlink{color:var(--accent); cursor:pointer; text-decoration:underline;}
+  .temrow{margin-top:8px; font-size:.83rem;}
+  /* tisk karty */
+  @media print{
+    body.print-card header, body.print-card .toolbar, body.print-card main,
+    body.print-card footer, body.print-card #bubble, body.print-card .closebtn,
+    body.print-card .printbtn{display:none !important;}
+    body.print-card #overlay{position:static; display:block !important; background:none;}
+    body.print-card #detail{max-height:none; overflow:visible; width:100%; max-width:100%; border-radius:0; padding:0;}
+    body.print-card .chipsmini{display:none !important;}
+    body.print-card #detail details{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Projekty 2026/27 — katalog témat</h1>
+  <p>1. pololetí · ScioCíle 4, 1, 5 a 8 · 2. a 3. trojročí · klepni na kartu pro detail</p>
+</header>
+
+<div class="toolbar">
+  <div class="seg"><div class="inner" id="viewChips">
+    <span class="chip active" data-view="temata">Témata</span>
+    <span class="chip" data-view="kameny">Rejstřík kamenů</span>
+  </div></div>
+  <hr class="tooldiv">
+  <div class="chips filtry" id="scChips">
+    <span class="chip active" data-sc="vse">Vše</span>
+    <span class="chip" data-sc="SC4">SC4 Odolnost</span>
+    <span class="chip" data-sc="SC1">SC1 Umím se učit</span>
+    <span class="chip" data-sc="SC5">SC5 Vztahy</span>
+    <span class="chip" data-sc="SC8">SC8 Život v rukou</span>
+  </div>
+  <div class="chips filtry" id="trChips">
+    <span class="chip active" data-tr="vse">Obě trojročí</span>
+    <span class="chip" data-tr="2">Pro 2. trojročí</span>
+    <span class="chip" data-tr="3">Pro 3. trojročí</span>
+  </div>
+  <div class="searchwrap"><input id="search" type="search" placeholder="Hledat v tématech, kamenech, aktivitách…"></div>
+  <div id="count"></div>
+</div>
+
+<main><div class="grid" id="grid"></div><div id="kamlist" style="display:none"></div></main>
+
+<div id="overlay"><div id="detail"></div></div>
+<div id="bubble"></div>
+
+<footer>ScioŠkola · katalog projektových témat · verze __VERSION__</footer>
+
+<script>
+const DATA = __DATA__;
+const KAM = __KAM__;
+const SCN = {SC4:"SC4 Rozvíjím svou odolnost", SC1:"SC1 Umím se učit", SC5:"SC5 Buduji dobré vztahy", SC8:"SC8 Mám život ve svých rukou"};
+const COL = {SC4:["var(--sc4)","var(--sc4bg)"], SC1:["var(--sc1)","var(--sc1bg)"], SC5:["var(--sc5)","var(--sc5bg)"], SC8:["var(--sc8)","var(--sc8bg)"]};
+const TRT = {"obě":"2. i 3. trojročí","2":"jen 2. trojročí","3":"jen 3. trojročí"};
+let fSC="vse", fTR="vse", q="", view="temata";
+// index: kámen -> témata
+const KIDX = {};
+for(const t of DATA){
+  for(const k of t.vedouci){ const c=k.split(" ")[0].replace(/\\.$/,""); (KIDX[c]=KIDX[c]||{lead:[],side:[]}).lead.push(t); }
+  for(const k of t.vedlejsi){ const c=k.split(" ")[0].replace(/\\.$/,""); (KIDX[c]=KIDX[c]||{lead:[],side:[]}).side.push(t); }
+}
+
+const grid=document.getElementById("grid"), count=document.getElementById("count");
+const overlay=document.getElementById("overlay"), detail=document.getElementById("detail");
+
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"");}
+function hay(t){return norm([t.nazev,t.anotace,t.vedouci.join(" "),t.vedlejsi.join(" "),t.aktivity.join(" "),(t.znalosti||[]).join(" ")].join(" "));}
+
+function renderKam(){
+  const nq=norm(q);
+  const grpName = {"1":"ScioCíl 1: Umím se učit","4":"ScioCíl 4: Rozvíjím svou odolnost","5":"ScioCíl 5: Buduji dobré vztahy","8":"ScioCíl 8: Mám život ve svých rukou"};
+  const codes = Object.keys(KAM).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+  let html="", cnt=0, lastG="";
+  for(const c of codes){
+    const sc = "SC"+c.split(".")[0];
+    if(fSC!=="vse" && sc!==fSC) continue;
+    const info = KAM[c];
+    if(nq && !norm(c+" "+info.n+" "+info.u2+" "+info.u3).includes(nq)) continue;
+    cnt++;
+    const g = c.split(".")[0];
+    if(g!==lastG){ html+=`<h3 style="color:var(--${sc.toLowerCase()})">${grpName[g]}</h3>`; lastG=g; }
+    const idx = KIDX[c]||{lead:[],side:[]};
+    let body="";
+    if(info.u2) body+=`<div class="urov"><b>Úroveň 2 (2. trojročí):</b> ${info.u2}</div>`;
+    if(info.u3) body+=`<div class="urov"><b>Úroveň 3 (3. trojročí):</b> ${info.u3}</div>`;
+    const chips=["p","z","s","d"].filter(x=>info[x]).map(x=>`<button onclick="bub(event,'${c}','${x}')">${MTIT[x]}</button>`).join("");
+    if(chips) body+=`<div class="chipsmini">${chips}</div>`;
+    const lk = ts=>ts.map(t=>`<span class="temlink" onclick="openD(${t.id})">${t.id}. ${t.nazev}</span>`).join(", ");
+    if(idx.lead.length) body+=`<div class="temrow"><b>Stěžejní v:</b> ${lk(idx.lead)}</div>`;
+    if(idx.side.length) body+=`<div class="temrow"><b>Vedlejší v:</b> ${lk(idx.side)}</div>`;
+    if(!idx.lead.length && !idx.side.length) body+=`<div class="temrow" style="color:var(--muted)">Zatím bez tématu.</div>`;
+    html+=`<details class="kd" style="--accent:var(--${sc.toLowerCase()});--accentbg:var(--${sc.toLowerCase()}bg)"><summary>${c} ${info.n}</summary><div class="kdb">${body}</div></details>`;
+  }
+  document.getElementById("kamlist").innerHTML=html;
+  count.textContent=`Zobrazeno ${cnt} ze ${Object.keys(KAM).length} kamenů`;
+}
+function render(){
+  document.getElementById("grid").style.display = view==="temata" ? "" : "none";
+  document.getElementById("kamlist").style.display = view==="kameny" ? "" : "none";
+  document.getElementById("trChips").style.display = view==="temata" ? "" : "none";
+  if(view==="kameny"){ renderKam(); return; }
+  const nq=norm(q);
+  const items=DATA.filter(t=>
+    (fSC==="vse"||t.skupina===fSC) &&
+    (fTR==="vse"||t.urovne==="obě"||t.urovne===fTR) &&
+    (!nq||hay(t).includes(nq)));
+  grid.innerHTML=items.map(t=>{
+    const [c,cb]=COL[t.skupina];
+    return `<div class="card" style="--accent:${c};--accentbg:${cb}" onclick="openD(${t.id})">
+      <div class="num">Téma ${t.id}</div>
+      <h3>${t.nazev}</h3>
+      <div class="tagrow"><span class="tag">${SCN[t.skupina]}</span><span class="tag tr">${TRT[t.urovne]}</span></div>
+      <p>${t.anotace}</p>
+      <div class="kam">Kameny: ${t.vedouci.map(k=>k.split(" ")[0]).join(", ")}${t.vedlejsi.length?" + "+t.vedlejsi.map(k=>k.split(" ")[0]).join(", "):""}</div>
+    </div>`;}).join("");
+  count.textContent=`Zobrazeno ${items.length} z ${DATA.length} témat`;
+}
+
+const MTIT = {p:"Postoje", z:"Znalosti", s:"Sebeznalosti", d:"Dovednosti"};
+function kamHtml(k, lead){
+  const code = k.split(" ")[0].replace(/\\.$/,"");
+  const info = KAM[code];
+  if(!info || (!info.u2 && !info.u3 && !info.p && !info.z && !info.s && !info.d))
+    return `<div style="padding:5px 0; font-size:.88rem; ${lead?"font-weight:600;":""}">${k}</div>`;
+  let body = "";
+  if(info.u2) body += `<div class="urov"><b>Úroveň 2 (2. trojročí):</b> ${info.u2}</div>`;
+  if(info.u3) body += `<div class="urov"><b>Úroveň 3 (3. trojročí):</b> ${info.u3}</div>`;
+  if(!info.u2 && !info.u3) body += `<div class="urov" style="color:var(--muted)">Úrovně u tohoto kamene zatím nejsou ve zdroji rozpracované.</div>`;
+  const chips = ["p","z","s","d"].filter(x=>info[x]).map(x=>
+    `<button onclick="bub(event,'${code}','${x}')">${MTIT[x]}</button>`).join("");
+  if(chips) body += `<div class="chipsmini">${chips}</div>`;
+  return `<details class="kd"><summary class="${lead?"lead":""}">${k}</summary><div class="kdb">${body}</div></details>`;
+}
+const bubble = document.getElementById("bubble");
+function bub(e, code, cat){
+  e.stopPropagation();
+  const info = KAM[code]; if(!info) return;
+  bubble.innerHTML = `<b>${MTIT[cat]} — ${code} ${info.n}</b>${info[cat]}`;
+  bubble.style.display = "block";
+  const r = e.target.getBoundingClientRect();
+  bubble.style.left = Math.min(r.left, window.innerWidth - bubble.offsetWidth - 16) + "px";
+  const above = r.top > window.innerHeight/2;
+  bubble.style.top = above ? Math.max(8, r.top - bubble.offsetHeight - 8) + "px" : (r.bottom + 8) + "px";
+}
+document.addEventListener("click", e=>{ if(!bubble.contains(e.target) && !e.target.closest(".chipsmini")) bubble.style.display="none"; });
+function openD(id){
+  const t=DATA.find(x=>x.id===id); if(!t) return;
+  const [c,cb]=COL[t.skupina];
+  detail.style.setProperty("--accent",c);
+  const sec=(title,body,open=false)=>`<details${open?" open":""}><summary>${title}</summary>${body}</details>`;
+  let h=`<button class="closebtn" onclick="closeD()">✕</button>
+    <button class="printbtn" onclick="printD()">🖨 Tisk</button>
+    <div class="num">Téma ${t.id} · ${SCN[t.skupina]} · ${TRT[t.urovne]}</div>
+    <h2>${t.nazev}</h2>
+    <div class="anot">${t.anotace}</div>`;
+  h+=sec("Stěžejní kameny",t.vedouci.map(k=>kamHtml(k,true)).join(""),true);
+  h+=sec("Vedlejší kameny",t.vedlejsi.map(k=>kamHtml(k,false)).join(""));
+  h+=sec("Náměty aktivit",`<ul>${t.aktivity.map(a=>`<li>${a}</li>`).join("")}</ul>`);
+  if(t.znalosti&&t.znalosti.length) h+=sec("Tvrdé znalosti — příklady učiva",`<ul>${t.znalosti.map(z=>`<li>${z}</li>`).join("")}</ul>`);
+  if(t.didaktika&&t.didaktika.length) h+=sec("Z didaktiky ScioCíle",`<ul>${t.didaktika.map(d=>`<li>${d}</li>`).join("")}</ul>`);
+  let dif=`<div class="difbox">`;
+  if(t.dif2!=="—") dif+=`<b>2. trojročí:</b> ${t.dif2}<br>`;
+  dif+=`<b>3. trojročí:</b> ${t.dif3}</div>`;
+  h+=sec("Diferenciace podle trojročí",dif);
+  if(t.loni) h+=sec("Návaznost na projekty 2025/26",`<div class="loni">${t.loni}</div>`);
+  detail.innerHTML=h;
+  overlay.classList.add("open");
+  document.body.style.overflow="hidden";
+  detail.scrollTop=0;
+  history.replaceState(null,"","#"+t.id);
+}
+function closeD(){overlay.classList.remove("open"); document.body.style.overflow=""; bubble.style.display="none"; history.replaceState(null,"",location.pathname+location.search);}
+function printD(){
+  detail.querySelectorAll("details").forEach(d=>d.open=true);
+  document.body.classList.add("print-card");
+  window.print();
+}
+window.addEventListener("afterprint",()=>document.body.classList.remove("print-card"));
+function openFromHash(){
+  const m=location.hash.match(/^#(\\d+)$/);
+  if(m){ const id=parseInt(m[1]); if(DATA.some(t=>t.id===id)) openD(id); }
+}
+window.addEventListener("hashchange",openFromHash);
+overlay.addEventListener("click",e=>{if(e.target===overlay) closeD();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closeD();});
+
+document.getElementById("scChips").addEventListener("click",e=>{
+  if(!e.target.dataset.sc) return;
+  fSC=e.target.dataset.sc;
+  [...e.currentTarget.children].forEach(ch=>ch.classList.toggle("active",ch===e.target));
+  render();});
+document.getElementById("trChips").addEventListener("click",e=>{
+  if(!e.target.dataset.tr) return;
+  fTR=e.target.dataset.tr;
+  [...e.currentTarget.children].forEach(ch=>ch.classList.toggle("active",ch===e.target));
+  render();});
+document.getElementById("search").addEventListener("input",e=>{q=e.target.value; render();});
+document.getElementById("viewChips").addEventListener("click",e=>{
+  if(!e.target.dataset.view) return;
+  view=e.target.dataset.view;
+  [...e.currentTarget.children].forEach(ch=>ch.classList.toggle("active",ch===e.target));
+  render();});
+render();
+openFromHash();
+</script>
+</body>
+</html>
+"""
+
+html = HTML.replace("__DATA__", DATA).replace("__KAM__", KAM).replace("__VERSION__", VERSION)
+open("index.html", "w", encoding="utf-8").write(html)
+print(f"OK index.html ({len(html)//1024} kB, {len(topics)} témat, verze {VERSION})")

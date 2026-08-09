@@ -1,0 +1,317 @@
+[
+  {
+    "id": 1,
+    "nazev": "Spánek: třetina života",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.1.1.2 Spím"
+    ],
+    "vedlejsi": [
+      "8.2.1.5 Zpracovávám data",
+      "1.2.2.1 Využívám poznatky o procesu učení",
+      "8.3.1.2 Rozvrhuji si čas"
+    ],
+    "urovne": "obě",
+    "anotace": "Proč trávíme třetinu života spánkem a co se v nás při něm děje? Projekt zkoumá spánek jako základní zdroj odolnosti — od biologie snů přes spánkovou hygienu až po vlastní experiment se spánkovým deníkem. Děti zjistí, kolik spánku samy potřebují a jak spánek ovlivňuje paměť, náladu a výkon.",
+    "aktivity": [
+      "Čtyřtýdenní spánkový deník: měření doby a kvality spánku, zpracování dat do grafů a hledání souvislostí (nálada, soustředění)",
+      "Experiment s večerním režimem: týden bez obrazovek před spaním vs. běžný týden, porovnání výsledků",
+      "Návštěva spánkové laboratoře nebo beseda s odborníkem (somnolog, neurolog)",
+      "Stavba „ideální ložnice“ — návrh prostředí pro dobrý spánek (světlo, teplota, zvuk)",
+      "Sny: snový deník, výtvarné či dramatické zpracování snů, vědecký pohled na snění"
+    ],
+    "dif2": "Důraz na režim dne, prožitkové aktivity (sny, odpočinek) a jednoduché zaznamenávání spánku.",
+    "dif3": "Důraz na data a experiment: biorytmy, adolescentní posun spánkové fáze, kofein a obrazovky, argumentace vlastními daty.",
+    "loni": ""
+  },
+  {
+    "id": 2,
+    "nazev": "Jsi to, co jíš",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.1.1.3 Stravuji se"
+    ],
+    "vedlejsi": [
+      "8.2.3.1 Postarám se o stravování",
+      "8.2.1.3 Pracuji s jednotkami",
+      "8.2.3.3 Obstarávám si věci a zařizuji služby"
+    ],
+    "urovne": "obě",
+    "anotace": "Co naše tělo skutečně potřebuje a jak se vyznat v tom, co jíme? Projekt propojuje výživu jako zdroj odolnosti s praktickou dovedností se o sebe postravit: od čtení etiket a plánování jídelníčku po společné vaření. Součástí je kritický pohled na výživové mýty a marketing potravin.",
+    "aktivity": [
+      "Rozbor etiket a složení potravin: cukry, tuky, éčka, kalorie — detektivní práce v obchodě",
+      "Týdenní jídelníček: naplánovat, spočítat cenu i živiny, nakoupit a uvařit vybraná jídla",
+      "Vaření pro školu: příprava plnohodnotného oběda pro skupinu včetně rozpočtu",
+      "Exkurze: pekárna, farma, potravinová banka nebo výrobna potravin",
+      "Mýty o jídle: ověřování výživových tvrzení z reklam a sociálních sítí"
+    ],
+    "dif2": "Praktické těžiště: poznávání potravin, jednoduché vaření, zdravá svačina, odkud se jídlo bere.",
+    "dif3": "Nutriční hodnoty a jednotky (kcal, makroživiny), výživové trendy a jejich kritické posouzení, stravování při zátěži a sportu.",
+    "loni": "Složení potravin"
+  },
+  {
+    "id": 3,
+    "nazev": "Hýbu se, tedy jsem",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.1.1.4 Hýbu se"
+    ],
+    "vedlejsi": [
+      "4.1.1.6 Odpočívám",
+      "8.2.1.5 Zpracovávám data",
+      "8.3.4.1 Vybírám si volnočasové aktivity",
+      "8.1.1.2 Plánuji a jednám"
+    ],
+    "urovne": "obě",
+    "anotace": "Pohyb jako zdroj energie, zdraví i radosti. Děti během čtyř týdnů vyzkoušejí širokou paletu pohybových aktivit (od parkouru po jógu), sledují vlastní kondici a hledají pohyb, který je baví a u kterého vydrží. Projekt zkoumá i rovnováhu mezi zátěží a regenerací.",
+    "aktivity": [
+      "Pohybový vzorkovník: každý týden vyzkoušet jiný typ pohybu (lezení, tanec, bojové umění, běh, jóga)",
+      "Měření vlastní kondice na začátku a na konci projektu, zpracování pokroku do grafu",
+      "Návštěva sportoviště či sportovního klubu, beseda se sportovcem nebo fyzioterapeutem",
+      "Návrh a realizace pohybové hry či překážkové dráhy pro mladší děti",
+      "Regenerace v praxi: strečink, relaxace, práce s tepovou frekvencí",
+      "Školní olympiáda: děti navrhnou disciplíny, zorganizují a rozhodují sportovní den pro celou školu"
+    ],
+    "dif2": "Radost z pohybu a pestrost — hry, dráhy, objevování, jednoduchá měření.",
+    "dif3": "Tréninkové principy, vztah pohybu a duševního zdraví, vlastní tréninkový miniplán a jeho vyhodnocení.",
+    "loni": ""
+  },
+  {
+    "id": 4,
+    "nazev": "V zajetí obrazovek",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.1.1.5 Odolávám závislostem"
+    ],
+    "vedlejsi": [
+      "8.2.4.2 Omezuji nebezpečí a rizika digitálních technologií",
+      "5.2.1.5 Rozlišuji mezi lidským a syntetickým vztahem",
+      "4.1.1.6 Odpočívám"
+    ],
+    "urovne": "obě",
+    "anotace": "Proč je tak těžké odložit telefon? Projekt zkoumá mechanismy závislostí — od návykových látek po sociální sítě a hry — a to, jak s nimi bojovat. Děti analyzují vlastní digitální návyky, vyzkoušejí digitální detox a nahlédnou do triků, kterými aplikace bojují o naši pozornost.",
+    "aktivity": [
+      "Týdenní měření času na obrazovkách a jeho rozbor: co mi technologie dávají a berou",
+      "Experiment digitální detox: den (víkend) bez telefonu a reflexe prožitku",
+      "Rozbor návykového designu aplikací: nekonečný scroll, notifikace, odměny — a obrana proti nim",
+      "Beseda s adiktologem nebo návštěva preventivního programu",
+      "Kampaň pro školu: plakáty či videa o zdravých digitálních návycích"
+    ],
+    "dif2": "Herní a obrazovkové návyky, pravidla doma i ve škole, alternativy k obrazovkám.",
+    "dif3": "Neurobiologie závislosti (dopamin), látkové závislosti a rizikové chování, AI společníci a syntetické vztahy, strategie seberegulace.",
+    "loni": ""
+  },
+  {
+    "id": 5,
+    "nazev": "Nevypusť duši",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.1.1.1 Dbám o duševní pohodu"
+    ],
+    "vedlejsi": [
+      "4.1.1.6 Odpočívám",
+      "4.2.2.4 Sdílím a říkám si o pomoc",
+      "8.3.1.3 Vyvažuji povinnosti a volný čas",
+      "4.2.3.2 Zotavím se"
+    ],
+    "urovne": "obě",
+    "anotace": "Co dělá naši mysl spokojenou a co jí škodí? Projekt o duševní pohodě a péči o ni: optimismus, vděčnost, odpočinek, ale i rozpoznání chvíle, kdy je toho moc a je čas říct si o pomoc. Cílem je odtabuizovat téma duševního zdraví a dát dětem konkrétní nástroje.",
+    "aktivity": [
+      "Mapa mé pohody: co mi dodává a co mi bere energii, osobní „nabíječky a vybíječky“",
+      "Deník vděčnosti a dobrých momentů po dobu projektu, závěrečná reflexe efektu",
+      "Beseda s psychologem či lektory (např. program Nevypusť duši), krizové kontakty a kde hledat pomoc",
+      "Relaxační techniky v praxi: dech, mindfulness, pobyt v přírodě, práce s tichem",
+      "Tvorba „lékárničky duševní pohody“ pro třídu — sdílená sbírka strategií"
+    ],
+    "dif2": "Emoce a pohoda skrze prožitek: co mě těší, jak odpočívám, komu se svěřím.",
+    "dif3": "Duševní hygiena v období dospívání, stres ze školy a sítí, mýty o duševních nemocech, systém pomoci (linky, terapie).",
+    "loni": "Nevypusť duši"
+  },
+  {
+    "id": 6,
+    "nazev": "Stres pod lupou",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.2.2.1 Poznám stres",
+      "4.2.2.2 Zvládám stres"
+    ],
+    "vedlejsi": [
+      "1.2.2.1 Využívám poznatky o procesu učení",
+      "4.2.2.3 Řeším zátěžové situace",
+      "5.3.2.1 Komunikuji s respektem"
+    ],
+    "urovne": "obě",
+    "anotace": "Stres je pradávná výbava těla — kdy nám pomáhá a kdy škodí? Projekt zkoumá fyziologii stresové reakce, učí rozpoznávat vlastní stresové signály a spouštěče a trénuje techniky zvládání: dech, přerámování, humor i jednání pod tlakem. Teorie se střídá s bezpečnými zátěžovými situacemi na zkoušku.",
+    "aktivity": [
+      "Fyziologie stresu: co dělá adrenalin a kortizol s tělem, jednoduché pokusy (tep, reakční doba pod tlakem)",
+      "Mapování vlastních stresorů a projevů stresu, osobní „stresový profil“",
+      "Trénink technik: dechová cvičení, uzemnění, přerámování situace — a jejich testování v zátěži (vystoupení, časovaný úkol)",
+      "Zátěžová hra či úniková situace v týmu s následnou reflexí: co se s námi dělo a co pomohlo",
+      "Rozhovory s lidmi z profesí pod tlakem (záchranář, hasič, moderátor) o tom, jak stres zvládají"
+    ],
+    "dif2": "Rozpoznávání emocí a tělesných signálů, jednoduché uklidňovací techniky, zvládnutelné výzvy.",
+    "dif3": "Neurobiologie stresu, prospěšný vs. chronický stres, tréma před zkouškami a vystoupením, deeskalace napětí ve skupině.",
+    "loni": ""
+  },
+  {
+    "id": 7,
+    "nazev": "Expedice: za hranice pohodlí",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.2.1.3 Cíleně posiluji svou odolnost"
+    ],
+    "vedlejsi": [
+      "4.2.2.3 Řeším zátěžové situace",
+      "8.2.3.4 Dopravuji se",
+      "5.1.1.4 Funguji ve skupinách",
+      "8.1.1.2 Plánuji a jednám",
+      "1.2.4.4 Přetavuji prožitky ve zkušenosti"
+    ],
+    "urovne": "obě",
+    "anotace": "Vyvrcholením projektu je skutečná vícedenní výprava, kterou si děti samy naplánují a zorganizují: trasa, doprava, rozpočet, jídlo, nocleh. Cesta je prostředkem k opuštění komfortní zóny — děti zažijí nepohodlí, únavu i týmové krize a naučí se je zvládat a reflektovat.",
+    "aktivity": [
+      "Plánování expedice: volba cíle, trasy, rozpočtu, vybavení a rozdělení rolí v týmu",
+      "Tréninkové výpravy: orientace v terénu, vaření venku, stavba přístřešku, chůze s batohem",
+      "Samotná expedice (2–4 dny) s přenocováním, ideálně s prvky nepohodlí (počasí, nesení zásob)",
+      "Denní reflexní kruhy na cestě: co bylo těžké, co nás posílilo, jak fungoval tým",
+      "Závěrečné zpracování: expediční deník, mapa, fotoreportáž pro rodiče"
+    ],
+    "dif2": "Kratší výprava s větší podporou průvodců, důraz na zážitek, spolupráci a základní tábornické dovednosti.",
+    "dif3": "Děti plánují a vedou expedici samy (průvodce jen jistí), náročnější trasa, plná odpovědnost za rozpočet a logistiku.",
+    "loni": "Expedice"
+  },
+  {
+    "id": 8,
+    "nazev": "Umění neúspěchu",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.2.3.3 Přijímám neúspěch a nepřízeň osudu",
+      "4.2.3.4 Proměním zkušenost v růst"
+    ],
+    "vedlejsi": [
+      "4.2.1.1 Jsem připraven/a na výzvy",
+      "1.2.4.2 Reflektuji průběh cíleného učení",
+      "8.1.1.3 Reflektuji dosahování cílů"
+    ],
+    "urovne": "obě",
+    "anotace": "Selhání je nejlepší učitel — pokud se z něj umíme poučit. Projekt zkoumá slavné neúspěchy vědy, sportu i byznysu, práci s chybou a frustrací a růstové nastavení mysli. Děti si projdou aktivitami, kde je neúspěch nevyhnutelný, a naučí se ho zpracovat, ocenit snahu a zkusit to jinak.",
+    "aktivity": [
+      "Galerie slavných neúspěchů: příběhy vynálezců, sportovců a firem, kterým selhání otevřelo cestu (penicilin, post-it, Dyson)",
+      "„FuckUp night“ po scioškolácku: hosté (rodiče, průvodci) vyprávějí o svých nezdarech a co jim daly",
+      "Záměrně obtížné výzvy (žonglování, rébusy, stavby), kde se chyba čeká — trénink reakce na frustraci",
+      "Deník pokusů a omylů: dokumentace vlastního učení metodou pokus–omyl u zvolené dovednosti",
+      "Divadelní či výtvarné zpracování tématu selhání a vytrvalosti"
+    ],
+    "dif2": "Chyba jako kamarád: hry a činnosti s bezpečným neúspěchem, oceňování snahy, jednoduchá reflexe.",
+    "dif3": "Růstové vs. fixní nastavení mysli, strach ze selhání u zkoušek a v soutěžích, analýza vlastních strategií po neúspěchu.",
+    "loni": ""
+  },
+  {
+    "id": 9,
+    "nazev": "Doktor v nás",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.1.1.8 Léčím se"
+    ],
+    "vedlejsi": [
+      "4.1.1.7 Dodržuji pravidla tělesné hygieny",
+      "8.2.6.4 Poskytuji první pomoc",
+      "8.2.7.1 Jednám v právních vztazích"
+    ],
+    "urovne": "obě",
+    "anotace": "Co se děje v těle, když jsme nemocní, a jak se uzdravit? Projekt o nemocech, imunitě, prevenci a orientaci ve zdravotnictví: kdy stačí čaj a postel, kdy jít k lékaři a jak vůbec funguje ordinace, pohotovost či pojišťovna. Přirozeně propojuje biologii člověka s praktickým životem.",
+    "aktivity": [
+      "Cesta nemoci tělem: viry, bakterie, imunita — pokusy a modely (šíření „nákazy“ ve třídě jako simulace)",
+      "Domácí lékárnička: co v ní má být, k čemu léky slouží a jaká mají rizika",
+      "Simulace návštěvy lékaře: objednání, popis příznaků, porozumění diagnóze; orientace v systému (praktik, specialista, pohotovost, pojišťovna)",
+      "Exkurze do nemocnice, lékárny či záchranné stanice, beseda se zdravotníkem",
+      "Historie medicíny: od bylinek k antibiotikům a vakcínám, největší objevy"
+    ],
+    "dif2": "Základy: hygiena, prevence, běžné dětské nemoci, beze strachu k lékaři.",
+    "dif3": "Imunitní systém do hloubky, antibiotická rezistence, duševní vs. tělesné nemoci, samostatná navigace zdravotnictvím (registrace, e-recept).",
+    "loni": "Co jsou to nemoci?"
+  },
+  {
+    "id": 10,
+    "nazev": "Můj velký cíl: měsíc výzvy",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.2.1.1 Jsem připraven/a na výzvy",
+      "4.2.1.3 Cíleně posiluji svou odolnost",
+      "1.2.1.1 Stanovím si cíl učení"
+    ],
+    "vedlejsi": [
+      "1.2.3.3 Pracuji s cíli jako s motorem učení",
+      "1.2.4.3 Reflektuji pokrok a hodnotím výsledky svého učení",
+      "8.1.1.2 Plánuji a jednám",
+      "4.2.3.1 Ocením se a vydechnu si",
+      "8.1.2.3 Posiluji a udržuji svou motivaci k cílům",
+      "1.2.4.1 Využívám nástroje a metody reflexe učení",
+      "1.2.3.2 Odstraňuji překážky motivace k učení"
+    ],
+    "urovne": "obě",
+    "anotace": "Čtyři týdny, jeden velký cíl na hranici vlastních možností: naučit se salto, program, jazyk — nebo vydržet otužování či měsíc bez cukru. Každý si výzvu zvolí, naplánuje cestu, systematicky na ní pracuje a vede si záznam; vedle osobních cílů tým zvládá i společné výzvy. Projekt spojuje řízení vlastního učení (plán, strategie, reflexe) s tréninkem odolnosti a vytrvalosti.",
+    "aktivity": [
+      "Volba osobního cíle/výzvy: zvládnutelná, měřitelná, na hraně komfortní zóny (SMART); plán s milníky a veřejný závazek",
+      "Denní pracovní bloky s trackerem pokroku a deníkem učení",
+      "Společné týmové výzvy: otužování, ranní rozcvičky, výstup na horu, 24 hodin offline",
+      "Týdenní reflexní kruhy: co funguje, kde jsem se zasekl/a, práce se strachem a výmluvami, úprava plánu",
+      "Závěrečná oslava a vystoupení „Co jsem dokázal/a“: demonstrace před publikem, ocenění pokroku (ne jen výsledku)"
+    ],
+    "dif2": "Menší a hravější výzvy s výraznou podporou průvodce při plánování, silná opora skupiny, oslava pokroku.",
+    "dif3": "Ambiciózní dlouhodobé cíle, samostatné plánování včetně volby učebních strategií, analýza selhání a restart, prezentace procesu (nejen výsledku).",
+    "loni": "Otužování"
+  },
+  {
+    "id": 41,
+    "nazev": "Příroda jako dobíječka",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.1.1.6 Odpočívám"
+    ],
+    "vedlejsi": [
+      "4.1.1.1 Dbám o duševní pohodu",
+      "1.1.2.5 Vytvářím si učební situace",
+      "8.3.4.1 Vybírám si volnočasové aktivity",
+      "4.1.1.4 Hýbu se"
+    ],
+    "urovne": "obě",
+    "anotace": "Pobyt v přírodě je nejstarší a nejdostupnější způsob regenerace. Projekt tráví co nejvíc času venku: děti poznávají les, louku a vodu v okolí školy — druhy, ekosystémy, proměny v ročních obdobích — a zároveň na sobě zkoumají, co příroda dělá s jejich tělem a myslí. Odpočinek se tu učí jako dovednost, ne jako lenost.",
+    "aktivity": [
+      "Terénní dny v blízké přírodě: mapování druhů rostlin a živočichů, ekosystém lesa/louky/rybníka, práce s určovacími klíči",
+      "Experiment „les vs. obrazovka“: měření nálady a soustředění po hodině venku a po hodině u obrazovky",
+      "Tiché techniky venku: sedové místo (sit spot), smyslové vnímání, deník pozorování přírody",
+      "Adopce kousku přírody: dlouhodobá péče o strom, tůňku či záhon v okolí školy, úklidová akce",
+      "Beseda s ekologem či ochranářem, exkurze do CHKO nebo záchranné stanice"
+    ],
+    "dif2": "Hry a pozorování venku, jednoduché určování druhů, rituál pravidelného místa v přírodě.",
+    "dif3": "Ekosystémové vztahy a ochrana přírody, věda o vlivu přírody na psychiku (pozornost, stres), návrh vlastní naučné stezky.",
+    "loni": "Hlídáme planetu; Ekologie; Krajina"
+  },
+  {
+    "id": 44,
+    "nazev": "Ztráty a loučení",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.2.3.2 Zotavím se"
+    ],
+    "vedlejsi": [
+      "4.2.3.3 Přijímám neúspěch a nepřízeň osudu",
+      "4.2.2.4 Sdílím a říkám si o pomoc",
+      "4.1.1.1 Dbám o duševní pohodu",
+      "1.1.2.9 Učím se skrze umění"
+    ],
+    "urovne": "obě",
+    "anotace": "Ztráta k životu patří — smrt blízkého či zvířete, stěhování, rozchod rodičů, konec přátelství. Projekt otevírá téma, na které děti nikdo nepřipravuje: co se v nás při ztrátě děje, jak vypadá truchlení, co pomáhá a jak být oporou druhému. Pracuje s příběhy, uměním a rituály loučení napříč kulturami — bezpečně, bez tlaku na osobní sdílení.",
+    "aktivity": [
+      "Ztráta v příbězích: knihy a filmy o loučení (Bratři Lví srdce, Coco) — co postavám pomohlo dál",
+      "Koloběh života v přírodě: životní cykly, podzim a zima jako přirozené loučení — pozorování venku",
+      "Rituály loučení napříč kulturami: Dušičky, mexický Día de los Muertos, pohřební tradice světa",
+      "Beseda s člověkem, který se ztrátami pracuje (hospicový či krizový pracovník, psycholog)",
+      "Tvořivé zpracování: dopis, památníček, hudba či obraz — umění jako jazyk pro to, co se těžko říká; mapa mé podpory (kdo tu pro mě je)"
+    ],
+    "dif2": "Skrze přírodu, příběhy a zvířata; drobné ztráty (rozbitá věc, stěhování kamaráda); žádné vynucené sdílení.",
+    "dif3": "Otevřeněji o smrti a truchlení (fáze, individuální tempo), jak podpořit kamaráda v krizi, krizové linky a odborná pomoc, ztráty identity při rozchodech.",
+    "loni": ""
+  }
+]

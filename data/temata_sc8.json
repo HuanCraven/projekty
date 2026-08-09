@@ -1,0 +1,341 @@
+[
+  {
+    "id": 31,
+    "nazev": "Peníze v mých rukou",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.2.1 Hospodařím s penězi"
+    ],
+    "vedlejsi": [
+      "8.2.1.2 Pracuji s čísly",
+      "8.2.3.3 Obstarávám si věci a zařizuji služby",
+      "8.2.2.2 Platím daně",
+      "8.2.1.1 Modeluji reálné situace"
+    ],
+    "urovne": "obě",
+    "anotace": "Odkud se berou peníze, kam mizí a jak je udržet? Projekt o financích v praxi: rozpočet, spoření, půjčky, investice i reklamní triky obchodníků. Děti hospodaří s reálným či simulovaným rozpočtem, porovnávají ceny a zjišťují, co znamená úrok, inflace nebo daň.",
+    "aktivity": [
+      "Měsíc s rozpočtem: hospodaření se svěřenou částkou (třídní fond, kapesné) včetně vyúčtování",
+      "Ekonomická simulační hra: vydělávání, utrácení, spoření, půjčky a jejich následky (např. Finanční svoboda)",
+      "Nákupní detektiv: porovnání cen, jednotkové ceny, akce a psychologické triky obchodů",
+      "Exkurze do banky či ČNB (Lidé a peníze), beseda s finančním poradcem nebo podnikatelem",
+      "Historie a podoby peněz: od mušlí po kryptoměny; padělky a ochranné prvky"
+    ],
+    "dif2": "Hodnota peněz, kapesné a spoření, jednoduché nákupy a porovnání cen, reklamní triky.",
+    "dif3": "Úrok a úročení, inflace, investiční trojúhelník, past rychlých půjček, hrubá vs. čistá mzda, kryptoměny kriticky.",
+    "loni": "Peníze; Padělatelství (nejen peníze)"
+  },
+  {
+    "id": 32,
+    "nazev": "Startup: od nápadu k prodeji",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.3.3.3 Podnikám"
+    ],
+    "vedlejsi": [
+      "8.1.1.1 Stanovuji si cíle",
+      "8.1.1.2 Plánuji a jednám",
+      "8.2.2.1 Hospodařím s penězi",
+      "5.3.1.1 Umím mluvit"
+    ],
+    "urovne": "obě",
+    "anotace": "Týmy projdou celým podnikatelským cyklem: nápad, průzkum trhu, výroba či služba, marketing, prodej a vyúčtování. Vyvrcholením je skutečný prodej — jarmark, kavárna pro rodiče či služba pro školu. Zisk je měřítkem, ale učením je celý proces včetně neúspěšných nápadů.",
+    "aktivity": [
+      "Nápadová dílna a validace: co lidé skutečně chtějí, mini průzkum trhu, hodnota pro zákazníka",
+      "Podnikatelský plán: náklady, cena, marže, bod zvratu; rozdělení rolí v týmu",
+      "Výroba produktu či příprava služby, výpočet nákladů, tvorba značky a propagace",
+      "Prodej naostro: školní jarmark, kavárna, e-shop na jeden den — se skutečnými penězi",
+      "Vyúčtování a reflexe: zisk/ztráta a proč, prezentace pro „investory“ (rodiče, průvodce)"
+    ],
+    "dif2": "Jednoduchý společný podnik (stánek, výrobky), základní počty, radost z prodeje.",
+    "dif3": "Konkurenční týmy, reálná kalkulace včetně marže a DPH, pitch před porotou, právní minimum podnikání.",
+    "loni": "Podnikání a startup (s hostem P. Ocáskem)"
+  },
+  {
+    "id": 33,
+    "nazev": "Kdo chci být? Svět povolání",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.3.3.1 Volím si povolání",
+      "8.3.2.1 Volím si vzdělávání"
+    ],
+    "vedlejsi": [
+      "8.3.3.2 Pracuji v zaměstnání",
+      "1.1.2.5 Vytvářím si učební situace",
+      "8.3.2.2 Postupuji formálním vzděláváním"
+    ],
+    "urovne": "obě",
+    "anotace": "Čím chci být — a jak se to vlastně rozhoduje? Projekt mapuje svět práce: povolání dneška i budoucnosti, cesty vzdělávání, které k nim vedou, a vlastní silné stránky a zájmy. Děti zpovídají profesionály, zkoušejí si pracovní pohovor a skládají si první představu o vlastní cestě.",
+    "aktivity": [
+      "Mapa světa práce: povolání kolem nás, mizející a vznikající profese, vliv AI na trh práce",
+      "Stínování a exkurze: den v provozu firmy, rozhovory s lidmi o jejich profesní cestě (i o oklikách)",
+      "Trh povolání ve škole: rodiče a známí představují své profese na stanovištích",
+      "Pohovor nanečisto: životopis, sebeprezentace, otázky a odpovědi — s reálnými dospělými v roli náborářů",
+      "Moje profesní mapa: silné stránky, zájmy, možné cesty a jejich vzdělávací požadavky (SŠ, učení, kurzy)"
+    ],
+    "dif2": "Poznávání profesí hravě: kdo co dělá, návštěvy provozů, hraní povolání.",
+    "dif3": "Těžiště úrovně 3: volba střední školy, přijímačky, životopis a pohovor, plán B, brigády a první pracovní zkušenosti.",
+    "loni": "Praxe; TechLife: Chytrý svět"
+  },
+  {
+    "id": 34,
+    "nazev": "Pán svého času",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.3.1.1 Naplňuji čas smysluplně",
+      "8.3.1.2 Rozvrhuji si čas"
+    ],
+    "vedlejsi": [
+      "8.3.1.3 Vyvažuji povinnosti a volný čas",
+      "8.1.2.1 Odstraňuji překážky v motivaci",
+      "1.2.1.2 Plánuji postup učení"
+    ],
+    "urovne": "obě",
+    "anotace": "Všichni máme týž den — 24 hodin. Kam mizí ten můj? Děti mapují, čím skutečně tráví čas, srovnávají to s tím, co je pro ně důležité, a experimentují s nástroji plánování: kalendář, to-do listy, prioritizace, boj s prokrastinací. Projekt je praktickou dílnou řízení vlastního života.",
+    "aktivity": [
+      "Časový audit: týdenní záznam všech činností a jeho vyhodnocení (grafy, překvapení, zloději času)",
+      "Experimenty s nástroji: papírový diář vs. aplikace, to-do list, kanban, Pomodoro — co komu sedí",
+      "Prokrastinační laboratoř: proč odkládáme a triky, jak se přelstít (první malý krok, pravidlo 2 minut)",
+      "Den podle plánu: navrhnout a prožít ideálně rozvržený den, reflexe rozdílu mezi plánem a realitou",
+      "Čas v kulturách a dějinách: kalendáře, hodiny, proč spěcháme — filozofická dílna o čase"
+    ],
+    "dif2": "Orientace v čase a kalendáři, jednoduché denní plány, rovnováha školy, kroužků a hraní.",
+    "dif3": "Prioritizace (důležité vs. naléhavé), dlouhodobé plánování, prokrastinace do hloubky, digitální kalendáře a připomínky.",
+    "loni": ""
+  },
+  {
+    "id": 35,
+    "nazev": "Život na vlastní noze",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.3.1 Postarám se o stravování",
+      "8.2.3.2 Bydlím a vedu domácnost",
+      "8.2.3.3 Obstarávám si věci a zařizuji služby"
+    ],
+    "vedlejsi": [
+      "8.2.2.1 Hospodařím s penězi",
+      "4.1.1.3 Stravuji se",
+      "8.2.7.1 Jednám v právních vztazích"
+    ],
+    "urovne": "obě",
+    "anotace": "Velká simulace samostatného života: děti si „pronajmou byt“, hospodaří s rozpočtem, vaří, perou, nakupují a zařizují běžné pochůzky. Projekt v bezpečném rámci zkouší všechno, co obnáší postarat se o sebe — a končí přespáním „na vlastní noze“ se vším všudy.",
+    "aktivity": [
+      "Hra na domácnost: fiktivní rozpočet, nájem, energie, nákupy — měsíc dospělého života v simulaci",
+      "Kuchařský výcvik: nákup, příprava a servírování plnohodnotného jídla pro skupinu v rozpočtu",
+      "Pochůzky naostro: pošta, nákup, reklamace, objednání služby — samostatně s reálným úkolem",
+      "Praní, žehlení, drobné opravy a úklid: kolotoč praktických stanovišť",
+      "Závěrečná „zkouška dospělosti“: den či přespání, kdy si skupina vše zajistí sama (jídlo, program, rozpočet)"
+    ],
+    "dif2": "Základní sebeobsluha: jednoduchá jídla, nákup podle seznamu, úklid, péče o své věci.",
+    "dif3": "Rozpočet domácnosti včetně bydlení a energií, spotřebitelská práva a reklamace, srovnání nájem/vlastní, plnohodnotná samostatnost.",
+    "loni": ""
+  },
+  {
+    "id": 36,
+    "nazev": "Nouzový režim: když jde do tuhého",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.6.1 Identifikuji nebezpečí a vyhodnocuji rizika",
+      "8.2.6.3 Řeším krize"
+    ],
+    "vedlejsi": [
+      "8.2.6.2 Zmírňuji či akceptuji rizika",
+      "4.2.2.3 Řeším zátěžové situace",
+      "8.2.3.4 Dopravuji se",
+      "4.2.1.2 Pracuji s nejistotou",
+      "4.2.1.4 Chystám se na budoucí zátěžové situace"
+    ],
+    "urovne": "obě",
+    "anotace": "Požár, povodeň, blackout, ztracení se v cizím městě — co dělat, když se něco pokazí? Projekt učí rozpoznávat nebezpečí, vyhodnocovat rizika bez zbytečného strachu a jednat podle jasného postupu. Kombinuje civilní ochranu, pobyt v přírodě a simulace krizových situací.",
+    "aktivity": [
+      "Analýza rizik kolem nás: co se může stát doma, ve škole, v přírodě — pravděpodobnost vs. závažnost",
+      "Evakuační cvičení naostro: plán, sraz, nouzové zavazadlo (co si vzít za 5 minut)",
+      "Přežití v přírodě: orientace bez mobilu, oheň, přístřešek, úprava vody, signalizace",
+      "Exkurze k hasičům či na krizové řízení města, beseda se záchranářem",
+      "Simulované krize v týmech: blackout, ztracený člen, zranění na výletě — jednání podle postupu Zastav se–Zhodnoť–Naplánuj–Jednej"
+    ],
+    "dif2": "Základy: důležitá čísla, přivolání pomoci, chování při požáru, bezpečný pohyb venku, jednoduché tábornické dovednosti.",
+    "dif3": "Analýza rizik, krizové scénáře a jejich vedení, příprava rodiny na výpadky, dezinformace v krizích.",
+    "loni": "Civilní ochrana a přežití"
+  },
+  {
+    "id": 37,
+    "nazev": "Zachraň život",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.6.4 Poskytuji první pomoc"
+    ],
+    "vedlejsi": [
+      "8.2.6.3 Řeším krize",
+      "4.2.2.3 Řeším zátěžové situace",
+      "4.1.1.8 Léčím se"
+    ],
+    "urovne": "obě",
+    "anotace": "První pomoc není o odznáčcích, ale o tom nezpanikařit a jednat. Intenzivní praktický výcvik: resuscitace, zástava krvácení, bezvědomí, volání na tísňovou linku — vše nacvičeno do automatismu na realistických simulacích s maskovanými poraněními. Cílem je, aby žádné dítě nezůstalo stát opodál.",
+    "aktivity": [
+      "Základní životní funkce a život ohrožující stavy: co tělo potřebuje a co ho zabíjí",
+      "Praktický nácvik: resuscitace na modelu, zotavovací poloha, zástava masivního krvácení, popáleniny, zlomeniny",
+      "Volání na 155/112 nanečisto: struktura hovoru, spolupráce s operátorem (ideálně beseda se skutečným operátorem)",
+      "Realistické simulace s namaskovanými zraněními a figuranty, práce v týmu pod tlakem",
+      "Závěrečná zkouška: soutěžní okruh stanovišť první pomoci; příprava lekce první pomoci pro mladší děti"
+    ],
+    "dif2": "Přivolání pomoci, ošetření drobných poranění, zotavovací poloha, beze strachu z krve.",
+    "dif3": "Plná resuscitace včetně AED, třídění při více zraněných, krizové vedení zásahu laiky, psychická první pomoc.",
+    "loni": "1. pomoc"
+  },
+  {
+    "id": 38,
+    "nazev": "Vyrobeno vlastníma rukama",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.5.1 Zacházím se stroji a nástroji",
+      "8.2.5.2 Vyrábím věci a pečuji o ně"
+    ],
+    "vedlejsi": [
+      "8.1.1.2 Plánuji a jednám",
+      "1.1.2.6 Učím se činností",
+      "8.2.3.3 Obstarávám si věci a zařizuji služby"
+    ],
+    "urovne": "obě",
+    "anotace": "Od nápadu přes výkres k hotové věci. Děti projdou celým výrobním procesem: návrh, rozměření, volba materiálu a nástrojů, výroba, povrchová úprava a vyhodnocení. Naučí se bezpečně zacházet s nářadím, opravit rozbité a poznají hrdost na věc, kterou si samy vyrobily.",
+    "aktivity": [
+      "Nástrojový řidičák: bezpečná práce s pilkou, vrtačkou, tavnou pistolí, jehlou — certifikace na jednotlivé nástroje",
+      "Individuální výrobek: návrh a výroba užitečného předmětu (polička, krmítko, taška, hra) podle vlastního výkresu",
+      "Repair café: přineste rozbité — děti s podporou zkoušejí věci opravit místo vyhodit",
+      "Exkurze do dílny, výrobny či makerspace/FabLabu (3D tisk, laser) a práce tam",
+      "Jarmark či aukce výrobků, případně výroba vybavení pro školu"
+    ],
+    "dif2": "Jednodušší materiály a ruční nástroje, práce podle návodu, radost z hotového výrobku.",
+    "dif3": "Vlastní návrh s technickým výkresem, elektrifikované nářadí, kombinace materiálů, kalkulace ceny výrobku, 3D tisk.",
+    "loni": "3D tisk; Vytváření senzoru"
+  },
+  {
+    "id": 39,
+    "nazev": "Zelená farma",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.5.3 Pěstuji nebo chovám"
+    ],
+    "vedlejsi": [
+      "1.1.2.7 Získávám poznatky vědeckými metodami",
+      "4.1.1.3 Stravuji se",
+      "8.2.3.1 Postarám se o stravování"
+    ],
+    "urovne": "obě",
+    "anotace": "Projekt s hlínou za nehty: děti založí či rozvinou školní záhon, pěstují plodiny od semínka po sklizeň a pečují o zvířata (školní slepice, žížalí kompostér, akvárium). Zkoumají, co rostliny a zvířata potřebují, odkud se bere jídlo a co obnáší každodenní odpovědnost za živé tvory.",
+    "aktivity": [
+      "Založení či rozšíření školního záhonu/vyvýšených záhonů: plán osazení, setí, péče, sklizeň",
+      "Péče o zvířata: služby u školních slepic či jiných zvířat, krmení, čištění, pozorování chování",
+      "Pěstitelské experimenty: vliv světla, vody a hnojení — férové testy s měřením",
+      "Exkurze na farmu, do zahradnictví či záchranné stanice; beseda s farmářem",
+      "Sklizňová slavnost: vaření z vypěstovaného, výrobky (bylinková sůl, sirup), kompost a koloběh živin"
+    ],
+    "dif2": "Těžiště úrovně 2: každodenní péče, pozorování, radost ze sklizně, vztah ke zvířatům.",
+    "dif3": "Plánování produkce, ekonomika malé farmy, půda a udržitelnost, šlechtění a osiva, automatizace zálivky.",
+    "loni": "Slepice a odpadky; Hlídáme planetu"
+  },
+  {
+    "id": 40,
+    "nazev": "Právo pro život",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.7.1 Jednám v právních vztazích"
+    ],
+    "vedlejsi": [
+      "8.2.2.2 Platím daně",
+      "8.3.3.2 Pracuji v zaměstnání",
+      "5.1.1.8 Nakládám s autoritou"
+    ],
+    "urovne": "3",
+    "anotace": "Smlouvy, reklamace, občanka, brigáda, pokuta — právo potkáváme denně, aniž o něm víme. Projekt pro třetí trojročí prochází právo občanské (smlouvy, vlastnictví, odpovědnost za škodu, reklamace) i trestní (přestupek vs. trestný čin, trestní odpovědnost mladistvých, práva obviněného i oběti). Cílem je rozpoznat právní rozměr běžných situací a vědět, kdy je čas na právníka. Vyvrcholením je simulovaný soud.",
+    "aktivity": [
+      "Právo všedního dne: co je smlouva (i ústní!), nákup, reklamace, půjčení věci — rozbor reálných situací",
+      "Čtení skutečné smlouvy: najít v nájemní či pracovní smlouvě podstatné náležitosti a záludnosti",
+      "Přestupek, nebo trestný čin? Třídění reálných případů (jízda načerno, krádež v obchodě, rvačka, sprejerství) a jejich následky pro mladistvé",
+      "Návštěva skutečného soudního jednání a beseda se soudcem, advokátem či policistou",
+      "Simulovaný soudní proces: role žalobce, obhájce, svědků a poroty na vymyšleném případu",
+      "Odpovědnost mladistvých: co mi hrozí v 13, 15, 18 letech; brigády, podpisy, trestní odpovědnost"
+    ],
+    "dif2": "—",
+    "dif3": "Určeno primárně 3. trojročí; práce s reálnými dokumenty, důraz na situace blízké věku (brigády, nákupy online, odpovědnost za škodu, digitální podpisy).",
+    "loni": ""
+  },
+  {
+    "id": 43,
+    "nazev": "Stát a my: kdo tu vlastně vládne",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.7.1 Jednám v právních vztazích"
+    ],
+    "vedlejsi": [
+      "8.2.2.2 Platím daně",
+      "5.1.1.8 Nakládám s autoritou",
+      "5.3.1.2 Domlouvám se s jinými",
+      "8.2.3.3 Obstarávám si věci a zařizuji služby"
+    ],
+    "urovne": "obě",
+    "anotace": "Kdo rozhoduje o tom, co smím a co musím — a jak to můžu ovlivnit? Projekt rozebírá stát od obce po mezinárodní instituce: volby, parlament, vláda a soudy, obecní zastupitelstvo, EU, NATO i OSN. Děti si stát vyzkoušejí zevnitř — simulací voleb a parlamentu — a naostro navštíví úřady a zastupitele.",
+    "aktivity": [
+      "Simulace voleb a parlamentu: strany, kampaň, hlasování, koalice, přijetí „zákona“ třídy — a jeho obhajoba",
+      "Tři moci v akci: hra na zákonodárce, vládu a soud — proč se moc dělí a co se stane, když ne",
+      "Návštěva jednání obecního zastupitelstva, radnice či Poslanecké sněmovny; rozhovor se zastupitelem",
+      "Mapa institucí: kdo mi vydá občanku, kdo opravuje silnici, kdo mě soudí, co dělá EU/NATO/OSN — a kam se obrátit se skutečným podnětem",
+      "Občanský projekt naostro: podnět či petice k reálnému problému v okolí školy (přechod, hřiště, koš)"
+    ],
+    "dif2": "Obec a pravidla kolem nás: kdo se stará o školu, ulici, park; hravé hlasování a třídní pravidla jako malý stát.",
+    "dif3": "Ústava a dělba moci, volební systémy, EU/NATO/OSN a jejich role, obrana demokracie, jak podat podnět/petici/stížnost.",
+    "loni": ""
+  },
+  {
+    "id": 46,
+    "nazev": "Technologie pod pokličkou",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.4.1 Využívám digitální technologie"
+    ],
+    "vedlejsi": [
+      "8.2.4.2 Omezuji nebezpečí a rizika digitálních technologií",
+      "8.2.5.1 Zacházím se stroji a nástroji",
+      "1.1.2.3 Učím se pomocí AI",
+      "8.2.1.5 Zpracovávám data"
+    ],
+    "urovne": "obě",
+    "anotace": "Co je uvnitř počítače? Jak doletí zpráva na druhý konec světa? A jak se vlastně učí umělá inteligence? Projekt dělá z dětí tvůrce místo konzumentů: rozeberou starý počítač, zahrají si na internet, natrénují vlastní model strojového učení a zautomatizují první úkol. Technologiím, kterým rozumím, vládnu já — ne ony mně.",
+    "aktivity": [
+      "Pitva počítače: rozebrání vysloužilého PC — procesor, paměť, disk; co která součástka dělá",
+      "Hra na internet: děti jako pakety, routery a servery — jak putuje zpráva sítí, co je IP adresa a cloud",
+      "Natrénuj si AI: vlastní model strojového učení (např. Teachable Machine) — rozpoznávání obrázků/zvuků, kdy se model plete a proč",
+      "Automatizace úkolu: blokové programování či jednoduchý robot — nechat stroj dělat opakovanou práci",
+      "Exkurze do serverovny, IT firmy či FabLabu; beseda s vývojářem o tom, jak technologie mění práci"
+    ],
+    "dif2": "Rozebírání a poznávání součástek, síťové hry naživo, jednoduché programování robota, šifry.",
+    "dif3": "Principy a limity AI (trénovací data, zkreslení), cloud a bezpečnost, automatizace a budoucnost profesí, vlastní miniprojekt (senzor, aplikace, model).",
+    "loni": "TechLife: Chytrý svět; Vytváření senzoru; 3D tisk"
+  },
+  {
+    "id": 47,
+    "nazev": "Elektřina: od blesku k zásuvce",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.5.1 Zacházím se stroji a nástroji"
+    ],
+    "vedlejsi": [
+      "8.2.4.1 Využívám digitální technologie",
+      "8.2.6.2 Zmírňuji či akceptuji rizika",
+      "8.2.2.1 Hospodařím s penězi",
+      "1.1.2.7 Získávám poznatky vědeckými metodami"
+    ],
+    "urovne": "obě",
+    "anotace": "Neviditelná síla, bez které se náš svět zastaví. Děti si elektřinu osahají doslova: stavějí obvody, vyrábějí proud vlastníma rukama, měří spotřebu domácích spotřebičů a čtou skutečné vyúčtování. Projekt spojuje fyziku s praktickým životem — od bezpečnosti u zásuvky po otázku, odkud poteče proud, až zavřou uhelné elektrárny.",
+    "aktivity": [
+      "Stavba obvodů: žárovka, spínač, motorek, vodivé a nevodivé materiály; schéma obvodu jako technický jazyk",
+      "Vyrob si proud: citronová baterie, dynamo na kole, solární článek — a proč to (ne)stačí na rychlovarnou konvici",
+      "Energetický audit: měření spotřeby spotřebičů wattmetrem, rozbor domácího vyúčtování, kde se dá ušetřit",
+      "Bezpečnost: co elektřina udělá s tělem, jističe a proudový chránič, první pomoc při úrazu elektřinou",
+      "Exkurze do elektrárny či rozvodny (vodní, jaderné infocentrum) a debata: čím svítit v roce 2050"
+    ],
+    "dif2": "Bezpečné obvody ze stavebnic, jednoduché pokusy (statická elektřina, citronová baterie), základní pravidla bezpečnosti.",
+    "dif3": "Proud, napětí, odpor a výkon v praxi; výroba a přenos elektřiny, obnovitelné vs. jaderné zdroje, výpočty spotřeby a ceny (kWh).",
+    "loni": ""
+  }
+]

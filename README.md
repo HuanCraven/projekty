@@ -1,0 +1,45 @@
+# Projekty 2026/27 — katalog témat podle ScioCílů
+
+Katalog 40 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
+1. pololetí 2026/27, ScioCíle 4, 1, 5 a 8, úrovně 2 a 3 (2. a 3. trojročí).
+
+Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
+
+## Struktura
+
+| cesta | co je | edituje se ručně? |
+|---|---|---|
+| `index.html` | webový katalog (vše v jednom souboru) | **NE — generuje se** |
+| `data/temata_sc{4,1,5,8}.json` | témata: název, kameny, anotace, aktivity, diferenciace | ano — zdroj pravdy |
+| `data/znalosti_v3.json` | tvrdé znalosti + didaktické tipy k tématům (klíč = id tématu) | ano — zdroj pravdy |
+| `tools/build_web.py` | generátor `index.html` | zřídka |
+| `tools/build_docx.js` | generátor Word katalogu (`vystupy/`) — vyžaduje npm balíček `docx` | zřídka |
+| `tools/build_xlsx.py` | generátor Excel tabulky (`vystupy/`) — vyžaduje `openpyxl` | zřídka |
+| `vystupy/` | vygenerovaný Word + Excel | NE — generuje se |
+| `podklady/` | osnovy kamenů SC1/4/5/8, digest revidovaného RVP, digest učiva ŠVP | referenční |
+
+## Jak upravit nebo přidat téma
+
+1. Uprav příslušný `data/temata_scN.json` (nové téma = nové nejvyšší `id`)
+   a případně `data/znalosti_v3.json` (klíč = id tématu).
+   Pozor na uvozovky v JSON: uvnitř textů používej české `„…“`, nikdy rovné `"`.
+2. Přegeneruj výstupy z kořene repozitáře:
+
+```bash
+python3 tools/build_web.py     # -> index.html
+python3 tools/build_xlsx.py    # -> vystupy/Projektova_temata.xlsx
+node tools/build_docx.js       # -> vystupy/Katalog_projektovych_temat.docx
+```
+
+3. Commitni a pushni — GitHub Pages web obnoví do minuty.
+
+`index.html` nikdy needituj ručně — příští generace by změny přepsala.
+
+## Pravidla obsahu
+
+- Označení zdrojů („ŠVP (Ú2):", „RVP – ") zůstává v datech, ale generátory ho
+  z výstupů odstraňují — ve webu, Wordu i Excelu se nezobrazuje.
+- Úroveň 2 ≈ 6. ročník, úroveň 3 ≈ 9. ročník (dle ŠVP).
+- Většina témat je společná pro obě trojročí; jen pro 3. trojročí: č. 26 (Láska,
+  vztahy a hranice) a č. 40 (Právo pro život).
+- Kontrolu pokrytí kamenů hlásí `build_xlsx.py` (záměrně nepokrytý jen 5.2.3.3).

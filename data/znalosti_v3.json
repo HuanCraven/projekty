@@ -1,0 +1,534 @@
+{
+  "1": {
+    "znalosti": [
+      "ŠVP (Ú2): význam spánku pro zdraví a regeneraci; režim dne",
+      "RVP – Přírodopis: živé struktury a jejich funkce — nervová soustava, biorytmy",
+      "RVP – Osobnostní a sociální výchova: všímá si svého prožívání, postupy předcházení stresu",
+      "RVP – Matematika: statistika — sběr dat, diagramy, průměr (spánkový deník)",
+      "RVP – Informatika: získá z dat informace a interpretuje je pro řešení problému"
+    ],
+    "didaktika": [
+      "Didaktika SC4: u dospívajících počítat s biologickým posunem spánkové fáze — nekárat, ale pracovat s ním (pozdější náročné aktivity, rozhovor o režimu)."
+    ]
+  },
+  "2": {
+    "znalosti": [
+      "ŠVP (Ú2): zdravá a nezdravá výživa, příprava pokrmů; (Ú3) zásady zdravého stravování a rizika nevyváženého stravování",
+      "RVP – Chemie: posoudí kvalitu a složení potravin (živiny, aditiva); vlastnosti tuků, sacharidů a bílkovin",
+      "RVP – Výchova ke zdraví a bezpečí: výživa a zdraví, poruchy příjmu potravy",
+      "RVP – Matematika: procenta, jednotky, poměr — kalkulace jídelníčku a cen",
+      "RVP – Polytechnická výchova a praktické činnosti: příprava pokrmů, péče o domácnost"
+    ],
+    "didaktika": [
+      "Didaktika SC4: raději skutečné situace (společné vaření, nákup) než umělá cvičení — reálný kontext nese učení."
+    ]
+  },
+  "3": {
+    "znalosti": [
+      "ŠVP (Ú2): pohybové aktivity a sporty; (Ú3) pohyb vhodný pro mne, význam pohybu pro zdraví, základy ergonomie",
+      "RVP – Tělesná výchova: zapojuje se do organizace svého pohybového režimu; postupy ke zlepšení tělesné zdatnosti",
+      "RVP – Přírodopis: pohybová a oběhová soustava, svaly",
+      "RVP – Matematika: měření a porovnání výkonů, grafy pokroku"
+    ],
+    "didaktika": [
+      "Didaktika SC4: klíčový je zážitek „zvládl jsem to“ — zpětnou vazbu směřovat na úsilí a strategii, ne na výkon a talent."
+    ]
+  },
+  "4": {
+    "znalosti": [
+      "ŠVP (Ú3): závislosti na drogách a technologiích — mechanismy vzniku, projevy, prevence, kde hledat pomoc; varovné signály závislostí (sítě, hry)",
+      "ŠVP (Ú2): podmínky vytváření žádoucích návyků, prokrastinace",
+      "RVP – Výchova ke zdraví a bezpečí: rizika návykových látek a činností; nebezpečné aktivity v digitálním prostředí",
+      "RVP – Informatika: digitální technologie — digitální stopa, zabezpečení",
+      "RVP – Osobnostní a sociální výchova: seberegulace, strategie zvládání impulzů"
+    ],
+    "didaktika": [
+      "Didaktika SC4: u dospívajících stavět na autonomii — pravidla pro obrazovky spolutvořit, ne diktovat."
+    ]
+  },
+  "5": {
+    "znalosti": [
+      "ŠVP (Ú2/Ú3): relaxační a meditační techniky; nejčastější duševní onemocnění — prevence a zdroje pomoci; pyramida lidských potřeb",
+      "RVP – Osobnostní a sociální výchova: všímá si svého prožívání, uplatňuje postupy předcházení stresu a vyhledání pomoci",
+      "RVP – Výchova ke zdraví a bezpečí: denní režim, duševní hygiena, podpora zdraví",
+      "RVP – Přírodopis: nervová a hormonální soustava"
+    ],
+    "didaktika": [
+      "Didaktika SC4: regulační techniky nacvičovat v klidu, ne až v krizi; emoční korekce má smysl zhruba od 10 let.",
+      "Didaktika SC4: postup od koregulace (s průvodcem) k seberegulaci; nejdřív bezpečí, pak výzvy."
+    ]
+  },
+  "6": {
+    "znalosti": [
+      "ŠVP (Ú2): techniky zmírňování stresu, přerámování, „emoční radar“; (Ú3) stresory a copingové strategie, kognitivní zkreslení vedoucí ke stresu (katastrofizace, černobílé myšlení)",
+      "RVP – Osobnostní a sociální výchova: strategie zvládání zátěže, předcházení a řešení náročných situací",
+      "RVP – Přírodopis: hormonální soustava — stresová reakce těla",
+      "RVP – Matematika/Informatika: měření tepu a reakční doby, vyhodnocení dat"
+    ],
+    "didaktika": [
+      "Didaktika SC4: srozumitelný model „tří pater mozku“ pro vysvětlení stresové reakce dětem.",
+      "Didaktika SC4: střední zátěž častěji v malých dávkách; zkoušky a vystoupení trénovat nanečisto v bezpečných variantách."
+    ]
+  },
+  "7": {
+    "znalosti": [
+      "ŠVP (Ú2): rozšiřování komfortní zóny; postupy zvládání krizových situací, principy přežití v přírodě, plán B",
+      "RVP – Geografie: kriticky využívá mapy a geografická data, geoinformační technologie; orientace v terénu",
+      "RVP – Tělesná výchova: turistika a pobyt v přírodě",
+      "RVP – Výchova ke zdraví a bezpečí: osobní bezpečí, první pomoc; bezpečný pohyb v dopravě",
+      "RVP – Matematika: rozpočet výpravy, odhady vzdáleností a času"
+    ],
+    "didaktika": [
+      "Didaktika SC4: práce venku v nepohodlí s pojmenováním vlastní hranice (zóny komfort–rozvoj–ohrožení); Kolbův cyklus — reflexe a opakované vyzkoušení jsou povinná část, ne bonus."
+    ]
+  },
+  "8": {
+    "znalosti": [
+      "ŠVP (Ú2): příběhy lidí, kteří zvládli náročné situace; model zón; (Ú3) growth vs. fixed mindset, neuroplasticita, techniky práce s chybou (kauzální analýza, „5 proč“)",
+      "RVP – Dějepis: posoudí informační hodnotu zdrojů — příběhy objevů a omylů vědy",
+      "RVP – Český jazyk a literatura: vypravování, úvaha; tvořivá práce s příběhem",
+      "RVP – Osobnostní a sociální výchova: učení z úspěchů i neúspěchů, plán osobního rozvoje"
+    ],
+    "didaktika": [
+      "Didaktika SC4: zpětná vazba na úsilí a strategii („co jsi zkusil jinak?“), nikdy na osobu; sbírat zážitky „zvládl jsem to“."
+    ]
+  },
+  "9": {
+    "znalosti": [
+      "ŠVP (Ú2): nejčastější duševní onemocnění — prevence a zdroje pomoci",
+      "RVP – Přírodopis: biologie člověka — orgánové soustavy, viry a bakterie, nemoci a prevence",
+      "RVP – Chemie: léčiva a návykové látky; bezpečná práce s látkami",
+      "RVP – Výchova ke zdraví a bezpečí: ochrana a podpora zdraví, prevence přenosných chorob",
+      "RVP – Dějepis: dějiny medicíny — od morových ran k vakcínám"
+    ]
+  },
+  "10": {
+    "znalosti": [
+      "ŠVP (Ú2): stanovování cílů metodou SMART, rozpracování do úkolů, týdenní plánování; (Ú3) metoda OKR, revize cílů",
+      "ŠVP (Ú2/Ú3): model zón (komfortní–růstová–paniková), vnitřní zdroje pro zvládání zátěže, techniky zvládání trémy",
+      "RVP – Osobnostní a sociální výchova: stanovuje si plán osobního rozvoje, realizuje kroky a vyhodnotí dosažení cílů",
+      "RVP – Tělesná výchova: plánování pohybového režimu, zásady otužování a bezpečnosti",
+      "RVP – Matematika/Informatika: sledování pokroku — tracker, tabulky, grafy"
+    ],
+    "didaktika": [
+      "Didaktika SC4: formát „Challenge yourself“ ověřený ve ScioŠkolách — série středních výzev + osobní výzvy; zóny znázornit soustřednými kruhy; výzvy volit v zóně rozvoje, nikdy ohrožení (citlivost u PAS/ADHD).",
+      "Didaktika SC1: každý projektový den začít plánovací čtvrthodinou a končit porovnáním plánu se skutečností; deník učení; oporu odebírat podle kompetence (Vedený → Spolunavigátor → Kapitán)."
+    ]
+  },
+  "11": {
+    "znalosti": [
+      "ŠVP (Ú3): proces učení — fungování paměti, role emocí; paměťové techniky (mnemotechniky, asociace, vizualizace); učební strategie (elaborace, sumarizace, vysvětlování druhým)",
+      "ŠVP (Ú2/Ú3): fungování pozornosti, podmínky pro soustředění, střídání zátěže a odpočinku",
+      "ŠVP (Ú2): základní centra mozku (amygdala, hipokampus); (Ú3) neuroplasticita, neurotransmitery",
+      "RVP – Osobnostní a sociální výchova: reflektuje své vzdělávací potřeby, využívá efektivní strategie učení",
+      "RVP – Přírodopis: nervová soustava"
+    ],
+    "didaktika": [
+      "Didaktika SC1: hotová kostra „týdenní blok Jak se učím“ (denně 60–90 min: paměť → strategie → pozornost/mobilový experiment → plánování → vyhodnocení).",
+      "Didaktika SC1: učit efektivní strategie (aktivní vybavování, rozložené opakování) a vyvracet mýty (učební styly, podtrhávání)."
+    ]
+  },
+  "12": {
+    "znalosti": [
+      "ŠVP (Ú2): IT nástroje včetně AI; (Ú3) efektivní vyhledávání, hodnocení zdrojů",
+      "RVP – Informatika: natrénuje model strojového učení a vyhodnotí kvalitu jeho fungování (novinka revize!)",
+      "RVP – Český jazyk a literatura: vyhledá, kriticky posoudí a eticky sdílí informace a obsah",
+      "RVP – Anglický jazyk: porozumění a komunikace s AI nástroji v angličtině",
+      "RVP – Osobnostní a sociální výchova: reflexe vlastního učení s technologiemi"
+    ],
+    "didaktika": [
+      "Didaktika SC1: klíčová otázka u každého použití AI: „učí mě to, nebo to dělá za mě?“; veďte protokol učení s AI."
+    ]
+  },
+  "13": {
+    "znalosti": [
+      "ŠVP (Ú2): typy zdrojů, metody ověřování informací, autorita zdroje vs. pravdivost; (Ú3) informační světy, argumentační fauly, dezinformační média a kampaně, triky reklamy",
+      "RVP – Český jazyk a literatura: rozpoznává manipulaci v komunikaci a zaujímá k ní kritický postoj",
+      "RVP – Dějepis: posoudí důvěryhodnost zdrojů; rozdíl mezi dějepisectvím a zobrazením v médiích",
+      "RVP – Matematika: statistika — čtení grafů, korelace vs. kauzalita",
+      "RVP – Informatika: interpretace dat, chyby při interpretaci"
+    ],
+    "didaktika": [
+      "Didaktika SC1: kalibrační trénink — děti odhadují jistotu své odpovědi a porovnávají ji se skutečnou úspěšností."
+    ]
+  },
+  "14": {
+    "znalosti": [
+      "ŠVP (Ú2): jednoduchá pozorování a experimenty, záznam a hodnocení dat; (Ú3) formulace hypotéz, navrhování experimentů, kauzální uvažování, myšlenkové operace (indukce, dedukce, abstrakce)",
+      "ŠVP (Ú3): hromadné zpracování dat — funkce, řazení, filtrování, vizualizace",
+      "RVP – Fyzika/Chemie/Přírodopis: badatelský přístup — hypotézy, experiment, argumentace důkazy; měření veličin; vlastní pokus s organismy",
+      "RVP – Matematika: statistické vyhodnocení dat"
+    ],
+    "didaktika": [
+      "Didaktika SC1: žádoucí obtížnosti — nechat týmy narazit a slepé uličky vytěžit reflexí; deník učení jako součást výzkumu."
+    ]
+  },
+  "15": {
+    "znalosti": [
+      "ŠVP (Ú2): druhy her a výukové aplikace; programování v blokovém prostředí (události, cykly, podprogramy, ladění); (Ú3) gamifikace ve vzdělávání",
+      "RVP – Informatika: sestaví přehledný program s opakováním, větvením a proměnnými; ověřuje a opravuje",
+      "RVP – Matematika: pravděpodobnost a náhoda v herních mechanikách",
+      "RVP – Polytechnická výchova: konstrukční činnosti — výroba herních komponent",
+      "RVP – Výtvarná a filmová výchova: komunikační grafika herního designu"
+    ],
+    "didaktika": [
+      "Didaktika SC1: hra je „neorganizované učení“ — průvodce do ní nevstupuje, ale vytěžuje ji následnou reflexí (co ses při hře naučil?)."
+    ]
+  },
+  "16": {
+    "znalosti": [
+      "ŠVP (Ú2): přehled uměleckých oborů (hudba, výtvarné umění, divadlo, literatura)",
+      "RVP – Výtvarná a filmová výchova: realizuje tvůrčí záměr; vyprávění pohyblivým obrazem; reflektuje tvůrčí zkušenost a přijímá zpětnou vazbu",
+      "RVP – Hudební, taneční a dramatická výchova: tvůrčí proces v různých rolích; prostředky divadla k prozkoumávání témat a vztahů",
+      "RVP – Český jazyk a literatura: vyjadřuje prožitky z literárního, divadelního a audiovizuálního díla",
+      "RVP – Dějepis: umělecké slohy a jejich doba"
+    ]
+  },
+  "17": {
+    "znalosti": [
+      "ŠVP (Ú2): čtení s porozuměním, metody extrakce informací z textu; (Ú3) kritické čtení",
+      "RVP – Dějepis: posoudí informační hodnotu a důvěryhodnost zdrojů z různých dějinných epoch (přímý OVU revize!); rozdíl mezi dějepisectvím a zobrazením v médiích",
+      "RVP – Český jazyk a literatura: čtení s porozuměním, práce s věcným i uměleckým textem",
+      "RVP – Geografie: staré mapy a proměny krajiny",
+      "RVP – Informatika: digitální archivy, vyhledávání a hodnocení informací"
+    ],
+    "didaktika": [
+      "Didaktika SC1: obsah (historie) je nosič, učební vrstva (práce se zdroji) je cíl — každý pramen vytěžit reflexí: co jsem se dozvěděl/a a jak to vím?"
+    ]
+  },
+  "18": {
+    "znalosti": [
+      "ŠVP (Ú3): networking a stáže jako cesty k rozvoji; detailnější přehled vědních a uměleckých oborů",
+      "RVP – Polytechnická výchova a praktické činnosti: práce s technickým materiálem, technická tvořivost",
+      "RVP – Osobnostní a sociální výchova: kariérový rozvoj — poznávání profesí a vlastních předpokladů",
+      "RVP – Dějepis: řemesla a proměny výroby (cechy, industrializace)",
+      "RVP – Český jazyk a literatura: interview — příprava, vedení a zpracování rozhovoru"
+    ],
+    "didaktika": [
+      "Didaktika SC1: učení mimo školu je svébytný terén — návštěvy vytěžit krátkou reflexí (Co? A co z toho? Co teď?), jinak zůstane jen zážitek."
+    ]
+  },
+  "19": {
+    "znalosti": [
+      "ŠVP (Ú2): grafy a proměnné, mapy a mapové symboly, kódování (piktogramy, symboly), obrazové modely (myšlenkové mapy, schémata, tabulky); (Ú3) grafy s více proměnnými, bit a bajt, jednoduché šifry, vývojové diagramy",
+      "RVP – Geografie: kriticky využívá mapy a zdroje geografických dat; geoinformační technologie",
+      "RVP – Matematika: diagramy, grafy, tabulky; měřítko a poměr",
+      "RVP – Informatika: kódování dat, odvození informací z modelu"
+    ]
+  },
+  "20": {
+    "znalosti": [
+      "ŠVP (Ú2): informační zdroje (tištěné, online, audiovizuální); (Ú3) efektivní vyhledávání — klíčová slova, syntaxe vyhledávačů, hodnocení zdrojů",
+      "RVP – Přírodopis: praktické poznávání přírody — pozorování, určovací klíče; organismy v okolí školy",
+      "RVP – Informatika: vyhledávání a interpretace informací, práce s AI nástroji",
+      "RVP – Český jazyk a literatura: formulace dotazu, věcné čtení, citace zdroje",
+      "— plus učivo oborů, do kterých otázky dětí zamíří (fyzika, biologie, dějepis…)"
+    ],
+    "didaktika": [
+      "Didaktika SC1: otázky dětí jsou nejsilnější palivo vnitřní motivace — nechat volbu témat na nich a vytěžovat reflexí, kudy vedla cesta k odpovědi."
+    ]
+  },
+  "21": {
+    "znalosti": [
+      "RVP – Český jazyk a literatura: dorozumívá se kultivovaně a výstižně s jasným komunikačním záměrem; mluvené žánry, diskuse",
+      "RVP – Hudební, taneční a dramatická výchova: prostředky divadla — hlas, tělo, improvizace",
+      "RVP – Anglický jazyk: základní konverzační situace",
+      "RVP – Osobnostní a sociální výchova: sociální rozvoj — komunikace, spolupráce",
+      "ŠVP (Ú2): asertivita a říkání „ne“"
+    ]
+  },
+  "22": {
+    "znalosti": [
+      "ŠVP (Ú2): asertivita, říkání „ne“, význam sociální opory; (Ú3) asertivní komunikace v zátěži a vymezování hranic",
+      "RVP – Výchova k občanství: zásady soužití, řešení sporů; práce s ukázkami právních textů (co je mediace)",
+      "RVP – Český jazyk a literatura: věcná argumentace, rozpoznání manipulace v komunikaci",
+      "RVP – Dějepis: příčiny, důsledky a podoby konfliktů a spolupráce v minulosti",
+      "RVP – Osobnostní a sociální výchova: řešení náročných mezilidských situací"
+    ]
+  },
+  "23": {
+    "znalosti": [
+      "ŠVP (Ú2/Ú3): manipulativní chování osobně i online a techniky, jak mu čelit",
+      "RVP – Výchova ke zdraví a bezpečí: šikana a kyberšikana, vztahy ve skupině, kde hledat pomoc",
+      "RVP – Dějepis: dav a propaganda — extremismus, diktatury, role přihlížejících (holokaust)",
+      "RVP – Výchova k občanství: vytváří návrh společensky prospěšné akce a zapojuje se (kampaň proti vyčleňování)",
+      "RVP – Přírodopis: sociální chování živočichů (etologie)"
+    ]
+  },
+  "24": {
+    "znalosti": [
+      "RVP – Osobnostní a sociální výchova: sociální a etický rozvoj — vztahy, důvěra, spolupráce",
+      "RVP – Výchova ke zdraví a bezpečí: vztahy mezi lidmi a formy soužití",
+      "RVP – Český jazyk a literatura: charakteristika; přátelství v literatuře a filmu; tvořivá práce s textem",
+      "RVP – Anglický jazyk: témata pocity, přátelé, rodina"
+    ]
+  },
+  "25": {
+    "znalosti": [
+      "ŠVP (Ú2): klíčové momenty české historie a jejich vliv na současnost; (Ú3) kulturní kořeny, milníky české a evropské kultury",
+      "RVP – Dějepis: historické prameny a práce s nimi; 20. století optikou rodinné paměti",
+      "RVP – Český jazyk a literatura: vypravování, zápis rozhovoru (orální historie)",
+      "RVP – Geografie: migrace, proměny místního regionu",
+      "RVP – Informatika: strukturovaná data — rodokmen, digitalizace fotografií"
+    ]
+  },
+  "26": {
+    "znalosti": [
+      "RVP – Výchova ke zdraví a bezpečí: sexuální dospívání a reprodukční zdraví; osobní bezpečí, prevence zneužívání; rizika v digitálním prostředí",
+      "RVP – Přírodopis: rozmnožování a dědičnost; ontogeneze člověka",
+      "RVP – Výchova k občanství: partnerství, manželství a rodina — společenský a právní rámec",
+      "RVP – Český jazyk a literatura: obraz lásky v literatuře a filmu",
+      "RVP – Osobnostní a sociální výchova: hranice, respekt, komunikace potřeb"
+    ]
+  },
+  "27": {
+    "znalosti": [
+      "ŠVP (Ú2): specifika české kultury ve srovnání s jinými; příčiny a projevy kulturních odlišností; (Ú3) interkulturní komunikace, kulturní předsudky",
+      "RVP – Geografie: místa a regiony světa; obyvatelstvo, globalizace, migrace",
+      "RVP – Anglický jazyk: reálie anglicky mluvících zemí, komunikace v mezinárodním prostředí",
+      "RVP – Dějepis: dopady kolonialismu, imperialismu a dekolonizace na různé skupiny lidí",
+      "RVP – Hudební/Výtvarná výchova: umění světových kultur"
+    ]
+  },
+  "28": {
+    "znalosti": [
+      "RVP – Výchova k občanství: pravidla společenského soužití, kulturní život",
+      "RVP – Český jazyk a literatura: společenské komunikační žánry — představení se, telefonát, formální dopis a e-mail, tiskopisy",
+      "RVP – Anglický jazyk: zdvořilostní fráze a společenské situace",
+      "RVP – Polytechnická výchova a praktické činnosti: stolování, organizace akce",
+      "RVP – Výchova ke zdraví a bezpečí: bezpečné chování v kontaktu s neznámými lidmi"
+    ]
+  },
+  "29": {
+    "znalosti": [
+      "RVP – Anglický jazyk: rozumí hlavním myšlenkám mluveného projevu; komunikace v běžných situacích (cíl revize: úroveň B1 v 9. ročníku!)",
+      "RVP – Geografie: světadíly, státy, časová pásma, plánování cesty",
+      "RVP – Informatika: překladače a AI nástroje — možnosti a limity",
+      "RVP – Český jazyk a literatura: jak fungují jazyky (skupiny jazyků, jazyková rozmanitost)"
+    ]
+  },
+  "30": {
+    "znalosti": [
+      "ŠVP (Ú2): zásady bezpečného chování online, skrytá a personalizovaná reklama, cena věcí „zadarmo“; (Ú3) minimalizace negativního působení online světa",
+      "RVP – Výchova ke zdraví a bezpečí: identifikuje nebezpečné aktivity a situace v digitálním prostředí a chrání své bezpečí",
+      "RVP – Informatika: digitální identita, digitální stopa, zabezpečení účtů",
+      "RVP – Výchova k občanství: ochrana osobnosti, kyberkriminalita",
+      "RVP – Český jazyk a literatura: komunikační záměr a manipulace v online komunikaci"
+    ]
+  },
+  "31": {
+    "znalosti": [
+      "RVP – Výchova k občanství: Já a svět financí — hospodaření, rozpočet, banky, daně, tržní hospodářství (v revizi už od 1. stupně: Lidé a svět financí)",
+      "RVP – Matematika: procenta, úrokování, řešení problémů s čísly v reálných situacích",
+      "RVP – Fyzika: role energie v běžném životě včetně finanční stránky (účty za energie)",
+      "RVP – Dějepis: dějiny peněz a obchodu",
+      "RVP – Informatika: rozpočet v tabulkovém procesoru — vzorce, grafy"
+    ]
+  },
+  "32": {
+    "znalosti": [
+      "RVP – Výchova k občanství: principy tržního hospodářství, podnikání; návrh a realizace vlastní akce",
+      "RVP – Matematika: kalkulace — náklady, výnosy, marže, procenta",
+      "RVP – Osobnostní a sociální výchova: kariérový rozvoj, podnikavost; plán cíle a jeho vyhodnocení",
+      "RVP – Polytechnická výchova a praktické činnosti: výroba produktu, technická tvořivost",
+      "RVP – Český jazyk a literatura: reklamní a prezentační text; Výtvarná a filmová výchova: vizuální identita"
+    ]
+  },
+  "33": {
+    "znalosti": [
+      "RVP – Osobnostní a sociální výchova: kariérový rozvoj — silné stránky, volba profesní orientace, plán rozvoje (v revizi samostatný okruh!)",
+      "RVP – Výchova k občanství: vzdělávací soustava, trh práce, zaměstnanost",
+      "RVP – Český jazyk a literatura: strukturovaný životopis, motivační dopis, řízený rozhovor",
+      "RVP – Anglický jazyk: téma volba povolání; jednoduchý pohovor anglicky",
+      "RVP – Informatika: vyhledávání a porovnávání informací o školách a oborech"
+    ]
+  },
+  "34": {
+    "znalosti": [
+      "ŠVP (Ú2): týdenní plánování, základní IT nástroje k plánování; (Ú3) měsíční plánování s dlouhodobou perspektivou; time management a asertivní odmítání",
+      "RVP – Matematika: jednotky času, diagramy z časového auditu",
+      "RVP – Výchova ke zdraví a bezpečí: denní režim, rovnováha zátěže a odpočinku",
+      "RVP – Osobnostní a sociální výchova: plán osobního rozvoje a jeho vyhodnocování",
+      "RVP – Dějepis: měření času v dějinách — kalendáře, hodiny"
+    ]
+  },
+  "35": {
+    "znalosti": [
+      "RVP – Polytechnická výchova a praktické činnosti: péče o domácnost a zahradu; příprava pokrmů; provoz a údržba",
+      "RVP – Výchova k občanství: Já a svět financí — rozpočet domácnosti, práva spotřebitele, smlouvy",
+      "RVP – Matematika: procenta, jednotkové ceny, odhady nákladů",
+      "RVP – Chemie: bezpečná práce s běžně dostupnými chemickými látkami (čisticí prostředky, H/P věty)",
+      "RVP – Výchova ke zdraví a bezpečí: výživa, hygiena, denní režim"
+    ]
+  },
+  "36": {
+    "znalosti": [
+      "ŠVP (Ú2): základní postupy zvládání krizových situací (požár, povodeň, zranění, přepadení), principy přežití v přírodě, plán B; (Ú3) tvorba scénářů a odhad pravděpodobnosti",
+      "RVP – Výchova ke zdraví a bezpečí: osobní bezpečí za mimořádných událostí a obrana státu (v revizi posílený okruh!); bezpečnost v dopravě",
+      "RVP – Geografie: živelní pohromy, chování při ohrožení, orientace v terénu",
+      "RVP – Fyzika: energie a její zdroje (blackout); Chemie: hořlaviny a nebezpečné látky",
+      "RVP – Tělesná výchova: pobyt a přežití v přírodě"
+    ]
+  },
+  "37": {
+    "znalosti": [
+      "ŠVP (Ú2): zvládání krizových situací — zranění, přivolání pomoci",
+      "RVP – Výchova ke zdraví a bezpečí: první pomoc včetně resuscitace, prevence úrazů (revize klade větší důraz na bezpečí)",
+      "RVP – Přírodopis: oběhová a dýchací soustava, život ohrožující stavy",
+      "RVP – Tělesná výchova: první pomoc při pohybových aktivitách",
+      "RVP – Český jazyk a literatura: strukturovaná komunikace v krizi (tísňové volání)"
+    ]
+  },
+  "38": {
+    "znalosti": [
+      "RVP – Polytechnická výchova a praktické činnosti: práce s technickým materiálem a technická tvořivost; sestaví a upraví přiměřeně složitou konstrukci či robotické zařízení; zásady bezpečnosti (v revizi posílená polytechnika!)",
+      "RVP – Matematika: měření, jednotky, geometrie — rozměřování, obvod, obsah, objem",
+      "RVP – Fyzika: jednoduché stroje (páka, kladka), vlastnosti materiálů",
+      "RVP – Informatika: 3D modelování, automatizace",
+      "RVP – Výtvarná a filmová výchova: design výrobku"
+    ]
+  },
+  "39": {
+    "znalosti": [
+      "RVP – Přírodopis: organismy a prostředí; zapojí se do péče o přírodu ve svém okolí (přímý OVU revize!); fotosyntéza, potravní řetězce",
+      "RVP – Polytechnická výchova a praktické činnosti: péče o zahradu, pěstitelství a chovatelství",
+      "RVP – Chemie: voda, půda, hnojiva, pH",
+      "RVP – Geografie: udržitelnost života na Zemi, zodpovědné jednání v prostoru",
+      "RVP – Matematika: evidence měření růstu, grafy"
+    ]
+  },
+  "40": {
+    "znalosti": [
+      "RVP – Výchova k občanství: právní řád ČR, protiprávní jednání — přestupky a trestné činy, orgány právní ochrany; pracuje s ukázkami právních textů (Ústava, Listina, zákony, smlouvy — OVU revize)",
+      "RVP – Výchova k občanství: občanské právo v každodenním životě — smlouvy, vlastnictví, odpovědnost za škodu, práva spotřebitele",
+      "RVP – Český jazyk a literatura: porozumění úřednímu a právnímu textu; žádost, formální dopis",
+      "RVP – Dějepis: vývoj práva a ústavnosti",
+      "RVP – Osobnostní a sociální výchova: kariérový rozvoj — brigády, pracovní smlouva",
+      "RVP – Matematika: daně, pokuty a procenta"
+    ]
+  },
+  "41": {
+    "znalosti": [
+      "RVP – Přírodopis: organismy a prostředí, ekosystémy, potravní řetězce; zapojí se do péče o přírodu ve svém okolí (přímý OVU revize!)",
+      "RVP – Geografie: krajina a její typy, chráněná území, udržitelnost",
+      "RVP – Výchova ke zdraví a bezpečí: duševní hygiena, rovnováha zátěže a odpočinku",
+      "RVP – Osobnostní a sociální výchova: všímá si svého prožívání, postupy předcházení stresu",
+      "ŠVP (Ú2/Ú3): relaxační techniky; formy odpočinku, které mi fungují"
+    ],
+    "didaktika": [
+      "Didaktika SC4: skutečné prostředí místo umělých cvičení — příroda je ideální terén pro nácvik regulace v klidu; krátká smyslová reflexe funguje už u nejmladších."
+    ]
+  },
+  "42": {
+    "znalosti": [
+      "RVP – Dějepis: moderní doba — světové války, totalitní systémy, holokaust; projevy extremismu a povaha diktatur (přímé OVU revize); Československo 1918–1989",
+      "RVP – Výchova k občanství: demokratická vs. autokratická vláda a jejich dopady na život občanů; lidská práva",
+      "RVP – Český jazyk a literatura: rozpoznává manipulaci, kriticky posuzuje mediální sdělení",
+      "RVP – Geografie: proměny hranic a migrace ve 20. století",
+      "ŠVP (Ú2/Ú3): manipulativní chování a techniky, jak mu čelit; dezinformační kampaně"
+    ],
+    "didaktika": [
+      "Citlivá témata (holokaust, násilí) dávkovat podle věku — ve 2. trojročí skrze příběhy konkrétních dětí a každodennost, ne skrze statistiky hrůz; vždy s prostorem pro reflexi a otázky."
+    ]
+  },
+  "43": {
+    "znalosti": [
+      "RVP – Výchova k občanství: právní základy státu, Ústava ČR, principy demokracie, volby, státní správa a samospráva; přednosti a úskalí demokratické a autokratické vlády (OVU revize); vytváří návrh společensky prospěšné akce",
+      "RVP – Dějepis: vznik moderních států a demokracie",
+      "RVP – Geografie: státy a jejich integrace, konfliktní ohniska světa",
+      "RVP – Český jazyk a literatura: úřední komunikace — podnět, petice, žádost",
+      "RVP – Matematika: volební aritmetika — poměrné rozdělení mandátů, procenta"
+    ],
+    "didaktika": [
+      "Nejsilnější je zažít instituce zevnitř (simulace) a naostro (zastupitelstvo, reálný podnět) — abstraktní výklad ústavy bez prožitku neulpí."
+    ]
+  },
+  "44": {
+    "znalosti": [
+      "ŠVP (Ú2/Ú3): zdroje pomoci v zátěžových situacích — rodina, přátelé, krizové linky, odborníci; relaxační techniky",
+      "RVP – Výchova ke zdraví a bezpečí: duševní hygiena, vyhledání pomoci; změny v životě člověka",
+      "RVP – Přírodopis: životní cykly organismů, ontogeneze",
+      "RVP – Český jazyk a literatura: ztráta a loučení v literatuře, vyjádření prožitku z díla",
+      "RVP – Osobnostní a sociální výchova: zvládání náročných situací, empatie a podpora druhých",
+      "RVP – Dějepis / Umění a kultura: pohřební rituály a kult předků v dějinách a kulturách"
+    ],
+    "didaktika": [
+      "Didaktika SC4: bezpečí především — sdílení vždy dobrovolné; předem zmapovat děti s čerstvou ztrátou a domluvit se s rodiči i školním psychologem.",
+      "Didaktika SC4: regulaci a jazyk pro emoce budovat v klidu na příbězích a rituálech — ne až v akutním zármutku; průvodce modeluje, že o ztrátě se mluvit smí."
+    ]
+  },
+  "45": {
+    "znalosti": [
+      "ŠVP (Ú3): myšlenkové operace — dedukce, indukce, abstrakce, analogie; základy kritického myšlení; argumentační fauly",
+      "RVP – Český jazyk a literatura: úvaha, diskuse, věcná argumentace; rozpoznává manipulaci",
+      "RVP – Výchova k občanství: hodnoty, spravedlnost, zásady soužití",
+      "RVP – Dějepis: antická filozofie — Sókratés, Platón, Aristotelés; kořeny evropského myšlení",
+      "RVP – Matematika: logické úlohy, důkaz a protipříklad"
+    ],
+    "didaktika": [
+      "Didaktika SC1: průvodce je facilitátor, ne zdroj odpovědí — otázky vrací skupině; krátká reflexe procesu (Co jsme dělali, když jsme mysleli dobře?) po každém kruhu."
+    ]
+  },
+  "46": {
+    "znalosti": [
+      "RVP – Informatika: natrénuje model strojového učení a vyhodnotí jeho kvalitu (přímý OVU revize!); hardware a software; počítačové sítě — klient, server, IP adresa, internet, cloud; kódování dat",
+      "ŠVP (Ú3): součásti počítače, operační systémy, formáty souborů; typy sítí a principy internetu; cloudové aplikace; řešení technických problémů",
+      "RVP – Polytechnická výchova a praktické činnosti: sestaví a upraví konstrukci či robotické zařízení (OVU revize)",
+      "RVP – Fyzika: elektřina a elektrické obvody",
+      "RVP – Osobnostní a sociální výchova: kariérový rozvoj — technologie a proměna profesí"
+    ],
+    "didaktika": [
+      "Didaktika SC1: u AI vždy otázka „učí mě to, nebo to dělá za mě?“ — zde obráceně: děti učí stroj, a tím pochopí, jak se učí samy."
+    ]
+  },
+  "47": {
+    "znalosti": [
+      "RVP – Fyzika: elektřina a magnetismus — obvod, proud, napětí, odpor; výroba a přenos elektrické energie; role energie v běžném životě včetně finanční stránky (přímý OVU revize!)",
+      "RVP – Polytechnická výchova a praktické činnosti: elektrotechnika v domácnosti, bezpečná práce s nářadím",
+      "RVP – Výchova ke zdraví a bezpečí: prevence úrazů, první pomoc při úrazu elektřinou",
+      "RVP – Matematika: výpočty spotřeby a ceny — kWh, procenta, odhady",
+      "RVP – Geografie: energetické zdroje a udržitelnost"
+    ],
+    "didaktika": [
+      "Didaktika SC1: learning by doing — obvod, který si dítě samo postaví a rozbije, naučí víc než výklad; chybu vytěžit reflexí (proč to nesvítí?)."
+    ]
+  },
+  "48": {
+    "znalosti": [
+      "RVP – Fyzika: zvukové děje — vznik a šíření zvuku, odraz, ozvěna, hluk; světelné děje — šíření světla, odraz a lom, zrcadla, čočky, rozklad světla (okruh revize „Zvuk a světlo“)",
+      "RVP – Přírodopis: smyslové orgány — stavba a funkce oka a ucha",
+      "RVP – Hudební, taneční a dramatická výchova: tón, výška, barva zvuku; hudební nástroje a jejich principy",
+      "RVP – Výtvarná a filmová výchova: světlo v obraze a filmu, stínohra",
+      "RVP – Matematika: měření, úhly (odraz), grafy hlučnosti"
+    ],
+    "didaktika": [
+      "Didaktika SC1: střídat roli vědce (měřím, ověřuji) a umělce (tvořím) na tomtéž jevu — dvojí uchopení prohlubuje porozumění i motivaci."
+    ]
+  },
+  "49": {
+    "znalosti": [
+      "RVP – Fyzika: vesmír — sluneční soustava, měsíční fáze; gravitační síla",
+      "RVP – Geografie: Země jako vesmírné těleso — pohyby Země, střídání dne a roku, časová pásma",
+      "RVP – Matematika: velká čísla a mocniny, měřítko, jednotky (světelný rok)",
+      "RVP – Dějepis: dějiny astronomie a kosmické závody studené války",
+      "RVP – Český jazyk a literatura: sci-fi literatura a její velké otázky",
+      "ŠVP (Ú2/Ú3): vystavování se novým podnětům jako zdroj chuti učit se; vesmír v knihách a filmech o budoucnosti"
+    ],
+    "didaktika": [
+      "Didaktika SC1: údiv je nejsilnější spouštěč vnitřní motivace — začínat zážitkem (noční obloha), teorii dávkovat až za otázky dětí."
+    ]
+  },
+  "50": {
+    "znalosti": [
+      "RVP – Přírodopis: ontogeneze člověka — stárnutí a jeho projevy",
+      "RVP – Výchova k občanství: demografické stárnutí, mezigenerační solidarita, sociální systém",
+      "RVP – Matematika: demografická data — věkové pyramidy, grafy",
+      "RVP – Český jazyk a literatura: vedení rozhovoru, zápis a redakce vzpomínek",
+      "RVP – Informatika: základy práce s mobilem a aplikacemi (v roli učitele)",
+      "RVP – Osobnostní a sociální výchova: empatie, přijímání odlišnosti"
+    ],
+    "didaktika": [
+      "Didaktika SC4/SC5: vztah, ne akce — opakovaná setkání se stejnými seniory budují skutečnou vazbu; první návštěvu strukturovat (společná činnost), volný rozhovor až po oťukání."
+    ]
+  }
+}

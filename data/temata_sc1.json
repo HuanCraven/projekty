@@ -1,0 +1,338 @@
+[
+  {
+    "id": 11,
+    "nazev": "Mozek: návod k použití",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.2.2.1 Využívám poznatky o procesu učení",
+      "1.2.2.3 Volím si učební strategie"
+    ],
+    "vedlejsi": [
+      "4.1.1.2 Spím",
+      "1.2.2.4 Učím se soustředěně",
+      "8.1.2.1 Odstraňuji překážky v motivaci",
+      "1.2.2.2 Zařídím si podmínky pro učení",
+      "1.2.2.5 Dávám si věci do souvislostí"
+    ],
+    "urovne": "obě",
+    "anotace": "Jak funguje paměť, pozornost a učení — a jak toho využít ve svůj prospěch? Děti si na sobě otestují učební strategie (rozložené opakování, aktivní vybavování, paměťové techniky), prozkoumají, co jejich mozek rozptyluje, a sestaví si vlastní „návod k použití“ své hlavy.",
+    "aktivity": [
+      "Paměťové experimenty: křivka zapomínání, kapacita krátkodobé paměti, testy pozornosti (gorila ve videu)",
+      "Souboj učebních strategií: dvě skupiny se učí totéž různými metodami a porovnají výsledky",
+      "Trénink paměťových technik: paměťový palác, akronymy, příběhová metoda — memorování na výkon",
+      "Pokusy se soustředěním: vliv hluku, multitaskingu a mobilního telefonu na výkon",
+      "Tvorba osobního „návodu k použití mého mozku“ — kdy, kde a jak se mi nejlépe učí"
+    ],
+    "dif2": "Hravé experimenty s pamětí a pozorností, jednoduché techniky zapamatování, objevování jak se učím.",
+    "dif3": "Neurony a synapse, kognitivní procesy, metakognice, efektivní příprava na zkoušky a prezentace.",
+    "loni": ""
+  },
+  {
+    "id": 12,
+    "nazev": "Učím se s umělou inteligencí",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.3 Učím se pomocí AI"
+    ],
+    "vedlejsi": [
+      "1.1.1.3 Posoudím kvalitu zdroje učení",
+      "8.2.4.1 Využívám digitální technologie",
+      "5.3.1.3 Vyjadřuji se písemně"
+    ],
+    "urovne": "obě",
+    "anotace": "AI je nejmocnější učební nástroj současnosti — pokud víme, jak s ní zacházet. Projekt zkoumá, jak jazykové modely fungují, co umí a kde selhávají. Děti trénují formulaci dotazů, ověřování odpovědí a poznávání situací, kdy jim AI učení usnadňuje a kdy je naopak okrádá o vlastní myšlení.",
+    "aktivity": [
+      "Jak AI funguje: srozumitelný model jazykového modelu (predikce slov), hra na „lidský chatbot“",
+      "Chyták na AI: soutěž o nalezení halucinace či chyby v odpovědích, ověřování v jiných zdrojích",
+      "Promptovací dílna: jak se zeptat, aby AI skutečně pomohla s učením (vysvětli, vyzkoušej mě, oponuj mi)",
+      "Experiment: naučit se něco s AI vs. bez AI, porovnání výsledků a prožitku",
+      "Etická debata: kdy je použití AI podvod a kdy chytré učení; pravidla pro naši školu"
+    ],
+    "dif2": "Bezpečné první kroky s AI, jednoduché ověřování, AI jako pomocník při zvídavých otázkách.",
+    "dif3": "Principy fungování LLM, halucinace a zkreslení, pokročilé promptování, AI a autorství, dopad na vlastní kompetence.",
+    "loni": ""
+  },
+  {
+    "id": 13,
+    "nazev": "Nevěř všemu: informační džungle",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.1.3 Posoudím kvalitu zdroje učení"
+    ],
+    "vedlejsi": [
+      "1.1.1.2 Vyhledám relevantní zdroj učení",
+      "8.2.1.4 Pracuji se statistikou a pravděpodobností",
+      "5.3.2.3 Komunikuji poctivě"
+    ],
+    "urovne": "obě",
+    "anotace": "Kdo a proč nám lže — a jak to poznat? Projekt o kritickém myšlení a mediální gramotnosti: děti se učí ověřovat informace, odhalovat dezinformace, manipulativní titulky i lživé grafy a rozumět tomu, jak fungují média a algoritmy sociálních sítí.",
+    "aktivity": [
+      "Fact-checkingová dílna: ověřování virálních zpráv a fotek (zpětné vyhledávání obrázků, dohledání původního zdroje)",
+      "Vyrob si fake news: děti samy vytvoří manipulativní zprávu a odhalí tak triky manipulátorů",
+      "Lživé grafy: jak statistika a vizualizace klamou (osy, výběr dat, korelace vs. kauzalita)",
+      "Exkurze do redakce novin či televize, beseda s novinářem o práci se zdroji",
+      "Mediální detox a rozbor vlastní informační diety: odkud beru zprávy a kdo mi je vybírá"
+    ],
+    "dif2": "Rozlišování reklamy, pohádky a zprávy, jednoduché ověřování, bezpečné chování na internetu.",
+    "dif3": "Dezinformační ekosystém, algoritmy a bubliny, argumentační fauly, AI generovaný obsah a deepfakes.",
+    "loni": "Média; Informační gramotnost; Proměna a vývoj médií"
+  },
+  {
+    "id": 14,
+    "nazev": "Mladí vědci: bádám, tedy jsem",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.7 Získávám poznatky vědeckými metodami"
+    ],
+    "vedlejsi": [
+      "8.2.1.5 Zpracovávám data",
+      "1.2.1.1 Stanovím si cíl učení",
+      "1.2.4.3 Reflektuji pokrok a hodnotím výsledky svého učení"
+    ],
+    "urovne": "obě",
+    "anotace": "Věda není učebnice, ale způsob kladení otázek. Každý tým si zvolí vlastní výzkumnou otázku, zformuluje hypotézu, navrhne experiment či pozorování, sesbírá data a výsledky obhájí na závěrečné minikonferenci. Projekt v malém zrcadlí skutečný vědecký proces včetně slepých uliček.",
+    "aktivity": [
+      "Od otázky k hypotéze: dílna kladení výzkumných otázek (Co by se stalo, kdyby…? Proč vlastně…?)",
+      "Návrh a provedení vlastního experimentu, pozorování či měření (rostliny, chování lidí, fyzikální jevy)",
+      "Sběr a zpracování dat: tabulky, grafy, vyhodnocení — potvrdila se hypotéza?",
+      "Exkurze na vědecké pracoviště (AV ČR, univerzita, science centrum) nebo beseda s vědcem",
+      "Závěrečná minikonference: postery, prezentace a vzájemné oponentury"
+    ],
+    "dif2": "Jednodušší pokusy s jasným efektem, důraz na pozorování a údiv, společné vyhodnocení.",
+    "dif3": "Kontrolní skupina, proměnné a férový test, statistické vyhodnocení, kritika metodologie ostatních týmů.",
+    "loni": "Badatel; Vytváření senzoru; Chemie"
+  },
+  {
+    "id": 15,
+    "nazev": "Herní laboratoř",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.8 Učím se skrze hru"
+    ],
+    "vedlejsi": [
+      "8.1.2.2 Zpříjemňuji si činnosti",
+      "5.1.1.4 Funguji ve skupinách",
+      "1.1.2.6 Učím se činností",
+      "1.2.3.4 Motivuji se k procesu učení"
+    ],
+    "urovne": "obě",
+    "anotace": "Hra je nejstarší způsob učení. Projekt zkoumá, proč a jak se při hraní učíme — od deskovek přes venkovní a rolové hry po videohry. Vyvrcholením je návrh a výroba vlastní hry, která má ostatní něco naučit, a herní festival pro celou školu.",
+    "aktivity": [
+      "Herní maraton s analýzou: co se u které hry učíme (strategie, jazyk, spolupráce, pravděpodobnost)",
+      "Rozbor herních principů: pravidla, náhoda vs. dovednost, motivace hráče, gamifikace",
+      "Návrh a prototypování vlastní (deskové, karetní, venkovní) výukové hry, testování a iterace",
+      "Larp či rolová hra na zvolené téma (historická událost, fungování státu, obchod)",
+      "Herní festival: děti učí ostatní hrát své hry, sběr zpětné vazby"
+    ],
+    "dif2": "Hraní a jednoduché úpravy pravidel, výroba vlastní jednoduché hry, hodně prožitku.",
+    "dif3": "Game design do hloubky (balance, testování, iterace), gamifikace vlastního učení, kritický pohled na návykové mechanismy her.",
+    "loni": ""
+  },
+  {
+    "id": 16,
+    "nazev": "Uměním k poznání",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.9 Učím se skrze umění"
+    ],
+    "vedlejsi": [
+      "1.1.2.1 Čtu a naslouchám",
+      "5.3.1.1 Umím mluvit",
+      "8.3.4.1 Vybírám si volnočasové aktivity"
+    ],
+    "urovne": "obě",
+    "anotace": "Umění je způsob, jak poznávat svět i sebe. Projekt střídá roli diváka a tvůrce: návštěvy galerie, divadla či koncertu s interpretační dílnou a vlastní tvorbu v různých médiích. Děti zjistí, co jim které umění říká a jak se skrze tvorbu učí vyjadřovat myšlenky, které slova neunesou.",
+    "aktivity": [
+      "Návštěva galerie či výstavy s interpretační dílnou: co dílo říká mně, co říkalo současníkům",
+      "Tvůrčí dílny v různých médiích: malba, fotografie, hudba, poezie, krátké video — na společné téma",
+      "Umělecká výzva: zpracovat jedno téma (např. strach, domov) třemi různými uměleckými jazyky",
+      "Setkání s umělcem: jak vzniká dílo, čím ho umění živí a co ho naučilo",
+      "Vernisáž vlastní tvorby pro rodiče a školu"
+    ],
+    "dif2": "Prožitková tvorba beze strachu z výsledku, hravé seznámení s uměleckými technikami.",
+    "dif3": "Interpretace a kontext děl, umělecké směry, vlastní autorský záměr a jeho obhajoba, umění jako komentář společnosti.",
+    "loni": "Hurá do galerie; Středověké umění; Literatura"
+  },
+  {
+    "id": 17,
+    "nazev": "Stopy minulosti: jak poznáváme, co bylo",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.1 Čtu a naslouchám"
+    ],
+    "vedlejsi": [
+      "1.1.1.2 Vyhledám relevantní zdroj učení",
+      "1.1.1.3 Posoudím kvalitu zdroje učení",
+      "1.1.2.4 Získávám poznatky z nejazykových druhů vyjádření",
+      "5.2.3.1 Mám své místo v rodině"
+    ],
+    "urovne": "obě",
+    "anotace": "Odkud vlastně víme, co se stalo před sto nebo tisíci lety? Projekt dělá z dětí historiky: čtou a poslouchají prameny — kroniky, dopisy, dobový tisk, fotografie, mapy i vzpomínky pamětníků — učí se z nich vytěžit informace a posoudit, komu věřit. Historie tu není seznam letopočtů, ale detektivní práce se zdroji.",
+    "aktivity": [
+      "Detektivka nad pramenem: co prozradí stará fotografie, mince, kronika či dopis z fronty — čtení a interpretace pramenů",
+      "Návštěva archivu, muzea či knihovny se zadáním: najít odpověď na vlastní historickou otázku",
+      "Historie místa: pátrání po minulosti školy, ulice či obce (staré mapy, pamětní desky, katastr, kroniky)",
+      "Rozhovor s pamětníkem (metoda orální historie) a jeho porovnání s písemnými zdroji — kde se liší a proč",
+      "Výstava či podcast „Stopy minulosti“: děti prezentují svá zjištění s uvedením pramenů"
+    ],
+    "dif2": "Hmatatelné prameny (předměty, fotky, pověsti), historie rodiny a okolí školy, jednoduché porovnání dvou zdrojů.",
+    "dif3": "Kritika pramenů (kdo, komu, proč psal), primární vs. sekundární zdroj, propaganda v pramenech, práce s digitálními archivy.",
+    "loni": "Příběhy kolem nás; Středověk; Starověké civilizace"
+  },
+  {
+    "id": 18,
+    "nazev": "Do světa za mistry",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.5 Vytvářím si učební situace",
+      "1.1.2.6 Učím se činností"
+    ],
+    "vedlejsi": [
+      "8.2.5.1 Zacházím se stroji a nástroji",
+      "8.3.3.1 Volím si povolání",
+      "5.1.2.2 Navazuji kontakty",
+      "1.2.3.1 Posiluji svou chuť učit se novým věcem"
+    ],
+    "urovne": "obě",
+    "anotace": "Nejcennější poznání se skrývá v dílnách, ateliérech a provozech lidí, kteří něco skutečně umějí. Projekt je sérií výprav za mistry svého oboru — řemeslníky, podnikateli, vědci, umělci — spojenou s vlastním vyzkoušením jejich práce. Děti se učí učit se od lidí a v reálných situacích.",
+    "aktivity": [
+      "Mapování mistrů v okolí: koho zajímavého známe my, rodiče, sousedé; domluvení návštěv (děti samy!)",
+      "Série exkurzí s aktivním zapojením: truhlárna, pekárna, kovárna, ateliér, servis, laboratoř",
+      "Rozhovorová dílna: jak se ptát, aby člověk vyprávěl to podstatné; dokumentace návštěv",
+      "Vlastní pokus o řemeslo: pod vedením mistra si vyrobit či opravit konkrétní věc",
+      "Závěrečná „mapa mistrů“ — průvodce po zajímavých lidech a oborech v okolí školy"
+    ],
+    "dif2": "Kratší návštěvy s jednoduchým vyzkoušením, důraz na zážitek a zvídavé otázky.",
+    "dif3": "Vícedenní minipraxe u vybraného mistra, samostatné domlouvání návštěv, vztah k volbě vlastní profesní cesty.",
+    "loni": "Praxe"
+  },
+  {
+    "id": 19,
+    "nazev": "Svět beze slov: grafy, mapy a symboly",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.4 Získávám poznatky z nejazykových druhů vyjádření"
+    ],
+    "vedlejsi": [
+      "8.2.1.5 Zpracovávám data",
+      "8.2.3.4 Dopravuji se",
+      "8.2.1.3 Pracuji s jednotkami"
+    ],
+    "urovne": "obě",
+    "anotace": "Obrovská část poznání k nám přichází beze slov: mapami, grafy, schématy, piktogramy, vzorci. Projekt učí tato vyjádření číst, kriticky posuzovat i tvořit. Od orientace v jízdních řádech a plánech měst po infografiku vlastní výroby — svět se stane čitelnějším.",
+    "aktivity": [
+      "Lov symbolů: piktogramy, dopravní značky, ikony aplikací — jejich logika a historie",
+      "Mapová dílna: čtení map, práce s měřítkem, plánování trasy, tvorba mapy okolí školy či vlastního „mentálního území“",
+      "Grafová dílna: stejná data, různé grafy — kdy který použít a jak grafy klamou",
+      "Orientační výprava městem jen podle plánů, řádů a schémat MHD",
+      "Tvorba infografiky na zvolené téma pro školní chodbu"
+    ],
+    "dif2": "Základní čtení map, značek a jednoduchých grafů, hravá orientace v terénu.",
+    "dif3": "Komplexní datové vizualizace, vrstevnice a GPS, schémata systémů, kritika manipulativních vizualizací.",
+    "loni": "Mapy"
+  },
+  {
+    "id": 20,
+    "nazev": "Otázkovna: od otázky k odpovědi",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.1.2 Vyhledám relevantní zdroj učení"
+    ],
+    "vedlejsi": [
+      "1.1.1.1 Využívám různé zdroje učení",
+      "1.1.1.3 Posoudím kvalitu zdroje učení",
+      "1.1.2.3 Učím se pomocí AI",
+      "1.1.2.2 Učím se s pomocí jiných"
+    ],
+    "urovne": "obě",
+    "anotace": "Proč je nebe modré? Kam mizí voda z louže? Jak ví mravenec, kam jde? Projekt začíná velkou sbírkou skutečných otázek dětí — a pak učí, jak na ně hledat odpovědi: v knihách, v přírodě za školou, u odborníků, experimentem i s AI. Každý zdroj má své silné a slabé stránky; cílem je umět si vybrat ten pravý a ověřit, co říká.",
+    "aktivity": [
+      "Sbírka otázek: týden sběru vlastních otázek o světě (schránka, zeď otázek), třídění a výběr",
+      "Závod zdrojů: stejná otázka řešená knihovnou, internetem, AI a dotazem odborníkovi — porovnání rychlosti a spolehlivosti",
+      "Expedice za odpovědí: pozorování a pokusy venku v přírodě (louka, potok, park) tam, kde odpověď nejde vygooglit",
+      "Napiš odborníkovi: děti formulují dotaz skutečnému vědci, instituci či řemeslníkovi a zpracují odpověď",
+      "Kniha odpovědí: společná ilustrovaná encyklopedie třídy s uvedením zdrojů u každé odpovědi"
+    ],
+    "dif2": "Zvídavé otázky o přírodě a světě kolem, jednoduché hledání a pozorování, radost z objevu.",
+    "dif3": "Strategie rešerše (klíčová slova, databáze), kombinování a citování zdrojů, kdy je nejlepším zdrojem experiment, limity AI.",
+    "loni": "Badatel"
+  },
+  {
+    "id": 45,
+    "nazev": "Filozofická dílna: umění myslet",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.7 Získávám poznatky vědeckými metodami",
+      "1.2.2.5 Dávám si věci do souvislostí"
+    ],
+    "vedlejsi": [
+      "5.3.1.2 Domlouvám se s jinými",
+      "5.3.2.3 Komunikuji poctivě",
+      "1.1.1.3 Posoudím kvalitu zdroje učení"
+    ],
+    "urovne": "obě",
+    "anotace": "Co je spravedlnost? Může být lež někdy dobrá? Jak poznám, že něco vím? Projekt podle metody filozofie pro děti (P4C): společné tázání v kruhu, stavba argumentu, hledání protipříkladů, myšlenkové experimenty. Děti se učí myslet nahlas, poctivě a spolu — dovednost, kterou za ně v éře AI nikdo neudělá.",
+    "aktivity": [
+      "Filozofické kruhy (P4C): společné tázání nad podnětem (příběh, obraz, video) — děti samy volí otázku a vedou dialog",
+      "Myšlenkové experimenty přiměřeně věku: vozíkové dilema, Théseova loď, neviditelný prsten — a co nám říkají o nás",
+      "Lov logických klamů: slaměný panák, ad hominem, falešné dilema — hledání v reklamách a diskusích",
+      "Sokratovský dialog: umění ptát se tak dlouho, až se ukáže, co doopravdy víme",
+      "Kniha velkých otázek: sbírka otázek třídy a esejů/výtvarných odpovědí; závěrečná moderovaná disputace"
+    ],
+    "dif2": "Hravé otázky (Co dělá kamaráda kamarádem? Je fér…?), příběhové a obrázkové podněty, pravidla dobrého dialogu.",
+    "dif3": "Stavba a rozbor argumentu, protipříklad, etická dilemata, argumentační fauly, psaná úvaha/esej.",
+    "loni": ""
+  },
+  {
+    "id": 48,
+    "nazev": "Světlo a zvuk: vlny, které vnímáme",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.7 Získávám poznatky vědeckými metodami"
+    ],
+    "vedlejsi": [
+      "1.1.2.9 Učím se skrze umění",
+      "8.2.5.2 Vyrábím věci a pečuji o ně",
+      "1.1.2.4 Získávám poznatky z nejazykových druhů vyjádření",
+      "1.1.2.6 Učím se činností"
+    ],
+    "urovne": "obě",
+    "anotace": "Všechno, co vidíme a slyšíme, jsou vlny — a dají se zkoumat, měřit i proměnit v umění. Projekt je velkou laboratoří optiky a akustiky: od camery obscury a rozkladu světla hranolem po vlastnoručně vyrobené hudební nástroje a mapu hluku školy. Věda a umění tu jdou ruku v ruce — vyvrcholením je stínové divadlo nebo světelná instalace.",
+    "aktivity": [
+      "Optická dílna: camera obscura, periskop, kaleidoskop; pokusy s odrazem, lomem a rozkladem světla (duha, hranol, čočky)",
+      "Zvuková laboratoř: struny, píšťaly, blány — jak vzniká tón; výroba vlastních hudebních nástrojů a společný koncert",
+      "Oko a ucho: jak smysly převádějí vlny na vjemy; optické a sluchové klamy, hranice vnímání (ultrazvuk, infrazvuk u zvířat)",
+      "Mapa hluku školy: měření hlasitosti (decibely) v různých místech a časech, návrh tišší školy",
+      "Závěrečné dílo: stínové divadlo, světelná instalace či zvuková stezka pro ostatní; exkurze do science centra"
+    ],
+    "dif2": "Kouzelné pokusy se světlem a stínem, výroba jednoduchých nástrojů, hry se zvukem a ozvěnou.",
+    "dif3": "Vlnová podstata světla a zvuku, frekvence a hlasitost, zrcadla a čočky (brýle, dalekohled), akustika prostoru, hluk a zdraví.",
+    "loni": ""
+  },
+  {
+    "id": 49,
+    "nazev": "Vesmír: výprava za hranice známého",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.2.3.1 Posiluji svou chuť učit se novým věcem"
+    ],
+    "vedlejsi": [
+      "1.1.2.7 Získávám poznatky vědeckými metodami",
+      "1.1.2.4 Získávám poznatky z nejazykových druhů vyjádření",
+      "8.2.1.3 Pracuji s jednotkami",
+      "1.1.1.2 Vyhledám relevantní zdroj učení"
+    ],
+    "urovne": "obě",
+    "anotace": "Nic nenakrmí zvídavost jako noční obloha. Projekt vede děti od údivu k poznání: pozorovací noc s dalekohledem, model sluneční soustavy v měřítku přes celou čtvrť, příběh lidského poznávání vesmíru od Galilea po Webbův teleskop a návrat na Měsíc. Vesmír tu je palivem chuti se učit — protože otázek je vždycky víc než odpovědí.",
+    "aktivity": [
+      "Pozorovací večer: Měsíc, planety a souhvězdí dalekohledem (hvězdárna či astronomický spolek); deník pozorování",
+      "Sluneční soustava v měřítku: model přes školu či obec — když je Slunce míč, jak daleko je Neptun?",
+      "Příběh objevů: Galileo, Gagarin, Apollo, Hubble a Webb, soukromé rakety — časová osa dobývání vesmíru",
+      "Stavba a start rakety: vodní či modelářské rakety, princip akce a reakce; návštěva planetária",
+      "Velké otázky: je tam někdo? Fermiho paradox a sci-fi večer s debatou; dopis mimozemské civilizaci"
+    ],
+    "dif2": "Souhvězdí a příběhy v nich, fáze Měsíce, hravé modely, údiv a otázky.",
+    "dif3": "Gravitace a oběžné dráhy, světelný rok a velká čísla, život hvězd, exoplanety a hledání života, kosmický výzkum jako věda i byznys.",
+    "loni": "Dobývání vesmíru"
+  }
+]
