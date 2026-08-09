@@ -13,7 +13,7 @@ Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
 | `data/temata_sc{4,1,5,8}.json` | témata: název, kameny, anotace, aktivity, diferenciace | ano — zdroj pravdy |
 | `data/znalosti_v3.json` | tvrdé znalosti + didaktické tipy k tématům (klíč = id tématu) | ano — zdroj pravdy |
 | `data/kameny.json` | rejstřík stavebních kamenů ScioCílů (zdroj pro záložku Rejstřík) | zřídka — referenční |
-| `data/ucitele.json` | seznam sboru pro přihlášení do hlasování | ano — před každým hlasováním |
+| `data/ucitele.json` | nastavení hlasování (kdo vede víc témat) | zřídka — jména se nezadávají |
 | `tools/build_web.py` | generátor `index.html` | zřídka |
 | `tools/build_docx.js` | generátor Word katalogu (`vystupy/`) — vyžaduje npm balíček `docx` | zřídka |
 | `tools/build_xlsx.py` | generátor Excel tabulky (`vystupy/`) — vyžaduje `openpyxl` | zřídka |
@@ -75,21 +75,26 @@ Když se SDK nenačte (offline), záložka zobrazí varovný řádek místo pád
 
 ### Přihlášení
 
-Hlasuje se pod příjmením vybraným ze seznamu v `data/ucitele.json`:
+**Jména se nezadávají dopředu.** Kdo přijde hlasovat, napíše si příjmení sám;
+každý další už dostane našeptávání z těch, kdo se zapsali dřív.
+
+Aby z překlepů nevznikali „noví“ lidé (`Novák` / `novák` / `Nováková` jako tři
+učitelé), appka jméno porovná s už zapsanými:
+
+- **liší se jen diakritikou nebo velikostí písmen** → trvá na jednotném zápisu,
+- **je o písmeno či dvě vedle** → zeptá se „Nemyslíš …?“, ale nechá pokračovat,
+- **je to skutečně jiné příjmení** → tiše zapíše jako nového.
+
+Nikoho to nezablokuje — jen se ptá. Zároveň to není bezpečnostní opatření:
+kdokoli se může zapsat pod cizím příjmením. Řeší to čistotu dat, ne zlou vůli.
+
+V `data/ucitele.json` se nastavuje jen kapacita — kolik témat kdo může vést:
 
 ```json
-{ "ucitele": [
-  { "prijmeni": "Nováková", "pocet": 2 },
-  { "prijmeni": "Svoboda" }
-] }
+{ "vychozi_pocet": 1, "kapacity": { "Nováková": 2 } }
 ```
 
-`pocet` = kolik témat může učitel vést (nepovinné, výchozí 1). Seznam se
-řadí abecedně sám. **Dokud je prázdný, hlasování je zavřené** — je to
-pojistka, aby nevznikaly hlasy na překlepy ve jménech.
-
-Není to bezpečnostní opatření: kdokoli si může vybrat cizí příjmení.
-Řeší to identitu a čistotu dat, ne ochranu před zlou vůlí.
+Jméno v `kapacity` musí sedět přesně na to, jak je zapsané v hlasování.
 
 ### Rozdělení témat
 

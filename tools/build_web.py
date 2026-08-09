@@ -30,13 +30,11 @@ import os
 _kam_path = "kameny.json" if os.path.exists("kameny.json") else "data/kameny.json"
 KAM = json.dumps(json.load(open(_kam_path, encoding="utf-8")), ensure_ascii=False)
 
-# seznam sboru pro přihlášení do hlasování (nepovinný — bez něj se hlasovat nedá)
+# nastavení hlasování: jména se nezadávají dopředu, jen kapacity (kdo vede víc témat)
 _uc_path = "data/ucitele.json"
-_uc = json.load(open(_uc_path, encoding="utf-8")).get("ucitele", []) if os.path.exists(_uc_path) else []
-_uc = [u for u in _uc if u.get("prijmeni")]
-_uc.sort(key=lambda u: u["prijmeni"].lower())
-UCITELE = json.dumps([{"prijmeni": u["prijmeni"], "pocet": int(u.get("pocet", 1))} for u in _uc],
-                     ensure_ascii=False)
+_uc = json.load(open(_uc_path, encoding="utf-8")) if os.path.exists(_uc_path) else {}
+VYCHOZI_POCET = str(int(_uc.get("vychozi_pocet", 1)))
+KAPACITY = json.dumps({k: int(v) for k, v in _uc.get("kapacity", {}).items()}, ensure_ascii=False)
 
 HTML = """<!DOCTYPE html>
 <html lang="cs">
@@ -150,6 +148,9 @@ HTML = """<!DOCTYPE html>
   #hlasSubmit{display:block; margin:10px auto; background:#1f4e5f; color:#fff; border:none; border-radius:999px; padding:9px 22px; font-size:.9rem; cursor:pointer;}
   #hlasMsg{text-align:center; font-size:.82rem; color:var(--muted); margin-top:4px;}
   #toggleResults{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
+  #hlasJmenoMsg{font-size:.78rem; margin-top:5px; min-height:1.1em;}
+  #hlasJmenoMsg .varovani{color:#92400e; background:#fef6e7; border:1px solid #f3d9a4; border-radius:8px; padding:5px 9px; display:inline-block;}
+  #hlasJmenoMsg button{border:1px solid var(--line); background:#fff; border-radius:999px; padding:2px 9px; font-size:.74rem; cursor:pointer; margin:0 4px;}
   #toggleNavrh{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
   #navrhBox{max-width:600px; margin:0 auto;}
   #navrhBox table{width:100%; border-collapse:collapse; font-size:.82rem; margin-top:8px;}
@@ -207,7 +208,10 @@ HTML = """<!DOCTYPE html>
 <main><div class="grid" id="grid"></div><div id="kamlist" style="display:none"></div>
 <div id="hlas" style="display:none">
   <p class="muted" id="hlasWarn" style="display:none; text-align:center; font-size:.8rem;">⚠ Modul hlasování se nenačetl — zkontroluj připojení k internetu a obnov stránku.</p>
-  <div class="hlasbox"><label>Přihlaš se pod svým příjmením<br><select id="hlasName"></select></label></div>
+  <div class="hlasbox"><label>Přihlaš se pod svým příjmením<br>
+    <input id="hlasName" type="text" list="hlasZnami" autocomplete="off" placeholder="např. Nováková">
+    <datalist id="hlasZnami"></datalist></label>
+    <div id="hlasJmenoMsg"></div></div>
 
   <h3>Vyber a seřaď až 8 témat — první volba má nejvyšší váhu</h3>
   <div class="hlascol"><input id="hlasSearch" type="search" placeholder="Hledat téma…">
@@ -245,7 +249,8 @@ HTML = """<!DOCTYPE html>
 <script>
 const DATA = __DATA__;
 const KAM = __KAM__;
-const UCITELE = __UCITELE__;
+const KAPACITY = __KAPACITY__, VYCHOZI_POCET = __VYCHOZI_POCET__;
+let znamiUcitele = [];   // příjmení těch, kdo už hlasovali nebo mají rezervaci
 const SCN = {SC4:"SC4 Rozvíjím svou odolnost", SC1:"SC1 Umím se učit", SC5:"SC5 Buduji dobré vztahy", SC8:"SC8 Mám život ve svých rukou"};
 const COL = {SC4:["var(--sc4)","var(--sc4bg)"], SC1:["var(--sc1)","var(--sc1bg)"], SC5:["var(--sc5)","var(--sc5bg)"], SC8:["var(--sc8)","var(--sc8bg)"]};
 const TRT = {"obě":"2. i 3. trojročí","2":"jen 2. trojročí","3":"jen 3. trojročí"};
@@ -392,21 +397,72 @@ window.addEventListener("hashchange",openFromHash);
 overlay.addEventListener("click",e=>{if(e.target===overlay) closeD();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape") closeD();});
 
+/* Jména se nezadávají dopředu — každý se zapíše sám. Aby z překlepů nevznikali
+   „noví“ lidé, appka napovídá z už zapsaných a na podobné jméno upozorní. */
+function bezDiakritiky(s){ return s.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/\\s+/g," ").trim(); }
+function vzdalenost(a,b){            // Levenshtein, na hlídání překlepů
+  const m=a.length, n=b.length;
+  if(!m||!n) return m||n;
+  let pred=[...Array(n+1).keys()];
+  for(let i=1;i<=m;i++){
+    const cur=[i];
+    for(let j=1;j<=n;j++)
+      cur[j]=Math.min(pred[j]+1, cur[j-1]+1, pred[j-1]+(a[i-1]===b[j-1]?0:1));
+    pred=cur;
+  }
+  return pred[n];
+}
+function podobneJmeno(jm){
+  const n=bezDiakritiky(jm);
+  if(!n) return null;
+  const shoda = znamiUcitele.find(u=>bezDiakritiky(u)===n && u!==jm);
+  if(shoda) return {jmeno:shoda, stejne:true};        // liší se jen diakritikou/velikostí
+  const blizko = znamiUcitele.filter(u=>{
+    const d=vzdalenost(n,bezDiakritiky(u));
+    return d>0 && d<=(n.length<=5?1:2);
+  });
+  return blizko.length ? {jmeno:blizko[0], stejne:false} : null;
+}
+async function nactiZname(){
+  if(!sb) return;
+  const [{data:v},{data:a}] = await Promise.all([
+    sb.from("votes").select("teacher"), sb.from("assignments").select("teacher")
+  ]);
+  znamiUcitele = [...new Set([...(v||[]),...(a||[])].map(r=>r.teacher))].sort((x,y)=>x.localeCompare(y,"cs"));
+  document.getElementById("hlasZnami").innerHTML = znamiUcitele.map(u=>`<option value="${u}">`).join("");
+}
+function zkontrolujJmeno(){
+  const el=document.getElementById("hlasName"), box=document.getElementById("hlasJmenoMsg");
+  const jm=el.value.trim();
+  box.innerHTML="";
+  if(!jm) return;
+  const p=podobneJmeno(jm);
+  if(!p){
+    if(!znamiUcitele.includes(jm)) box.innerHTML=`<span class="muted">Zapisuješ se poprvé jako <b>${jm}</b>.</span>`;
+    return;
+  }
+  box.innerHTML = p.stejne
+    ? `<span class="varovani">Už tu hlasuje <b>${p.jmeno}</b> — použij stejný zápis.
+       <button onclick="pouzijJmeno('${p.jmeno.replace(/'/g,"\\\\'")}')">Použít ${p.jmeno}</button></span>`
+    : `<span class="varovani">Nemyslíš <b>${p.jmeno}</b>?
+       <button onclick="pouzijJmeno('${p.jmeno.replace(/'/g,"\\\\'")}')">Ano, jsem ${p.jmeno}</button>
+       <span class="muted">Jinak pokračuj, zapíšu tě jako ${jm}.</span></span>`;
+}
+function pouzijJmeno(jm){
+  const el=document.getElementById("hlasName");
+  el.value=jm; localStorage.setItem("hlasName",jm);
+  zkontrolujJmeno(); loadMyVotes(); renderRez();
+}
 function initHlas(){
   if(!sb) document.getElementById("hlasWarn").style.display="";
   const nameEl = document.getElementById("hlasName");
-  // seznam sboru; bez něj se hlasovat nedá (jinak by vznikaly hlasy na překlepy)
-  const ulozene = localStorage.getItem("hlasName") || "";
-  const zname = UCITELE.some(u=>u.prijmeni===ulozene) ? ulozene : "";
-  nameEl.innerHTML = '<option value="">— vyber své příjmení —</option>' +
-    UCITELE.map(u=>`<option${u.prijmeni===zname?" selected":""}>${u.prijmeni}</option>`).join("");
-  if(!UCITELE.length){
-    nameEl.innerHTML = '<option value="">Seznam sboru není vyplněný</option>';
-    nameEl.disabled = true;
-    document.getElementById("hlasMsg").textContent =
-      "Hlasování zatím není otevřené — chybí seznam sboru (data/ucitele.json).";
-  }
-  nameEl.addEventListener("change", e=>{ localStorage.setItem("hlasName", e.target.value); loadMyVotes(); renderRez(); });
+  nameEl.value = localStorage.getItem("hlasName") || "";
+  nactiZname().then(zkontrolujJmeno);
+  nameEl.addEventListener("change", e=>{
+    const jm=e.target.value.trim(); e.target.value=jm;
+    localStorage.setItem("hlasName", jm);
+    zkontrolujJmeno(); loadMyVotes(); renderRez();
+  });
   document.getElementById("hlasSearch").addEventListener("input", renderPickList);
   document.getElementById("hlasSubmit").addEventListener("click", submitVotes);
   document.getElementById("toggleResults").addEventListener("click", toggleResults);
@@ -461,8 +517,7 @@ async function submitVotes(){
   const msg = document.getElementById("hlasMsg");
   if(!sb){ msg.textContent="Hlasování není momentálně dostupné."; return; }
   const name = document.getElementById("hlasName").value.trim();
-  if(!name){ msg.textContent="Nejdřív se přihlaš — vyber své příjmení."; return; }
-  if(!UCITELE.some(u=>u.prijmeni===name)){ msg.textContent="Neznámé příjmení."; return; }
+  if(!name){ msg.textContent="Nejdřív napiš své příjmení."; return; }
   if(!myPicks.length){ msg.textContent="Vyber aspoň jedno téma."; return; }
   localStorage.setItem("hlasName", name);
   msg.textContent = "Ukládám…";
@@ -470,6 +525,7 @@ async function submitVotes(){
   const rows = myPicks.map((id,i)=>({teacher:name, topic_id:id, rank:i+1}));
   const {error} = await sb.from("votes").insert(rows);
   msg.textContent = error ? "Chyba: "+error.message : "Uloženo ✓ ("+rows.length+" hlasů)";
+  if(!error) nactiZname();
 }
 async function renderRez(){
   const el = document.getElementById("rezList");
@@ -489,7 +545,7 @@ async function renderRez(){
 async function reserve(id){
   if(!sb) return;
   const name = document.getElementById("hlasName").value.trim();
-  if(!name){ alert("Nejdřív se přihlaš — vyber své příjmení nahoře."); return; }
+  if(!name){ alert("Nejdřív napiš své příjmení nahoře."); return; }
   localStorage.setItem("hlasName", name);
   const {error} = await sb.from("assignments").insert({topic_id:id, teacher:name});
   if(error) alert("Téma už má někdo rezervované.");
@@ -586,13 +642,17 @@ async function toggleNavrh(){
   // rezervace jsou dané — učiteli uberou jeden slot, tématu možnost jít jinam
   const pevne = rezervace.map(r=>({ucitel:r.teacher, id:r.topic_id, fix:true, body:bod[r.teacher+"|"+r.topic_id]||0}));
   const obsazena = new Set(rezervace.map(r=>r.topic_id));
+
+  // učitelé = ti, kdo se zapsali (hlasovali nebo mají rezervaci)
+  const ucitele = [...new Set([...hlasy,...rezervace].map(r=>r.teacher))].sort((a,b)=>a.localeCompare(b,"cs"));
+  const kapacita = u => (KAPACITY[u]!==undefined ? KAPACITY[u] : VYCHOZI_POCET);
   const zbyva = {};
-  for(const u of UCITELE) zbyva[u.prijmeni] = u.pocet;
+  for(const u of ucitele) zbyva[u] = kapacita(u);
   for(const r of rezervace) if(zbyva[r.teacher]!==undefined) zbyva[r.teacher]--;
 
   // sloty = učitel × zbývající kapacita
   const slots=[];
-  for(const u of UCITELE) for(let k=0;k<Math.max(0,zbyva[u.prijmeni]);k++) slots.push(u.prijmeni);
+  for(const u of ucitele) for(let k=0;k<Math.max(0,zbyva[u]);k++) slots.push(u);
   const volna = DATA.map(t=>t.id).filter(id=>!obsazena.has(id));
   const navrh = rozdel(slots, volna, (ucitel,id)=>bod[ucitel+"|"+id]||0)
                   .map(x=>({ucitel:x.slot, id:x.topic, fix:false, body:x.score}));
@@ -603,17 +663,17 @@ async function toggleNavrh(){
 
   let html=`<table><tr><th>Učitel</th><th>Téma</th><th>Volba</th></tr>`;
   for(const r of vse) html+=`<tr class="${r.fix?"fix":""}"><td>${r.ucitel}</td><td>${nazev(r.id)}${r.fix?" <span class='muted'>(rezervováno)</span>":""}</td><td class="volba">${poradi(r.ucitel,r.id)}</td></tr>`;
-  const bezTematu = UCITELE.map(u=>u.prijmeni).filter(u=>!vse.some(r=>r.ucitel===u));
+  const bezTematu = ucitele.filter(u=>!vse.some(r=>r.ucitel===u));
   for(const u of bezTematu) html+=`<tr class="nic"><td>${u}</td><td>— bez tématu —</td><td class="volba">—</td></tr>`;
   html+=`</table>`;
 
   const prvni=vse.filter(r=>poradi(r.ucitel,r.id)==="1. volba").length;
   const soucet=vse.reduce((a,r)=>a+r.body,0);
-  const nehlasovali=UCITELE.map(u=>u.prijmeni).filter(u=>!hlasy.some(h=>h.teacher===u));
-  html+=`<div class="navrhSouhrn">Rozděleno <b>${vse.length}</b> témat ze ${DATA.length}.
-    První volbu dostalo <b>${prvni}</b> z ${vse.length}. Součet preferencí <b>${soucet}</b> bodů.`;
+  html+=`<div class="navrhSouhrn">Zapsaných učitelů: <b>${ucitele.length}</b> ·
+    rozdělených témat: <b>${vse.length}</b> z ${DATA.length} ·
+    první volbu dostalo <b>${prvni}</b> z ${vse.length} ·
+    součet preferencí <b>${soucet}</b> bodů.`;
   if(bezTematu.length) html+=`<br>Bez tématu: ${bezTematu.join(", ")}.`;
-  if(nehlasovali.length) html+=`<br>Zatím nehlasovali: ${nehlasovali.join(", ")}.`;
   html+=`</div>`;
   box.innerHTML=html;
 }
@@ -642,6 +702,7 @@ openFromHash();
 """
 
 html = (HTML.replace("__DATA__", DATA).replace("__KAM__", KAM)
-            .replace("__UCITELE__", UCITELE).replace("__VERSION__", VERSION))
+            .replace("__KAPACITY__", KAPACITY).replace("__VYCHOZI_POCET__", VYCHOZI_POCET)
+            .replace("__VERSION__", VERSION))
 open("index.html", "w", encoding="utf-8", newline="\n").write(html)
 print(f"OK index.html ({len(html)//1024} kB, {len(topics)} témat, verze {VERSION})")

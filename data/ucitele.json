@@ -1,7 +1,8 @@
 {
-  "_naplneni": "Seznam sboru pro přihlášení do hlasování. Uprav a přegeneruj: python3 tools/build_web.py",
-  "_pocet": "Kolik témat může učitel vést. Nepovinné, výchozí 1.",
-  "ucitele": [
-    { "prijmeni": "UKÁZKA – nahraď skutečnými příjmeními", "pocet": 1 }
-  ]
+  "_popis": "Nastavení hlasování. Jména se NEVYPLŇUJÍ dopředu — každý se zapíše sám při prvním hlasování.",
+  "_vychozi_pocet": "Kolik témat může vést jeden učitel, když není uveden v 'kapacity'.",
+  "vychozi_pocet": 1,
+
+  "_kapacity": "Výjimky: kdo může vést víc (nebo míň) témat. Klíč = příjmení přesně tak, jak je zapsané v hlasování.",
+  "kapacity": {}
 }
