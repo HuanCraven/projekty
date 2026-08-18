@@ -23,6 +23,7 @@
       "Pokusy se soustředěním: vliv hluku, multitaskingu a mobilního telefonu na výkon",
       "Tvorba osobního „návodu k použití mého mozku“ — kdy, kde a jak se mi nejlépe učí"
     ],
+    "dif1": "Hravé pokusy s pamětí a pozorností, objevování, že se různé věci učím různě (zpaměti, opakováním, hrou), jednoduché všímání si, kdy mi učení jde a kdy ne.",
     "dif2": "Hravé experimenty s pamětí a pozorností, jednoduché techniky zapamatování, objevování jak se učím.",
     "dif3": "Neurony a synapse, kognitivní procesy, metakognice, efektivní příprava na zkoušky a prezentace.",
     "loni": ""
@@ -48,6 +49,7 @@
       "Experiment: naučit se něco s AI vs. bez AI, porovnání výsledků a prožitku",
       "Etická debata: kdy je použití AI podvod a kdy chytré učení; pravidla pro naši školu"
     ],
+    "dif1": "S pomocí dospělého první opatrné vyzkoušení jednoduchého rozhovoru s AI, vědomí, že AI se může splést, pravidlo neposílat AI své osobní údaje.",
     "dif2": "Bezpečné první kroky s AI, jednoduché ověřování, AI jako pomocník při zvídavých otázkách.",
     "dif3": "Principy fungování LLM, halucinace a zkreslení, pokročilé promptování, AI a autorství, dopad na vlastní kompetence.",
     "loni": ""
@@ -73,6 +75,7 @@
       "Exkurze do redakce novin či televize, beseda s novinářem o práci se zdroji",
       "Mediální detox a rozbor vlastní informační diety: odkud beru zprávy a kdo mi je vybírá"
     ],
+    "dif1": "Rozlišování pohádky, reklamy a skutečné zprávy, jednoduché ověření „je to opravdu pravda?“ u dospělého, bezpečné chování při hledání na internetu.",
     "dif2": "Rozlišování reklamy, pohádky a zprávy, jednoduché ověřování, bezpečné chování na internetu.",
     "dif3": "Dezinformační ekosystém, algoritmy a bubliny, argumentační fauly, AI generovaný obsah a deepfakes.",
     "loni": "Média; Informační gramotnost; Proměna a vývoj médií"
@@ -98,6 +101,7 @@
       "Exkurze na vědecké pracoviště (AV ČR, univerzita, science centrum) nebo beseda s vědcem",
       "Závěrečná minikonference: postery, prezentace a vzájemné oponentury"
     ],
+    "dif1": "Jednoduché pokusy s jasně viditelným efektem (potápění, klíčení), radost z pozorování a kladení otázek „co se stane, když…“, společný zápis toho, co jsme zjistili.",
     "dif2": "Jednodušší pokusy s jasným efektem, důraz na pozorování a údiv, společné vyhodnocení.",
     "dif3": "Kontrolní skupina, proměnné a férový test, statistické vyhodnocení, kritika metodologie ostatních týmů.",
     "loni": "Badatel; Vytváření senzoru; Chemie"
@@ -124,6 +128,7 @@
       "Larp či rolová hra na zvolené téma (historická událost, fungování státu, obchod)",
       "Herní festival: děti učí ostatní hrát své hry, sběr zpětné vazby"
     ],
+    "dif1": "Hraní a objevování, že se při hře něco naučím, jednoduché úpravy pravidel oblíbené hry, výroba vlastní jednoduché hry pro kamarády.",
     "dif2": "Hraní a jednoduché úpravy pravidel, výroba vlastní jednoduché hry, hodně prožitku.",
     "dif3": "Game design do hloubky (balance, testování, iterace), gamifikace vlastního učení, kritický pohled na návykové mechanismy her.",
     "loni": ""
@@ -149,6 +154,7 @@
       "Setkání s umělcem: jak vzniká dílo, čím ho umění živí a co ho naučilo",
       "Vernisáž vlastní tvorby pro rodiče a školu"
     ],
+    "dif1": "Volná tvorba bez strachu z výsledku, hravé seznámení s různými technikami (malba, hudba, pohyb), návštěva výstavy s jednoduchým povídáním o tom, co se mi líbilo.",
     "dif2": "Prožitková tvorba beze strachu z výsledku, hravé seznámení s uměleckými technikami.",
     "dif3": "Interpretace a kontext děl, umělecké směry, vlastní autorský záměr a jeho obhajoba, umění jako komentář společnosti.",
     "loni": "Hurá do galerie; Středověké umění; Literatura"
@@ -175,6 +181,7 @@
       "Rozhovor s pamětníkem (metoda orální historie) a jeho porovnání s písemnými zdroji — kde se liší a proč",
       "Výstava či podcast „Stopy minulosti“: děti prezentují svá zjištění s uvedením pramenů"
     ],
+    "dif1": "Hmatatelné prameny jako staré fotky nebo předměty z domova, povídání s prarodiči o tom, jak to bylo dřív, jednoduché porovnání „tenkrát a teď“.",
     "dif2": "Hmatatelné prameny (předměty, fotky, pověsti), historie rodiny a okolí školy, jednoduché porovnání dvou zdrojů.",
     "dif3": "Kritika pramenů (kdo, komu, proč psal), primární vs. sekundární zdroj, propaganda v pramenech, práce s digitálními archivy.",
     "loni": "Příběhy kolem nás; Středověk; Starověké civilizace"
@@ -202,6 +209,7 @@
       "Vlastní pokus o řemeslo: pod vedením mistra si vyrobit či opravit konkrétní věc",
       "Závěrečná „mapa mistrů“ — průvodce po zajímavých lidech a oborech v okolí školy"
     ],
+    "dif1": "Kratší návštěvy blízkých řemeslníků a provozů s jednoduchým vyzkoušením, zvídavé otázky „jak to děláte“, radost ze setkání s dospělými, kteří něco umí.",
     "dif2": "Kratší návštěvy s jednoduchým vyzkoušením, důraz na zážitek a zvídavé otázky.",
     "dif3": "Vícedenní minipraxe u vybraného mistra, samostatné domlouvání návštěv, vztah k volbě vlastní profesní cesty.",
     "loni": "Praxe"
@@ -227,6 +235,7 @@
       "Orientační výprava městem jen podle plánů, řádů a schémat MHD",
       "Tvorba infografiky na zvolené téma pro školní chodbu"
     ],
+    "dif1": "Hravé čtení jednoduchých značek a piktogramů, orientace podle obrázkového plánku školy nebo okolí, kreslení vlastní jednoduché mapy.",
     "dif2": "Základní čtení map, značek a jednoduchých grafů, hravá orientace v terénu.",
     "dif3": "Komplexní datové vizualizace, vrstevnice a GPS, schémata systémů, kritika manipulativních vizualizací.",
     "loni": "Mapy"
@@ -253,6 +262,7 @@
       "Napiš odborníkovi: děti formulují dotaz skutečnému vědci, instituci či řemeslníkovi a zpracují odpověď",
       "Kniha odpovědí: společná ilustrovaná encyklopedie třídy s uvedením zdrojů u každé odpovědi"
     ],
+    "dif1": "Sbírání vlastních otázek o světě kolem, hledání odpovědí pozorováním venku (louka, potok) a v knihách, radost z objevu.",
     "dif2": "Zvídavé otázky o přírodě a světě kolem, jednoduché hledání a pozorování, radost z objevu.",
     "dif3": "Strategie rešerše (klíčová slova, databáze), kombinování a citování zdrojů, kdy je nejlepším zdrojem experiment, limity AI.",
     "loni": "Badatel"
@@ -279,6 +289,7 @@
       "Sokratovský dialog: umění ptát se tak dlouho, až se ukáže, co doopravdy víme",
       "Kniha velkých otázek: sbírka otázek třídy a esejů/výtvarných odpovědí; závěrečná moderovaná disputace"
     ],
+    "dif1": "Jednoduché otázky nad příběhem nebo obrázkem (Je fér, když…? Co dělá kamaráda kamarádem?), pravidla dobrého povídání v kruhu — nasloucháme, nepřerušujeme.",
     "dif2": "Hravé otázky (Co dělá kamaráda kamarádem? Je fér…?), příběhové a obrázkové podněty, pravidla dobrého dialogu.",
     "dif3": "Stavba a rozbor argumentu, protipříklad, etická dilemata, argumentační fauly, psaná úvaha/esej.",
     "loni": ""
@@ -305,6 +316,7 @@
       "Mapa hluku školy: měření hlasitosti (decibely) v různých místech a časech, návrh tišší školy",
       "Závěrečné dílo: stínové divadlo, světelná instalace či zvuková stezka pro ostatní; exkurze do science centra"
     ],
+    "dif1": "Kouzelné pokusy se světlem a stínem (kaleidoskop, stínové divadlo), výroba jednoduchého hudebního nástroje, hry se zvukem a ozvěnou.",
     "dif2": "Kouzelné pokusy se světlem a stínem, výroba jednoduchých nástrojů, hry se zvukem a ozvěnou.",
     "dif3": "Vlnová podstata světla a zvuku, frekvence a hlasitost, zrcadla a čočky (brýle, dalekohled), akustika prostoru, hluk a zdraví.",
     "loni": ""
@@ -331,6 +343,7 @@
       "Stavba a start rakety: vodní či modelářské rakety, princip akce a reakce; návštěva planetária",
       "Velké otázky: je tam někdo? Fermiho paradox a sci-fi večer s debatou; dopis mimozemské civilizaci"
     ],
+    "dif1": "Pozorování noční oblohy a Měsíce, pohádky a příběhy o vesmíru, jednoduchý model sluneční soustavy, radost z velkých otázek (Je tam někdo?).",
     "dif2": "Souhvězdí a příběhy v nich, fáze Měsíce, hravé modely, údiv a otázky.",
     "dif3": "Gravitace a oběžné dráhy, světelný rok a velká čísla, život hvězd, exoplanety a hledání života, kosmický výzkum jako věda i byznys.",
     "loni": "Dobývání vesmíru"

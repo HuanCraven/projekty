@@ -21,6 +21,7 @@
       "Exkurze do banky či ČNB (Lidé a peníze), beseda s finančním poradcem nebo podnikatelem",
       "Historie a podoby peněz: od mušlí po kryptoměny; padělky a ochranné prvky"
     ],
+    "dif1": "Poznávání mincí a bankovek, kolik co stojí (zmrzlina, časopis), první zkušenost s vlastním kapesným a jednoduchým rozhodováním, co za něj koupím.",
     "dif2": "Hodnota peněz, kapesné a spoření, jednoduché nákupy a porovnání cen, reklamní triky.",
     "dif3": "Úrok a úročení, inflace, investiční trojúhelník, past rychlých půjček, hrubá vs. čistá mzda, kryptoměny kriticky.",
     "loni": "Peníze; Padělatelství (nejen peníze)"
@@ -47,6 +48,7 @@
       "Prodej naostro: školní jarmark, kavárna, e-shop na jeden den — se skutečnými penězi",
       "Vyúčtování a reflexe: zisk/ztráta a proč, prezentace pro „investory“ (rodiče, průvodce)"
     ],
+    "dif1": "Jednoduchý společný „obchod“ pro rodiče či spolužáky (limonáda, výrobky), základní počítání s penězi, radost z prodeje vlastní práce.",
     "dif2": "Jednoduchý společný podnik (stánek, výrobky), základní počty, radost z prodeje.",
     "dif3": "Konkurenční týmy, reálná kalkulace včetně marže a DPH, pitch před porotou, právní minimum podnikání.",
     "loni": "Podnikání a startup (s hostem P. Ocáskem)"
@@ -73,6 +75,7 @@
       "Pohovor nanečisto: životopis, sebeprezentace, otázky a odpovědi — s reálnými dospělými v roli náborářů",
       "Moje profesní mapa: silné stránky, zájmy, možné cesty a jejich vzdělávací požadavky (SŠ, učení, kurzy)"
     ],
+    "dif1": "Poznávání profesí kolem sebe (co dělá maminka, řidič autobusu, paní v obchodě), hraní na povolání, návštěvy pracovišť rodičů.",
     "dif2": "Poznávání profesí hravě: kdo co dělá, návštěvy provozů, hraní povolání.",
     "dif3": "Těžiště úrovně 3: volba střední školy, přijímačky, životopis a pohovor, plán B, brigády a první pracovní zkušenosti.",
     "loni": "Praxe; TechLife: Chytrý svět"
@@ -99,6 +102,7 @@
       "Den podle plánu: navrhnout a prožít ideálně rozvržený den, reflexe rozdílu mezi plánem a realitou",
       "Čas v kulturách a dějinách: kalendáře, hodiny, proč spěcháme — filozofická dílna o čase"
     ],
+    "dif1": "Orientace v denním rytmu a jednoduchém obrázkovém plánu dne, vědomí, co mě čeká zítra, hledání rovnováhy mezi školou, kroužky a hraním.",
     "dif2": "Orientace v čase a kalendáři, jednoduché denní plány, rovnováha školy, kroužků a hraní.",
     "dif3": "Prioritizace (důležité vs. naléhavé), dlouhodobé plánování, prokrastinace do hloubky, digitální kalendáře a připomínky.",
     "loni": ""
@@ -126,6 +130,7 @@
       "Praní, žehlení, drobné opravy a úklid: kolotoč praktických stanovišť",
       "Závěrečná „zkouška dospělosti“: den či přespání, kdy si skupina vše zajistí sama (jídlo, program, rozpočet)"
     ],
+    "dif1": "Základní sebeobsluha: namazat si chleba, ustlat postel, uklidit své věci, nakoupit podle jednoduchého obrázkového seznamu s doprovodem.",
     "dif2": "Základní sebeobsluha: jednoduchá jídla, nákup podle seznamu, úklid, péče o své věci.",
     "dif3": "Rozpočet domácnosti včetně bydlení a energií, spotřebitelská práva a reklamace, srovnání nájem/vlastní, plnohodnotná samostatnost.",
     "loni": ""
@@ -154,6 +159,7 @@
       "Exkurze k hasičům či na krizové řízení města, beseda se záchranářem",
       "Simulované krize v týmech: blackout, ztracený člen, zranění na výletě — jednání podle postupu Zastav se–Zhodnoť–Naplánuj–Jednej"
     ],
+    "dif1": "Důležitá telefonní čísla a přivolání dospělého, chování při požárním poplachu, bezpečný pohyb venku, jednoduché tábornické dovednosti s dospělým.",
     "dif2": "Základy: důležitá čísla, přivolání pomoci, chování při požáru, bezpečný pohyb venku, jednoduché tábornické dovednosti.",
     "dif3": "Analýza rizik, krizové scénáře a jejich vedení, příprava rodiny na výpadky, dezinformace v krizích.",
     "loni": "Civilní ochrana a přežití"
@@ -179,6 +185,7 @@
       "Realistické simulace s namaskovanými zraněními a figuranty, práce v týmu pod tlakem",
       "Závěrečná zkouška: soutěžní okruh stanovišť první pomoci; příprava lekce první pomoci pro mladší děti"
     ],
+    "dif1": "Přivolání pomoci (dospělý, tísňová linka), ošetření drobného škrábance náplastí, zotavovací poloha vyzkoušená na plyšákovi, beze strachu z krve.",
     "dif2": "Přivolání pomoci, ošetření drobných poranění, zotavovací poloha, beze strachu z krve.",
     "dif3": "Plná resuscitace včetně AED, třídění při více zraněných, krizové vedení zásahu laiky, psychická první pomoc.",
     "loni": "1. pomoc"
@@ -205,6 +212,7 @@
       "Exkurze do dílny, výrobny či makerspace/FabLabu (3D tisk, laser) a práce tam",
       "Jarmark či aukce výrobků, případně výroba vybavení pro školu"
     ],
+    "dif1": "Práce s jednoduchými materiály (papír, karton, hlína) a bezpečnými nástroji pod dohledem, výroba podle jednoduchého návodu, hrdost na hotový výrobek.",
     "dif2": "Jednodušší materiály a ruční nástroje, práce podle návodu, radost z hotového výrobku.",
     "dif3": "Vlastní návrh s technickým výkresem, elektrifikované nářadí, kombinace materiálů, kalkulace ceny výrobku, 3D tisk.",
     "loni": "3D tisk; Vytváření senzoru"
@@ -230,6 +238,7 @@
       "Exkurze na farmu, do zahradnictví či záchranné stanice; beseda s farmářem",
       "Sklizňová slavnost: vaření z vypěstovaného, výrobky (bylinková sůl, sirup), kompost a koloběh živin"
     ],
+    "dif1": "Každodenní péče o záhon nebo zvíře (zalévání, krmení), pozorování růstu a proměn, radost z vlastní sklizně a ochutnávky.",
     "dif2": "Těžiště úrovně 2: každodenní péče, pozorování, radost ze sklizně, vztah ke zvířatům.",
     "dif3": "Plánování produkce, ekonomika malé farmy, půda a udržitelnost, šlechtění a osiva, automatizace zálivky.",
     "loni": "Slepice a odpadky; Hlídáme planetu"
@@ -256,6 +265,7 @@
       "Simulovaný soudní proces: role žalobce, obhájce, svědků a poroty na vymyšleném případu",
       "Odpovědnost mladistvých: co mi hrozí v 13, 15, 18 letech; brigády, podpisy, trestní odpovědnost"
     ],
+    "dif1": "Téma zůstává určeno primárně 3. trojročí; pro 1. trojročí nahrazeno základem, na kterém právo stojí — co je slib a proč ho dodržet, co je moje a co půjčené, proč existují pravidla.",
     "dif2": "—",
     "dif3": "Určeno primárně 3. trojročí; práce s reálnými dokumenty, důraz na situace blízké věku (brigády, nákupy online, odpovědnost za škodu, digitální podpisy).",
     "loni": ""
@@ -282,6 +292,7 @@
       "Mapa institucí: kdo mi vydá občanku, kdo opravuje silnici, kdo mě soudí, co dělá EU/NATO/OSN — a kam se obrátit se skutečným podnětem",
       "Občanský projekt naostro: podnět či petice k reálnému problému v okolí školy (přechod, hřiště, koš)"
     ],
+    "dif1": "Pravidla naší třídy jako malý stát — kdo je rozhoduje a jak, hravé hlasování o společné věci, poznávání, kdo se stará o školu a ulici.",
     "dif2": "Obec a pravidla kolem nás: kdo se stará o školu, ulici, park; hravé hlasování a třídní pravidla jako malý stát.",
     "dif3": "Ústava a dělba moci, volební systémy, EU/NATO/OSN a jejich role, obrana demokracie, jak podat podnět/petici/stížnost.",
     "loni": ""
@@ -308,6 +319,7 @@
       "Automatizace úkolu: blokové programování či jednoduchý robot — nechat stroj dělat opakovanou práci",
       "Exkurze do serverovny, IT firmy či FabLabu; beseda s vývojářem o tom, jak technologie mění práci"
     ],
+    "dif1": "Rozebírání a poznávání součástek starého zařízení, jednoduché blokové programování nebo ovládání robota, hra na to, jak putuje zpráva od jednoho k druhému.",
     "dif2": "Rozebírání a poznávání součástek, síťové hry naživo, jednoduché programování robota, šifry.",
     "dif3": "Principy a limity AI (trénovací data, zkreslení), cloud a bezpečnost, automatizace a budoucnost profesí, vlastní miniprojekt (senzor, aplikace, model).",
     "loni": "TechLife: Chytrý svět; Vytváření senzoru; 3D tisk"
@@ -334,6 +346,7 @@
       "Bezpečnost: co elektřina udělá s tělem, jističe a proudový chránič, první pomoc při úrazu elektřinou",
       "Exkurze do elektrárny či rozvodny (vodní, jaderné infocentrum) a debata: čím svítit v roce 2050"
     ],
+    "dif1": "Bezpečné pokusy se stavebnicí obvodů (baterka, žárovka, spínač), pravidlo nestrkat nic do zásuvky, jednoduchý pokus s citronovou baterkou.",
     "dif2": "Bezpečné obvody ze stavebnic, jednoduché pokusy (statická elektřina, citronová baterie), základní pravidla bezpečnosti.",
     "dif3": "Proud, napětí, odpor a výkon v praxi; výroba a přenos elektřiny, obnovitelné vs. jaderné zdroje, výpočty spotřeby a ceny (kWh).",
     "loni": ""

@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.18-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.18-02"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -374,6 +374,7 @@ function openD(id){
   if(t.znalosti&&t.znalosti.length) h+=sec("Tvrdé znalosti — příklady učiva",`<ul>${t.znalosti.map(z=>`<li>${z}</li>`).join("")}</ul>`);
   if(t.didaktika&&t.didaktika.length) h+=sec("Z didaktiky ScioCíle",`<ul>${t.didaktika.map(d=>`<li>${d}</li>`).join("")}</ul>`);
   let dif=`<div class="difbox">`;
+  if(t.dif1 && t.dif1!=="—") dif+=`<b>1. trojročí:</b> ${t.dif1}<br>`;
   if(t.dif2!=="—") dif+=`<b>2. trojročí:</b> ${t.dif2}<br>`;
   dif+=`<b>3. trojročí:</b> ${t.dif3}</div>`;
   h+=sec("Diferenciace podle trojročí",dif);
