@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.09-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.18-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -280,12 +280,13 @@ function renderKam(){
     const sc = "SC"+c.split(".")[0];
     if(fSC!=="vse" && sc!==fSC) continue;
     const info = KAM[c];
-    if(nq && !norm(c+" "+info.n+" "+info.u2+" "+info.u3).includes(nq)) continue;
+    if(nq && !norm(c+" "+info.n+" "+info.u1+" "+info.u2+" "+info.u3).includes(nq)) continue;
     cnt++;
     const g = c.split(".")[0];
     if(g!==lastG){ html+=`<h3 style="color:var(--${sc.toLowerCase()})">${grpName[g]}</h3>`; lastG=g; }
     const idx = KIDX[c]||{lead:[],side:[]};
     let body="";
+    if(info.u1) body+=`<div class="urov"><b>Úroveň 1 (1. trojročí):</b> ${info.u1}</div>`;
     if(info.u2) body+=`<div class="urov"><b>Úroveň 2 (2. trojročí):</b> ${info.u2}</div>`;
     if(info.u3) body+=`<div class="urov"><b>Úroveň 3 (3. trojročí):</b> ${info.u3}</div>`;
     const chips=["p","z","s","d"].filter(x=>info[x]).map(x=>`<button onclick="bub(event,'${c}','${x}')">${MTIT[x]}</button>`).join("");
@@ -333,12 +334,13 @@ const MTIT = {p:"Postoje", z:"Znalosti", s:"Sebeznalosti", d:"Dovednosti"};
 function kamHtml(k, lead){
   const code = k.split(" ")[0].replace(/\\.$/,"");
   const info = KAM[code];
-  if(!info || (!info.u2 && !info.u3 && !info.p && !info.z && !info.s && !info.d))
+  if(!info || (!info.u1 && !info.u2 && !info.u3 && !info.p && !info.z && !info.s && !info.d))
     return `<div style="padding:5px 0; font-size:.88rem; ${lead?"font-weight:600;":""}">${k}</div>`;
   let body = "";
+  if(info.u1) body += `<div class="urov"><b>Úroveň 1 (1. trojročí):</b> ${info.u1}</div>`;
   if(info.u2) body += `<div class="urov"><b>Úroveň 2 (2. trojročí):</b> ${info.u2}</div>`;
   if(info.u3) body += `<div class="urov"><b>Úroveň 3 (3. trojročí):</b> ${info.u3}</div>`;
-  if(!info.u2 && !info.u3) body += `<div class="urov" style="color:var(--muted)">Úrovně u tohoto kamene zatím nejsou ve zdroji rozpracované.</div>`;
+  if(!info.u1 && !info.u2 && !info.u3) body += `<div class="urov" style="color:var(--muted)">Úrovně u tohoto kamene zatím nejsou ve zdroji rozpracované.</div>`;
   const chips = ["p","z","s","d"].filter(x=>info[x]).map(x=>
     `<button onclick="bub(event,'${code}','${x}')">${MTIT[x]}</button>`).join("");
   if(chips) body += `<div class="chipsmini">${chips}</div>`;
