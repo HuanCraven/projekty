@@ -51,8 +51,11 @@ pip install openpyxl && npm install
 - Označení zdrojů („ŠVP (Ú2):", „RVP – ") zůstává v datech, ale generátory ho
   z výstupů odstraňují — ve webu, Wordu i Excelu se nezobrazuje.
 - Úroveň 2 ≈ 6. ročník, úroveň 3 ≈ 9. ročník (dle ŠVP).
-- Většina témat je společná pro obě trojročí; jen pro 3. trojročí: č. 26 (Láska,
-  vztahy a hranice) a č. 40 (Právo pro život).
+- Většina témat je společná pro obě trojročí; jen pro 3. trojročí je č. 40
+  (Právo pro život). Č. 26 (Láska, vztahy a hranice) bylo v srpnu 2026 otevřeno
+  i 2. trojročí — Úroveň 2 u jeho kamenů (5.2.4.1–3, 5.2.1.2, 5.1.1.6) tento
+  obsah pro 2. trojročí přímo popisuje, takže dřívější omezení bylo v rozporu
+  se zdrojem. Rozdíl mezi trojročími nese `dif2`/`dif3`, ne dostupnost tématu.
 - Kontrolu pokrytí kamenů hlásí `build_xlsx.py` (záměrně nepokrytý jen 5.2.3.3).
 
 ## Záložka Hlasování
