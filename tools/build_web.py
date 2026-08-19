@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.19-03"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.19-04"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -163,6 +163,9 @@ HTML = """<!DOCTYPE html>
   #hlas h3{max-width:560px; margin:16px auto 8px; font-size:.95rem;}
   #hlas p.muted{max-width:560px; margin:0 auto 8px; font-size:.8rem;}
   .muted{color:var(--muted);}
+  .hlasinfo{max-width:560px; margin:0 auto 16px; background:#eef4f6; border:1px solid #cfe0e6;
+            border-left:4px solid #1f4e5f; border-radius:10px; padding:11px 14px; font-size:.85rem; line-height:1.5;}
+  .hlasinfo b{color:#1f4e5f;}
   .hlasbox{max-width:480px; margin:0 auto 14px;}
   .hlasbox input, #hlasSearch{width:100%; padding:8px 12px; border:1px solid var(--line); border-radius:8px; font-size:.9rem; background:#fff;}
   .hlascol{max-width:560px; margin:0 auto 10px;}
@@ -280,7 +283,8 @@ HTML = """<!DOCTYPE html>
     <dt>Rejstřík kamenů</dt><dd>Obrácený pohled — vyjdete od stavebního kamene ScioCíle
       a uvidíte, ve kterých tématech se naplňuje. Užitečné, když potřebujete doložit
       konkrétní kámen.</dd>
-    <dt>Hlasování</dt><dd>Výběr témat, která chcete vést, a rezervace.</dd>
+    <dt>Hlasování</dt><dd>Výběr témat, která chcete vést, a rezervace.
+      <b>Spouštíme v pondělí 31. srpna</b> — do té doby je čas na rozmyšlenou.</dd>
     <dt>Návod</dt><dd>Tahle stránka.</dd>
   </dl>
 
@@ -341,6 +345,11 @@ HTML = """<!DOCTYPE html>
 </div>
 <div id="hlas" style="display:none">
   <p class="muted" id="hlasWarn" style="display:none; text-align:center; font-size:.8rem;">⚠ Modul hlasování se nenačetl — zkontroluj připojení k internetu a obnov stránku.</p>
+  <div class="hlasinfo">
+    <b>Hlasování se spouští v pondělí 31. srpna.</b>
+    Do té doby si můžete v klidu procházet témata a rozmýšlet, která byste chtěli vést.
+    Nic si nemusíte psát stranou — až to tu otevřeme, vyberete si rovnou tady.
+  </div>
   <div class="hlasbox"><label>Přihlaš se pod svým příjmením<br>
     <input id="hlasName" type="text" list="hlasZnami" autocomplete="off" placeholder="např. Nováková">
     <datalist id="hlasZnami"></datalist></label>
