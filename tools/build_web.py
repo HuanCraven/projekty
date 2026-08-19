@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.18-04"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.19-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -35,6 +35,26 @@ _uc_path = "data/ucitele.json"
 _uc = json.load(open(_uc_path, encoding="utf-8")) if os.path.exists(_uc_path) else {}
 VYCHOZI_POCET = str(int(_uc.get("vychozi_pocet", 1)))
 KAPACITY = json.dumps({k: int(v) for k, v in _uc.get("kapacity", {}).items()}, ensure_ascii=False)
+
+# klíče ke ScioCílům (metodika) — seskupené podle kódu kamene
+_kl_path = "data/klice.json"
+_kl = json.load(open(_kl_path, encoding="utf-8")).get("klice", []) if os.path.exists(_kl_path) else []
+_klice_map = {}
+for _k in _kl:
+    _klice_map.setdefault(_k["kod"], []).append(
+        {"o": _k["otazka"], "p": _k["pojmy"], "v": _k["vybrany"], "t": _k["kratka"]})
+KLICE = json.dumps(_klice_map, ensure_ascii=False)
+
+# přípravy z minulých let — seskupené podle id tématu
+_pr_path = "data/pripravy.json"
+_pr = json.load(open(_pr_path, encoding="utf-8")) if os.path.exists(_pr_path) else {}
+_pripravy_map = {}
+for _s in _pr.get("slozky", []):
+    for _tid in _s.get("temata", []):
+        _pripravy_map.setdefault(str(_tid), []).append(
+            {"n": _s["slozka"], "s": _s["souboru"], "o": _s["obsahuje"]})
+PRIPRAVY = json.dumps(_pripravy_map, ensure_ascii=False)
+PRIPRAVY_ODKAZ = json.dumps(_pr.get("_odkaz", ""), ensure_ascii=False)
 
 HTML = """<!DOCTYPE html>
 <html lang="cs">
@@ -148,6 +168,25 @@ HTML = """<!DOCTYPE html>
   #hlasSubmit{display:block; margin:10px auto; background:#1f4e5f; color:#fff; border:none; border-radius:999px; padding:9px 22px; font-size:.9rem; cursor:pointer;}
   #hlasMsg{text-align:center; font-size:.82rem; color:var(--muted); margin-top:4px;}
   #toggleResults{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
+  /* klíče ke ScioCílům (metodika) */
+  .klic{margin-top:8px; border-top:1px dashed var(--line); padding-top:7px;}
+  .klic>summary{cursor:pointer; list-style:none; font-size:.8rem; color:var(--accent); font-weight:600; display:flex; gap:6px; align-items:flex-start;}
+  .klic>summary::-webkit-details-marker{display:none;}
+  .klic>summary::before{content:"🔑"; font-size:.8rem; flex:0 0 auto;}
+  .klic[open]>summary{margin-bottom:6px;}
+  .klicbody{font-size:.83rem; line-height:1.5;}
+  .klicbody p{margin-bottom:6px;}
+  .klicpojmy{margin:4px 0 7px; font-size:.74rem; color:var(--muted);}
+  .klicpojmy span{display:inline-block; background:#eef0f3; border-radius:999px; padding:2px 8px; margin:2px 3px 0 0;}
+  .klicvyb{background:#fef6e7; color:#92400e; border-radius:999px; padding:1px 7px; font-size:.68rem; font-weight:600; white-space:nowrap;}
+  .klicai{margin-top:7px; font-size:.7rem; color:var(--muted); font-style:italic;}
+  /* přípravy z minulých let */
+  .pripbox{background:#f7f7f5; border-radius:10px; padding:10px 12px; margin-top:6px; font-size:.85rem;}
+  .pripbox .p{display:flex; justify-content:space-between; gap:8px; padding:4px 0; border-bottom:1px solid var(--line);}
+  .pripbox .p:last-of-type{border-bottom:none;}
+  .pripbox .pn{font-weight:600;}
+  .pripbox .po{font-size:.72rem; color:var(--muted);}
+  .pripbox a{color:var(--accent);}
   #hlasJmenoMsg{font-size:.78rem; margin-top:5px; min-height:1.1em;}
   #hlasJmenoMsg .varovani{color:#92400e; background:#fef6e7; border:1px solid #f3d9a4; border-radius:8px; padding:5px 9px; display:inline-block;}
   #hlasJmenoMsg button{border:1px solid var(--line); background:#fff; border-radius:999px; padding:2px 9px; font-size:.74rem; cursor:pointer; margin:0 4px;}
@@ -249,6 +288,8 @@ HTML = """<!DOCTYPE html>
 <script>
 const DATA = __DATA__;
 const KAM = __KAM__;
+const KLICE = __KLICE__;
+const PRIPRAVY = __PRIPRAVY__, PRIPRAVY_ODKAZ = __PRIPRAVY_ODKAZ__;
 const KAPACITY = __KAPACITY__, VYCHOZI_POCET = __VYCHOZI_POCET__;
 let znamiUcitele = [];   // příjmení těch, kdo už hlasovali nebo mají rezervaci
 const SCN = {SC4:"SC4 Rozvíjím svou odolnost", SC1:"SC1 Umím se učit", SC5:"SC5 Buduji dobré vztahy", SC8:"SC8 Mám život ve svých rukou"};
@@ -280,7 +321,8 @@ function renderKam(){
     const sc = "SC"+c.split(".")[0];
     if(fSC!=="vse" && sc!==fSC) continue;
     const info = KAM[c];
-    if(nq && !norm(c+" "+info.n+" "+info.u1+" "+info.u2+" "+info.u3).includes(nq)) continue;
+    const kt = (KLICE[c]||[]).map(k=>k.o+" "+k.p.join(" ")).join(" ");
+    if(nq && !norm(c+" "+info.n+" "+info.u1+" "+info.u2+" "+info.u3+" "+kt).includes(nq)) continue;
     cnt++;
     const g = c.split(".")[0];
     if(g!==lastG){ html+=`<h3 style="color:var(--${sc.toLowerCase()})">${grpName[g]}</h3>`; lastG=g; }
@@ -295,6 +337,7 @@ function renderKam(){
     if(idx.lead.length) body+=`<div class="temrow"><b>Stěžejní v:</b> ${lk(idx.lead)}</div>`;
     if(idx.side.length) body+=`<div class="temrow"><b>Vedlejší v:</b> ${lk(idx.side)}</div>`;
     if(!idx.lead.length && !idx.side.length) body+=`<div class="temrow" style="color:var(--muted)">Zatím bez tématu.</div>`;
+    body += klicHtml(c);
     html+=`<details class="kd" style="--accent:var(--${sc.toLowerCase()});--accentbg:var(--${sc.toLowerCase()}bg)"><summary>${c} ${info.n}</summary><div class="kdb">${body}</div></details>`;
   }
   document.getElementById("kamlist").innerHTML=html;
@@ -331,10 +374,24 @@ function render(){
 }
 
 const MTIT = {p:"Postoje", z:"Znalosti", s:"Sebeznalosti", d:"Dovednosti"};
+
+/* Klíče ke ScioCílům — metodika Scia k jednotlivým kamenům. Texty generovala
+   AI a nejsou kontrolované člověkem, proto to u každého klíče říkáme nahlas. */
+function klicHtml(code){
+  const ks = KLICE[code];
+  if(!ks || !ks.length) return "";
+  return ks.map(k=>`<details class="klic">
+    <summary><span>${k.o}</span>${k.v?`<span class="klicvyb">vybraný</span>`:""}</summary>
+    <div class="klicbody">
+      ${k.p.length?`<div class="klicpojmy">${k.p.map(p=>`<span>${p}</span>`).join("")}</div>`:""}
+      <p>${k.t.split("\\n").filter(x=>x.trim()).join("</p><p>")}</p>
+      <div class="klicai">Klíč ke ScioCílům (Scio). Text generovala AI, není kontrolovaný člověkem.</div>
+    </div></details>`).join("");
+}
 function kamHtml(k, lead){
   const code = k.split(" ")[0].replace(/\\.$/,"");
   const info = KAM[code];
-  if(!info || (!info.u1 && !info.u2 && !info.u3 && !info.p && !info.z && !info.s && !info.d))
+  if(!info || (!info.u1 && !info.u2 && !info.u3 && !info.p && !info.z && !info.s && !info.d && !KLICE[code]))
     return `<div style="padding:5px 0; font-size:.88rem; ${lead?"font-weight:600;":""}">${k}</div>`;
   let body = "";
   if(info.u1) body += `<div class="urov"><b>Úroveň 1 (1. trojročí):</b> ${info.u1}</div>`;
@@ -344,6 +401,7 @@ function kamHtml(k, lead){
   const chips = ["p","z","s","d"].filter(x=>info[x]).map(x=>
     `<button onclick="bub(event,'${code}','${x}')">${MTIT[x]}</button>`).join("");
   if(chips) body += `<div class="chipsmini">${chips}</div>`;
+  body += klicHtml(code);
   return `<details class="kd"><summary class="${lead?"lead":""}">${k}</summary><div class="kdb">${body}</div></details>`;
 }
 const bubble = document.getElementById("bubble");
@@ -379,6 +437,16 @@ function openD(id){
   dif+=`<b>3. trojročí:</b> ${t.dif3}</div>`;
   h+=sec("Diferenciace podle trojročí",dif);
   if(t.loni) h+=sec("Návaznost na projekty 2025/26",`<div class="loni">${t.loni}</div>`);
+  const pr = PRIPRAVY[String(t.id)];
+  if(pr && pr.length){
+    const odkaz = PRIPRAVY_ODKAZ
+      ? `<a href="${PRIPRAVY_ODKAZ}" target="_blank" rel="noopener">Otevřít přípravy na Google Disku</a>`
+      : `<span class="muted">Materiály jsou na Google Disku ve složce „Přípravy na projekty“.</span>`;
+    h+=sec(`Přípravy z minulých let (${pr.length})`,
+      `<div class="pripbox">${pr.map(p=>`<div class="p"><span class="pn">${p.n}</span>
+         <span class="po">${p.s} souborů · ${p.o.slice(0,3).join(", ")}</span></div>`).join("")}
+       <div style="margin-top:8px">${odkaz}</div></div>`);
+  }
   detail.innerHTML=h;
   overlay.classList.add("open");
   document.body.style.overflow="hidden";
@@ -705,6 +773,8 @@ openFromHash();
 """
 
 html = (HTML.replace("__DATA__", DATA).replace("__KAM__", KAM)
+            .replace("__KLICE__", KLICE)
+            .replace("__PRIPRAVY__", PRIPRAVY).replace("__PRIPRAVY_ODKAZ__", PRIPRAVY_ODKAZ)
             .replace("__KAPACITY__", KAPACITY).replace("__VYCHOZI_POCET__", VYCHOZI_POCET)
             .replace("__VERSION__", VERSION))
 open("index.html", "w", encoding="utf-8", newline="\n").write(html)

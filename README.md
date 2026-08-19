@@ -14,6 +14,8 @@ Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
 | `data/znalosti_v3.json` | tvrdé znalosti + didaktické tipy k tématům (klíč = id tématu) | ano — zdroj pravdy |
 | `data/kameny.json` | rejstřík stavebních kamenů ScioCílů (zdroj pro záložku Rejstřík) | zřídka — referenční |
 | `data/ucitele.json` | nastavení hlasování (kdo vede víc témat) | zřídka — jména se nezadávají |
+| `data/klice.json` | klíče ke ScioCílům — otázka, pojmy a krátká odpověď u kamene | generováno ze Zdrojů |
+| `data/pripravy.json` | odkazy na přípravy z minulých let (materiály zůstávají na Disku) | ručně |
 | `tools/build_web.py` | generátor `index.html` | zřídka |
 | `tools/build_docx.js` | generátor Word katalogu (`vystupy/`) — vyžaduje npm balíček `docx` | zřídka |
 | `tools/build_xlsx.py` | generátor Excel tabulky (`vystupy/`) — vyžaduje `openpyxl` | zřídka |
@@ -57,6 +59,33 @@ pip install openpyxl && npm install
   obsah pro 2. trojročí přímo popisuje, takže dřívější omezení bylo v rozporu
   se zdrojem. Rozdíl mezi trojročími nese `dif2`/`dif3`, ne dostupnost tématu.
 - Kontrolu pokrytí kamenů hlásí `build_xlsx.py` (záměrně nepokrytý jen 5.2.3.3).
+
+## Klíče ke ScioCílům
+
+U stavebních kamenů se v detailu tématu i v rejstříku rozbaluje **klíč** —
+metodika Scia: otázka, klíčové pojmy a krátká odpověď. Pokrytí je částečné
+(105 klíčů k 76 ze 120 kamenů), takže u řady kamenů žádný klíč není a web
+s tím počítá.
+
+**Texty klíčů generovala AI a nejsou kontrolované člověkem** — píše to sám
+zdroj, proto to web u každého klíče uvádí. Klíče označené ve zdroji 🪢🪢
+mají na webu štítek „vybraný".
+
+Data vznikla extrakcí z `Zdroje/Klíče*` (.docx) — vytahuje se jen sekce
+„Krátká odpověď"; plné klíče (~27 tis. znaků každý) zůstávají na Disku.
+Pět klíčů odkazovalo na kódy ze staršího číslování (1.2.3.5, 5.2.3.5,
+8.2.2.3, 8.2.3.5, 8.3.4.2), které v katalogu nejsou — ty se vynechávají.
+
+## Přípravy z minulých let
+
+`data/pripravy.json` mapuje 29 složek starých příprav (2024–2026) na 19 témat.
+Materiály samotné (779 MB, převážně obrázky) **do repozitáře nepatří** a
+zůstávají na Google Disku; web na ně jen odkazuje. URL rodičovské složky se
+vyplňuje do klíče `_odkaz` — dokud je prázdný, web místo odkazu zobrazí jen
+název složky, kterou má průvodce na Disku hledat.
+
+Pozor: přípravy používají **staré číslování ScioCílů** („ScK 2", „4.5.1"),
+které na aktuální kameny nelze automaticky převést.
 
 ## Záložka Hlasování
 
