@@ -20,6 +20,14 @@
   .seg .inner{display:inline-flex; border:1px solid var(--line); border-radius:10px; overflow:hidden;}
   .seg .chip{border:none; border-radius:0; padding:7px 18px; font-weight:600; background:#fff;}
   .seg .chip.active{background:#1f4e5f; color:#fff;}
+  /* se čtyřmi záložkami se přepínač na úzkých displejích nevejde */
+  @media(max-width:430px){
+    .seg .chip{padding:7px 9px; font-size:.8rem;}
+  }
+  @media(max-width:340px){
+    .seg{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+    .seg .inner{flex:0 0 auto;}
+  }
   .tooldiv{border:none; border-top:1px solid var(--line); margin:2px 24px;}
   .filtry .chip{font-size:.76rem; padding:4px 10px; background:var(--bg);}
   .chips{display:flex; gap:6px; flex-wrap:wrap; justify-content:center;}
@@ -110,6 +118,19 @@
   #hlasSubmit{display:block; margin:10px auto; background:#1f4e5f; color:#fff; border:none; border-radius:999px; padding:9px 22px; font-size:.9rem; cursor:pointer;}
   #hlasMsg{text-align:center; font-size:.82rem; color:var(--muted); margin-top:4px;}
   #toggleResults{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
+  /* návod */
+  #navod{max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 22px 26px;}
+  #navod h2{font-size:1.25rem; color:#1f4e5f; margin-bottom:10px;}
+  #navod h3{font-size:.98rem; color:#1f4e5f; margin:20px 0 7px; padding-top:14px; border-top:1px solid var(--line);}
+  #navod p{font-size:.88rem; margin-bottom:8px;}
+  #navod p.lead{font-size:.92rem; color:#374151;}
+  #navod code{background:var(--bg); border-radius:5px; padding:1px 5px; font-size:.84em;}
+  .nav-dl{font-size:.88rem;}
+  .nav-dl dt{font-weight:600; color:var(--ink); margin-top:9px;}
+  .nav-dl dd{margin:2px 0 0 0; padding-left:12px; border-left:2px solid var(--line); color:#374151;}
+  .nav-ol{font-size:.88rem; padding-left:20px; margin-top:6px;}
+  .nav-ol li{margin-bottom:7px; color:#374151;}
+  .navklic{font-size:.8rem;}
   /* klíče ke ScioCílům (metodika) */
   .klic{margin-top:8px; border-top:1px dashed var(--line); padding-top:7px;}
   .klic>summary{cursor:pointer; list-style:none; font-size:.8rem; color:var(--accent); font-weight:600; display:flex; gap:6px; align-items:flex-start;}
@@ -168,6 +189,7 @@
     <span class="chip active" data-view="temata">Témata</span>
     <span class="chip" data-view="kameny">Rejstřík kamenů</span>
     <span class="chip" data-view="hlas">Hlasování</span>
+    <span class="chip" data-view="navod">Návod</span>
   </div></div>
   <hr class="tooldiv">
   <div class="chips filtry" id="scChips">
@@ -187,6 +209,78 @@
 </div>
 
 <main><div class="grid" id="grid"></div><div id="kamlist" style="display:none"></div>
+<div id="navod" style="display:none">
+  <h2>Jak se v katalogu vyznat</h2>
+  <p class="lead">Katalog obsahuje 50 projektových témat na 1. pololetí 2026/27.
+  Ke každému tématu najdeš anotaci, náměty aktivit, napojení na ScioCíle a to,
+  jak ho pojmout v různých trojročích. Nemusíš nic instalovat ani se registrovat —
+  odkaz si můžeš uložit na plochu telefonu.</p>
+
+  <h3>Záložky nahoře</h3>
+  <dl class="nav-dl">
+    <dt>Témata</dt><dd>Dlaždice všech 50 témat. Klepnutím na kartu se otevře detail.</dd>
+    <dt>Rejstřík kamenů</dt><dd>Obrácený pohled — vyjdeš od stavebního kamene ScioCíle
+      a uvidíš, ve kterých tématech se naplňuje. Užitečné, když potřebuješ doložit
+      konkrétní kámen.</dd>
+    <dt>Hlasování</dt><dd>Výběr témat, která chceš vést, a rezervace.</dd>
+    <dt>Návod</dt><dd>Tahle stránka.</dd>
+  </dl>
+
+  <h3>Hledání a filtry</h3>
+  <p>Pole <b>Hledat</b> prohledává názvy, anotace, aktivity, kameny i tvrdé znalosti —
+  klidně napiš „konflikt“ nebo „rozpočet“ a uvidíš, kde se to objevuje.
+  Diakritiku ani velikost písmen řešit nemusíš.</p>
+  <p>Filtry <b>SC4 / SC1 / SC5 / SC8</b> zúží výběr na jeden ScioCíl,
+  filtr <b>trojročí</b> ukáže jen témata vhodná pro danou skupinu.
+  V rejstříku kamenů hledání funguje i na odborné pojmy z klíčů
+  (zkus „Dunbar“ nebo „prokrastinace“).</p>
+
+  <h3>Co najdeš v detailu tématu</h3>
+  <dl class="nav-dl">
+    <dt>Stěžejní a vedlejší kameny</dt><dd>Rozklikni kámen a uvidíš, co znamená
+      v 1., 2. a 3. trojročí. Štítky <i>Postoje / Znalosti / Sebeznalosti / Dovednosti</i>
+      otevřou přesné znění ze ScioCílů.</dd>
+    <dt>Náměty aktivit</dt><dd>Pět konkrétních návrhů, co se dá dělat. Není to program,
+      ale zásobník — vyber si a doplň svoje.</dd>
+    <dt>Tvrdé znalosti</dt><dd>Příklady učiva, které se dá v tématu přirozeně probrat.
+      Hodí se, když potřebuješ ukázat, že projekt není „jen zážitek“.</dd>
+    <dt>Diferenciace podle trojročí</dt><dd>Jak stejné téma pojmout s mladšími a jak
+      se staršími. Většina témat je použitelná napříč.</dd>
+    <dt>Klíč <span class="navklic">🔑</span></dt><dd>Metodika Scia k danému kameni:
+      otázka, klíčové pojmy a krátká odpověď opřená o výzkum.
+      <b>Tyhle texty psala AI a nikdo je nekontroloval</b> — ber je jako dobrý
+      odrazový můstek, ne jako ověřený pramen. Plné klíče jsou na Disku.</dd>
+    <dt>Přípravy z minulých let</dt><dd>U témat, která už se u nás v nějaké podobě
+      dělala, uvidíš složky s loňskými materiály. Samotné soubory jsou na Google Disku.</dd>
+  </dl>
+
+  <h3>Tisk a sdílení</h3>
+  <p>V detailu tématu je vpravo nahoře tlačítko <b>🖨 Tisk</b> — vytiskne jen tu jednu
+  kartu, hodí se na poradu nebo pro rodiče. Adresa v prohlížeči se u otevřeného tématu
+  mění (např. <code>…/#14</code>), takže jde poslat odkaz přímo na konkrétní téma.</p>
+
+  <h3>Hlasování krok za krokem</h3>
+  <ol class="nav-ol">
+    <li><b>Napiš si příjmení.</b> Nikde se předem neregistruješ. Kdo přijde po tobě,
+      uvidí tvoje jméno v našeptávači — a když ho napíše trochu jinak, appka se zeptá,
+      jestli nemyslel tebe. Tím se hlídá, aby z překlepů nevznikli dva lidé.</li>
+    <li><b>Vyber až 8 témat</b> v pořadí, jak je chceš. První volba má největší váhu,
+      poslední nejmenší. Pořadí měníš šipkami.</li>
+    <li><b>Ulož hlasy.</b> Můžeš se kdykoli vrátit a přepsat je — uvidíš svůj poslední
+      výběr.</li>
+    <li><b>Rezervace</b> je něco jiného než hlas: jedno téma = jeden učitel, platí hned.
+      Používej ji, až když je jasno.</li>
+    <li><b>Spočítat návrh</b> rozdělí témata tak, aby byl součet preferencí co největší.
+      Respektuje rezervace a nikomu nepřidělí téma, pro které nehlasoval.
+      <b>Nic to nezapisuje</b> — je to jen podklad k rozhodnutí u stolu.</li>
+  </ol>
+
+  <h3>Když něco nesedí</h3>
+  <p>Katalog není hotová věc. Když v tématu najdeš chybu, chybějící kámen nebo tě
+  napadne lepší aktivita, řekni Huanovi — data se dají opravit a web se přegeneruje.
+  Totéž platí pro klíče: pokud v nich narazíš na nesmysl, je to očekávatelné
+  (viz upozornění výše) a stojí za to to nahlásit.</p>
+</div>
 <div id="hlas" style="display:none">
   <p class="muted" id="hlasWarn" style="display:none; text-align:center; font-size:.8rem;">⚠ Modul hlasování se nenačetl — zkontroluj připojení k internetu a obnov stránku.</p>
   <div class="hlasbox"><label>Přihlaš se pod svým příjmením<br>
@@ -224,7 +318,7 @@
 <div id="overlay"><div id="detail"></div></div>
 <div id="bubble"></div>
 
-<footer>ScioŠkola · katalog projektových témat · verze 2026.08.19-01</footer>
+<footer>ScioŠkola · katalog projektových témat · verze 2026.08.19-02</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -289,10 +383,13 @@ function render(){
   document.getElementById("grid").style.display = view==="temata" ? "" : "none";
   document.getElementById("kamlist").style.display = view==="kameny" ? "" : "none";
   document.getElementById("hlas").style.display = view==="hlas" ? "" : "none";
+  document.getElementById("navod").style.display = view==="navod" ? "" : "none";
+  const bezFiltru = (view==="hlas" || view==="navod");
   document.getElementById("trChips").style.display = view==="temata" ? "" : "none";
-  document.getElementById("scChips").style.display = view==="hlas" ? "none" : "";
-  document.querySelector(".searchwrap").style.display = view==="hlas" ? "none" : "";
-  count.style.display = view==="hlas" ? "none" : "";
+  document.getElementById("scChips").style.display = bezFiltru ? "none" : "";
+  document.querySelector(".searchwrap").style.display = bezFiltru ? "none" : "";
+  count.style.display = bezFiltru ? "none" : "";
+  if(view==="navod") return;
   if(view==="kameny"){ renderKam(); return; }
   if(view==="hlas"){
     if(!hlasInit){ hlasInit=true; initHlas(); } else { loadMyVotes(); renderRez(); }
