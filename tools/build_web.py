@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.19-04"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.19-05"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -242,7 +242,7 @@ HTML = """<!DOCTYPE html>
 <body>
 <header>
   <h1>Projekty 2026/27 — katalog témat</h1>
-  <p>1. pololetí · ScioCíle 4, 1, 5 a 8 · 2. a 3. trojročí · klepni na kartu pro detail</p>
+  <p>1. pololetí · ScioCíle 4, 1, 5 a 8 · 1.–3. trojročí · klepněte na kartu pro detail</p>
 </header>
 
 <div class="toolbar">
@@ -871,6 +871,18 @@ document.getElementById("viewChips").addEventListener("click",e=>{
   view=e.target.dataset.view;
   [...e.currentTarget.children].forEach(ch=>ch.classList.toggle("active",ch===e.target));
   render();});
+/* Kdo přijde poprvé, uvidí návod; při dalších návštěvách rovnou katalog.
+   Odkaz přímo na téma (…/#14) má přednost — ten návod nikdy nepřebije. */
+(function uvitani(){
+  let poprve = false;
+  try { poprve = !localStorage.getItem("videlNavod"); localStorage.setItem("videlNavod","1"); }
+  catch(e) { poprve = false; }          // privátní režim: prostě ukážeme katalog
+  if(!poprve || location.hash) return;
+  view = "navod";
+  [...document.getElementById("viewChips").children].forEach(ch=>
+    ch.classList.toggle("active", ch.dataset.view === "navod"));
+})();
+
 render();
 openFromHash();
 </script>
