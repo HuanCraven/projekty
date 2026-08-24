@@ -323,5 +323,33 @@
     "dif2": "Hravé setkávání, společné čtení, hry a tvoření, zvídavé rozhovory s babičkami a dědečky.",
     "dif3": "Biologie a psychologie stárnutí, demografické stárnutí ČR (data, grafy), ageismus, systém péče o seniory, dlouhodobý dobrovolnický vztah.",
     "loni": ""
+  },
+  {
+    "id": 53,
+    "nazev": "Když slova nestačí",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.3.1.2 Domlouvám se s jinými"
+    ],
+    "vedlejsi": [
+      "5.1.1.1 Vnímám a přijímám druhé",
+      "5.3.2.1 Komunikuji s respektem",
+      "1.1.2.4 Získávám poznatky z nejazykových druhů vyjádření",
+      "5.3.1.4 Ovládám komunikační kanály",
+      "8.2.4.1 Využívám digitální technologie"
+    ],
+    "urovne": "1,2,3",
+    "anotace": "Co když člověk nemůže mluvit — nebo mluví jiným jazykem než ty? Projekt o komunikaci, která si musí poradit bez běžné řeči: piktogramové tabulky a komunikační knihy, znak do řeči a znakový jazyk, Braillovo písmo, gesta a mimika i komunikační aplikace na tabletu. Děti si na vlastní kůži zkusí, jaké to je nemoci říct, co potřebuji — a naučí se, jak se dá dorozumět, když slova nestačí.",
+    "aktivity": [
+      "Hodina beze slov: domluvit se na společném úkolu bez mluvené řeči (gesta, kresba, piktogramy) a pojmenovat, co bylo nejtěžší",
+      "Piktogramy a komunikační tabulky: jak fungují systémy alternativní komunikace, výroba vlastní tabulky či knihy pro konkrétní situaci (jídelna, výlet)",
+      "Znakový jazyk a znak do řeči: základy od lektora či neslyšícího hosta — pozdrav, představení se, běžné fráze; proč je znakový jazyk plnohodnotný jazyk, ne pantomima",
+      "Braille a další jazyky beze slov: hmatové písmo, morseovka, mezinárodní symboly — vyzkoušení a porovnání, čím se který hodí",
+      "Setkání naostro: návštěva organizace pracující s lidmi s postižením komunikace nebo host ve škole; rozhovor připravený tak, aby se domluvily obě strany"
+    ],
+    "dif1": "Hry na domluvení se beze slov (gesta, obrázky, pantomima), první znaky ze znakového jazyka, poznání, že někdo se dorozumívá jinak než mluvením — a že to jde.",
+    "dif2": "Piktogramy a obrázkové tabulky v praxi, základy znakového jazyka, vyzkoušení Braillova písma, respektující chování při setkání s někým, kdo se dorozumívá jinak.",
+    "dif3": "Systémy alternativní a augmentativní komunikace a komunikační aplikace, znakový jazyk jako plnohodnotný jazyk s vlastní gramatikou, aktivní naslouchání a přizpůsobení komunikačnímu partnerovi, inkluze v praxi.",
+    "loni": ""
   }
 ]
