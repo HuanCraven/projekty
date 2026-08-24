@@ -177,11 +177,11 @@
     "aktivity": [
       "Detektivka nad pramenem: co prozradí stará fotografie, mince, kronika či dopis z fronty — čtení a interpretace pramenů",
       "Návštěva archivu, muzea či knihovny se zadáním: najít odpověď na vlastní historickou otázku",
-      "Historie místa: pátrání po minulosti školy, ulice či obce (staré mapy, pamětní desky, katastr, kroniky)",
+      "Historie místa: pátrání po minulosti školy, ulice či obce (staré mapy, pamětní desky, katastr, kroniky, místní pověsti a legendy)",
       "Rozhovor s pamětníkem (metoda orální historie) a jeho porovnání s písemnými zdroji — kde se liší a proč",
       "Výstava či podcast „Stopy minulosti“: děti prezentují svá zjištění s uvedením pramenů"
     ],
-    "dif1": "Hmatatelné prameny jako staré fotky nebo předměty z domova, povídání s prarodiči o tom, jak to bylo dřív, jednoduché porovnání „tenkrát a teď“.",
+    "dif1": "Hmatatelné prameny jako staré fotky nebo předměty z domova, povídání s prarodiči o tom, jak to bylo dřív, jednoduché porovnání „tenkrát a teď“. Staré pověsti a příběhy o vzniku místa, kde žijeme.",
     "dif2": "Hmatatelné prameny (předměty, fotky, pověsti), historie rodiny a okolí školy, jednoduché porovnání dvou zdrojů.",
     "dif3": "Kritika pramenů (kdo, komu, proč psal), primární vs. sekundární zdroj, propaganda v pramenech, práce s digitálními archivy.",
     "loni": "Příběhy kolem nás; Středověk; Starověké civilizace"
@@ -233,9 +233,10 @@
       "Mapová dílna: čtení map, práce s měřítkem, plánování trasy, tvorba mapy okolí školy či vlastního „mentálního území“",
       "Grafová dílna: stejná data, různé grafy — kdy který použít a jak grafy klamou",
       "Orientační výprava městem jen podle plánů, řádů a schémat MHD",
-      "Tvorba infografiky na zvolené téma pro školní chodbu"
+      "Tvorba infografiky na zvolené téma pro školní chodbu",
+      "Mapa ČR poprvé: kde jsme, jaké kraje má naše země a kdo jsou naši sousedé"
     ],
-    "dif1": "Hravé čtení jednoduchých značek a piktogramů, orientace podle obrázkového plánku školy nebo okolí, kreslení vlastní jednoduché mapy.",
+    "dif1": "Hravé čtení jednoduchých značek a piktogramů, orientace podle obrázkového plánku školy nebo okolí, kreslení vlastní jednoduché mapy. První pohled na mapu ČR — kde jsme a kdo jsou naši sousedé.",
     "dif2": "Základní čtení map, značek a jednoduchých grafů, hravá orientace v terénu.",
     "dif3": "Komplexní datové vizualizace, vrstevnice a GPS, schémata systémů, kritika manipulativních vizualizací.",
     "loni": "Mapy"
