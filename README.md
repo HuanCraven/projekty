@@ -1,6 +1,6 @@
 # Projekty 2026/27 — katalog témat podle ScioCílů
 
-Katalog 50 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
+Katalog 51 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
 1. pololetí 2026/27, ScioCíle 4, 1, 5 a 8, úrovně 1–3 (1.–3. trojročí).
 
 Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`

@@ -348,5 +348,32 @@
     "dif2": "Souhvězdí a příběhy v nich, fáze Měsíce, hravé modely, údiv a otázky.",
     "dif3": "Gravitace a oběžné dráhy, světelný rok a velká čísla, život hvězd, exoplanety a hledání života, kosmický výzkum jako věda i byznys.",
     "loni": "Dobývání vesmíru"
+  },
+  {
+    "id": 51,
+    "nazev": "Čtení tě mění",
+    "skupina": "SC1",
+    "vedouci": [
+      "1.1.2.1 Čtu a naslouchám"
+    ],
+    "vedlejsi": [
+      "1.1.1.2 Vyhledám relevantní zdroj učení",
+      "1.2.4.4 Přetavuji prožitky ve zkušenosti",
+      "1.1.2.9 Učím se skrze umění",
+      "5.3.1.3 Vyjadřuji se písemně"
+    ],
+    "urovne": "3",
+    "anotace": "Kniha, která k tobě promluví, dokáže změnit, jak myslíš a jak žiješ. Projekt je čtenářskou dílnou: děti se učí vybírat si knihy podle sebe, zkoušejí různé čtenářské strategie (předvídání, vizualizace, spojování s vlastním životem) a hledají v příbězích postavy a situace, které jim pomáhají porozumět vlastnímu životu. Čtení tu není povinnost, ale nástroj poznání sebe i světa.",
+    "aktivity": [
+      "Čtenářský profil: jaký jsem typ čtenáře — žánry, tempo, kde a kdy se mi čte nejlépe; sestavení osobního čtenářského plánu",
+      "Jak si vybrat knihu: práce s anotací, obálkou, prvními stránkami; pravidlo „5 stran“ a odvaha knihu odložit",
+      "Čtenářské strategie v praxi: předvídání, vizualizace, propojování s vlastním životem, hlasité přemýšlení nad textem",
+      "Kniha, která mě něco naučila: hledání postav a situací podobných vlastnímu životu a co si z nich vzít",
+      "Čtenářský klub: doporučování knih spolužákům, diskuse nad přečteným, návštěva knihovny nebo autorské čtení"
+    ],
+    "dif1": "Téma je určeno pouze pro 3. trojročí — mladší děti rozvíjejí čtenářské strategie v pravidelné čtenářské dílně, samostatný projekt proto nemají.",
+    "dif2": "—",
+    "dif3": "Vědomé čtenářské strategie a metakognice čtení, kritický výběr a odkládání knih, reflexe vlastního života přes literární postavy a situace.",
+    "loni": ""
   }
 ]
