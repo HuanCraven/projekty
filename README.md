@@ -1,6 +1,6 @@
 # Projekty 2026/27 — katalog témat podle ScioCílů
 
-Katalog 53 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
+Katalog 55 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
 1. pololetí 2026/27, ScioCíle 4, 1, 5 a 8, úrovně 1–3 (1.–3. trojročí).
 
 Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
@@ -68,8 +68,13 @@ pip install openpyxl && npm install
   správný seznam. Hodnota `"obě"` ze starého modelu už neplatí.
 - **U nového tématu vyplň všechny tři diferenciace** (`dif1`, `dif2`, `dif3`) —
   katalog je od srpna 2026 určený pro 1.–3. trojročí, ne jen pro 2. a 3.
-- Většina témat je použitelná ve všech trojročích; jen pro 3. trojročí je č. 40
-  (Právo pro život). Č. 26 (Láska, vztahy a hranice) bylo v srpnu 2026 otevřeno
+- Většina témat je použitelná ve všech trojročích. Výjimky: jen pro 3. trojročí
+  jsou č. 40 (Právo pro život) a č. 51 (Čtení tě mění — 1. a 2. trojročí mají
+  čtenářskou dílnu), jen pro 1. trojročí jsou č. 54 (Zvládnu to sám!) a č. 55
+  (Naše třída) — starším slouží č. 7, 35, 22 a 23.
+  U témat omezených na jedno trojročí nese obsah příslušná `difN` a ostatní
+  dvě jsou `—`; do jedné z nich patří krátké vysvětlení, proč téma pro dané
+  trojročí není. Č. 26 (Láska, vztahy a hranice) bylo v srpnu 2026 otevřeno
   i 2. trojročí — Úroveň 2 u jeho kamenů (5.2.4.1–3, 5.2.1.2, 5.1.1.6) tento
   obsah pro 2. trojročí přímo popisuje, takže dřívější omezení bylo v rozporu
   se zdrojem. Rozdíl mezi trojročími nese `dif2`/`dif3`, ne dostupnost tématu.
@@ -114,7 +119,7 @@ načtení Supabase SDK z CDN i funkce `initHlas()` a spol. Přegenerování
 `index.html` ho tedy zachová. Po každém buildu se vyplatí ověřit:
 
 ```bash
-grep -c Hlasování index.html    # očekávej 2
+grep -c Hlasování index.html    # očekávej 5 (0 = modul z generátoru vypadl)
 ```
 
 Jméno hlasujícího si drží prohlížeč v `localStorage` (klíč `hlasName`).

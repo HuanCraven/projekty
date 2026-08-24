@@ -351,5 +351,35 @@
     "dif2": "Piktogramy a obrázkové tabulky v praxi, základy znakového jazyka, vyzkoušení Braillova písma, respektující chování při setkání s někým, kdo se dorozumívá jinak.",
     "dif3": "Systémy alternativní a augmentativní komunikace a komunikační aplikace, znakový jazyk jako plnohodnotný jazyk s vlastní gramatikou, aktivní naslouchání a přizpůsobení komunikačnímu partnerovi, inkluze v praxi.",
     "loni": ""
+  },
+  {
+    "id": 55,
+    "nazev": "Naše třída: jak si tu spolu žijeme",
+    "skupina": "SC5",
+    "vedouci": [
+      "5.1.1.2 Někam patřím a přijímám ostatní",
+      "5.1.1.5 Nakládám s hranicemi a autoritou",
+      "5.3.2.1 Komunikuji s respektem"
+    ],
+    "vedlejsi": [
+      "5.1.1.10 Poskytuji a přijímám zpětnou vazbu",
+      "5.1.1.8 Nakládám s autoritou",
+      "5.1.1.4 Funguji ve skupinách",
+      "5.1.1.1 Vnímám a přijímám druhé",
+      "1.2.4.2 Reflektuji průběh cíleného učení"
+    ],
+    "urovne": "1",
+    "anotace": "Třída není daná, dělá se. Projekt bere soužití ve třídě jako věc, kterou děti samy tvoří: společně vyvodí pravidla a zjistí, proč vlastně jsou, rozdělí si služby a vyzkoušejí různé role ve skupině, všímají si, kdo zůstává stranou, a učí se říct druhému, co mu jde. Na konci třída ví, co jí funguje a co chce jinak — a má to černé na bílém.",
+    "aktivity": [
+      "Třídní ústava: společné vyvození pravidel — proč je máme a co se stane, když je někdo poruší; vyvěšení, podpis a revize na konci projektu",
+      "Služby a role: kdo se u nás o co stará (rostlina, knihovnička, kruh) a vyzkoušení různých rolí ve skupinové práci — i té, která mi nesedí",
+      "Kde platí jaká pravidla: doma, ve třídě, na hřišti, u lékaře — hra na různá prostředí a povídání o tom, kdo tam rozhoduje a proč",
+      "Nikdo nestojí sám: všímání si, kdo zůstává mimo, drobné inkluzivní činy (oslovit jménem, přizvat do hry), mapa třídy — s kým už jsem si hrál a s kým ještě ne",
+      "Kruh ocenění: co komu jde a čím nám pomáhá; nácvik konkrétní pochvaly i věcného postřehu; závěrečné „co nám tu funguje a co chceme jinak“"
+    ],
+    "dif1": "Pravidla a role vyvozené v kruhu a ve hrách, viditelné a připomínatelné; důraz na všímavost, kdo stojí stranou, a na jednoduchá slova ocenění; reflexe krátká a obrázková.",
+    "dif2": "—",
+    "dif3": "—",
+    "loni": ""
   }
 ]

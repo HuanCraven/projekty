@@ -327,5 +327,35 @@
     "dif2": "Skrze přírodu, příběhy a zvířata; drobné ztráty (rozbitá věc, stěhování kamaráda); žádné vynucené sdílení.",
     "dif3": "Otevřeněji o smrti a truchlení (fáze, individuální tempo), jak podpořit kamaráda v krizi, krizové linky a odborná pomoc, ztráty identity při rozchodech.",
     "loni": ""
+  },
+  {
+    "id": 54,
+    "nazev": "Zvládnu to sám!",
+    "skupina": "SC4",
+    "vedouci": [
+      "4.2.1.1 Jsem připraven/a na výzvy",
+      "8.2.3.4 Dopravuji se",
+      "5.1.1.6 Hlídám si hranice"
+    ],
+    "vedlejsi": [
+      "4.2.2.4 Sdílím a říkám si o pomoc",
+      "5.1.2.2 Navazuji kontakty",
+      "8.1.1.2 Plánuji a jednám",
+      "5.3.2.2 Komunikuji asertivně",
+      "8.2.3.3 Obstarávám si věci a zařizuji služby"
+    ],
+    "urovne": "1",
+    "anotace": "Být poprvé v něčem sám je malé dobrodružství — a dá se na něj připravit. Projekt je sbírkou prvních samostatných činů šitých na míru nejmenším: dojít známou cestou bez dospělého, koupit rohlík, půjčit si knihu, oslovit cizího člověka a zeptat se na cestu. Ke každé odvaze patří i druhá strana samostatnosti: umět říct „ne“, poznat tíživé tajemství a vědět, komu se svěřím. Děti sbírají odznaky do vlastního Průkazu samostatnosti — každý za něco, co teď už zvládnou samy.",
+    "aktivity": [
+      "Průkaz samostatnosti: společně vymyslet, co všechno chceme letos zvládnout sami; každý si vybere své výzvy a odškrtává splněné odznaky",
+      "Cesta, kterou znám: okolí školy, dopravní značky a pravidla pro chodce, samostatná cesta na známé místo (knihovna, park, obchod) s průvodcem jistícím z pozadí",
+      "Zařídím to sám: nákup podle obrázkového seznamu, půjčení knihy, zeptání se dospělého na cestu — a povídání o tom, jaké to bylo",
+      "Moje bublina: umím říct „ne“ i slyšet „ne“, hezké a tíživé tajemství, mapa mých dospělých (komu se svěřím a jak ho zastihnu)",
+      "Slavnost odznaků: každý předvede, co už zvládne sám, a ukáže to mladším dětem nebo rodičům"
+    ],
+    "dif1": "Malé samostatné činy s jistícím průvodcem v pozadí a s pravidly domluvenými předem s rodiči, oslava každého zvládnutého kroku, bezpečnostní vrstva („ne“, komu se svěřím) vpletená do celého projektu.",
+    "dif2": "—",
+    "dif3": "—",
+    "loni": ""
   }
 ]

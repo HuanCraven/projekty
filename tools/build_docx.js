@@ -72,7 +72,7 @@ children.push(
   new Paragraph({ spacing: { before: 2400 } }),
   new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "PROJEKTY 2026/27", bold: true, size: 64 })], spacing: { after: 200 } }),
   new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "Katalog témat pro 1. pololetí podle ScioCílů", size: 36, color: "555555" })], spacing: { after: 200 } }),
-  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "40 námětů pro 2. a 3. trojročí — ScioCíle 4, 1, 5 a 8", size: 24, color: "888888" })] }),
+  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: `${topics.length} námětů pro 1.–3. trojročí — ScioCíle 4, 1, 5 a 8`, size: 24, color: "888888" })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "pracovní verze k rozebrání témat průvodci", italics: true, size: 20, color: "888888" })], spacing: { before: 200 } }),
   new Paragraph({ children: [new PageBreak()] }),
 );
@@ -81,18 +81,18 @@ children.push(
 children.push(
   new Paragraph({ text: "Jak s katalogem pracovat", heading: HeadingLevel.HEADING_1 }),
   P("Od školního roku 2026/27 řídíme program Projektů pomocí ScioCílů namísto dosavadních okruhů RVP (člověk a společnost, příroda a svět, věda a technika, umění a kultura). Je to v souladu s Východisky a principy ScioŠkol 2026 („obsahem vzdělávání ve ScioŠkolách jsou ScioCíle“) i s naším ŠVP, kde jsou Projekty jednou z vyučovacích forem předmětu Galaktika a dvakrát ročně vrcholí konferencí projektů. První pololetí pokrývá čtyři nejlépe připravené ScioCíle: SC4 Rozvíjím svou odolnost, SC1 Umím se učit, SC5 Buduji dobré vztahy a SC8 Mám život ve svých rukou."),
-  P("Tento katalog nabízí 40 témat, z nichž si dvojice průvodců vybírají a rozpracovávají je do konkrétních Projektů (celodenní předmět, cca 220 minut včetně přestávek, obvykle 4 týdny). Témata jsou náměty, ne osnovy — volnost průvodců i dětí zůstává zachována; projekt může téma uchopit i jinak, pokud rozvíjí uvedené kameny."),
+  P(`Tento katalog nabízí ${topics.length} témat, z nichž si dvojice průvodců vybírají a rozpracovávají je do konkrétních Projektů (celodenní předmět, cca 220 minut včetně přestávek, obvykle 4 týdny). Témata jsou náměty, ne osnovy — volnost průvodců i dětí zůstává zachována; projekt může téma uchopit i jinak, pokud rozvíjí uvedené kameny.`),
   P("Každé téma má:", { after: 40 }),
   bullet("Stěžejní kameny — jádro projektu; to, co se děti mají skutečně posunout (obvykle 1–3 kameny)."),
   bullet("Vedlejší kameny — přirozené přesahy rozvíjené v menší míře; často propojují více ScioCílů."),
   bullet("Anotaci a náměty aktivit — inspiraci pro stavbu programu (přednáška, praktická a hravá výuka, výlety, exkurze, videa, hraní rolí…)."),
   bullet("Tvrdé znalosti — příklady učiva, které se v projektu přirozeně nabízí učit. Čerpají ze dvou zdrojů: z učiva úrovní 2 a 3 našeho ŠVP (položky „ŠVP“; úroveň 2 ≈ 6. ročník, úroveň 3 ≈ 9. ročník) a z revidovaného RVP ZV schváleného v prosinci 2024 (položky „RVP“ podle nových vzdělávacích oblastí a očekávaných výsledků učení). Jsou to náměty, ne povinný výčet. Pozn.: ŠVP položky jsou zatím jen u témat SC1 a SC4 — část ŠVP s cíli 5–8 nebyla v podkladu čitelná."),
   bullet("Z didaktiky ScioCíle — vybraná doporučení z didaktik SC1 a SC4 (u kapitol shrnutí pro průvodce, u některých témat konkrétní tipy a ověřené formáty z praxe ScioŠkol)."),
-  bullet("Diferenciaci — jak téma uchopit ve 2. trojročí (úroveň 2) a ve 3. trojročí (úroveň 3). Většina témat je společná; dvě jsou určena primárně 3. trojročí (Láska, vztahy a hranice; Právo pro život)."),
+  bullet("Diferenciaci — jak téma uchopit v 1. trojročí (úroveň 1), ve 2. trojročí (úroveň 2) a ve 3. trojročí (úroveň 3). Většina témat je společná všem třem; u témat omezených na jedno trojročí je uvedeno „jen N. trojročí“ a vypsaná je jen příslušná úroveň."),
   bullet("Návaznost na projekty 2025/26 — kde lze čerpat z loňských příprav a zkušeností kolegů."),
   P("", { after: 40 }),
-  P("Doporučený postup: každý blok pololetí může mít doporučený vedoucí ScioCíl (např. blok 1 = SC4, blok 2 = SC1…), přiřazení ale není pevné — skupiny podle SC slouží především k orientaci a k hlídání vyváženosti nabídky v každém trojročí. Souhrnná tabulka pro rozebírání témat a přehled pokrytí všech kamenů jsou v souboru Projektova_temata_1pololeti.xlsx."),
-  P("Úrovně kamenů: ScioCíle popisují u každého kamene úrovně 0–5. Pro 2. trojročí cílíme zpravidla na úroveň 2 (≈ 6. ročník), pro 3. trojročí na úroveň 3 (≈ 9. ročník) — stejně to má nastavené naše ŠVP; diferenciace u témat z toho vychází."),
+  P("Doporučený postup: každý blok pololetí může mít doporučený vedoucí ScioCíl (např. blok 1 = SC4, blok 2 = SC1…), přiřazení ale není pevné — skupiny podle SC slouží především k orientaci a k hlídání vyváženosti nabídky v každém trojročí. Souhrnná tabulka pro rozebírání témat a přehled pokrytí všech kamenů jsou v souboru Projektova_temata.xlsx."),
+  P("Úrovně kamenů: ScioCíle popisují u každého kamene úrovně 0–5. Pro 1. trojročí cílíme zpravidla na úroveň 1 (≈ 3. ročník), pro 2. trojročí na úroveň 2 (≈ 6. ročník) a pro 3. trojročí na úroveň 3 (≈ 9. ročník) — stejně to má nastavené naše ŠVP; diferenciace u témat z toho vychází."),
   P("Zdroje: upgrady ScioCílů 1, 4, 5, 8 (2025/26); ŠVP „Cesty k rozkvětu“ (ScioŠkola Dejvice); Východiska a principy ScioŠkol 2026; didaktiky SC1 a SC4; revidované RVP ZV (schváleno 30. 12. 2024, náběh od 2025/26); harmonogram a zásobník projektů 2025/26.", { run: { italics: true, color: "777777" } }),
   new Paragraph({ children: [new PageBreak()] }),
   new Paragraph({ text: "Přehled témat", heading: HeadingLevel.HEADING_1 }),
@@ -155,8 +155,8 @@ for (const g of GROUPS) {
     }
     children.push(label("Diferenciace"));
     if (t.dif1 && t.dif1 !== "—") children.push(bullet("1. trojročí: " + t.dif1));
-    if (t.dif2 !== "—") children.push(bullet("2. trojročí: " + t.dif2));
-    children.push(bullet("3. trojročí: " + t.dif3));
+    if (t.dif2 && t.dif2 !== "—") children.push(bullet("2. trojročí: " + t.dif2));
+    if (t.dif3 && t.dif3 !== "—") children.push(bullet("3. trojročí: " + t.dif3));
     if (t.loni) {
       children.push(label("Návaznost na projekty 2025/26"));
       children.push(P(t.loni, { run: { italics: true, color: "555555" } }));
