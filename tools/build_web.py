@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.24-06"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.24-07"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -12,7 +12,7 @@ topics.sort(key=lambda t: t["id"])
 v3 = json.load(open("data/znalosti_v3.json", encoding="utf-8"))
 
 def strip_source(s):
-    s = re.sub(r"^ŠVP \(Ú[23/Ú]+\):\s*", "", s)
+    s = re.sub(r"^ŠVP \(Ú\d(?:/Ú\d)*\):\s*", "", s)
     s = re.sub(r"^RVP – ", "", s)
     return s
 

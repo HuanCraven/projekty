@@ -9,7 +9,7 @@ const files = ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.
 let topics = [];
 for (const f of files) topics = topics.concat(JSON.parse(fs.readFileSync(f, "utf8")));
 const v3 = JSON.parse(fs.readFileSync("data/znalosti_v3.json", "utf8"));
-const stripSrc = z => z.replace(/^ŠVP \(Ú[23\/Ú]+\):\s*/, "").replace(/^RVP – /, "");
+const stripSrc = z => z.replace(/^ŠVP \(Ú\d(?:\/Ú\d)*\):\s*/, "").replace(/^RVP – /, "");
 const stripDid = d => d.replace(/^Didaktika SC\d:\s*/, "");
 
 const GROUPS = [
@@ -86,7 +86,7 @@ children.push(
   bullet("Stěžejní kameny — jádro projektu; to, co se děti mají skutečně posunout (obvykle 1–3 kameny)."),
   bullet("Vedlejší kameny — přirozené přesahy rozvíjené v menší míře; často propojují více ScioCílů."),
   bullet("Anotaci a náměty aktivit — inspiraci pro stavbu programu (přednáška, praktická a hravá výuka, výlety, exkurze, videa, hraní rolí…)."),
-  bullet("Tvrdé znalosti — příklady učiva, které se v projektu přirozeně nabízí učit. Čerpají ze dvou zdrojů: z učiva úrovní 2 a 3 našeho ŠVP (položky „ŠVP“; úroveň 2 ≈ 6. ročník, úroveň 3 ≈ 9. ročník) a z revidovaného RVP ZV schváleného v prosinci 2024 (položky „RVP“ podle nových vzdělávacích oblastí a očekávaných výsledků učení). Jsou to náměty, ne povinný výčet. Pozn.: ŠVP položky jsou zatím jen u témat SC1 a SC4 — část ŠVP s cíli 5–8 nebyla v podkladu čitelná."),
+  bullet("Tvrdé znalosti — příklady učiva, které se v projektu přirozeně nabízí učit. Čerpají ze dvou zdrojů: z učiva úrovní 2 a 3 našeho ŠVP (položky „ŠVP“; úroveň 2 ≈ 6. ročník, úroveň 3 ≈ 9. ročník) a z revidovaného RVP ZV schváleného v prosinci 2024 (položky „RVP“ podle nových vzdělávacích oblastí a očekávaných výsledků učení). Jsou to náměty, ne povinný výčet. Pozn.: ŠVP položky pocházejí z cílů 1–4, protože část ŠVP s cíli 5–8 nebyla v podkladu čitelná — u témat SC5 a SC8 se proto objevují jen tam, kde téma pracuje s učivem cílů 1–4. Učivo úrovně 1 (1. trojročí) v podkladu není vůbec."),
   bullet("Z didaktiky ScioCíle — vybraná doporučení z didaktik SC1 a SC4 (u kapitol shrnutí pro průvodce, u některých témat konkrétní tipy a ověřené formáty z praxe ScioŠkol)."),
   bullet("Diferenciaci — jak téma uchopit v 1. trojročí (úroveň 1), ve 2. trojročí (úroveň 2) a ve 3. trojročí (úroveň 3). Většina témat je společná všem třem; u témat omezených na jedno trojročí je uvedeno „jen N. trojročí“ a vypsaná je jen příslušná úroveň."),
   bullet("Návaznost na projekty 2025/26 — kde lze čerpat z loňských příprav a zkušeností kolegů."),

@@ -12,7 +12,7 @@ for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json"
 topics.sort(key=lambda t: t["id"])
 v3 = json.load(open("data/znalosti_v3.json", encoding="utf-8"))
 def strip_src(z):
-    z = re.sub(r"^ŠVP \(Ú[23/Ú]+\):\s*", "", z)
+    z = re.sub(r"^ŠVP \(Ú\d(?:/Ú\d)*\):\s*", "", z)
     return re.sub(r"^RVP – ", "", z)
 print(f"Témat celkem: {len(topics)}")
 
@@ -133,7 +133,7 @@ lines = [
     ("Každé téma má stěžejní kameny (jádro projektu) a vedlejší kameny (přirozené přesahy, rozvíjené v menší míře).", False),
     ("Sloupec „Trojročí“: většina témat je společná pro 2. i 3. trojročí s diferenciací popsanou v katalogu (Word).", False),
     ("Sloupec „Kdo si téma bere“ je určen k vyplnění – zapište dvojici průvodců a termín bloku.", False),
-    ("Sloupec „Tvrdé znalosti“: položky „ŠVP“ = učivo úrovní 2 a 3 z našeho ŠVP (jen SC1/SC4 – část ŠVP s cíli 5–8 nebyla v podkladu čitelná); položky „RVP“ = revidované RVP ZV (12/2024). Náměty, ne povinný výčet.", False),
+    ("Sloupec „Tvrdé znalosti“: položky „ŠVP“ = učivo úrovní 2 a 3 z našeho ŠVP; pocházejí z cílů 1–4, protože část ŠVP s cíli 5–8 nebyla v podkladu čitelná — u témat SC5 a SC8 se proto objevují jen tam, kde téma pracuje s učivem cílů 1–4. Učivo úrovně 1 (1. trojročí) v podkladu není vůbec. Položky „RVP“ = revidované RVP ZV (12/2024). Náměty, ne povinný výčet.", False),
     ("Filtrujte podle sloupce „Vedoucí ScioCíl“ nebo „Trojročí“ (řádek 1 má zapnutý filtr).", False),
     ("", False),
     ("List „Pokrytí kamenů“: přehled všech stavebních kamenů čtyř ScioCílů a témat, která je rozvíjejí.", False),
