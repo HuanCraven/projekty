@@ -48,6 +48,15 @@ pip install openpyxl && npm install
 
 `index.html` nikdy needituj ručně — příští generace by změny přepsala.
 
+> **Přegeneruj vždy všechny tři výstupy, ne jen web.** Web se dělá často,
+> Word a Excel se snadno zapomenou. V srpnu 2026 byly `vystupy/` půl měsíce
+> pozadu (obsahovaly stav před otevřením tématu 26 druhému trojročí) a
+> nikdo si toho nevšiml, protože web byl v pořádku.
+>
+> Nová pole je navíc potřeba doplnit do generátorů zvlášť — `dif1` se
+> původně přidalo jen do webu a ve Wordu chybělo. Po buildu se vyplatí
+> zkontrolovat v Excelu sloupec „Trojročí" a ve Wordu sekci „Diferenciace".
+
 ## Pravidla obsahu
 
 - Označení zdrojů („ŠVP (Ú2):", „RVP – ") zůstává v datech, ale generátory ho
