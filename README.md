@@ -20,7 +20,7 @@ Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
 | `tools/build_docx.js` | generátor Word katalogu (`vystupy/`) — vyžaduje npm balíček `docx` | zřídka |
 | `tools/build_xlsx.py` | generátor Excel tabulky (`vystupy/`) — vyžaduje `openpyxl` | zřídka |
 | `vystupy/` | vygenerovaný Word + Excel | NE — generuje se |
-| `podklady/` | osnovy kamenů SC1/4/5/8, digest revidovaného RVP, digest učiva ŠVP | referenční |
+| `podklady/` | osnovy kamenů SC1/4/5/8, digest revidovaného RVP, digest učiva ŠVP, `poznamky.md` (rozhodnutí a odložené nápady) | referenční |
 
 ## Jak upravit nebo přidat téma
 

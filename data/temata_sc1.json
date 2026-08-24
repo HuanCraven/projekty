@@ -5,7 +5,8 @@
     "skupina": "SC1",
     "vedouci": [
       "1.2.2.1 Využívám poznatky o procesu učení",
-      "1.2.2.3 Volím si učební strategie"
+      "1.2.2.3 Volím si učební strategie",
+      "1.2.4.1 Využívám nástroje a metody reflexe učení"
     ],
     "vedlejsi": [
       "4.1.1.2 Spím",
@@ -21,11 +22,12 @@
       "Souboj učebních strategií: dvě skupiny se učí totéž různými metodami a porovnají výsledky",
       "Trénink paměťových technik: paměťový palác, akronymy, příběhová metoda — memorování na výkon",
       "Pokusy se soustředěním: vliv hluku, multitaskingu a mobilního telefonu na výkon",
-      "Tvorba osobního „návodu k použití mého mozku“ — kdy, kde a jak se mi nejlépe učí"
+      "Tvorba osobního „návodu k použití mého mozku“ — kdy, kde a jak se mi nejlépe učí",
+      "Reflexní nástroje na zkoušku: deník učení, časová osa, horké křeslo i reflexe v kruhu — vyzkoušet a vybrat si ten, který mi sedí"
     ],
     "dif1": "Hravé pokusy s pamětí a pozorností, objevování, že se různé věci učím různě (zpaměti, opakováním, hrou), jednoduché všímání si, kdy mi učení jde a kdy ne.",
     "dif2": "Hravé experimenty s pamětí a pozorností, jednoduché techniky zapamatování, objevování jak se učím.",
-    "dif3": "Neurony a synapse, kognitivní procesy, metakognice, efektivní příprava na zkoušky a prezentace.",
+    "dif3": "Neurony a synapse, kognitivní procesy, metakognice, efektivní příprava na zkoušky a prezentace; vědomá volba reflexní metody a vlastní kritéria hodnocení.",
     "loni": ""
   },
   {
@@ -99,7 +101,8 @@
       "Návrh a provedení vlastního experimentu, pozorování či měření (rostliny, chování lidí, fyzikální jevy)",
       "Sběr a zpracování dat: tabulky, grafy, vyhodnocení — potvrdila se hypotéza?",
       "Exkurze na vědecké pracoviště (AV ČR, univerzita, science centrum) nebo beseda s vědcem",
-      "Závěrečná minikonference: postery, prezentace a vzájemné oponentury"
+      "Závěrečná minikonference: postery, prezentace a vzájemné oponentury",
+      "Reflexe badatelské cesty: deník výzkumu a závěrečné ohlédnutí — co se povedlo, kde jsme se zasekli a co bychom udělali jinak"
     ],
     "dif1": "Jednoduché pokusy s jasně viditelným efektem (potápění, klíčení), radost z pozorování a kladení otázek „co se stane, když…“, společný zápis toho, co jsme zjistili.",
     "dif2": "Jednodušší pokusy s jasným efektem, důraz na pozorování a údiv, společné vyhodnocení.",
@@ -151,6 +154,7 @@
       "Návštěva galerie či výstavy s interpretační dílnou: co dílo říká mně, co říkalo současníkům",
       "Tvůrčí dílny v různých médiích: malba, fotografie, hudba, poezie, krátké video — na společné téma",
       "Umělecká výzva: zpracovat jedno téma (např. strach, domov) třemi různými uměleckými jazyky",
+      "Rytmus, hlas a pohyb: společné muzicírování (bubenický kruh, zpěv, jednoduchá kapela) a tanec jako výraz — od lidového po současný",
       "Setkání s umělcem: jak vzniká dílo, čím ho umění živí a co ho naučilo",
       "Vernisáž vlastní tvorby pro rodiče a školu"
     ],
