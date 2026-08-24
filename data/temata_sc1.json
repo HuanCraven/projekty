@@ -14,7 +14,7 @@
       "1.2.2.2 Zařídím si podmínky pro učení",
       "1.2.2.5 Dávám si věci do souvislostí"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Jak funguje paměť, pozornost a učení — a jak toho využít ve svůj prospěch? Děti si na sobě otestují učební strategie (rozložené opakování, aktivní vybavování, paměťové techniky), prozkoumají, co jejich mozek rozptyluje, a sestaví si vlastní „návod k použití“ své hlavy.",
     "aktivity": [
       "Paměťové experimenty: křivka zapomínání, kapacita krátkodobé paměti, testy pozornosti (gorila ve videu)",
@@ -40,7 +40,7 @@
       "8.2.4.1 Využívám digitální technologie",
       "5.3.1.3 Vyjadřuji se písemně"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "AI je nejmocnější učební nástroj současnosti — pokud víme, jak s ní zacházet. Projekt zkoumá, jak jazykové modely fungují, co umí a kde selhávají. Děti trénují formulaci dotazů, ověřování odpovědí a poznávání situací, kdy jim AI učení usnadňuje a kdy je naopak okrádá o vlastní myšlení.",
     "aktivity": [
       "Jak AI funguje: srozumitelný model jazykového modelu (predikce slov), hra na „lidský chatbot“",
@@ -66,7 +66,7 @@
       "8.2.1.4 Pracuji se statistikou a pravděpodobností",
       "5.3.2.3 Komunikuji poctivě"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Kdo a proč nám lže — a jak to poznat? Projekt o kritickém myšlení a mediální gramotnosti: děti se učí ověřovat informace, odhalovat dezinformace, manipulativní titulky i lživé grafy a rozumět tomu, jak fungují média a algoritmy sociálních sítí.",
     "aktivity": [
       "Fact-checkingová dílna: ověřování virálních zpráv a fotek (zpětné vyhledávání obrázků, dohledání původního zdroje)",
@@ -92,7 +92,7 @@
       "1.2.1.1 Stanovím si cíl učení",
       "1.2.4.3 Reflektuji pokrok a hodnotím výsledky svého učení"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Věda není učebnice, ale způsob kladení otázek. Každý tým si zvolí vlastní výzkumnou otázku, zformuluje hypotézu, navrhne experiment či pozorování, sesbírá data a výsledky obhájí na závěrečné minikonferenci. Projekt v malém zrcadlí skutečný vědecký proces včetně slepých uliček.",
     "aktivity": [
       "Od otázky k hypotéze: dílna kladení výzkumných otázek (Co by se stalo, kdyby…? Proč vlastně…?)",
@@ -119,7 +119,7 @@
       "1.1.2.6 Učím se činností",
       "1.2.3.4 Motivuji se k procesu učení"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Hra je nejstarší způsob učení. Projekt zkoumá, proč a jak se při hraní učíme — od deskovek přes venkovní a rolové hry po videohry. Vyvrcholením je návrh a výroba vlastní hry, která má ostatní něco naučit, a herní festival pro celou školu.",
     "aktivity": [
       "Herní maraton s analýzou: co se u které hry učíme (strategie, jazyk, spolupráce, pravděpodobnost)",
@@ -145,7 +145,7 @@
       "5.3.1.1 Umím mluvit",
       "8.3.4.1 Vybírám si volnočasové aktivity"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Umění je způsob, jak poznávat svět i sebe. Projekt střídá roli diváka a tvůrce: návštěvy galerie, divadla či koncertu s interpretační dílnou a vlastní tvorbu v různých médiích. Děti zjistí, co jim které umění říká a jak se skrze tvorbu učí vyjadřovat myšlenky, které slova neunesou.",
     "aktivity": [
       "Návštěva galerie či výstavy s interpretační dílnou: co dílo říká mně, co říkalo současníkům",
@@ -172,7 +172,7 @@
       "1.1.2.4 Získávám poznatky z nejazykových druhů vyjádření",
       "5.2.3.1 Mám své místo v rodině"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Odkud vlastně víme, co se stalo před sto nebo tisíci lety? Projekt dělá z dětí historiky: čtou a poslouchají prameny — kroniky, dopisy, dobový tisk, fotografie, mapy i vzpomínky pamětníků — učí se z nich vytěžit informace a posoudit, komu věřit. Historie tu není seznam letopočtů, ale detektivní práce se zdroji.",
     "aktivity": [
       "Detektivka nad pramenem: co prozradí stará fotografie, mince, kronika či dopis z fronty — čtení a interpretace pramenů",
@@ -200,7 +200,7 @@
       "5.1.2.2 Navazuji kontakty",
       "1.2.3.1 Posiluji svou chuť učit se novým věcem"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Nejcennější poznání se skrývá v dílnách, ateliérech a provozech lidí, kteří něco skutečně umějí. Projekt je sérií výprav za mistry svého oboru — řemeslníky, podnikateli, vědci, umělci — spojenou s vlastním vyzkoušením jejich práce. Děti se učí učit se od lidí a v reálných situacích.",
     "aktivity": [
       "Mapování mistrů v okolí: koho zajímavého známe my, rodiče, sousedé; domluvení návštěv (děti samy!)",
@@ -226,7 +226,7 @@
       "8.2.3.4 Dopravuji se",
       "8.2.1.3 Pracuji s jednotkami"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Obrovská část poznání k nám přichází beze slov: mapami, grafy, schématy, piktogramy, vzorci. Projekt učí tato vyjádření číst, kriticky posuzovat i tvořit. Od orientace v jízdních řádech a plánech měst po infografiku vlastní výroby — svět se stane čitelnějším.",
     "aktivity": [
       "Lov symbolů: piktogramy, dopravní značky, ikony aplikací — jejich logika a historie",
@@ -253,7 +253,7 @@
       "1.1.2.3 Učím se pomocí AI",
       "1.1.2.2 Učím se s pomocí jiných"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Proč je nebe modré? Kam mizí voda z louže? Jak ví mravenec, kam jde? Projekt začíná velkou sbírkou skutečných otázek dětí — a pak učí, jak na ně hledat odpovědi: v knihách, v přírodě za školou, u odborníků, experimentem i s AI. Každý zdroj má své silné a slabé stránky; cílem je umět si vybrat ten pravý a ověřit, co říká.",
     "aktivity": [
       "Sbírka otázek: týden sběru vlastních otázek o světě (schránka, zeď otázek), třídění a výběr",
@@ -280,7 +280,7 @@
       "5.3.2.3 Komunikuji poctivě",
       "1.1.1.3 Posoudím kvalitu zdroje učení"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Co je spravedlnost? Může být lež někdy dobrá? Jak poznám, že něco vím? Projekt podle metody filozofie pro děti (P4C): společné tázání v kruhu, stavba argumentu, hledání protipříkladů, myšlenkové experimenty. Děti se učí myslet nahlas, poctivě a spolu — dovednost, kterou za ně v éře AI nikdo neudělá.",
     "aktivity": [
       "Filozofické kruhy (P4C): společné tázání nad podnětem (příběh, obraz, video) — děti samy volí otázku a vedou dialog",
@@ -307,7 +307,7 @@
       "1.1.2.4 Získávám poznatky z nejazykových druhů vyjádření",
       "1.1.2.6 Učím se činností"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Všechno, co vidíme a slyšíme, jsou vlny — a dají se zkoumat, měřit i proměnit v umění. Projekt je velkou laboratoří optiky a akustiky: od camery obscury a rozkladu světla hranolem po vlastnoručně vyrobené hudební nástroje a mapu hluku školy. Věda a umění tu jdou ruku v ruce — vyvrcholením je stínové divadlo nebo světelná instalace.",
     "aktivity": [
       "Optická dílna: camera obscura, periskop, kaleidoskop; pokusy s odrazem, lomem a rozkladem světla (duha, hranol, čočky)",
@@ -334,7 +334,7 @@
       "8.2.1.3 Pracuji s jednotkami",
       "1.1.1.2 Vyhledám relevantní zdroj učení"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Nic nenakrmí zvídavost jako noční obloha. Projekt vede děti od údivu k poznání: pozorovací noc s dalekohledem, model sluneční soustavy v měřítku přes celou čtvrť, příběh lidského poznávání vesmíru od Galilea po Webbův teleskop a návrat na Měsíc. Vesmír tu je palivem chuti se učit — protože otázek je vždycky víc než odpovědí.",
     "aktivity": [
       "Pozorovací večer: Měsíc, planety a souhvězdí dalekohledem (hvězdárna či astronomický spolek); deník pozorování",

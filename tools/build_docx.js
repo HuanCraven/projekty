@@ -56,7 +56,14 @@ const label = (text) => new Paragraph({
   spacing: { before: 120, after: 40 },
 });
 
-const urovText = { "obě": "2. i 3. trojročí", "2": "primárně 2. trojročí", "3": "primárně 3. trojročí" };
+// urovne = seznam trojročí, ve kterých je téma použitelné (např. "1,2,3" nebo "3")
+function urovText(u) {
+  const t = String(u).split(",").map(x => x.trim()).filter(Boolean).sort();
+  if (!t.length) return "";
+  if (t.length === 1) return `primárně ${t[0]}. trojročí`;
+  if (t.length === 3) return "1.–3. trojročí";
+  return t.map(x => x + ".").join(" i ") + " trojročí";
+}
 
 const children = [];
 
@@ -96,7 +103,7 @@ for (const g of GROUPS) {
     spacing: { before: 160, after: 60 },
   }));
   for (const t of topics.filter(x => x.skupina === g.key)) {
-    const extra = t.urovne === "3" ? "  (jen 3. trojročí)" : t.urovne === "2" ? "  (jen 2. trojročí)" : "";
+    const extra = String(t.urovne).split(",").length === 1 ? `  (jen ${String(t.urovne).trim()}. trojročí)` : "";
     children.push(new Paragraph({
       children: [
         new TextRun({ text: `${t.id}. ${t.nazev}`, size: 21 }),
@@ -126,7 +133,7 @@ for (const g of GROUPS) {
       text: `${t.id}. ${t.nazev}`, heading: HeadingLevel.HEADING_2,
     }));
     children.push(new Paragraph({
-      children: [new TextRun({ text: urovText[t.urovne], bold: true, size: 20, color: g.color })],
+      children: [new TextRun({ text: urovText(t.urovne), bold: true, size: 20, color: g.color })],
       shading: { type: ShadingType.CLEAR, fill: "F4F4F4" },
       spacing: { after: 120 },
     }));

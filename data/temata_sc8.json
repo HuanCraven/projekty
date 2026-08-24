@@ -12,7 +12,7 @@
       "8.2.2.2 Platím daně",
       "8.2.1.1 Modeluji reálné situace"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Odkud se berou peníze, kam mizí a jak je udržet? Projekt o financích v praxi: rozpočet, spoření, půjčky, investice i reklamní triky obchodníků. Děti hospodaří s reálným či simulovaným rozpočtem, porovnávají ceny a zjišťují, co znamená úrok, inflace nebo daň.",
     "aktivity": [
       "Měsíc s rozpočtem: hospodaření se svěřenou částkou (třídní fond, kapesné) včetně vyúčtování",
@@ -39,7 +39,7 @@
       "8.2.2.1 Hospodařím s penězi",
       "5.3.1.1 Umím mluvit"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Týmy projdou celým podnikatelským cyklem: nápad, průzkum trhu, výroba či služba, marketing, prodej a vyúčtování. Vyvrcholením je skutečný prodej — jarmark, kavárna pro rodiče či služba pro školu. Zisk je měřítkem, ale učením je celý proces včetně neúspěšných nápadů.",
     "aktivity": [
       "Nápadová dílna a validace: co lidé skutečně chtějí, mini průzkum trhu, hodnota pro zákazníka",
@@ -66,7 +66,7 @@
       "1.1.2.5 Vytvářím si učební situace",
       "8.3.2.2 Postupuji formálním vzděláváním"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Čím chci být — a jak se to vlastně rozhoduje? Projekt mapuje svět práce: povolání dneška i budoucnosti, cesty vzdělávání, které k nim vedou, a vlastní silné stránky a zájmy. Děti zpovídají profesionály, zkoušejí si pracovní pohovor a skládají si první představu o vlastní cestě.",
     "aktivity": [
       "Mapa světa práce: povolání kolem nás, mizející a vznikající profese, vliv AI na trh práce",
@@ -93,7 +93,7 @@
       "8.1.2.1 Odstraňuji překážky v motivaci",
       "1.2.1.2 Plánuji postup učení"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Všichni máme týž den — 24 hodin. Kam mizí ten můj? Děti mapují, čím skutečně tráví čas, srovnávají to s tím, co je pro ně důležité, a experimentují s nástroji plánování: kalendář, to-do listy, prioritizace, boj s prokrastinací. Projekt je praktickou dílnou řízení vlastního života.",
     "aktivity": [
       "Časový audit: týdenní záznam všech činností a jeho vyhodnocení (grafy, překvapení, zloději času)",
@@ -121,7 +121,7 @@
       "4.1.1.3 Stravuji se",
       "8.2.7.1 Jednám v právních vztazích"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Velká simulace samostatného života: děti si „pronajmou byt“, hospodaří s rozpočtem, vaří, perou, nakupují a zařizují běžné pochůzky. Projekt v bezpečném rámci zkouší všechno, co obnáší postarat se o sebe — a končí přespáním „na vlastní noze“ se vším všudy.",
     "aktivity": [
       "Hra na domácnost: fiktivní rozpočet, nájem, energie, nákupy — měsíc dospělého života v simulaci",
@@ -150,7 +150,7 @@
       "4.2.1.2 Pracuji s nejistotou",
       "4.2.1.4 Chystám se na budoucí zátěžové situace"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Požár, povodeň, blackout, ztracení se v cizím městě — co dělat, když se něco pokazí? Projekt učí rozpoznávat nebezpečí, vyhodnocovat rizika bez zbytečného strachu a jednat podle jasného postupu. Kombinuje civilní ochranu, pobyt v přírodě a simulace krizových situací.",
     "aktivity": [
       "Analýza rizik kolem nás: co se může stát doma, ve škole, v přírodě — pravděpodobnost vs. závažnost",
@@ -176,7 +176,7 @@
       "4.2.2.3 Řeším zátěžové situace",
       "4.1.1.8 Léčím se"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "První pomoc není o odznáčcích, ale o tom nezpanikařit a jednat. Intenzivní praktický výcvik: resuscitace, zástava krvácení, bezvědomí, volání na tísňovou linku — vše nacvičeno do automatismu na realistických simulacích s maskovanými poraněními. Cílem je, aby žádné dítě nezůstalo stát opodál.",
     "aktivity": [
       "Základní životní funkce a život ohrožující stavy: co tělo potřebuje a co ho zabíjí",
@@ -203,7 +203,7 @@
       "1.1.2.6 Učím se činností",
       "8.2.3.3 Obstarávám si věci a zařizuji služby"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Od nápadu přes výkres k hotové věci. Děti projdou celým výrobním procesem: návrh, rozměření, volba materiálu a nástrojů, výroba, povrchová úprava a vyhodnocení. Naučí se bezpečně zacházet s nářadím, opravit rozbité a poznají hrdost na věc, kterou si samy vyrobily.",
     "aktivity": [
       "Nástrojový řidičák: bezpečná práce s pilkou, vrtačkou, tavnou pistolí, jehlou — certifikace na jednotlivé nástroje",
@@ -229,7 +229,7 @@
       "4.1.1.3 Stravuji se",
       "8.2.3.1 Postarám se o stravování"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Projekt s hlínou za nehty: děti založí či rozvinou školní záhon, pěstují plodiny od semínka po sklizeň a pečují o zvířata (školní slepice, žížalí kompostér, akvárium). Zkoumají, co rostliny a zvířata potřebují, odkud se bere jídlo a co obnáší každodenní odpovědnost za živé tvory.",
     "aktivity": [
       "Založení či rozšíření školního záhonu/vyvýšených záhonů: plán osazení, setí, péče, sklizeň",
@@ -283,7 +283,7 @@
       "5.3.1.2 Domlouvám se s jinými",
       "8.2.3.3 Obstarávám si věci a zařizuji služby"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Kdo rozhoduje o tom, co smím a co musím — a jak to můžu ovlivnit? Projekt rozebírá stát od obce po mezinárodní instituce: volby, parlament, vláda a soudy, obecní zastupitelstvo, EU, NATO i OSN. Děti si stát vyzkoušejí zevnitř — simulací voleb a parlamentu — a naostro navštíví úřady a zastupitele.",
     "aktivity": [
       "Simulace voleb a parlamentu: strany, kampaň, hlasování, koalice, přijetí „zákona“ třídy — a jeho obhajoba",
@@ -310,7 +310,7 @@
       "1.1.2.3 Učím se pomocí AI",
       "8.2.1.5 Zpracovávám data"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Co je uvnitř počítače? Jak doletí zpráva na druhý konec světa? A jak se vlastně učí umělá inteligence? Projekt dělá z dětí tvůrce místo konzumentů: rozeberou starý počítač, zahrají si na internet, natrénují vlastní model strojového učení a zautomatizují první úkol. Technologiím, kterým rozumím, vládnu já — ne ony mně.",
     "aktivity": [
       "Pitva počítače: rozebrání vysloužilého PC — procesor, paměť, disk; co která součástka dělá",
@@ -337,7 +337,7 @@
       "8.2.2.1 Hospodařím s penězi",
       "1.1.2.7 Získávám poznatky vědeckými metodami"
     ],
-    "urovne": "obě",
+    "urovne": "1,2,3",
     "anotace": "Neviditelná síla, bez které se náš svět zastaví. Děti si elektřinu osahají doslova: stavějí obvody, vyrábějí proud vlastníma rukama, měří spotřebu domácích spotřebičů a čtou skutečné vyúčtování. Projekt spojuje fyziku s praktickým životem — od bezpečnosti u zásuvky po otázku, odkud poteče proud, až zavřou uhelné elektrárny.",
     "aktivity": [
       "Stavba obvodů: žárovka, spínač, motorek, vodivé a nevodivé materiály; schéma obvodu jako technický jazyk",

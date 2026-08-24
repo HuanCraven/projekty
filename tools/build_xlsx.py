@@ -67,11 +67,17 @@ for c, (h, w) in enumerate(zip(headers, widths), 1):
 ws.freeze_panes = "C2"
 ws.auto_filter.ref = f"A1:{get_column_letter(len(headers))}{len(topics)+1}"
 
-urov = {"obě": "2 i 3", "2": "jen 2.", "3": "jen 3."}
+def urov_text(u):
+    """urovne je seznam trojročí, např. "1,2,3" nebo "3"."""
+    t = sorted(x.strip() for x in str(u).split(",") if x.strip())
+    if not t: return ""
+    if len(t) == 1: return f"jen {t[0]}."
+    if len(t) == 3: return "1.–3."
+    return " i ".join(t)
 for r, t in enumerate(topics, 2):
     vals = [t["id"], t["nazev"], GRP_NAZVY[t["skupina"]],
             "\n".join(t["vedouci"]), "\n".join(t["vedlejsi"]),
-            urov[t["urovne"]], t["anotace"],
+            urov_text(t["urovne"]), t["anotace"],
             "\n".join("• " + a for a in t["aktivity"]),
             "\n".join("• " + strip_src(z) for z in v3.get(str(t["id"]), {}).get("znalosti", [])),
             t["loni"] or "—", ""]

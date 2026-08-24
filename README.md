@@ -1,7 +1,7 @@
 # Projekty 2026/27 — katalog témat podle ScioCílů
 
 Katalog 50 projektových témat pro předmět Projekty (ScioŠkola Dejvice),
-1. pololetí 2026/27, ScioCíle 4, 1, 5 a 8, úrovně 2 a 3 (2. a 3. trojročí).
+1. pololetí 2026/27, ScioCíle 4, 1, 5 a 8, úrovně 1–3 (1.–3. trojročí).
 
 Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
 
@@ -52,8 +52,14 @@ pip install openpyxl && npm install
 
 - Označení zdrojů („ŠVP (Ú2):", „RVP – ") zůstává v datech, ale generátory ho
   z výstupů odstraňují — ve webu, Wordu i Excelu se nezobrazuje.
-- Úroveň 2 ≈ 6. ročník, úroveň 3 ≈ 9. ročník (dle ŠVP).
-- Většina témat je společná pro obě trojročí; jen pro 3. trojročí je č. 40
+- Úroveň 1 ≈ 3. ročník, úroveň 2 ≈ 6. ročník, úroveň 3 ≈ 9. ročník (dle ŠVP).
+- **Pole `urovne` je seznam trojročí, ve kterých je téma použitelné** — čísla
+  oddělená čárkou, např. `"1,2,3"` (výchozí u nových témat), `"3"` (jen třetí),
+  `"2,3"`. Popisek na kartě i filtry se z něj skládají samy, takže stačí zapsat
+  správný seznam. Hodnota `"obě"` ze starého modelu už neplatí.
+- **U nového tématu vyplň všechny tři diferenciace** (`dif1`, `dif2`, `dif3`) —
+  katalog je od srpna 2026 určený pro 1.–3. trojročí, ne jen pro 2. a 3.
+- Většina témat je použitelná ve všech trojročích; jen pro 3. trojročí je č. 40
   (Právo pro život). Č. 26 (Láska, vztahy a hranice) bylo v srpnu 2026 otevřeno
   i 2. trojročí — Úroveň 2 u jeho kamenů (5.2.4.1–3, 5.2.1.2, 5.1.1.6) tento
   obsah pro 2. trojročí přímo popisuje, takže dřívější omezení bylo v rozporu

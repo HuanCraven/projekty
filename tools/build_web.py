@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.19-05"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.19-06"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -261,7 +261,8 @@ HTML = """<!DOCTYPE html>
     <span class="chip" data-sc="SC8">SC8 Život v rukou</span>
   </div>
   <div class="chips filtry" id="trChips">
-    <span class="chip active" data-tr="vse">Obě trojročí</span>
+    <span class="chip active" data-tr="vse">Všechna trojročí</span>
+    <span class="chip" data-tr="1">Pro 1. trojročí</span>
     <span class="chip" data-tr="2">Pro 2. trojročí</span>
     <span class="chip" data-tr="3">Pro 3. trojročí</span>
   </div>
@@ -397,7 +398,16 @@ const KAPACITY = __KAPACITY__, VYCHOZI_POCET = __VYCHOZI_POCET__;
 let znamiUcitele = [];   // příjmení těch, kdo už hlasovali nebo mají rezervaci
 const SCN = {SC4:"SC4 Rozvíjím svou odolnost", SC1:"SC1 Umím se učit", SC5:"SC5 Buduji dobré vztahy", SC8:"SC8 Mám život ve svých rukou"};
 const COL = {SC4:["var(--sc4)","var(--sc4bg)"], SC1:["var(--sc1)","var(--sc1bg)"], SC5:["var(--sc5)","var(--sc5bg)"], SC8:["var(--sc8)","var(--sc8bg)"]};
-const TRT = {"obě":"2. i 3. trojročí","2":"jen 2. trojročí","3":"jen 3. trojročí"};
+/* urovne = seznam trojročí, ve kterých je téma použitelné, např. "1,2,3" nebo "3".
+   Popisek se z něj skládá, takže unese i budoucí kombinace („2,3“ apod.). */
+function trt(u){
+  const t = String(u).split(",").map(x=>x.trim()).filter(Boolean).sort();
+  if(t.length === 0) return "";
+  if(t.length === 1) return `jen ${t[0]}. trojročí`;
+  if(t.length === 3) return "1.–3. trojročí";
+  return t.map(x=>x+".").join(" a ") + " trojročí";
+}
+function proTrojrocí(u, tr){ return String(u).split(",").map(x=>x.trim()).includes(tr); }
 let fSC="vse", fTR="vse", q="", view="temata";
 // index: kámen -> témata
 const KIDX = {};
@@ -465,14 +475,14 @@ function render(){
   const nq=norm(q);
   const items=DATA.filter(t=>
     (fSC==="vse"||t.skupina===fSC) &&
-    (fTR==="vse"||t.urovne==="obě"||t.urovne===fTR) &&
+    (fTR==="vse"||proTrojrocí(t.urovne, fTR)) &&
     (!nq||hay(t).includes(nq)));
   grid.innerHTML=items.map(t=>{
     const [c,cb]=COL[t.skupina];
     return `<div class="card" style="--accent:${c};--accentbg:${cb}" onclick="openD(${t.id})">
       <div class="num">Téma ${t.id}</div>
       <h3>${t.nazev}</h3>
-      <div class="tagrow"><span class="tag">${SCN[t.skupina]}</span><span class="tag tr">${TRT[t.urovne]}</span></div>
+      <div class="tagrow"><span class="tag">${SCN[t.skupina]}</span><span class="tag tr">${trt(t.urovne)}</span></div>
       <p>${t.anotace}</p>
       <div class="kam">Kameny: ${t.vedouci.map(k=>k.split(" ")[0]).join(", ")}${t.vedlejsi.length?" + "+t.vedlejsi.map(k=>k.split(" ")[0]).join(", "):""}</div>
     </div>`;}).join("");
@@ -529,7 +539,7 @@ function openD(id){
   const sec=(title,body,open=false)=>`<details${open?" open":""}><summary>${title}</summary>${body}</details>`;
   let h=`<button class="closebtn" onclick="closeD()">✕</button>
     <button class="printbtn" onclick="printD()">🖨 Tisk</button>
-    <div class="num">Téma ${t.id} · ${SCN[t.skupina]} · ${TRT[t.urovne]}</div>
+    <div class="num">Téma ${t.id} · ${SCN[t.skupina]} · ${trt(t.urovne)}</div>
     <h2>${t.nazev}</h2>
     <div class="anot">${t.anotace}</div>`;
   h+=sec("Stěžejní kameny",t.vedouci.map(k=>kamHtml(k,true)).join(""),true);
