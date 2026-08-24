@@ -157,11 +157,12 @@
       "Evakuační cvičení naostro: plán, sraz, nouzové zavazadlo (co si vzít za 5 minut)",
       "Přežití v přírodě: orientace bez mobilu, oheň, přístřešek, úprava vody, signalizace",
       "Exkurze k hasičům či na krizové řízení města, beseda se záchranářem",
-      "Simulované krize v týmech: blackout, ztracený člen, zranění na výletě — jednání podle postupu Zastav se–Zhodnoť–Naplánuj–Jednej"
+      "Simulované krize v týmech: blackout, ztracený člen, zranění na výletě — jednání podle postupu Zastav se–Zhodnoť–Naplánuj–Jednej",
+      "Kdo mi přijede na pomoc: složky integrovaného záchranného systému (hasiči, policie, zdravotnická záchranná služba) a kdo řeší co; návštěva policejní stanice, aplikace Záchranka v mobilu"
     ],
-    "dif1": "Důležitá telefonní čísla a přivolání dospělého, chování při požárním poplachu, bezpečný pohyb venku, jednoduché tábornické dovednosti s dospělým.",
-    "dif2": "Základy: důležitá čísla, přivolání pomoci, chování při požáru, bezpečný pohyb venku, jednoduché tábornické dovednosti.",
-    "dif3": "Analýza rizik, krizové scénáře a jejich vedení, příprava rodiny na výpadky, dezinformace v krizích.",
+    "dif1": "Důležitá telefonní čísla a přivolání dospělého, chování při požárním poplachu, bezpečný pohyb venku, jednoduché tábornické dovednosti s dospělým. Poznávání záchranářů a jejich práce (hasič, policista, sanitka) — kdo mi pomůže a jak ho poznám.",
+    "dif2": "Základy: důležitá čísla, přivolání pomoci, chování při požáru, bezpečný pohyb venku, jednoduché tábornické dovednosti. Složky IZS a kdo řeší jakou situaci, aplikace Záchranka v mobilu.",
+    "dif3": "Analýza rizik, krizové scénáře a jejich vedení, příprava rodiny na výpadky, dezinformace v krizích. Fungování IZS a spolupráce složek u velkých událostí.",
     "loni": "Civilní ochrana a přežití"
   },
   {
@@ -351,6 +352,35 @@
     "dif1": "Bezpečné pokusy se stavebnicí obvodů (baterka, žárovka, spínač), pravidlo nestrkat nic do zásuvky, jednoduchý pokus s citronovou baterkou.",
     "dif2": "Bezpečné obvody ze stavebnic, jednoduché pokusy (statická elektřina, citronová baterie), základní pravidla bezpečnosti.",
     "dif3": "Proud, napětí, odpor a výkon v praxi; výroba a přenos elektřiny, obnovitelné vs. jaderné zdroje, výpočty spotřeby a ceny (kWh).",
+    "loni": ""
+  },
+  {
+    "id": 52,
+    "nazev": "Bushcraft: doma v přírodě",
+    "skupina": "SC8",
+    "vedouci": [
+      "8.2.6.2 Zmírňuji či akceptuji rizika",
+      "4.2.1.4 Chystám se na budoucí zátěžové situace"
+    ],
+    "vedlejsi": [
+      "8.2.5.1 Zacházím se stroji a nástroji",
+      "8.2.3.1 Postarám se o stravování",
+      "4.1.1.6 Odpočívám",
+      "8.2.3.4 Dopravuji se",
+      "1.1.2.6 Učím se činností"
+    ],
+    "urovne": "1,2,3",
+    "anotace": "Umět si venku poradit není jedna výprava, ale sada dovedností, které se dají trénovat celý rok za školou. Projekt učí být v přírodě soběstačný: rozdělat oheň i za mokra, uvázat správný uzel, postavit přístřešek, sbalit batoh, uvařit na ohni a obléknout se tak, aby zima ani déšť nebyly problém. Na rozdíl od Expedice tu nejde o cestu, ale o dovednosti samotné — a o vědomé zmírňování rizik, která s pobytem venku přicházejí.",
+    "aktivity": [
+      "Oheň a vaření venku: rozdělání ohně různými způsoby a v různém počasí, bezpečnost ohniště, vaření v kotlíku a specifika venkovní kuchyně",
+      "Uzly a přístřešek: základní uzly a jejich použití, stavba přístřešku z plachty i přírodního materiálu, spaní venku nanečisto",
+      "Batoh a výstroj: co si vzít a co nechat doma, vrstvení oblečení pro zimu i léto, péče o nůž a nástroje",
+      "Terén a počasí: pohyb po sněhu a ledu, čtení počasí, orientace bez mobilu, co dělat, když se ochladí nebo začne pršet",
+      "Zkouška dovednosti: tábornický okruh stanovišť v různých ročních obdobích — každý ukáže, co už zvládne sám"
+    ],
+    "dif1": "Základní tábornické dovednosti s velkou oporou průvodce — oheň pod dohledem, jednoduchý uzel, domeček z klacků, oblékání podle počasí.",
+    "dif2": "Samostatnější zvládnutí základů — oheň, dva tři uzly, přístřešek ve skupině, sbalení vlastního batohu podle seznamu, jednoduché jídlo uvařené venku.",
+    "dif3": "Soběstačnost ve složitějších podmínkách — oheň za mokra, výstroj podle sezóny, přenocování venku, pohyb na sněhu a ledu, vědomé zmírňování rizik a rozhodování, kdy je riziko už příliš velké.",
     "loni": ""
   }
 ]

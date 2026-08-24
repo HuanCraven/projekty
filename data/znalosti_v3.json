@@ -99,7 +99,8 @@
       "RVP – Přírodopis: biologie člověka — orgánové soustavy, viry a bakterie, nemoci a prevence",
       "RVP – Chemie: léčiva a návykové látky; bezpečná práce s látkami",
       "RVP – Výchova ke zdraví a bezpečí: ochrana a podpora zdraví, prevence přenosných chorob",
-      "RVP – Dějepis: dějiny medicíny — od morových ran k vakcínám"
+      "RVP – Dějepis: dějiny medicíny — od morových ran k vakcínám",
+      "RVP – Přírodopis: oběhová soustava — srdce, cévy, složení krve; krevní skupiny a transfuze"
     ]
   },
   "10": {
@@ -369,7 +370,8 @@
       "RVP – Výchova ke zdraví a bezpečí: osobní bezpečí za mimořádných událostí a obrana státu (v revizi posílený okruh!); bezpečnost v dopravě",
       "RVP – Geografie: živelní pohromy, chování při ohrožení, orientace v terénu",
       "RVP – Fyzika: energie a její zdroje (blackout); Chemie: hořlaviny a nebezpečné látky",
-      "RVP – Tělesná výchova: pobyt a přežití v přírodě"
+      "RVP – Tělesná výchova: pobyt a přežití v přírodě",
+      "RVP – Výchova k občanství: integrovaný záchranný systém — složky, jejich úkoly a spolupráce"
     ]
   },
   "37": {
@@ -534,6 +536,18 @@
     ],
     "didaktika": [
       "Didaktika SC4/SC5: vztah, ne akce — opakovaná setkání se stejnými seniory budují skutečnou vazbu; první návštěvu strukturovat (společná činnost), volný rozhovor až po oťukání."
+    ]
+  },
+  "52": {
+    "znalosti": [
+      "ŠVP (Ú2): principy přežití v přírodě, plán B",
+      "RVP – Tělesná výchova: turistika a pobyt v přírodě, bezpečnost při pohybových aktivitách",
+      "RVP – Polytechnická výchova a praktické činnosti: bezpečná práce s nářadím (nůž, pila), příprava pokrmů v improvizovaných podmínkách",
+      "RVP – Fyzika: teplo a hoření, vedení tepla (vrstvení oblečení)",
+      "RVP – Výchova ke zdraví a bezpečí: prevence úrazů, podchlazení a přehřátí, chování při ohrožení"
+    ],
+    "didaktika": [
+      "Didaktika SC4: bushcraft se učí opakováním v různém počasí a ročním období, ne jednorázovým výletem — dovednost se pozná až tehdy, když ji dítě zvládne v nepohodě a samo."
     ]
   },
   "51": {

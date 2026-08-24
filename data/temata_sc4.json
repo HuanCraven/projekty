@@ -232,12 +232,13 @@
       "Cesta nemoci tělem: viry, bakterie, imunita — pokusy a modely (šíření „nákazy“ ve třídě jako simulace)",
       "Domácí lékárnička: co v ní má být, k čemu léky slouží a jaká mají rizika",
       "Simulace návštěvy lékaře: objednání, popis příznaků, porozumění diagnóze; orientace v systému (praktik, specialista, pohotovost, pojišťovna)",
-      "Exkurze do nemocnice, lékárny či záchranné stanice, beseda se zdravotníkem",
-      "Historie medicíny: od bylinek k antibiotikům a vakcínám, největší objevy"
+      "Exkurze do nemocnice, lékárny, transfuzní stanice či záchranné stanice, beseda se zdravotníkem",
+      "Historie medicíny: od bylinek k antibiotikům a vakcínám, největší objevy",
+      "Krev pod lupou: krevní oběh a srdce, složení krve, krevní skupiny a příběh jejich objevu; dárcovství krve a plazmy — proč lidé darují a komu to pomůže"
     ],
-    "dif1": "Základní hygiena a péče o tělo formou her, rozpoznání „necítím se dobře“ a řeknu to dospělému, bezpečná návštěva lékaře nanečisto.",
-    "dif2": "Základy: hygiena, prevence, běžné dětské nemoci, beze strachu k lékaři.",
-    "dif3": "Imunitní systém do hloubky, antibiotická rezistence, duševní vs. tělesné nemoci, samostatná navigace zdravotnictvím (registrace, e-recept).",
+    "dif1": "Základní hygiena a péče o tělo formou her, rozpoznání „necítím se dobře“ a řeknu to dospělému, bezpečná návštěva lékaře nanečisto. Povídání o tom, co je krev a proč teče z odřeniny — beze strachu.",
+    "dif2": "Základy: hygiena, prevence, běžné dětské nemoci, beze strachu k lékaři. Krevní oběh a srdce: co krev v těle dělá a kudy putuje.",
+    "dif3": "Imunitní systém do hloubky, antibiotická rezistence, duševní vs. tělesné nemoci, samostatná navigace zdravotnictvím (registrace, e-recept). Krevní skupiny a transfuze, dárcovství krve a plazmy jako podoba občanské solidarity.",
     "loni": "Co jsou to nemoci?"
   },
   {
