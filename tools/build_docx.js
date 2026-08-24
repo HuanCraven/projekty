@@ -154,6 +154,7 @@ for (const g of GROUPS) {
       for (const d of ext.didaktika) children.push(bullet(stripDid(d)));
     }
     children.push(label("Diferenciace"));
+    if (t.dif1 && t.dif1 !== "—") children.push(bullet("1. trojročí: " + t.dif1));
     if (t.dif2 !== "—") children.push(bullet("2. trojročí: " + t.dif2));
     children.push(bullet("3. trojročí: " + t.dif3));
     if (t.loni) {
