@@ -81,6 +81,40 @@ aktivita tématu 9 Doktor v nás po linii biologie).
 
 ---
 
+## 1b. Test tvaru tématu
+
+Kritérium, které jsme si definovali v srpnu 2026 při přerámování bushcraftu.
+Používej ho na každé nové téma i na revizi starého:
+
+> **Stojí téma na otázce nebo napětí, které si dva průvodci postaví každý
+> jinak — nebo je to výcvikový kurz, případně něco, co už je samostatný
+> předmět?**
+
+Praktické vodítko: kdyby si téma vzali dva různí průvodci, vzniknou dva
+zjevně odlišné projekty? Pokud ne, téma je zúžené a nese osnovu místo otázky.
+Obvyklá oprava není zrušit ho, ale najít otázku v jeho vlastním stěžejním
+kameni — popisy úrovní kamene ji většinou obsahují.
+
+Přerámováno podle tohoto testu (25. 8. 2026):
+
+| bylo | je | otázka, na které to nově stojí |
+|---|---|---|
+| Bushcraft: doma v přírodě | č. 52 **Než se to stane** | kdy je riziko ještě v pořádku a kdy už ne |
+| Komunikační laboratoř | č. 21 **Rozumíme si?** | kde se mezi mnou a druhým sdělení ztrácí |
+| Společenská akademie | č. 28 **Jak se to tu dělá?** | jak se zachovám tam, kde neznám pravidla |
+
+**Vědomé výjimky, které test nesplňují a splňovat nemají:**
+
+- **č. 37 Zachraň život** — u resuscitace nechceme, aby si to každý postavil
+  po svém; drilovaný postup je tu ctnost, ne vada.
+- **č. 29 Domluvím se ve světě** — angličtina je předmět, ale anotace to
+  obrací hned první větou („čtyři týdny, kdy je angličtina nástrojem, ne
+  předmětem"). Jazyk se tu nepředává, používá se.
+
+Na hraně, ale drží je funkční rámec: č. 19, 35, 47 a 54.
+
+---
+
 ## 2. Rozhodnutí, která už padla (a proč)
 
 Aby se znovu neotevírala:

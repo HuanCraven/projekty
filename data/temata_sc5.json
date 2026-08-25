@@ -1,7 +1,7 @@
 [
   {
     "id": 21,
-    "nazev": "Komunikační laboratoř",
+    "nazev": "Rozumíme si?",
     "skupina": "SC5",
     "vedouci": [
       "5.3.1.1 Umím mluvit",
@@ -13,17 +13,17 @@
       "1.1.2.2 Učím se s pomocí jiných"
     ],
     "urovne": "1,2,3",
-    "anotace": "Mluvit umí každý — domluvit se je umění. Intenzivní trénink mluveného projevu, aktivního naslouchání a vedení dialogu: od řeči těla přes strukturu vystoupení po debatní souboje. Děti si natáčejí a rozebírají vlastní projevy a krok za krokem je zlepšují.",
+    "anotace": "Řekl jsem to jasně — a přesto mi nerozumíš. Jak je to možné? Projekt bere dorozumění jako věc, která se často nepovede: mezi tím, co myslím, co řeknu a co druhý slyší, se ztrácí překvapivě mnoho. Děti zkoumají, kde přesně to selhává — šum, domýšlení, předsudek, iluze, že to bylo jasné — a trénují obě strany: vyjádřit se tak, aby to došlo, a naslouchat tak, aby se druhý cítil slyšen. Rétorika, debata i vystoupení před publikem jsou nástroje, ne cíl.",
     "aktivity": [
-      "Rétorická cvičení: hlas, artikulace, tréma, řeč těla; minutové improvizované proslovy",
-      "Trénink aktivního naslouchání: parafráze, doptávání, rozhovory ve dvojicích s reflexí",
-      "Debatní turnaj: pravidla věcné argumentace, obhajoba přidělených (i nesympatických) stanovisek",
-      "Analýza slavných projevů a rozhovorů (řečnické triky, práce s publikem)",
-      "Závěrečné vystoupení: připravený proslov či moderovaná diskuse před publikem"
+      "Kde se sdělení ztrácí: pokusy s předáváním informace (tichá pošta na složitější zprávu, popis obrázku bez ukazování, instrukce po telefonu) a rozbor, v kterém kroku se to zlomilo",
+      "Iluze, že to bylo jasné: co jsem řekl a co druhý slyšel; předsudek a první dojem jako filtr; jak si porozumění ověřit parafrází a doptáváním",
+      "Naslouchání jako práce: rozhovory ve dvojicích s reflexí, mluvení bez přerušování, otázka místo rady",
+      "Když se domluvit nechce samo: debatní souboj o stanovisko, které mi není blízké; nesouhlas bez zranění; rétorická průprava — hlas, tréma, řeč těla",
+      "Zkouška naostro podle volby skupiny: proslov nebo moderovaná diskuse před publikem, rozhovor s cizím člověkem, nebo vyjednání skutečné věci ve škole"
     ],
-    "dif1": "Dramatické hry a vyprávění příběhů, mluvení před malou skupinou kamarádů, jednoduchá cvičení na naslouchání (co jsi právě řekl, zopakuj).",
-    "dif2": "Hravá průprava: dramatické hry, vyprávění příběhů, mluvení před malou skupinou.",
-    "dif3": "Argumentace a debata, strukturovaná prezentace, vedení diskuse, zvládání nesouhlasu a trémy.",
+    "dif1": "Povídání v kruhu s pravidly (mluví jeden, ostatní slyší), dramatické hry a vyprávění příběhů, jednoduché ověření „co jsem právě slyšel“, mluvení před malou skupinou kamarádů.",
+    "dif2": "Objevování, jak snadno vznikne nedorozumění, doplňující otázky pro ověření, vyprávění a mluvení před skupinou, první nesouhlas bez hádky.",
+    "dif3": "Překážky porozumění (šum, projekce, iluze transparentnosti, stereotyp), aktivní naslouchání a parafráze, argumentace a vedení diskuse, zvládání nesouhlasu a trémy.",
     "loni": ""
   },
   {
@@ -191,7 +191,7 @@
   },
   {
     "id": 28,
-    "nazev": "Společenská akademie",
+    "nazev": "Jak se to tu dělá?",
     "skupina": "SC5",
     "vedouci": [
       "5.1.2.1 Ovládám společenská pravidla",
@@ -204,17 +204,17 @@
       "5.1.1.7 Respektuji či překračuji hranice"
     ],
     "urovne": "1,2,3",
-    "anotace": "Jak se neztratit mezi lidmi: od pozdravu a small talku po chování v divadle, v restauraci či na úřadě. Projekt hravou formou trénuje společenskou obratnost v reálných situacích — vyvrcholením je společenský večer, který děti samy zorganizují, a výpravy „do společnosti“ naostro.",
+    "anotace": "Každé prostředí má svá nepsaná pravidla — a nejhorší je, když je člověk nezná. Tohle není kurz etikety; je to o tom, jak se vyznat v neznámém prostředí a jak v něm obstát: co si přečtu z toho, jak se lidé chovají, kdy mě ostych brzdí zbytečně a kdy je varováním, a jak se cítí ten, kdo pravidla nezná. Děti si to zkoušejí naostro — v restauraci, na úřadě, v divadle, v cizí komunitě — a nakonec se z hostů stanou hostitelé.",
     "aktivity": [
-      "Etiketa v akci: scénky běžných situací (představování, telefonát, e-mail, návštěva) a jejich rozbor",
-      "Výprava naostro: objednat si v restauraci, zeptat se na cestu, vyřídit věc na úřadě či v obchodě",
-      "Návštěva divadla či koncertu se vším všudy: oblečení, chování, přestávka",
-      "Small talk trénink: navazování rozhovoru s neznámými lidmi (bezpečně, např. se seniory v domově)",
-      "Společenský večer pořádaný dětmi: pozvánky, dress code, uvítání hostů, moderování"
+      "Přečti si místnost: co se dá poznat z toho, jak se lidé chovají — simulační hra na prostředí s vlastními neznámými pravidly (typu Bafá bafá) a rozbor, čeho jsme si všimli",
+      "Naostro do neznámého: objednat si v restauraci, vyřídit věc na úřadě, zeptat se na cestu — a pojmenovat, co bylo nepříjemné a proč",
+      "Ostych jako informace: kdy mě brzdí zbytečně a kdy mi říká, že se necítím bezpečně; navázání krátkého rozhovoru s cizím člověkem (bezpečně, např. se seniory v domově)",
+      "Být tím, kdo pravidla nezná: jak se cítí nový spolužák, cizinec nebo někdo bez „správného“ oblečení — a co s tím může udělat okolí",
+      "Z hosta hostitelem: děti pořádají skutečnou akci (společenský večer, přijetí návštěvy ve škole) a odpovídají za to, aby se v ní cizí člověk vyznal"
     ],
-    "dif1": "Základy slušnosti hravou formou — pozdrav, prosba, poděkování, počkání, až přijde řada — nacvičené na scénkách a v běžných školních situacích.",
-    "dif2": "Základy slušnosti hravě: pozdrav, prosba, poděkování, stolování, chování na veřejnosti.",
-    "dif3": "Formální komunikace (e-mail, telefonát, pohovor), společenské akce, kulturní rozdíly v etiketě, sebejistota v nových situacích.",
+    "dif1": "Základy slušnosti hravě (pozdrav, prosba, poděkování, počkat, až přijde řada) nacvičené ve scénkách, první zkušenost s neznámým prostředím s oporou průvodce, všímavost k tomu, kdo je tu nový.",
+    "dif2": "Čtení nového prostředí, stolování a chování na veřejnosti, navázání krátkého rozhovoru, empatie k tomu, kdo pravidla nezná.",
+    "dif3": "Signály formálnosti a volba tónu, formální komunikace (e-mail, telefonát, pohovor), kulturní rozdíly v etiketě, role hostitele a odpovědnost za to, aby se druhý vyznal.",
     "loni": ""
   },
   {
