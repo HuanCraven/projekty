@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.25-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.24-10"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
