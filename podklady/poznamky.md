@@ -93,6 +93,7 @@ Aby se znovu neotevírala:
 | **Redakce a školní noviny** | nezařazovat | dělá se jinde. U ostatních ScioŠkol je to přitom jedno z nejčastějších témat — kdyby se kolegové ptali, tohle je důvod |
 | **Kámen 5.2.3.3 Vychovávám děti** | nechat nepokrytý | jediný nepokrytý kámen ze 120; záměr |
 | **Kolegyní navržené sloučení témat 1–4 pro 1. trojročí** | neslučovat | spojovalo by čtyři kompetence ze tří ScioCílů; místo toho rozšířena `dif1` u témat 17, 19, 41 a 43 |
+| **Bushcraft jako samostatné téma** (bylo č. 52) | odebráno 25. 8. 2026 | úzce zaměřené — spíš samostatný předmět než široké téma, které si průvodce postaví po svém. Dovednosti pobytu venku zůstávají v č. 7 Expedice a č. 36 Nouzový režim. Kameny 8.2.6.2 a 4.2.1.4 tím ztratily vedoucí téma, zůstávají vedlejší u č. 36 (a 8.2.6.2 i u č. 47) |
 | **Celoškolní formáty** (typ Městečko, Kruhy, Den jinak) | mimo katalog | je to jiná osa než „téma pro jednu skupinu" a do datového modelu se nevejde. Není to chyba katalogu, ale je dobré vědět, že v appce je díra |
 | **Vlastní téma dítěte** | mimo katalog | u ostatních škol běžné („dítě si téma vypíše samo pod patronací průvodce"); kolegyně to měla v dokumentu jako „4 (6) projektů na volné téma". Katalog na to nemá místo |
 
@@ -150,6 +151,9 @@ nemá vrstvu, kterou by mít mohl:
 - **Témata omezená na jedno trojročí** dnes: 40 a 51 jen 3. trojročí, 54 a 55
   jen 1. trojročí. Obsah nese příslušná `difN`, ostatní dvě jsou `—` a v jedné
   z nich je krátké vysvětlení, proč téma pro dané trojročí není.
+- **V číslování témat jsou mezery** — id se nepřečíslovávají. Po odebrání
+  bushcraftu chybí 52, dřívější revize vyřadily 17 a 20 v původním významu.
+  Nové téma dostává vždy nové nejvyšší id, nikdy uvolněné.
 - **Téma 10** má sedm vedlejších kamenů, ačkoli pravidlo říká tři až pět.
   **Téma 43** má sedm aktivit a jedna z nich („mimořádné zařazení podle
   kalendáře") je vlastně poznámka k harmonogramu, ne aktivita. Obojí ponecháno
