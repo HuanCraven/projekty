@@ -355,31 +355,30 @@
   },
   {
     "id": 52,
-    "nazev": "Bushcraft: doma v přírodě",
+    "nazev": "Než se to stane",
     "skupina": "SC8",
     "vedouci": [
       "8.2.6.2 Zmírňuji či akceptuji rizika",
       "4.2.1.4 Chystám se na budoucí zátěžové situace"
     ],
     "vedlejsi": [
+      "4.2.1.2 Pracuji s nejistotou",
+      "8.2.1.4 Pracuji se statistikou a pravděpodobností",
       "8.2.5.1 Zacházím se stroji a nástroji",
-      "8.2.3.1 Postarám se o stravování",
-      "4.1.1.6 Odpočívám",
-      "8.2.3.4 Dopravuji se",
       "1.1.2.6 Učím se činností"
     ],
     "urovne": "1,2,3",
-    "anotace": "Umět si venku poradit není jedna výprava, ale sada dovedností, které se dají trénovat celý rok za školou. Projekt učí být v přírodě soběstačný: rozdělat oheň i za mokra, uvázat správný uzel, postavit přístřešek, sbalit batoh, uvařit na ohni a obléknout se tak, aby zima ani déšť nebyly problém. Na rozdíl od Expedice tu nejde o cestu, ale o dovednosti samotné — a o vědomé zmírňování rizik, která s pobytem venku přicházejí.",
+    "anotace": "Většina toho, co nás v životě potká, se dá zvládnout dřív, než to přijde. Projekt není o hašení požárů — od toho je Nouzový režim — ale o tom, co jim předchází: jak vlastně poznám, že je něco riskantní, kdy je riziko ještě v pořádku a kdy už ne, a jak se dá připravit tak, aby se z nepříjemné situace nestala krize. Děti zkoumají, jak lidé rozhodují pod tlakem a co jejich úsudek zkresluje, a pak si připravenost vyzkoušejí prakticky — každá skupina v tom terénu, který si zvolí.",
     "aktivity": [
-      "Oheň a vaření venku: rozdělání ohně různými způsoby a v různém počasí, bezpečnost ohniště, vaření v kotlíku a specifika venkovní kuchyně",
-      "Uzly a přístřešek: základní uzly a jejich použití, stavba přístřešku z plachty i přírodního materiálu, spaní venku nanečisto",
-      "Batoh a výstroj: co si vzít a co nechat doma, vrstvení oblečení pro zimu i léto, péče o nůž a nástroje",
-      "Terén a počasí: pohyb po sněhu a ledu, čtení počasí, orientace bez mobilu, co dělat, když se ochladí nebo začne pršet",
-      "Zkouška dovednosti: tábornický okruh stanovišť v různých ročních obdobích — každý ukáže, co už zvládne sám"
+      "Kdy je riziko ještě v pořádku: třídění reálných situací podle pravděpodobnosti a závažnosti (skok do vody z pětky, kolo bez helmy, cesta domů potmě) a hledání vlastní hranice mezi odvahou a hazardem",
+      "Jak se rozhodujeme pod tlakem: pokusy s časovým tlakem a neúplnou informací — proč přeceňujeme vzácné a podceňujeme běžné, co s úsudkem dělá strach a co skupina",
+      "Připravím se na to, co může přijít: osobní a rodinný plán — nouzové zavazadlo, domluvené místo srazu, co když nejde proud nebo se ztratím",
+      "Dovednosti, které riziko snižují — praktická větev podle volby skupiny: pobyt venku (oheň, uzly, přístřešek, vrstvení oblečení, pohyb na sněhu a ledu), nebo bezpečnost doma, v dopravě či na síti",
+      "Předám to dál: připravit lekci nebo materiál o připravenosti pro mladší děti či rodiče — kdo to umí vysvětlit, ten tomu rozumí"
     ],
-    "dif1": "Základní tábornické dovednosti s velkou oporou průvodce — oheň pod dohledem, jednoduchý uzel, domeček z klacků, oblékání podle počasí.",
-    "dif2": "Samostatnější zvládnutí základů — oheň, dva tři uzly, přístřešek ve skupině, sbalení vlastního batohu podle seznamu, jednoduché jídlo uvařené venku.",
-    "dif3": "Soběstačnost ve složitějších podmínkách — oheň za mokra, výstroj podle sezóny, přenocování venku, pohyb na sněhu a ledu, vědomé zmírňování rizik a rozhodování, kdy je riziko už příliš velké.",
+    "dif1": "Co je nebezpečné a proč, jednoduché rozpoznání „tohle radši ne“, jistota, že se můžu zeptat dospělého; drobná příprava jako rituál (co si vzít na výlet, kde se sejdeme, když se ztratím).",
+    "dif2": "Vlastní hranice mezi odvahou a hazardem, příprava na známé situace (výlet, cesta domů, první samostatné akce), jednoduché tábornické či bezpečnostní dovednosti.",
+    "dif3": "Pravděpodobnost vs. závažnost jako nástroj úsudku, zkreslení v rozhodování pod tlakem a ve skupině, příprava rodiny na výpadky, přijetí rizika, které nejde odstranit.",
     "loni": ""
   }
 ]

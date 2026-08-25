@@ -93,6 +93,7 @@ Aby se znovu neotevírala:
 | **Redakce a školní noviny** | nezařazovat | dělá se jinde. U ostatních ScioŠkol je to přitom jedno z nejčastějších témat — kdyby se kolegové ptali, tohle je důvod |
 | **Kámen 5.2.3.3 Vychovávám děti** | nechat nepokrytý | jediný nepokrytý kámen ze 120; záměr |
 | **Kolegyní navržené sloučení témat 1–4 pro 1. trojročí** | neslučovat | spojovalo by čtyři kompetence ze tří ScioCílů; místo toho rozšířena `dif1` u témat 17, 19, 41 a 43 |
+| **Bushcraft jako samostatné téma** | přerámováno 25. 8. 2026 na č. 52 „Než se to stane" | jako seznam dovedností to byl spíš předmět než téma, které si průvodce postaví po svém. Nově stojí na otázce „kdy je riziko ještě v pořádku" a pobyt venku je jedna z praktických větví. Hranice vůči č. 36: **36 = když se to stane** (kameny 8.2.6.1, 8.2.6.3), **52 = než se to stane** (8.2.6.2, 4.2.1.4). Tuhle hranici drž, jinak se témata začnou překrývat |
 | **Celoškolní formáty** (typ Městečko, Kruhy, Den jinak) | mimo katalog | je to jiná osa než „téma pro jednu skupinu" a do datového modelu se nevejde. Není to chyba katalogu, ale je dobré vědět, že v appce je díra |
 | **Vlastní téma dítěte** | mimo katalog | u ostatních škol běžné („dítě si téma vypíše samo pod patronací průvodce"); kolegyně to měla v dokumentu jako „4 (6) projektů na volné téma". Katalog na to nemá místo |
 

@@ -599,15 +599,16 @@
   },
   "52": {
     "znalosti": [
-      "ŠVP (Ú2): principy přežití v přírodě, plán B",
-      "RVP – Tělesná výchova: turistika a pobyt v přírodě, bezpečnost při pohybových aktivitách",
-      "RVP – Polytechnická výchova a praktické činnosti: bezpečná práce s nářadím (nůž, pila), příprava pokrmů v improvizovaných podmínkách",
-      "RVP – Fyzika: teplo a hoření, vedení tepla (vrstvení oblečení)",
-      "RVP – Výchova ke zdraví a bezpečí: prevence úrazů, podchlazení a přehřátí, chování při ohrožení",
-      "RVP – Přírodopis: horniny, nerosty a tvary krajiny v terénu; orientace podle přírodních znaků"
+      "ŠVP (Ú2): rozšiřování komfortní zóny; principy přežití v přírodě, plán B; (Ú3) tvorba scénářů a odhad pravděpodobnosti",
+      "RVP – Výchova ke zdraví a bezpečí: prevence úrazů, osobní bezpečí, chování při ohrožení, podchlazení a přehřátí",
+      "RVP – Matematika: pravděpodobnost a její odhad; riziko jako vztah pravděpodobnosti a závažnosti",
+      "RVP – Osobnostní a sociální výchova: rozhodování v náročných situacích, práce s nejistotou, vliv skupiny na úsudek",
+      "RVP – Polytechnická výchova a praktické činnosti: bezpečná práce s nářadím (nůž, pila), improvizace v terénu",
+      "RVP – Fyzika: teplo a hoření, vedení tepla (vrstvení oblečení)"
     ],
     "didaktika": [
-      "Didaktika SC4: bushcraft se učí opakováním v různém počasí a ročním období, ne jednorázovým výletem — dovednost se pozná až tehdy, když ji dítě zvládne v nepohodě a samo."
+      "Didaktika SC4: připravenost se buduje opakováním v malých dávkách a v různých podmínkách, ne jednorázovým výletem — a vždy v zóně rozvoje, nikdy ohrožení.",
+      "Didaktika SC4: riziko se dá probírat jen tam, kde ho děti smějí skutečně nést; bez vlastního rozhodnutí zůstane úsudek teorií."
     ]
   },
   "51": {
