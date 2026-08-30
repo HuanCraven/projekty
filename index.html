@@ -174,9 +174,6 @@
   p.chybi{max-width:560px; margin:6px auto 0; font-size:.8rem; color:#92400e; background:#fef6e7; border:1px solid #f3d9a4; border-radius:8px; padding:6px 10px;}
   .navrhSouhrn{background:#eef4f6; border-radius:10px; padding:10px 12px; font-size:.83rem; margin-top:10px;}
   .navrhSouhrn b{color:#1f4e5f;}
-  #rezList{max-width:560px; margin:0 auto;}
-  #rezList .hlasrow{cursor:default;}
-  #rezList button{border:1px solid var(--line); background:#fff; border-radius:999px; padding:4px 12px; font-size:.78rem; cursor:pointer;}
   /* tisk karty */
   @media print{
     body.print-card header, body.print-card .toolbar, body.print-card main,
@@ -234,7 +231,7 @@
     <dt>Rejstřík kamenů</dt><dd>Obrácený pohled — vyjdete od stavebního kamene ScioCíle
       a uvidíte, ve kterých tématech se naplňuje. Užitečné, když potřebujete doložit
       konkrétní kámen.</dd>
-    <dt>Hlasování</dt><dd>Výběr témat, která chcete vést, a rezervace.
+    <dt>Hlasování</dt><dd>Výběr témat, která chcete vést.
       <b>Hlasování běží</b> — v každém ze čtyř bloků si vyberte dvě témata,
       1. a 2. volbu.</dd>
     <dt>Návod</dt><dd>Tahle stránka.</dd>
@@ -284,8 +281,6 @@
       vyměníte. Celkem tedy vybíráte osm témat, dvě do každého ze čtyř bloků.</li>
     <li><b>Uložte hlasy.</b> Můžete se kdykoli vrátit a přepsat je — uvidíte svůj poslední
       výběr.</li>
-    <li><b>Rezervace</b> je něco jiného než hlas: kdo si téma rezervuje, je jeho garant
-      a návrh s tím počítá jako s daným. Používejte ji, až když je jasno.</li>
     <li><b>Spočítat návrh</b> rozdělí projekty ve dvou kolech: nejdřív dá každému projektu
       garanta z těch, kdo pro téma hlasovali, pak k němu doplní tandem. Garantství se
       rozdělují co nejrovnoměrněji — nikdo nedostane druhé, dokud nemají první všichni
@@ -321,11 +316,6 @@
   <div id="hlasMsg"></div>
 
   <hr class="tooldiv">
-  <h3>Rezervace tématu</h3>
-  <p class="muted">Jedno téma = jeden učitel. Klepnutím vyplň jméno výše, pak rezervuj nebo uvolni.</p>
-  <div id="rezList"></div>
-
-  <hr class="tooldiv">
   <button id="toggleResults">Zobrazit výsledky hlasování</button>
   <div id="hlasResults" style="display:none"></div>
   <button id="exportCsv" title="Stáhne aktuální hlasy i rezervace do souboru — záloha pro případ, že by se data ztratila.">Stáhnout hlasy jako CSV</button>
@@ -335,8 +325,7 @@
   <p class="muted">Počítá ve dvou kolech: nejdřív dá každému projektu garanta — jen z těch,
   kdo pro dané téma hlasovali — a tím se vybere i devítka témat na blok. Pak k projektům
   doplní tandem: přednost mají hlasující, a když preference dojdou, doplní se kdokoli další.
-  Garantství rozděluje co nejrovnoměrněji. Rezervované téma bere jako dané.
-  Nic nikam nezapíše — je to jen podklad.</p>
+  Garantství rozděluje co nejrovnoměrněji. Nic nikam nezapíše — je to jen podklad.</p>
   <button id="toggleNavrh">Spočítat návrh</button>
   <div id="navrhBox" style="display:none"></div>
 </div>
@@ -345,7 +334,7 @@
 <div id="overlay"><div id="detail"></div></div>
 <div id="bubble"></div>
 
-<footer>ScioŠkola · katalog projektových témat · verze 2026.08.30-02</footer>
+<footer>ScioŠkola · katalog projektových témat · verze 2026.08.30-03</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -427,7 +416,7 @@ function render(){
   if(view==="navod") return;
   if(view==="kameny"){ renderKam(); return; }
   if(view==="hlas"){
-    if(!hlasInit){ hlasInit=true; initHlas(); } else { loadMyVotes(); renderRez(); }
+    if(!hlasInit){ hlasInit=true; initHlas(); } else { loadMyVotes(); }
     return;
   }
   const nq=norm(q);
@@ -597,7 +586,7 @@ function zkontrolujJmeno(){
 function pouzijJmeno(jm){
   const el=document.getElementById("hlasName");
   el.value=jm; localStorage.setItem("hlasName",jm);
-  zkontrolujJmeno(); loadMyVotes(); renderRez();
+  zkontrolujJmeno(); loadMyVotes();
 }
 /* Záloha hlasů. RLS dovoluje komukoli s odkazem hlasy smazat — než se to utáhne,
    ať je aspoň možné kdykoli stáhnout snapshot. */
@@ -670,7 +659,7 @@ function initHlas(){
   nameEl.addEventListener("change", e=>{
     const jm=e.target.value.trim(); e.target.value=jm;
     localStorage.setItem("hlasName", jm);
-    zkontrolujJmeno(); loadMyVotes(); renderRez();
+    zkontrolujJmeno(); loadMyVotes();
   });
   document.getElementById("exportCsv").addEventListener("click", exportCsv);
   document.getElementById("hlasSearch").addEventListener("input", renderBloky);
@@ -679,7 +668,6 @@ function initHlas(){
   document.getElementById("toggleNavrh").addEventListener("click", toggleNavrh);
   renderBloky();
   loadMyVotes();
-  renderRez();
 }
 function renderBloky(){
   const nq = norm(document.getElementById("hlasSearch").value);
@@ -772,36 +760,6 @@ async function submitVotes(){
   msg.textContent = "Uloženo ✓ ("+rows.length+" hlasů)"
     + (chybi.length ? " — ještě chybí výběr v blocích: " + chybi.map(s=>SCN[s]).join(", ") + "." : "");
   nactiZname();
-}
-async function renderRez(){
-  const el = document.getElementById("rezList");
-  if(!sb){ el.innerHTML = `<p class="muted">Rezervace nejsou momentálně dostupné.</p>`; return; }
-  const {data} = await sb.from("assignments").select("topic_id,teacher");
-  const map = {}; (data||[]).forEach(r=>map[r.topic_id]=r.teacher);
-  const name = document.getElementById("hlasName").value.trim();
-  el.innerHTML = DATA.map(t=>{
-    const who = map[t.id];
-    let action;
-    if(!who) action = `<button onclick="reserve(${t.id})">Rezervovat</button>`;
-    else if(name && who===name) action = `<button onclick="unreserve(${t.id})">Uvolnit</button>`;
-    else action = `<span class="muted">obsazeno: ${esc(who)}</span>`;
-    return `<div class="hlasrow"><span>${t.id}. ${esc(t.nazev)}</span>${action}</div>`;
-  }).join("");
-}
-async function reserve(id){
-  if(!sb) return;
-  const name = document.getElementById("hlasName").value.trim();
-  if(!name){ alert("Nejdřív napiš své příjmení nahoře."); return; }
-  localStorage.setItem("hlasName", name);
-  const {error} = await sb.from("assignments").insert({topic_id:id, teacher:name});
-  if(error) alert("Téma už má někdo rezervované.");
-  renderRez();
-}
-async function unreserve(id){
-  if(!sb) return;
-  const name = document.getElementById("hlasName").value.trim();
-  await sb.from("assignments").delete().eq("topic_id",id).eq("teacher",name);
-  renderRez();
 }
 async function toggleResults(){
   resultsShown = !resultsShown;
@@ -1004,6 +962,8 @@ async function toggleNavrh(){
     garant dostal svou 1. volbu <b>${prvniG}</b>× ·
     garantství na osobu: <b>${Math.min(...gPocty)}–${Math.max(...gPocty)}</b>.`;
   if(bezRole.length) html += `<br>Bez role zůstali: ${esc(bezRole.join(", "))}.`;
+  const pocetRez = vybrane.filter(v=>v.rezervace).length;
+  if(pocetRez) html += `<br>Z dřívějška vstoupily do návrhu <b>${pocetRez}</b> rezervace — ty jsou brané jako dané a rozdělení garantů se počítá kolem nich. Rezervace se už v hlasování nedají zadávat.`;
   if(dvojrole) html += `<br>V ${dvojrole} případech je tandem zároveň garantem jiného projektu ve stejném bloku — na tolik projektů nás v bloku není dost.`;
   if(sGarant < POCET_V_BLOKU*BLOKY.length) html += `<br>Neobsazené projekty vznikají tam, kde na téma nikdo nehlasoval. Buď je doplň ručně, nebo nech dohlasovat třetí volbu.`;
   html += `<br><span class="muted">Nic se nikam nezapisuje — je to jen podklad k rozhodnutí u stolu.</span></div>`;

@@ -274,10 +274,21 @@ když se výběr opravdu změnil** (`stejnePicks`). Pravidlo do budoucna: nikdy
 nepřepisovat `innerHTML` seznamu, na který se zrovna kliká, když se jeho
 obsah nezměnil.
 
+### Rezervace vypnuté (30. 8. 2026)
+
+Rezervace tématu byla ze záložky odstraněná ještě před hlasováním. Dvě věci
+na ní nesedí s modelem garant + tandem: rezervovat šlo jen garantství (ne
+tandem) a kdo si téma rezervoval místo hlasování, obešel férové rozdělení
+garantů — což byl přitom hlavní požadavek. Tabulka `assignments` zůstala a
+návrh z ní čte, takže staré zápisy se pořád promítnou (a souhrn to napíše),
+jen nové nevzniknou.
+
 ### Co zůstalo stranou
 
 - **Živé zobrazování**, kdo právě pro co hlasuje — odloženo po dohodě.
 - **Skrývání výsledků během hlasování** — pořád otevřená otázka; dnes vidí
   průběžné výsledky každý, což může ovlivnit pozdější hlasující.
+- **Rezervace jako záloha rozhodnutí** — až bude po vyhodnocení, hodilo by se
+  umět zapsat i tandem, ne jen garanta. Zatím se návrh přepisuje ručně jinam.
 - **`data/ucitele.json`** už nic neřídí (kapacity nahradila struktura bloků).
   Soubor zůstal v repozitáři s poznámkou uvnitř; generátor ho nečte.

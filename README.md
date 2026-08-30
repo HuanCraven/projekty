@@ -109,9 +109,21 @@ které na aktuální kameny nelze automaticky převést.
 
 ## Záložka Hlasování
 
-Třetí záložka webu — učitelé si vyberou témata, která chtějí vést, a případně
-si téma rezervují. Data jdou do Supabase projektu `projekty-hlasovani`,
-tabulky `votes` a `assignments`. V HTML je jen *publishable* klíč, nic tajného.
+Třetí záložka webu — učitelé si vyberou témata, která chtějí vést. Data jdou
+do Supabase projektu `projekty-hlasovani`, tabulka `votes`. V HTML je jen
+*publishable* klíč, nic tajného.
+
+### Rezervace jsou schované
+
+Rezervace („jedno téma = jeden učitel, platí hned“) byla z hlasování **vypnutá**
+30. 8. 2026 — v modelu s garanty a tandemy mátla: rezervovat šlo jen garantství,
+ne tandem, a kdo si téma rezervoval místo hlasování, obešel férové rozdělení
+garantů. Z generátoru zmizela sekce `#rezList` i funkce `renderRez/reserve/unreserve`.
+
+Tabulka `assignments` zůstala a **návrh rozdělení z ní pořád čte**: co je v ní
+zapsané z dřívějška, bere jako dané (rezervující = garant) a napíše to do
+souhrnu. Nové řádky do ní ale nikdo přidat nemůže. Kdyby se rezervace vracely,
+je to v historii u commitu, který je vypnul.
 
 ### Hlasuje se po blocích
 
