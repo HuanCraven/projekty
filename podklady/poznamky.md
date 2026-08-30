@@ -179,9 +179,23 @@ nemá vrstvu, kterou by mít mohl:
 - **Datové soubory nekončí znakem nového řádku.** Když je upravuješ skriptem,
   zapisuj `json.dumps(..., ensure_ascii=False, indent=2)` **bez** koncového
   `\n` — jinak vznikne falešný diff přes celý soubor.
-- **Kontrola po buildu:** `grep -c Hlasování index.html` má vrátit **5**
-  (nula znamená, že modul hlasování z generátoru vypadl). Starší README
-  uvádělo 2, což byl zastaralý údaj.
+- **Kontrola po buildu:** `grep -c Hlasování index.html` má vrátit **6**
+  (nula znamená, že modul hlasování z generátoru vypadl). Číslo se mění
+  s texty v návodu — když se nesejde, podívej se, čím to je, ne že ho jen
+  přepíšeš.
+- **Javascript uvnitř Pythonu.** Celý web je jeden `HTML = """..."""` v
+  `build_web.py`, což je **obyčejný** (ne raw) řetězec. Každé zpětné lomítko
+  v JS se tam musí psát **dvakrát** (`"\\ufeff"`, `/[",;\\n]/`) — jinak
+  Python escapuje o úroveň dřív a ve stránce vznikne rozbitý JS. Proto po
+  každém buildu:
+
+  ```bash
+  python3 - <<'EOF'
+  import re; h=open("index.html",encoding="utf-8").read()
+  open("/tmp/inline.js","w",encoding="utf-8").write(re.findall(r"<script>(.*?)</script>",h,re.S)[-1])
+  EOF
+  node --check /tmp/inline.js
+  ```
 - **Témata omezená na jedno trojročí** dnes: 40 a 51 jen 3. trojročí, 54 a 55
   jen 1. trojročí. Obsah nese příslušná `difN`, ostatní dvě jsou `—` a v jedné
   z nich je krátké vysvětlení, proč téma pro dané trojročí není.
@@ -189,3 +203,81 @@ nemá vrstvu, kterou by mít mohl:
   **Téma 43** má sedm aktivit a jedna z nich („mimořádné zařazení podle
   kalendáře") je vlastně poznámka k harmonogramu, ne aktivita. Obojí ponecháno
   vědomě.
+
+---
+
+## 6. Hlasování po blocích (srpen 2026)
+
+### Jak to teď funguje
+
+Pololetí = **4 bloky** (měsíce), každý blok jeden ScioCíl pro celou školu,
+v bloku **9 projektů**, každý s **garantem** a **tandemem** → 36 projektů.
+Hlasuje se **o všech blocích najednou**, v každém bloku **dvě volby**.
+
+### Proč dvě volby na blok, a ne tři
+
+Tři volby by daly algoritmu víc prostoru — simulace ukázala, že při malém
+počtu hlasujících je rozdíl znát. Rozhodlo ale něco jiného: **osm hlasů je
+přesně tolik, kolik jich appka ukládala doteď**. `rank` tak zůstává souvislá
+řada 1–8 a nemuseli jsme sahat na schéma tabulky `votes` v Supabase, do které
+z tohohle prostředí není vidět (proxy blokuje `supabase.co`). Kdyby v tabulce
+byla podmínka na rozsah `rank` nebo unikátnost `(teacher, rank)`, změna by se
+projevila až ráno při ostrém hlasování — a to je risk, který za lepší
+teoretické rozdělení nestojí.
+
+Když bloky vyjdou neúplné (na některá témata nikdo nehlasuje), jde to spravit
+bez zásahu do kódu: nechat dohlasovat, nebo devítku doplnit ručně. Teprve
+kdyby se to opakovalo, má smysl přidat třetí volbu — a ověřit si schéma
+tabulky předem.
+
+### Proč min-cost max-flow místo maďarského algoritmu
+
+Původní návrh přiděloval 1 téma 1 učiteli — čtvercové přiřazení, na to stačil
+Kuhn–Munkres. Nové zadání to nezvládne: potřebujeme *vybrat* 9 témat z bloku,
+dát každému garanta, hlídat, že nikdo není garantem dvakrát v jednom bloku,
+a férovost počítat **přes celé pololetí najednou** (kdyby se počítal blok po
+bloku, první blok by si vzal ty nejžádanější lidi a na zbytek by nezbyli).
+To všechno se dá zapsat jako tok v grafu:
+
+```
+zdroj → učitel → (učitel, blok) → téma → blok → stok
+```
+
+- **férovost** = několik paralelních hran ze zdroje s rostoucí cenou
+  (`FER = 1000` za každou další roli). Rostoucí cena znamená, že minimalizace
+  sama rozdělí role co nejrovnoměrněji — a protože nejlepší preference má
+  hodnotu 2, férovost preference **vždycky** přebije. To je záměr, ne
+  vedlejší efekt: hlavní přání bylo „ať jsou garanti rozdělení férově".
+- **kapacita bloku** = hrana `blok → stok` s kapacitou 9,
+- **garant jen z hlasujících** = hrana téma–učitel existuje jen tam, kde je hlas.
+
+Druhé kolo (tandemy) je tentýž graf nad už vybranými projekty, jen hrana
+existuje ke každému učiteli — s preferencí, kde hlas je, a s nulou tam, kde
+není. Tím se naplní zadání „až se vyčerpají preference garantů, navrhni
+kolegy jako pomocníky".
+
+### Co se ověřilo
+
+Testy nad simulovanými hlasy (8–40 hlasujících, rovnoměrné i silně
+nerovnoměrné rozložení, rezervace, prázdný blok) hlídají: unikátnost témat
+a garantů v bloku, že garant pro téma opravdu hlasoval, a že rozptyl počtu
+garantství není větší než u běhu, kde preference nehrají roli — tedy že
+nerovnost, když nastane, vynutila struktura hlasů, ne algoritmus.
+
+### Chyba, která se u toho našla
+
+Kliknutí na téma **hned po napsání jména se ztrácelo**. Načtení hlasů běží
+na pozadí a když doběhlo mezi stiskem a puštěním myši, seznam se překreslil
+a prohlížeč už neměl na čem klik vyhodnotit. Bylo to i ve verzi, která byla
+nasazená před hlasováním. Oprava: `loadMyVotes()` překresluje seznam **jen
+když se výběr opravdu změnil** (`stejnePicks`). Pravidlo do budoucna: nikdy
+nepřepisovat `innerHTML` seznamu, na který se zrovna kliká, když se jeho
+obsah nezměnil.
+
+### Co zůstalo stranou
+
+- **Živé zobrazování**, kdo právě pro co hlasuje — odloženo po dohodě.
+- **Skrývání výsledků během hlasování** — pořád otevřená otázka; dnes vidí
+  průběžné výsledky každý, což může ovlivnit pozdější hlasující.
+- **`data/ucitele.json`** už nic neřídí (kapacity nahradila struktura bloků).
+  Soubor zůstal v repozitáři s poznámkou uvnitř; generátor ho nečte.

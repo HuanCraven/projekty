@@ -109,17 +109,33 @@ které na aktuální kameny nelze automaticky převést.
 
 ## Záložka Hlasování
 
-Třetí záložka webu — učitelé seřadí až 8 témat (první volba má nejvyšší váhu)
-a rezervují si téma (jedno téma = jeden učitel). Data jdou do Supabase projektu
-`projekty-hlasovani`, tabulky `votes`, `vote_results`, `assignments`.
-V HTML je jen *publishable* klíč, nic tajného.
+Třetí záložka webu — učitelé si vyberou témata, která chtějí vést, a případně
+si téma rezervují. Data jdou do Supabase projektu `projekty-hlasovani`,
+tabulky `votes` a `assignments`. V HTML je jen *publishable* klíč, nic tajného.
+
+### Hlasuje se po blocích
+
+Pololetí má **čtyři bloky** (měsíce) a každý blok patří jednomu ScioCíli —
+celá škola dělá v jednom měsíci projekty k jednomu cíli. V každém bloku vzniká
+**9 projektů**, každý s **garantem** a **tandemem**; za pololetí je to 36 projektů.
+
+Hlasuje se o všech čtyřech blocích najednou: **v každém bloku dvě témata**
+(1. a 2. volba), celkem tedy osm. Pořadí bloků drží `BLOKY` v generátoru,
+teď `SC1, SC4, SC5, SC8` — první blok je „Umím se učit".
+
+Do tabulky `votes` jde **průběžné pořadí 1–8** přes všechny bloky (blok po bloku,
+uvnitř bloku 1. a 2. volba). Volbu uvnitř bloku dopočítá `volbyVBloku()` ze
+`skupina` tématu. Díky tomu se **schéma tabulky nemuselo měnit** a stará data
+zůstala čitelná. Kdyby se počet voleb na blok měnil, hlídej, ať `rank` zůstane
+souvislá řada od 1 — na tom stojí i pohled `vote_results`, který appka sama
+už nepoužívá (výsledky si počítá z `votes` a ukazuje je po blocích).
 
 Modul je **součástí generátoru** (`build_web.py`) — CSS, sekce `#hlas`,
 načtení Supabase SDK z CDN i funkce `initHlas()` a spol. Přegenerování
 `index.html` ho tedy zachová. Po každém buildu se vyplatí ověřit:
 
 ```bash
-grep -c Hlasování index.html    # očekávej 5 (0 = modul z generátoru vypadl)
+grep -c Hlasování index.html    # očekávej 6 (0 = modul z generátoru vypadl)
 ```
 
 Jméno hlasujícího si drží prohlížeč v `localStorage` (klíč `hlasName`).
@@ -140,21 +156,38 @@ učitelé), appka jméno porovná s už zapsanými:
 Nikoho to nezablokuje — jen se ptá. Zároveň to není bezpečnostní opatření:
 kdokoli se může zapsat pod cizím příjmením. Řeší to čistotu dat, ne zlou vůli.
 
-V `data/ucitele.json` se nastavuje jen kapacita — kolik témat kdo může vést:
-
-```json
-{ "vychozi_pocet": 1, "kapacity": { "Nováková": 2 } }
-```
-
-Jméno v `kapacity` musí sedět přesně na to, jak je zapsané v hlasování.
+`data/ucitele.json` se **už nepoužívá** — kapacitu určuje struktura pololetí
+(4 bloky × 9 projektů) a role rozděluje návrh sám. Soubor zůstal v repozitáři
+pro případ, že by se ruční kapacity vrátily; generátor ho nečte.
 
 ### Rozdělení témat
 
-Tlačítko „Spočítat návrh" rozdělí témata tak, aby byl součet preferencí
-co největší (maďarský algoritmus, ne jen hrubý odhad). Pravidla:
+Tlačítko „Spočítat návrh" počítá **ve dvou kolech**:
 
-- už zarezervovaná témata bere jako daná a učiteli ubírají kapacitu,
-- kdo nehlasoval, nedostane náhodné téma,
+1. **Garanti.** Každý z 9 projektů v bloku dostane garanta, a to **jen z lidí,
+   kteří pro to téma hlasovali**. Tím se zároveň vybere, kterých 9 témat
+   z bloku se pojede.
+2. **Tandemy.** K vybraným projektům se doplní druhý člověk — přednost mají
+   ti, kdo pro téma hlasovali, a když preference dojdou, doplní se kdokoli další.
+
+Obojí řeší **min-cost max-flow** (postupné nejkratší cesty) nad celým pololetím
+najednou, ne blok po bloku — jinak by první blok „vyžral" ty nejžádanější lidi.
+Férovost je nastavená tak, aby **vždycky přebila preference**: cena každé další
+role je `FER = 1000`, zatímco nejlepší preference má hodnotu 2. Nikdo tedy
+nedostane druhé garantství, dokud nemají první všichni ostatní.
+
+Další pravidla:
+
+- rezervované téma je dané — rezervující je jeho garantem,
+- jeden člověk je v bloku nejvýš jednou garantem a nejvýš jednou tandemem;
+  obojí naráz v jednom bloku stojí `DVOJROLE = 300`, takže k tomu dojde jen
+  tam, kde by projekty jinak zůstaly prázdné (a souhrn to hlásí),
+- blok, kde má hlasy míň než 9 témat, vyjde neúplný — appka to napíše
+  a je potřeba ho doplnit ručně nebo nechat dohlasovat,
 - **nic nikam nezapisuje** — je to podklad k rozhodnutí, ne rozhodnutí.
 
 Chceš-li návrh zafixovat, udělej z něj rezervace ručně.
+
+Algoritmus se dá testovat mimo prohlížeč: funkce `navrhRozdeleni()` je
+soběstačná (potřebuje jen `DATA`), takže se dá vytáhnout z `index.html`
+a pustit v Node nad vygenerovanými hlasy.

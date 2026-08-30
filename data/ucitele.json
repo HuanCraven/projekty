@@ -1,8 +1,5 @@
 {
-  "_popis": "Nastavení hlasování. Jména se NEVYPLŇUJÍ dopředu — každý se zapíše sám při prvním hlasování.",
-  "_vychozi_pocet": "Kolik témat může vést jeden učitel, když není uveden v 'kapacity'.",
+  "_popis": "NEPOUŽÍVÁ SE. Od hlasování po blocích (srpen 2026) kapacitu neurčuje tenhle soubor, ale struktura pololetí: 4 bloky po 9 projektech, garant + tandem. Role rozděluje návrh v appce co nejrovnoměrněji sám. Soubor tu zůstává jen pro případ, že bychom se k ručním kapacitám vrátili — build_web.py ho už nečte.",
   "vychozi_pocet": 1,
-
-  "_kapacity": "Výjimky: kdo může vést víc (nebo míň) témat. Klíč = příjmení přesně tak, jak je zapsané v hlasování.",
   "kapacity": {}
 }

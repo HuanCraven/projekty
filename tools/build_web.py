@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.30-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.30-02"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -30,11 +30,6 @@ import os
 _kam_path = "kameny.json" if os.path.exists("kameny.json") else "data/kameny.json"
 KAM = json.dumps(json.load(open(_kam_path, encoding="utf-8")), ensure_ascii=False)
 
-# nastavení hlasování: jména se nezadávají dopředu, jen kapacity (kdo vede víc témat)
-_uc_path = "data/ucitele.json"
-_uc = json.load(open(_uc_path, encoding="utf-8")) if os.path.exists(_uc_path) else {}
-VYCHOZI_POCET = str(int(_uc.get("vychozi_pocet", 1)))
-KAPACITY = json.dumps({k: int(v) for k, v in _uc.get("kapacity", {}).items()}, ensure_ascii=False)
 
 # klíče ke ScioCílům (metodika) — seskupené podle kódu kamene
 _kl_path = "data/klice.json"
@@ -173,9 +168,6 @@ HTML = """<!DOCTYPE html>
   .hlasrow{display:flex; align-items:center; justify-content:space-between; gap:8px; padding:7px 10px; border:1px solid var(--line); border-radius:8px; margin-bottom:6px; background:#fff; font-size:.85rem; cursor:pointer;}
   .hlasrow.picked{border-color:#1f4e5f; background:#eef4f6;}
   .hlasnum{font-weight:700; min-width:22px; text-align:center; color:#1f4e5f;}
-  #hlasMine{list-style:none; max-width:560px; margin:0 auto 10px; padding:0;}
-  #hlasMine li{display:flex; align-items:center; gap:8px; padding:6px 8px; border-bottom:1px solid var(--line); font-size:.85rem;}
-  #hlasMine button{border:1px solid var(--line); background:#fff; border-radius:6px; padding:2px 8px; font-size:.75rem; cursor:pointer;}
   #hlasSubmit{display:block; margin:10px auto; background:#1f4e5f; color:#fff; border:none; border-radius:999px; padding:9px 22px; font-size:.9rem; cursor:pointer;}
   #hlasMsg{text-align:center; font-size:.82rem; color:var(--muted); margin-top:4px;}
   #toggleResults{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
@@ -223,6 +215,16 @@ HTML = """<!DOCTYPE html>
   #navrhBox td.volba{white-space:nowrap; font-weight:600;}
   #navrhBox tr.fix td.volba{color:#1f4e5f;}
   #navrhBox tr.nic td{color:var(--muted); font-style:italic;}
+  .blok{max-width:560px; margin:0 auto 14px; border:1px solid var(--line); border-radius:12px; padding:10px 12px; background:#fbfcfc;}
+  .blok h4{display:flex; align-items:center; justify-content:space-between; gap:8px; margin:0 0 6px; font-size:.88rem; color:#1f4e5f;}
+  .blok .pocet{font-size:.75rem; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:1px 8px; background:#fff; white-space:nowrap;}
+  .blok .pocet.hotovo{color:#1f4e5f; border-color:#1f4e5f; background:#eef4f6; font-weight:600;}
+  .blok .hlaslist{max-height:230px;}
+  .blokvyber{font-size:.8rem; margin-bottom:8px;}
+  .blokvyber b{color:#1f4e5f;}
+  button.prohod{border:1px solid var(--line); background:#fff; border-radius:999px; padding:2px 9px; font-size:.74rem; cursor:pointer; margin-left:6px;}
+  h4.navrhblok{max-width:560px; margin:14px auto 4px; font-size:.85rem; color:#1f4e5f;}
+  p.chybi{max-width:560px; margin:6px auto 0; font-size:.8rem; color:#92400e; background:#fef6e7; border:1px solid #f3d9a4; border-radius:8px; padding:6px 10px;}
   .navrhSouhrn{background:#eef4f6; border-radius:10px; padding:10px 12px; font-size:.83rem; margin-top:10px;}
   .navrhSouhrn b{color:#1f4e5f;}
   #rezList{max-width:560px; margin:0 auto;}
@@ -281,13 +283,13 @@ HTML = """<!DOCTYPE html>
 
   <h3>Záložky nahoře</h3>
   <dl class="nav-dl">
-    <dt>Témata</dt><dd>Dlaždice všech 50 témat. Klepnutím na kartu se otevře detail.</dd>
+    <dt>Témata</dt><dd>Dlaždice všech témat katalogu. Klepnutím na kartu se otevře detail.</dd>
     <dt>Rejstřík kamenů</dt><dd>Obrácený pohled — vyjdete od stavebního kamene ScioCíle
       a uvidíte, ve kterých tématech se naplňuje. Užitečné, když potřebujete doložit
       konkrétní kámen.</dd>
     <dt>Hlasování</dt><dd>Výběr témat, která chcete vést, a rezervace.
-      <b>Hlasování běží</b> — vyberte si až 8 témat a seřaďte je podle toho,
-      jak moc je chcete vést.</dd>
+      <b>Hlasování běží</b> — v každém ze čtyř bloků si vyberte dvě témata,
+      1. a 2. volbu.</dd>
     <dt>Návod</dt><dd>Tahle stránka.</dd>
   </dl>
 
@@ -329,15 +331,18 @@ HTML = """<!DOCTYPE html>
     <li><b>Napište si příjmení.</b> Nikde se předem neregistrujete. Kdo přijde po vás,
       uvidí vaše jméno v našeptávači — a když ho napíše trochu jinak, appka se zeptá,
       jestli nemyslel vás. Tím se hlídá, aby z překlepů nevznikli dva lidé.</li>
-    <li><b>Vyberte až 8 témat</b> v pořadí, jak je chcete. První volba má největší váhu,
-      poslední nejmenší. Pořadí měníte šipkami.</li>
+    <li><b>V každém bloku vyberte dvě témata.</b> Blok je jeden měsíc a jeden ScioCíl
+      pro celou školu; v každém bloku vznikne devět projektů, každý s garantem a tandemem.
+      První klepnutí je 1. volba, druhé 2. volba — tlačítkem <i>prohodit pořadí</i> je
+      vyměníte. Celkem tedy vybíráte osm témat, dvě do každého ze čtyř bloků.</li>
     <li><b>Uložte hlasy.</b> Můžete se kdykoli vrátit a přepsat je — uvidíte svůj poslední
       výběr.</li>
-    <li><b>Rezervace</b> je něco jiného než hlas: jedno téma = jeden učitel, platí hned.
-      Používejte ji, až když je jasno.</li>
-    <li><b>Spočítat návrh</b> rozdělí témata tak, aby byl součet preferencí co největší.
-      Respektuje rezervace a nikomu nepřidělí téma, pro které nehlasoval.
-      <b>Nic to nezapisuje</b> — je to jen podklad k rozhodnutí u stolu.</li>
+    <li><b>Rezervace</b> je něco jiného než hlas: kdo si téma rezervuje, je jeho garant
+      a návrh s tím počítá jako s daným. Používejte ji, až když je jasno.</li>
+    <li><b>Spočítat návrh</b> rozdělí projekty ve dvou kolech: nejdřív dá každému projektu
+      garanta z těch, kdo pro téma hlasovali, pak k němu doplní tandem. Garantství se
+      rozdělují co nejrovnoměrněji — nikdo nedostane druhé, dokud nemají první všichni
+      ostatní. <b>Nic to nezapisuje</b> — je to jen podklad k rozhodnutí u stolu.</li>
   </ol>
 
   <h3>Když něco nesedí</h3>
@@ -350,7 +355,7 @@ HTML = """<!DOCTYPE html>
   <p class="muted" id="hlasWarn" style="display:none; text-align:center; font-size:.8rem;">⚠ Modul hlasování se nenačetl — zkontroluj připojení k internetu a obnov stránku.</p>
   <div class="hlasinfo">
     <b>Hlasování běží.</b>
-    Napiš si příjmení, vyber až 8 témat a seřaď je podle toho, jak moc je chceš vést.
+    Napiš si příjmení a v každém ze čtyř bloků vyber dvě témata, která bys chtěl/a vést.
     Hlasy můžeš kdykoli přepsat — platí vždycky to poslední, co uložíš.
   </div>
   <div class="hlasbox"><label>Přihlaš se pod svým příjmením<br>
@@ -358,12 +363,13 @@ HTML = """<!DOCTYPE html>
     <datalist id="hlasZnami"></datalist></label>
     <div id="hlasJmenoMsg"></div></div>
 
-  <h3>Vyber a seřaď až 8 témat — první volba má nejvyšší váhu</h3>
-  <div class="hlascol"><input id="hlasSearch" type="search" placeholder="Hledat téma…">
-    <div class="hlaslist" id="hlasPickList"></div></div>
-
-  <h3>Moje pořadí</h3>
-  <ol id="hlasMine"></ol>
+  <h3>V každém bloku si vyber dvě témata</h3>
+  <p class="muted">Pololetí má čtyři bloky a každý blok patří jednomu ScioCíli — celá škola
+  dělá v jednom měsíci projekty k jednomu cíli. V každém bloku vznikne devět projektů,
+  každý s garantem a tandemem. Klepni v každém bloku na dvě témata: první klepnutí je
+  1. volba, druhé 2. volba.</p>
+  <div class="hlascol"><input id="hlasSearch" type="search" placeholder="Hledat téma…"></div>
+  <div id="hlasBloky"></div>
   <button id="hlasSubmit">Uložit hlasy</button>
   <div id="hlasMsg"></div>
 
@@ -378,9 +384,12 @@ HTML = """<!DOCTYPE html>
   <button id="exportCsv" title="Stáhne aktuální hlasy i rezervace do souboru — záloha pro případ, že by se data ztratila.">Stáhnout hlasy jako CSV</button>
 
   <hr class="tooldiv">
-  <h3>Návrh rozdělení témat</h3>
-  <p class="muted">Rozdělí témata tak, aby byl součet preferencí co největší.
-  Už zarezervovaná témata bere jako dané. Nic nikam nezapíše — je to jen podklad.</p>
+  <h3>Návrh rozdělení projektů</h3>
+  <p class="muted">Počítá ve dvou kolech: nejdřív dá každému projektu garanta — jen z těch,
+  kdo pro dané téma hlasovali — a tím se vybere i devítka témat na blok. Pak k projektům
+  doplní tandem: přednost mají hlasující, a když preference dojdou, doplní se kdokoli další.
+  Garantství rozděluje co nejrovnoměrněji. Rezervované téma bere jako dané.
+  Nic nikam nezapíše — je to jen podklad.</p>
   <button id="toggleNavrh">Spočítat návrh</button>
   <div id="navrhBox" style="display:none"></div>
 </div>
@@ -397,7 +406,6 @@ const DATA = __DATA__;
 const KAM = __KAM__;
 const KLICE = __KLICE__;
 const PRIPRAVY = __PRIPRAVY__, PRIPRAVY_ODKAZ = __PRIPRAVY_ODKAZ__;
-const KAPACITY = __KAPACITY__, VYCHOZI_POCET = __VYCHOZI_POCET__;
 let znamiUcitele = [];   // příjmení těch, kdo už hlasovali nebo mají rezervaci
 const SCN = {SC4:"SC4 Rozvíjím svou odolnost", SC1:"SC1 Umím se učit", SC5:"SC5 Buduji dobré vztahy", SC8:"SC8 Mám život ve svých rukou"};
 const COL = {SC4:["var(--sc4)","var(--sc4bg)"], SC1:["var(--sc1)","var(--sc1bg)"], SC5:["var(--sc5)","var(--sc5bg)"], SC8:["var(--sc8)","var(--sc8bg)"]};
@@ -420,7 +428,7 @@ for(const t of DATA){
 }
 
 const sb = window.supabase ? window.supabase.createClient("https://iluznnvfvlpstipylhgg.supabase.co", "sb_publishable_brVec8GeC-v5GiiPuIHmoA_Kmp1zPLo") : null;
-let myPicks = [], hlasInit = false, resultsShown = false;
+let myPicks = {}, hlasInit = false, resultsShown = false;
 
 const grid=document.getElementById("grid"), count=document.getElementById("count");
 const overlay=document.getElementById("overlay"), detail=document.getElementById("detail");
@@ -661,9 +669,11 @@ async function exportCsv(){
   ]);
   if(e1||e2){ btn.textContent = "Stažení selhalo — zkus to znovu"; return; }
   const nazev = id => { const t = DATA.find(x=>x.id===id); return t ? t.nazev : ""; };
-  const radky = [["typ","ucitel","id_tematu","nazev_tematu","poradi"]];
-  for(const v of (votes||[])) radky.push(["hlas", v.teacher, v.topic_id, nazev(v.topic_id), v.rank]);
-  for(const r of (rez||[]))   radky.push(["rezervace", r.teacher, r.topic_id, nazev(r.topic_id), ""]);
+  const blok = id => { const t = DATA.find(x=>x.id===id); return t ? t.skupina : ""; };
+  const vb = volbyVBloku(votes||[]);
+  const radky = [["typ","ucitel","blok","id_tematu","nazev_tematu","poradi_celkem","volba_v_bloku"]];
+  for(const v of (votes||[])) radky.push(["hlas", v.teacher, blok(v.topic_id), v.topic_id, nazev(v.topic_id), v.rank, vb[v.teacher+"|"+v.topic_id]||""]);
+  for(const r of (rez||[]))   radky.push(["rezervace", r.teacher, blok(r.topic_id), r.topic_id, nazev(r.topic_id), "", ""]);
   const csv = "\\ufeff" + radky.map(r=>r.map(csvPole).join(";")).join("\\r\\n");
   const d = new Date(), p2 = x => String(x).padStart(2,"0");
   const jmeno = `hlasovani_${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}_${p2(d.getHours())}${p2(d.getMinutes())}.csv`;
@@ -674,7 +684,38 @@ async function exportCsv(){
   btn.textContent = `Staženo ✓ (${(votes||[]).length} hlasů, ${(rez||[]).length} rezervací)`;
   setTimeout(()=>{ btn.textContent = puvodni; }, 4000);
 }
+/* --- hlasování po blocích ---------------------------------------------------
+   Pololetí má čtyři bloky (měsíce) a každý blok patří jednomu ScioCíli — celá
+   škola dělá v jednom měsíci projekty k jednomu cíli. V každém bloku vzniká
+   9 projektů, každý projekt má garanta a k němu tandem.
+   Hlasuje se o všech čtyřech blocích najednou: v každém bloku si člověk vybere
+   dvě témata (1. a 2. volbu). Do databáze jde pořadí 1–8 přes všechny bloky,
+   pořadí uvnitř bloku se dopočítá — tabulka `votes` se tím nemusela měnit. */
+const BLOKY = ["SC1","SC4","SC5","SC8"];
+const POCET_V_BLOKU = 9;
+const MAX_VOLEB = 2;
+const nazevTematu = id => { const t=DATA.find(x=>x.id===id); return t ? t.nazev : String(id); };
+const blokTematu  = id => { const t=DATA.find(x=>x.id===id); return t ? BLOKY.indexOf(t.skupina) : -1; };
+function prazdnePicks(){ const o={}; for(const s of BLOKY) o[s]=[]; return o; }
+function stejnePicks(a,b){ return BLOKY.every(s=>(a[s]||[]).join(",")===(b[s]||[]).join(",")); }
+
+/* Hlasy se ukládají s průběžným pořadím 1..8 přes všechny bloky. Tohle z nich
+   udělá zpátky pořadí uvnitř bloku (1. nebo 2. volba). */
+function volbyVBloku(hlasy){
+  const podle={};
+  for(const h of hlasy){
+    const t=DATA.find(x=>x.id===h.topic_id); if(!t) continue;
+    const k=h.teacher+"|"+t.skupina;
+    (podle[k]=podle[k]||[]).push(h);
+  }
+  const out={};
+  for(const k in podle)
+    podle[k].sort((a,b)=>a.rank-b.rank).forEach((h,i)=>{ out[h.teacher+"|"+h.topic_id]=i+1; });
+  return out;
+}
+
 function initHlas(){
+  myPicks = prazdnePicks();
   if(!sb) document.getElementById("hlasWarn").style.display="";
   const nameEl = document.getElementById("hlasName");
   nameEl.value = localStorage.getItem("hlasName") || "";
@@ -685,71 +726,91 @@ function initHlas(){
     zkontrolujJmeno(); loadMyVotes(); renderRez();
   });
   document.getElementById("exportCsv").addEventListener("click", exportCsv);
-  document.getElementById("hlasSearch").addEventListener("input", renderPickList);
+  document.getElementById("hlasSearch").addEventListener("input", renderBloky);
   document.getElementById("hlasSubmit").addEventListener("click", submitVotes);
   document.getElementById("toggleResults").addEventListener("click", toggleResults);
   document.getElementById("toggleNavrh").addEventListener("click", toggleNavrh);
-  renderPickList();
-  renderMine();
+  renderBloky();
   loadMyVotes();
   renderRez();
 }
-function renderPickList(){
+function renderBloky(){
   const nq = norm(document.getElementById("hlasSearch").value);
-  const items = DATA.filter(t=> !nq || hay(t).includes(nq));
-  document.getElementById("hlasPickList").innerHTML = items.map(t=>{
-    const i = myPicks.indexOf(t.id);
-    return `<div class="hlasrow ${i>=0?"picked":""}" onclick="togglePick(${t.id})">
-      <span>${t.id}. ${t.nazev}</span><span class="hlasnum">${i>=0?(i+1)+".":"+"}</span></div>`;
+  document.getElementById("hlasBloky").innerHTML = BLOKY.map((sk,bi)=>{
+    const vyb = myPicks[sk] || [];
+    const items = DATA.filter(t=> t.skupina===sk && (!nq || hay(t).includes(nq)));
+    const rows = items.map(t=>{
+      const i = vyb.indexOf(t.id);
+      return `<div class="hlasrow ${i>=0?"picked":""}" onclick="togglePick(${t.id})">
+        <span>${t.id}. ${esc(t.nazev)}</span><span class="hlasnum">${i>=0?(i+1)+".":"+"}</span></div>`;
+    }).join("") || `<p class="muted" style="padding:6px 10px">Hledání v tomhle bloku nic nenašlo.</p>`;
+    const prohod = vyb.length===MAX_VOLEB
+      ? ` <button class="prohod" onclick="prohodit('${sk}')">prohodit pořadí</button>` : "";
+    const shrnuti = vyb.length
+      ? vyb.map((id,i)=>`<b>${i+1}. volba:</b> ${esc(nazevTematu(id))}`).join(" &nbsp;·&nbsp; ") + prohod
+      : '<span class="muted">zatím nevybráno</span>';
+    return `<div class="blok">
+      <h4><span>${bi+1}. blok — ${esc(SCN[sk])}</span>
+        <span class="pocet ${vyb.length===MAX_VOLEB?"hotovo":""}">${vyb.length}/${MAX_VOLEB}</span></h4>
+      <div class="blokvyber">${shrnuti}</div>
+      <div class="hlaslist">${rows}</div>
+    </div>`;
   }).join("");
 }
 function togglePick(id){
-  const i = myPicks.indexOf(id);
-  if(i>=0) myPicks.splice(i,1);
+  const t = DATA.find(x=>x.id===id);
+  if(!t || !myPicks[t.skupina]) return;
+  const arr = myPicks[t.skupina], i = arr.indexOf(id);
+  if(i>=0) arr.splice(i,1);
   else{
-    if(myPicks.length>=8){ alert("Max. 8 témat — nejdřív nějaké odeber."); return; }
-    myPicks.push(id);
+    if(arr.length>=MAX_VOLEB){ alert("V jednom bloku si vybíráš " + MAX_VOLEB + " témata — nejdřív jedno odeber."); return; }
+    arr.push(id);
   }
-  renderPickList(); renderMine();
+  renderBloky();
 }
-function movePick(i,d){
-  const j=i+d; if(j<0||j>=myPicks.length) return;
-  [myPicks[i],myPicks[j]]=[myPicks[j],myPicks[i]];
-  renderPickList(); renderMine();
+function prohodit(sk){
+  const arr = myPicks[sk];
+  if(arr && arr.length===MAX_VOLEB){ arr.reverse(); renderBloky(); }
 }
-function renderMine(){
-  const ol = document.getElementById("hlasMine");
-  ol.innerHTML = myPicks.map((id,i)=>{
-    const t = DATA.find(x=>x.id===id);
-    return `<li><b>${i+1}.</b> ${t?t.nazev:id}
-      <button onclick="movePick(${i},-1)" ${i===0?"disabled":""}>↑</button>
-      <button onclick="movePick(${i},1)" ${i===myPicks.length-1?"disabled":""}>↓</button>
-      <button onclick="togglePick(${id})">✕</button></li>`;
-  }).join("") || `<li style="color:var(--muted); border-bottom:none;">Zatím nic nevybráno — klepni na téma v seznamu nahoře.</li>`;
-}
+/* Překreslujeme jen tehdy, když se výběr opravdu změnil. Načtení hlasů běží
+   na pozadí a doběhne často zrovna ve chvíli, kdy člověk klepe na první téma —
+   kdybychom seznam přepsali pod rukou, kliknutí by se ztratilo (myš by stiskla
+   jeden prvek a pustila už jiný). */
 async function loadMyVotes(){
   if(!sb) return;
   const name = document.getElementById("hlasName").value.trim();
-  if(!name){ myPicks=[]; renderPickList(); renderMine(); return; }
+  if(!name){
+    const prazdne = prazdnePicks();
+    if(!stejnePicks(myPicks, prazdne)){ myPicks = prazdne; renderBloky(); }
+    return;
+  }
   const {data,error} = await sb.from("votes").select("topic_id,rank").eq("teacher",name).order("rank");
   /* Přepisujeme jen tehdy, když v databázi něco je. Kdo si nejdřív naklikal témata
      a teprve pak napsal jméno, o rozpracovaný výběr nepřijde. */
-  if(!error && data && data.length) myPicks = data.map(r=>r.topic_id);
-  renderPickList(); renderMine();
+  if(!error && data && data.length){
+    const nove = prazdnePicks();
+    for(const r of data){
+      const t = DATA.find(x=>x.id===r.topic_id);
+      if(t && nove[t.skupina] && nove[t.skupina].length<MAX_VOLEB) nove[t.skupina].push(r.topic_id);
+    }
+    if(!stejnePicks(myPicks, nove)){ myPicks = nove; renderBloky(); }
+  }
 }
 async function submitVotes(){
   const msg = document.getElementById("hlasMsg");
   if(!sb){ msg.textContent="Hlasování není momentálně dostupné."; return; }
   const name = document.getElementById("hlasName").value.trim();
   if(!name){ msg.textContent="Nejdřív napiš své příjmení."; return; }
-  if(!myPicks.length){ msg.textContent="Vyber aspoň jedno téma."; return; }
+  const poradi = [];
+  for(const sk of BLOKY) for(const id of (myPicks[sk]||[])) poradi.push(id);
+  if(!poradi.length){ msg.textContent="Vyber aspoň jedno téma."; return; }
   localStorage.setItem("hlasName", name);
   msg.textContent = "Ukládám…";
   /* Staré hlasy si nejdřív odložíme. Kdyby vkládání nových selhalo (výpadek sítě),
      vrátíme původní stav — jinak by učiteli zmizely i hlasy, které už měl uložené. */
   const {data:puvodni} = await sb.from("votes").select("topic_id,rank").eq("teacher",name);
   await sb.from("votes").delete().eq("teacher",name);
-  const rows = myPicks.map((id,i)=>({teacher:name, topic_id:id, rank:i+1}));
+  const rows = poradi.map((id,i)=>({teacher:name, topic_id:id, rank:i+1}));
   const {error} = await sb.from("votes").insert(rows);
   if(error){
     if(puvodni && puvodni.length){
@@ -760,7 +821,9 @@ async function submitVotes(){
     }
     return;
   }
-  msg.textContent = "Uloženo ✓ ("+rows.length+" hlasů)";
+  const chybi = BLOKY.filter(sk=>(myPicks[sk]||[]).length<MAX_VOLEB);
+  msg.textContent = "Uloženo ✓ ("+rows.length+" hlasů)"
+    + (chybi.length ? " — ještě chybí výběr v blocích: " + chybi.map(s=>SCN[s]).join(", ") + "." : "");
   nactiZname();
 }
 async function renderRez(){
@@ -775,7 +838,7 @@ async function renderRez(){
     if(!who) action = `<button onclick="reserve(${t.id})">Rezervovat</button>`;
     else if(name && who===name) action = `<button onclick="unreserve(${t.id})">Uvolnit</button>`;
     else action = `<span class="muted">obsazeno: ${esc(who)}</span>`;
-    return `<div class="hlasrow"><span>${t.id}. ${t.nazev}</span>${action}</div>`;
+    return `<div class="hlasrow"><span>${t.id}. ${esc(t.nazev)}</span>${action}</div>`;
   }).join("");
 }
 async function reserve(id){
@@ -800,62 +863,135 @@ async function toggleResults(){
   document.getElementById("toggleResults").textContent = resultsShown ? "Skrýt výsledky" : "Zobrazit výsledky hlasování";
   if(!resultsShown) return;
   if(!sb){ box.innerHTML = `<p class="muted">Výsledky nejsou momentálně dostupné.</p>`; return; }
-  const {data} = await sb.from("vote_results").select("*");
-  box.innerHTML = (data||[]).map(r=>{
-    const t = DATA.find(x=>x.id===r.topic_id);
-    return `<div class="hlasrow" style="cursor:default"><span>${t?t.id+". "+t.nazev:r.topic_id}</span><span>${r.skore} b. (${r.pocet_hlasu} hlasů)</span></div>`;
-  }).join("") || `<p class="muted">Zatím žádné hlasy.</p>`;
+  const {data} = await sb.from("votes").select("teacher,topic_id,rank");
+  const hlasy = data || [];
+  if(!hlasy.length){ box.innerHTML = `<p class="muted">Zatím žádné hlasy.</p>`; return; }
+  const vb = volbyVBloku(hlasy);
+  const agg = {};
+  for(const h of hlasy){
+    const r = vb[h.teacher+"|"+h.topic_id]; if(!r) continue;
+    const a = agg[h.topic_id] = agg[h.topic_id] || {pocet:0, skore:0, prvni:0};
+    a.pocet++; a.skore += (MAX_VOLEB+1-r); if(r===1) a.prvni++;
+  }
+  box.innerHTML = BLOKY.map((sk,bi)=>{
+    const ids = DATA.filter(t=>t.skupina===sk && agg[t.id]).map(t=>t.id)
+      .sort((a,b)=> agg[b].skore-agg[a].skore || agg[b].prvni-agg[a].prvni || a-b);
+    const rows = ids.map(id=>`<div class="hlasrow" style="cursor:default"><span>${id}. ${esc(nazevTematu(id))}</span>
+      <span>${agg[id].skore} b. · ${agg[id].prvni}× 1. volba · ${agg[id].pocet} hlasů</span></div>`).join("")
+      || `<p class="muted">V tomhle bloku zatím nikdo nehlasoval.</p>`;
+    return `<h4 class="navrhblok">${bi+1}. blok — ${esc(SCN[sk])} <span class="muted">(témat s hlasem: ${ids.length} z ${POCET_V_BLOKU} potřebných)</span></h4>${rows}`;
+  }).join("");
 }
 
-/* --- návrh rozdělení témat -------------------------------------------------
-   Maďarský algoritmus (Kuhn–Munkres) — najde rozdělení s největším součtem
-   preferencí, ne jen slušný odhad. Ověřeno proti hrubé síle. */
-function hungarian(a, n, m){
-  const u=new Array(n+1).fill(0), v=new Array(m+1).fill(0);
-  const p=new Array(m+1).fill(0), way=new Array(m+1).fill(0);
-  for(let i=1;i<=n;i++){
-    p[0]=i; let j0=0;
-    const minv=new Array(m+1).fill(Infinity), used=new Array(m+1).fill(false);
-    do{
-      used[j0]=true;
-      const i0=p[j0]; let delta=Infinity, j1=0;
-      for(let j=1;j<=m;j++) if(!used[j]){
-        const cur=a[i0][j]-u[i0]-v[j];
-        if(cur<minv[j]){ minv[j]=cur; way[j]=j0; }
-        if(minv[j]<delta){ delta=minv[j]; j1=j; }
+/* --- návrh rozdělení: nejdřív garanti, pak tandemy --------------------------
+   Dvě kola. V prvním dostane každý z 9 projektů v bloku garanta, a to jen
+   z lidí, kteří pro to téma hlasovali — tím se zároveň vybere, kterých 9 témat
+   z bloku se pojede. Ve druhém kole se k vybraným projektům doplní tandem:
+   přednost mají ti, kdo pro téma hlasovali, a když preference dojdou, doplní
+   se kdokoli další.
+   Obojí počítá min-cost max-flow (postupné nejkratší cesty) — hledá nejlepší
+   rozdělení jako celek, ne postupné „kdo dřív přijde“. Férovost je nastavená
+   tak, aby vždycky přebila preference: nikdo nedostane druhou roli, dokud
+   nemají první všichni ostatní. */
+const FER = 1000;       // cena za každou další roli navíc — vždy přebije preference
+const DVOJROLE = 300;   // penalta za garanta i tandem ve stejném bloku (jen když to jinak nejde)
+
+function MCMF(n){
+  return {
+    n:n, to:[], cap:[], cost:[], head:Array.from({length:n},()=>[]),
+    add(u,v,cap,cost){
+      this.head[u].push(this.to.length); this.to.push(v); this.cap.push(cap); this.cost.push(cost);
+      this.head[v].push(this.to.length); this.to.push(u); this.cap.push(0);   this.cost.push(-cost);
+    },
+    run(s,t){
+      let flow=0;
+      for(;;){
+        const dist=new Array(this.n).fill(Infinity), inq=new Array(this.n).fill(false), pe=new Array(this.n).fill(-1);
+        dist[s]=0; const q=[s]; inq[s]=true;
+        while(q.length){
+          const u=q.shift(); inq[u]=false;
+          for(const e of this.head[u]){
+            if(this.cap[e]<=0) continue;
+            const v=this.to[e], nd=dist[u]+this.cost[e];
+            if(nd<dist[v]){ dist[v]=nd; pe[v]=e; if(!inq[v]){ inq[v]=true; q.push(v); } }
+          }
+        }
+        if(dist[t]===Infinity) break;
+        let pridej=Infinity;
+        for(let v=t; v!==s; ){ const e=pe[v]; pridej=Math.min(pridej,this.cap[e]); v=this.to[e^1]; }
+        for(let v=t; v!==s; ){ const e=pe[v]; this.cap[e]-=pridej; this.cap[e^1]+=pridej; v=this.to[e^1]; }
+        flow+=pridej;
       }
-      for(let j=0;j<=m;j++){
-        if(used[j]){ u[p[j]]+=delta; v[j]-=delta; }
-        else minv[j]-=delta;
-      }
-      j0=j1;
-    } while(p[j0]!==0);
-    do{ const j1=way[j0]; p[j0]=p[j1]; j0=j1; } while(j0);
-  }
-  const res=new Array(n+1).fill(0);
-  for(let j=1;j<=m;j++) if(p[j]) res[p[j]]=j;
-  return res;
+      return flow;
+    }
+  };
 }
-function rozdel(slots, topics, score){
-  const n=slots.length, m=topics.length;
-  if(!n||!m) return [];
-  const flip = n>m;                       // algoritmus vyžaduje řádků <= sloupců
-  const R=flip?m:n, C=flip?n:m;
-  const a=Array.from({length:R+1},()=>new Array(C+1).fill(0));
-  for(let i=1;i<=R;i++) for(let j=1;j<=C;j++){
-    const s = flip ? score(slots[j-1],topics[i-1]) : score(slots[i-1],topics[j-1]);
-    a[i][j] = -s;                         // minimalizace záporných bodů = maximalizace
+
+function navrhRozdeleni(ucitele, bod, rezervace){
+  const T=ucitele.length, B=BLOKY.length;
+  if(!T) return [];
+  const vybrane=[];                       // {id, bi, garant, tandem, rezervace}
+  const volno=BLOKY.map(()=>POCET_V_BLOKU);
+  const roli={}; for(const u of ucitele) roli[u]=0;
+
+  // rezervace bereme jako dané: rezervující je garantem toho tématu
+  const rezervovano={};
+  for(const r of rezervace){
+    const bi=blokTematu(r.id);
+    if(bi<0 || rezervovano[r.id] || volno[bi]<=0) continue;
+    rezervovano[r.id]=true; volno[bi]--;
+    if(roli[r.ucitel]!==undefined) roli[r.ucitel]++;
+    vybrane.push({id:r.id, bi:bi, garant:r.ucitel, rezervace:true});
   }
-  const res=hungarian(a,R,C), out=[];
-  for(let i=1;i<=R;i++){
-    const j=res[i]; if(!j) continue;
-    const slot  = flip?slots[j-1]:slots[i-1];
-    const topic = flip?topics[i-1]:topics[j-1];
-    const s=score(slot,topic);
-    if(s>0) out.push({slot,topic,score:s});   // 0 = o téma nikdo nestojí
+  const jeVBloku=(u,b)=>vybrane.some(v=>v.bi===b && v.garant===u);
+
+  // --- 1. kolo: garanti (jen z těch, kdo pro téma hlasovali)
+  const kand=DATA.filter(t=>BLOKY.indexOf(t.skupina)>=0 && !rezervovano[t.id])
+                 .map(t=>({id:t.id, bi:BLOKY.indexOf(t.skupina)}));
+  const U=1, TB=U+T, TP=TB+T*B, BL=TP+kand.length, SINK=BL+B;
+  const g=MCMF(SINK+1), hrany=[];
+  for(let i=0;i<T;i++){
+    const u=ucitele[i];
+    for(let k=0;k<B;k++) g.add(0, U+i, 1, FER*(roli[u]+k));
+    for(let b=0;b<B;b++) if(!jeVBloku(u,b)) g.add(U+i, TB+i*B+b, 1, 0);
   }
-  return out;
+  kand.forEach((t,j)=>{
+    g.add(TP+j, BL+t.bi, 1, 0);
+    for(let i=0;i<T;i++){
+      const b=bod[ucitele[i]+"|"+t.id];
+      if(b){ hrany.push({i:i, j:j, e:g.to.length}); g.add(TB+i*B+t.bi, TP+j, 1, -b); }
+    }
+  });
+  for(let b=0;b<B;b++) g.add(BL+b, SINK, Math.max(0,volno[b]), 0);
+  g.run(0,SINK);
+  for(const h of hrany) if(g.cap[h.e]===0){
+    const u=ucitele[h.i];
+    vybrane.push({id:kand[h.j].id, bi:kand[h.j].bi, garant:u});
+    roli[u]++;
+  }
+  vybrane.sort((a,b)=> a.bi-b.bi || a.id-b.id);
+
+  // --- 2. kolo: tandemy (nejdřív podle hlasů, pak kdokoli další)
+  const U2=1, TB2=U2+T, TP2=TB2+T*B, SINK2=TP2+vybrane.length;
+  const g2=MCMF(SINK2+1), hrany2=[];
+  for(let i=0;i<T;i++){
+    const u=ucitele[i];
+    for(let k=0;k<B;k++) g2.add(0, U2+i, 1, FER*(roli[u]+k));
+    for(let b=0;b<B;b++) g2.add(U2+i, TB2+i*B+b, 1, jeVBloku(u,b) ? DVOJROLE : 0);
+  }
+  vybrane.forEach((v,j)=>{
+    g2.add(TP2+j, SINK2, 1, 0);
+    for(let i=0;i<T;i++){
+      if(ucitele[i]===v.garant) continue;
+      hrany2.push({i:i, j:j, e:g2.to.length});
+      g2.add(TB2+i*B+v.bi, TP2+j, 1, -(bod[ucitele[i]+"|"+v.id]||0));
+    }
+  });
+  g2.run(0,SINK2);
+  for(const h of hrany2) if(g2.cap[h.e]===0) vybrane[h.j].tandem = ucitele[h.i];
+  return vybrane;
 }
+
 async function toggleNavrh(){
   const box=document.getElementById("navrhBox"), btn=document.getElementById("toggleNavrh");
   const open = box.style.display==="none";
@@ -868,49 +1004,62 @@ async function toggleNavrh(){
     sb.from("votes").select("teacher,topic_id,rank"),
     sb.from("assignments").select("topic_id,teacher")
   ]);
-  const hlasy=votes||[], rezervace=rez||[];
+  const hlasy=votes||[], rezervace=(rez||[]).map(r=>({ucitel:r.teacher, id:r.topic_id}));
   if(!hlasy.length && !rezervace.length){ box.innerHTML=`<p class="muted">Zatím nikdo nehlasoval.</p>`; return; }
 
-  // body: první volba 8, poslední 1
-  const bod={};
-  for(const h of hlasy) bod[h.teacher+"|"+h.topic_id] = 9-h.rank;
+  const vb = volbyVBloku(hlasy);
+  const bod = {};
+  for(const h of hlasy){
+    const r = vb[h.teacher+"|"+h.topic_id];
+    if(r) bod[h.teacher+"|"+h.topic_id] = MAX_VOLEB+1-r;   // 1. volba 2 body, 2. volba 1 bod
+  }
+  const ucitele=[...new Set([...hlasy.map(h=>h.teacher), ...rezervace.map(r=>r.ucitel)])]
+                  .sort((a,b)=>a.localeCompare(b,"cs"));
+  const vybrane = navrhRozdeleni(ucitele, bod, rezervace);
+  const volba = (u,id)=>{ const r=vb[u+"|"+id]; return r ? r+". volba" : "nehlasoval"; };
 
-  // rezervace jsou dané — učiteli uberou jeden slot, tématu možnost jít jinam
-  const pevne = rezervace.map(r=>({ucitel:r.teacher, id:r.topic_id, fix:true, body:bod[r.teacher+"|"+r.topic_id]||0}));
-  const obsazena = new Set(rezervace.map(r=>r.topic_id));
+  let html="";
+  BLOKY.forEach((sk,bi)=>{
+    const proj = vybrane.filter(v=>v.bi===bi);
+    html += `<h4 class="navrhblok">${bi+1}. blok — ${esc(SCN[sk])}</h4>`;
+    html += `<table><tr><th>Téma</th><th>Garant</th><th>Tandem</th></tr>`;
+    for(const v of proj){
+      const g = `${esc(v.garant)} <span class="volba">(${v.rezervace ? "rezervace" : volba(v.garant,v.id)})</span>`;
+      const t = v.tandem ? `${esc(v.tandem)} <span class="volba">(${volba(v.tandem,v.id)})</span>`
+                         : `<span class="muted">— nikdo nezbyl —</span>`;
+      html += `<tr class="${v.rezervace?"fix":""}"><td>${v.id}. ${esc(nazevTematu(v.id))}</td><td>${g}</td><td>${t}</td></tr>`;
+    }
+    if(!proj.length) html += `<tr class="nic"><td colspan="3">V tomhle bloku nikdo nehlasoval.</td></tr>`;
+    html += `</table>`;
+    if(proj.length<POCET_V_BLOKU)
+      html += `<p class="chybi">Vyšlo jen ${proj.length} projektů z ${POCET_V_BLOKU} — na zbylá témata v tomhle bloku nikdo nehlasoval. Doplň je ručně.</p>`;
+  });
 
-  // učitelé = ti, kdo se zapsali (hlasovali nebo mají rezervaci)
-  const ucitele = [...new Set([...hlasy,...rezervace].map(r=>r.teacher))].sort((a,b)=>a.localeCompare(b,"cs"));
-  const kapacita = u => (KAPACITY[u]!==undefined ? KAPACITY[u] : VYCHOZI_POCET);
-  const zbyva = {};
-  for(const u of ucitele) zbyva[u] = kapacita(u);
-  for(const r of rezervace) if(zbyva[r.teacher]!==undefined) zbyva[r.teacher]--;
+  const pocty={}; for(const u of ucitele) pocty[u]={g:0, t:0};
+  for(const v of vybrane){
+    if(pocty[v.garant]) pocty[v.garant].g++;
+    if(v.tandem && pocty[v.tandem]) pocty[v.tandem].t++;
+  }
+  html += `<h4 class="navrhblok">Kdo co vede</h4><table><tr><th>Učitel</th><th>Garant</th><th>Tandem</th></tr>`;
+  for(const u of ucitele)
+    html += `<tr class="${pocty[u].g+pocty[u].t ? "" : "nic"}"><td>${esc(u)}</td><td>${pocty[u].g}×</td><td>${pocty[u].t}×</td></tr>`;
+  html += `</table>`;
 
-  // sloty = učitel × zbývající kapacita
-  const slots=[];
-  for(const u of ucitele) for(let k=0;k<Math.max(0,zbyva[u]);k++) slots.push(u);
-  const volna = DATA.map(t=>t.id).filter(id=>!obsazena.has(id));
-  const navrh = rozdel(slots, volna, (ucitel,id)=>bod[ucitel+"|"+id]||0)
-                  .map(x=>({ucitel:x.slot, id:x.topic, fix:false, body:x.score}));
-
-  const vse=[...pevne,...navrh].sort((a,b)=>a.ucitel.localeCompare(b.ucitel,"cs"));
-  const nazev=id=>{ const t=DATA.find(x=>x.id===id); return t?`${t.id}. ${t.nazev}`:id; };
-  const poradi=(u,id)=>{ const h=hlasy.find(x=>x.teacher===u&&x.topic_id===id); return h?h.rank+". volba":"nehlasoval"; };
-
-  let html=`<table><tr><th>Učitel</th><th>Téma</th><th>Volba</th></tr>`;
-  for(const r of vse) html+=`<tr class="${r.fix?"fix":""}"><td>${esc(r.ucitel)}</td><td>${nazev(r.id)}${r.fix?" <span class='muted'>(rezervováno)</span>":""}</td><td class="volba">${poradi(r.ucitel,r.id)}</td></tr>`;
-  const bezTematu = ucitele.filter(u=>!vse.some(r=>r.ucitel===u));
-  for(const u of bezTematu) html+=`<tr class="nic"><td>${esc(u)}</td><td>— bez tématu —</td><td class="volba">—</td></tr>`;
-  html+=`</table>`;
-
-  const prvni=vse.filter(r=>poradi(r.ucitel,r.id)==="1. volba").length;
-  const soucet=vse.reduce((a,r)=>a+r.body,0);
-  html+=`<div class="navrhSouhrn">Zapsaných učitelů: <b>${ucitele.length}</b> ·
-    rozdělených témat: <b>${vse.length}</b> z ${DATA.length} ·
-    první volbu dostalo <b>${prvni}</b> z ${vse.length} ·
-    součet preferencí <b>${soucet}</b> bodů.`;
-  if(bezTematu.length) html+=`<br>Bez tématu: ${esc(bezTematu.join(", "))}.`;
-  html+=`</div>`;
+  const sGarant = vybrane.length;
+  const sTandem = vybrane.filter(v=>v.tandem).length;
+  const prvniG = vybrane.filter(v=>!v.rezervace && vb[v.garant+"|"+v.id]===1).length;
+  const gPocty = ucitele.map(u=>pocty[u].g);
+  const bezRole = ucitele.filter(u=>!pocty[u].g && !pocty[u].t);
+  const dvojrole = vybrane.filter(v=>v.tandem && vybrane.some(w=>w.bi===v.bi && w.garant===v.tandem)).length;
+  html += `<div class="navrhSouhrn">Hlasovalo <b>${ucitele.length}</b> lidí ·
+    obsazeno <b>${sGarant}</b> z ${POCET_V_BLOKU*BLOKY.length} projektů ·
+    tandem má <b>${sTandem}</b> z nich ·
+    garant dostal svou 1. volbu <b>${prvniG}</b>× ·
+    garantství na osobu: <b>${Math.min(...gPocty)}–${Math.max(...gPocty)}</b>.`;
+  if(bezRole.length) html += `<br>Bez role zůstali: ${esc(bezRole.join(", "))}.`;
+  if(dvojrole) html += `<br>V ${dvojrole} případech je tandem zároveň garantem jiného projektu ve stejném bloku — na tolik projektů nás v bloku není dost.`;
+  if(sGarant < POCET_V_BLOKU*BLOKY.length) html += `<br>Neobsazené projekty vznikají tam, kde na téma nikdo nehlasoval. Buď je doplň ručně, nebo nech dohlasovat třetí volbu.`;
+  html += `<br><span class="muted">Nic se nikam nezapisuje — je to jen podklad k rozhodnutí u stolu.</span></div>`;
   box.innerHTML=html;
 }
 
@@ -952,7 +1101,6 @@ openFromHash();
 html = (HTML.replace("__DATA__", DATA).replace("__KAM__", KAM)
             .replace("__KLICE__", KLICE)
             .replace("__PRIPRAVY__", PRIPRAVY).replace("__PRIPRAVY_ODKAZ__", PRIPRAVY_ODKAZ)
-            .replace("__KAPACITY__", KAPACITY).replace("__VYCHOZI_POCET__", VYCHOZI_POCET)
             .replace("__VERSION__", VERSION))
 open("index.html", "w", encoding="utf-8", newline="\n").write(html)
 print(f"OK index.html ({len(html)//1024} kB, {len(topics)} témat, verze {VERSION})")
