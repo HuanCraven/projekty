@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.25-04"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.08.30-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -179,6 +179,7 @@ HTML = """<!DOCTYPE html>
   #hlasSubmit{display:block; margin:10px auto; background:#1f4e5f; color:#fff; border:none; border-radius:999px; padding:9px 22px; font-size:.9rem; cursor:pointer;}
   #hlasMsg{text-align:center; font-size:.82rem; color:var(--muted); margin-top:4px;}
   #toggleResults{display:block; margin:14px auto; border:1px solid var(--line); background:#fff; border-radius:999px; padding:7px 16px; font-size:.85rem; cursor:pointer;}
+  #exportCsv{display:block; margin:6px auto 0; border:none; background:none; color:var(--muted); font-size:.78rem; text-decoration:underline; cursor:pointer;}
   /* návod */
   #navod{max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 22px 26px;}
   #navod h2{font-size:1.25rem; color:#1f4e5f; margin-bottom:10px;}
@@ -285,7 +286,8 @@ HTML = """<!DOCTYPE html>
       a uvidíte, ve kterých tématech se naplňuje. Užitečné, když potřebujete doložit
       konkrétní kámen.</dd>
     <dt>Hlasování</dt><dd>Výběr témat, která chcete vést, a rezervace.
-      <b>Spouštíme v pondělí 31. srpna</b> — do té doby je čas na rozmyšlenou.</dd>
+      <b>Hlasování běží</b> — vyberte si až 8 témat a seřaďte je podle toho,
+      jak moc je chcete vést.</dd>
     <dt>Návod</dt><dd>Tahle stránka.</dd>
   </dl>
 
@@ -347,9 +349,9 @@ HTML = """<!DOCTYPE html>
 <div id="hlas" style="display:none">
   <p class="muted" id="hlasWarn" style="display:none; text-align:center; font-size:.8rem;">⚠ Modul hlasování se nenačetl — zkontroluj připojení k internetu a obnov stránku.</p>
   <div class="hlasinfo">
-    <b>Hlasování se spouští v pondělí 31. srpna.</b>
-    Do té doby si můžete v klidu procházet témata a rozmýšlet, která byste chtěli vést.
-    Nic si nemusíte psát stranou — až to tu otevřeme, vyberete si rovnou tady.
+    <b>Hlasování běží.</b>
+    Napiš si příjmení, vyber až 8 témat a seřaď je podle toho, jak moc je chceš vést.
+    Hlasy můžeš kdykoli přepsat — platí vždycky to poslední, co uložíš.
   </div>
   <div class="hlasbox"><label>Přihlaš se pod svým příjmením<br>
     <input id="hlasName" type="text" list="hlasZnami" autocomplete="off" placeholder="např. Nováková">
@@ -373,6 +375,7 @@ HTML = """<!DOCTYPE html>
   <hr class="tooldiv">
   <button id="toggleResults">Zobrazit výsledky hlasování</button>
   <div id="hlasResults" style="display:none"></div>
+  <button id="exportCsv" title="Stáhne aktuální hlasy i rezervace do souboru — záloha pro případ, že by se data ztratila.">Stáhnout hlasy jako CSV</button>
 
   <hr class="tooldiv">
   <h3>Návrh rozdělení témat</h3>
@@ -586,6 +589,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape") closeD();});
 
 /* Jména se nezadávají dopředu — každý se zapíše sám. Aby z překlepů nevznikali
    „noví“ lidé, appka napovídá z už zapsaných a na podobné jméno upozorní. */
+function esc(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function bezDiakritiky(s){ return s.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").replace(/\\s+/g," ").trim(); }
 function vzdalenost(a,b){            // Levenshtein, na hlídání překlepů
   const m=a.length, n=b.length;
@@ -616,7 +620,7 @@ async function nactiZname(){
     sb.from("votes").select("teacher"), sb.from("assignments").select("teacher")
   ]);
   znamiUcitele = [...new Set([...(v||[]),...(a||[])].map(r=>r.teacher))].sort((x,y)=>x.localeCompare(y,"cs"));
-  document.getElementById("hlasZnami").innerHTML = znamiUcitele.map(u=>`<option value="${u}">`).join("");
+  document.getElementById("hlasZnami").innerHTML = znamiUcitele.map(u=>`<option value="${esc(u)}">`).join("");
 }
 function zkontrolujJmeno(){
   const el=document.getElementById("hlasName"), box=document.getElementById("hlasJmenoMsg");
@@ -625,20 +629,50 @@ function zkontrolujJmeno(){
   if(!jm) return;
   const p=podobneJmeno(jm);
   if(!p){
-    if(!znamiUcitele.includes(jm)) box.innerHTML=`<span class="muted">Zapisuješ se poprvé jako <b>${jm}</b>.</span>`;
+    if(!znamiUcitele.includes(jm)) box.innerHTML=`<span class="muted">Zapisuješ se poprvé jako <b>${esc(jm)}</b>.</span>`;
     return;
   }
   box.innerHTML = p.stejne
-    ? `<span class="varovani">Už tu hlasuje <b>${p.jmeno}</b> — použij stejný zápis.
-       <button onclick="pouzijJmeno('${p.jmeno.replace(/'/g,"\\\\'")}')">Použít ${p.jmeno}</button></span>`
-    : `<span class="varovani">Nemyslíš <b>${p.jmeno}</b>?
-       <button onclick="pouzijJmeno('${p.jmeno.replace(/'/g,"\\\\'")}')">Ano, jsem ${p.jmeno}</button>
-       <span class="muted">Jinak pokračuj, zapíšu tě jako ${jm}.</span></span>`;
+    ? `<span class="varovani">Už tu hlasuje <b>${esc(p.jmeno)}</b> — použij stejný zápis.
+       <button onclick="pouzijJmeno('${esc(p.jmeno).replace(/'/g,"&#39;")}')">Použít ${esc(p.jmeno)}</button></span>`
+    : `<span class="varovani">Nemyslíš <b>${esc(p.jmeno)}</b>?
+       <button onclick="pouzijJmeno('${esc(p.jmeno).replace(/'/g,"&#39;")}')">Ano, jsem ${esc(p.jmeno)}</button>
+       <span class="muted">Jinak pokračuj, zapíšu tě jako ${esc(jm)}.</span></span>`;
 }
 function pouzijJmeno(jm){
   const el=document.getElementById("hlasName");
   el.value=jm; localStorage.setItem("hlasName",jm);
   zkontrolujJmeno(); loadMyVotes(); renderRez();
+}
+/* Záloha hlasů. RLS dovoluje komukoli s odkazem hlasy smazat — než se to utáhne,
+   ať je aspoň možné kdykoli stáhnout snapshot. */
+function csvPole(v){
+  const t = v===null || v===undefined ? "" : String(v);
+  return /[",;\\n]/.test(t) ? '"'+t.replace(/"/g,'""')+'"' : t;
+}
+async function exportCsv(){
+  const btn = document.getElementById("exportCsv");
+  if(!sb){ btn.textContent = "Export není dostupný — hlasování se nenačetlo"; return; }
+  const puvodni = btn.textContent;
+  btn.textContent = "Stahuji…";
+  const [{data:votes,error:e1},{data:rez,error:e2}] = await Promise.all([
+    sb.from("votes").select("teacher,topic_id,rank").order("teacher").order("rank"),
+    sb.from("assignments").select("teacher,topic_id")
+  ]);
+  if(e1||e2){ btn.textContent = "Stažení selhalo — zkus to znovu"; return; }
+  const nazev = id => { const t = DATA.find(x=>x.id===id); return t ? t.nazev : ""; };
+  const radky = [["typ","ucitel","id_tematu","nazev_tematu","poradi"]];
+  for(const v of (votes||[])) radky.push(["hlas", v.teacher, v.topic_id, nazev(v.topic_id), v.rank]);
+  for(const r of (rez||[]))   radky.push(["rezervace", r.teacher, r.topic_id, nazev(r.topic_id), ""]);
+  const csv = "\\ufeff" + radky.map(r=>r.map(csvPole).join(";")).join("\\r\\n");
+  const d = new Date(), p2 = x => String(x).padStart(2,"0");
+  const jmeno = `hlasovani_${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}_${p2(d.getHours())}${p2(d.getMinutes())}.csv`;
+  const url = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8"}));
+  const a = document.createElement("a");
+  a.href = url; a.download = jmeno; document.body.appendChild(a); a.click();
+  a.remove(); URL.revokeObjectURL(url);
+  btn.textContent = `Staženo ✓ (${(votes||[]).length} hlasů, ${(rez||[]).length} rezervací)`;
+  setTimeout(()=>{ btn.textContent = puvodni; }, 4000);
 }
 function initHlas(){
   if(!sb) document.getElementById("hlasWarn").style.display="";
@@ -650,6 +684,7 @@ function initHlas(){
     localStorage.setItem("hlasName", jm);
     zkontrolujJmeno(); loadMyVotes(); renderRez();
   });
+  document.getElementById("exportCsv").addEventListener("click", exportCsv);
   document.getElementById("hlasSearch").addEventListener("input", renderPickList);
   document.getElementById("hlasSubmit").addEventListener("click", submitVotes);
   document.getElementById("toggleResults").addEventListener("click", toggleResults);
@@ -697,7 +732,9 @@ async function loadMyVotes(){
   const name = document.getElementById("hlasName").value.trim();
   if(!name){ myPicks=[]; renderPickList(); renderMine(); return; }
   const {data,error} = await sb.from("votes").select("topic_id,rank").eq("teacher",name).order("rank");
-  if(!error && data) myPicks = data.map(r=>r.topic_id);
+  /* Přepisujeme jen tehdy, když v databázi něco je. Kdo si nejdřív naklikal témata
+     a teprve pak napsal jméno, o rozpracovaný výběr nepřijde. */
+  if(!error && data && data.length) myPicks = data.map(r=>r.topic_id);
   renderPickList(); renderMine();
 }
 async function submitVotes(){
@@ -708,11 +745,23 @@ async function submitVotes(){
   if(!myPicks.length){ msg.textContent="Vyber aspoň jedno téma."; return; }
   localStorage.setItem("hlasName", name);
   msg.textContent = "Ukládám…";
+  /* Staré hlasy si nejdřív odložíme. Kdyby vkládání nových selhalo (výpadek sítě),
+     vrátíme původní stav — jinak by učiteli zmizely i hlasy, které už měl uložené. */
+  const {data:puvodni} = await sb.from("votes").select("topic_id,rank").eq("teacher",name);
   await sb.from("votes").delete().eq("teacher",name);
   const rows = myPicks.map((id,i)=>({teacher:name, topic_id:id, rank:i+1}));
   const {error} = await sb.from("votes").insert(rows);
-  msg.textContent = error ? "Chyba: "+error.message : "Uloženo ✓ ("+rows.length+" hlasů)";
-  if(!error) nactiZname();
+  if(error){
+    if(puvodni && puvodni.length){
+      await sb.from("votes").insert(puvodni.map(r=>({teacher:name, topic_id:r.topic_id, rank:r.rank})));
+      msg.textContent = "Uložení selhalo ("+error.message+") — tvoje předchozí hlasy zůstaly beze změny. Zkus to prosím znovu.";
+    } else {
+      msg.textContent = "Uložení selhalo: "+error.message+" — zkus to prosím znovu.";
+    }
+    return;
+  }
+  msg.textContent = "Uloženo ✓ ("+rows.length+" hlasů)";
+  nactiZname();
 }
 async function renderRez(){
   const el = document.getElementById("rezList");
@@ -725,7 +774,7 @@ async function renderRez(){
     let action;
     if(!who) action = `<button onclick="reserve(${t.id})">Rezervovat</button>`;
     else if(name && who===name) action = `<button onclick="unreserve(${t.id})">Uvolnit</button>`;
-    else action = `<span class="muted">obsazeno: ${who}</span>`;
+    else action = `<span class="muted">obsazeno: ${esc(who)}</span>`;
     return `<div class="hlasrow"><span>${t.id}. ${t.nazev}</span>${action}</div>`;
   }).join("");
 }
@@ -849,9 +898,9 @@ async function toggleNavrh(){
   const poradi=(u,id)=>{ const h=hlasy.find(x=>x.teacher===u&&x.topic_id===id); return h?h.rank+". volba":"nehlasoval"; };
 
   let html=`<table><tr><th>Učitel</th><th>Téma</th><th>Volba</th></tr>`;
-  for(const r of vse) html+=`<tr class="${r.fix?"fix":""}"><td>${r.ucitel}</td><td>${nazev(r.id)}${r.fix?" <span class='muted'>(rezervováno)</span>":""}</td><td class="volba">${poradi(r.ucitel,r.id)}</td></tr>`;
+  for(const r of vse) html+=`<tr class="${r.fix?"fix":""}"><td>${esc(r.ucitel)}</td><td>${nazev(r.id)}${r.fix?" <span class='muted'>(rezervováno)</span>":""}</td><td class="volba">${poradi(r.ucitel,r.id)}</td></tr>`;
   const bezTematu = ucitele.filter(u=>!vse.some(r=>r.ucitel===u));
-  for(const u of bezTematu) html+=`<tr class="nic"><td>${u}</td><td>— bez tématu —</td><td class="volba">—</td></tr>`;
+  for(const u of bezTematu) html+=`<tr class="nic"><td>${esc(u)}</td><td>— bez tématu —</td><td class="volba">—</td></tr>`;
   html+=`</table>`;
 
   const prvni=vse.filter(r=>poradi(r.ucitel,r.id)==="1. volba").length;
@@ -860,7 +909,7 @@ async function toggleNavrh(){
     rozdělených témat: <b>${vse.length}</b> z ${DATA.length} ·
     první volbu dostalo <b>${prvni}</b> z ${vse.length} ·
     součet preferencí <b>${soucet}</b> bodů.`;
-  if(bezTematu.length) html+=`<br>Bez tématu: ${bezTematu.join(", ")}.`;
+  if(bezTematu.length) html+=`<br>Bez tématu: ${esc(bezTematu.join(", "))}.`;
   html+=`</div>`;
   box.innerHTML=html;
 }
