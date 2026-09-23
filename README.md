@@ -19,7 +19,7 @@ Web běží na GitHub Pages: `https://huancraven.github.io/projekty/`
 | `tools/build_web.py` | generátor `index.html` | zřídka |
 | `tools/build_docx.js` | generátor Word katalogu (`vystupy/`) — vyžaduje npm balíček `docx` | zřídka |
 | `tools/build_xlsx.py` | generátor Excel tabulky (`vystupy/`) — vyžaduje `openpyxl` | zřídka |
-| `vystupy/` | vygenerovaný Word + Excel | NE — generuje se |
+| `vystupy/` | vygenerovaný Word, Excel a kopie webu ke stažení | NE — generuje se |
 | `podklady/` | osnovy kamenů SC1/4/5/8, digest revidovaného RVP, digest učiva ŠVP, `poznamky.md` (rozhodnutí a odložené nápady) | referenční |
 
 ## Jak upravit nebo přidat téma
@@ -56,6 +56,32 @@ pip install openpyxl && npm install
 > Nová pole je navíc potřeba doplnit do generátorů zvlášť — `dif1` se
 > původně přidalo jen do webu a ve Wordu chybělo. Po buildu se vyplatí
 > zkontrolovat v Excelu sloupec „Trojročí" a ve Wordu sekci „Diferenciace".
+
+## Kopie ke stažení (Google Disk)
+
+`build_web.py` vedle `index.html` generuje ještě
+`vystupy/Projekty_katalog_2026-27.html` — týž katalog v jednom souboru, který
+funguje po stažení na disk i bez internetu. Liší se jedinou věcí: **nemá
+záložku Hlasování.** To potřebuje Supabase přes síť a v rozeslané kopii by
+každý hlasoval „do svého" souboru; návod místo něj odkazuje na živý web.
+
+**Disk ale HTML nespustí jako stránku** — hostování webů na Google Disku
+skončilo v roce 2016. Kdo na soubor na Disku klepne, dostane jen náhled, ve
+kterém JavaScript neběží, takže katalog zůstane prázdný. Soubor se musí
+nejdřív **stáhnout** a otevřít z disku. Pro běžné sdílení je proto pořád lepší
+poslat odkaz na web; kopie na Disku je záloha a varianta pro toho, kdo katalog
+potřebuje mít u sebe nebo bez připojení.
+
+Kopie se generuje pokaždé, aby nezastarala — stejný důvod jako u Wordu a Excelu
+výše. Vzniká textovou transformací hotového HTML (funkce `offline()`), takže se
+při změně šablony ozve (`offline build: nenašel jsem …`) místo aby tiše
+vyrobila rozbitý soubor.
+
+> Pozor na JavaScript, ne jen na HTML. Při prvním pokusu zmizela sekce `#hlas`,
+> ale v `render()` zůstal řádek, který na ni sahal — skript spadl na první
+> řádce a katalog se vykreslil úplně prázdný, bez jediné chyby v konzoli.
+> Po zásahu do kopie ji vždy otevři v prohlížeči a zkontroluj, že po přepnutí
+> na Témata ukazuje všechny karty.
 
 ## Pravidla obsahu
 

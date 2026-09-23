@@ -1064,3 +1064,74 @@ html = (HTML.replace("__DATA__", DATA).replace("__KAM__", KAM)
             .replace("__VERSION__", VERSION))
 open("index.html", "w", encoding="utf-8", newline="\n").write(html)
 print(f"OK index.html ({len(html)//1024} kB, {len(topics)} témat, verze {VERSION})")
+
+# --- kopie ke stažení (Google Disk) ----------------------------------------
+# Druhý výstup: jeden soubor, který funguje i po stažení na disk (file://)
+# a bez internetu. Hlasování se vypouští — potřebuje Supabase přes síť a
+# v rozeslané kopii by každý hlasoval „do svého" souboru; návod místo něj
+# odkazuje na živý web. Generuje se pokaždé, aby kopie nezastarala.
+WEB_URL = "https://huancraven.github.io/projekty/"
+ODKAZ = f'<a href="{WEB_URL}">huancraven.github.io/projekty</a>'
+
+
+def _nahrad(s, co, cim, kde):
+    """Náhrada, která se ozve, když se šablona nahoře změnila."""
+    if co not in s:
+        raise SystemExit(f"offline build: nenašel jsem {kde} — srovnej offline() v tools/build_web.py")
+    return s.replace(co, cim, 1)
+
+
+def _vyrizni(s, od, do, kde):
+    if od not in s or do not in s:
+        raise SystemExit(f"offline build: nenašel jsem {kde} — srovnej offline() v tools/build_web.py")
+    return s[:s.index(od)] + s[s.index(do):]
+
+
+def offline(h):
+    h = _vyrizni(h, '<div id="hlas" style="display:none">', '<div id="overlay">', "sekci hlasování")
+    h = _nahrad(h, '    <span class="chip" data-view="hlas">Hlasování</span>\n', "", "záložku hlasování")
+    h = _nahrad(h, '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n',
+                "", "načtení Supabase SDK")
+    # Bez téhle řádky by render() spadl hned na začátku na chybějícím #hlas
+    # a katalog by se vykreslil úplně prázdný.
+    h = _nahrad(h, '  document.getElementById("hlas").style.display = view==="hlas" ? "" : "none";\n',
+                "", "řádek render() ovládající sekci hlasování")
+
+    h = _nahrad(h,
+        "jak ho pojmout v různých trojročích. Nemusíte nic instalovat ani se registrovat —\n"
+        "  odkaz si můžete uložit na plochu telefonu.",
+        "jak ho pojmout v různých trojročích. Tohle je kopie ke stažení — soubor si\n"
+        "  stáhněte z Disku k sobě a otevřete v prohlížeči; funguje i bez internetu.\n"
+        f"  Živá verze, která se průběžně opravuje a na které se hlasuje, je na {ODKAZ}.",
+        "úvodní odstavec návodu")
+
+    h = _nahrad(h,
+        "    <dt>Hlasování</dt><dd>Výběr témat, která chcete vést.\n"
+        "      <b>Hlasování běží</b> — v každém ze čtyř bloků si vyberte dvě témata,\n"
+        "      1. a 2. volbu.</dd>\n",
+        "", "položku hlasování v přehledu záložek")
+
+    h = _vyrizni(h, "  <h3>Hlasování krok za krokem</h3>", "  <h3>Když něco nesedí</h3>",
+                 "návod k hlasování")
+    h = _nahrad(h, "  <h3>Když něco nesedí</h3>",
+        "  <h3>Hlasování</h3>\n"
+        "  <p>V téhle kopii není. Hlasy se musí sbíhat na jedno místo, takže hlasování\n"
+        f"  běží jen na živém webu {ODKAZ} — témata si projděte tady a hlasujte tam.</p>\n\n"
+        "  <h3>Když něco nesedí</h3>", "nadpis o chybách")
+
+    h = _nahrad(h,
+        "  kartu, hodí se na poradu nebo pro rodiče. Adresa v prohlížeči se u otevřeného tématu\n"
+        "  mění (např. <code>…/#14</code>), takže jde poslat odkaz přímo na konkrétní téma.</p>",
+        "  kartu, hodí se na poradu nebo pro rodiče.</p>", "odstavec o tisku")
+
+    return _nahrad(h, f"verze {VERSION}</footer>",
+                   f"verze {VERSION} · kopie ke stažení</footer>", "patičku")
+
+
+_off = offline(html)
+if 'getElementById("hlas")' in _off:
+    raise SystemExit("offline build: v kopii zbyl přístup k odstraněné sekci hlasování")
+os.makedirs("vystupy", exist_ok=True)
+_cesta = "vystupy/Projekty_katalog_2026-27.html"
+open(_cesta, "w", encoding="utf-8", newline="\n").write(_off)
+print(f"OK {_cesta} ({len(_off)//1024} kB, bez hlasování a bez závislosti na síti)")
