@@ -3,7 +3,7 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.08.30-03"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.09.23-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -273,7 +273,7 @@ HTML = """<!DOCTYPE html>
 <main><div class="grid" id="grid"></div><div id="kamlist" style="display:none"></div>
 <div id="navod" style="display:none">
   <h2>Jak se v katalogu vyznat</h2>
-  <p class="lead">Katalog obsahuje 50 projektových témat na 1. pololetí 2026/27.
+  <p class="lead">Katalog obsahuje __POCET__ projektových témat na 1. pololetí 2026/27.
   Ke každému tématu najdete anotaci, náměty aktivit, napojení na ScioCíle a to,
   jak ho pojmout v různých trojročích. Nemusíte nic instalovat ani se registrovat —
   odkaz si můžete uložit na plochu telefonu.</p>
@@ -1058,10 +1058,14 @@ openFromHash();
 </html>
 """
 
-html = (HTML.replace("__DATA__", DATA).replace("__KAM__", KAM)
+html = (HTML.replace("__POCET__", str(len(topics)))
+            .replace("__DATA__", DATA).replace("__KAM__", KAM)
             .replace("__KLICE__", KLICE)
             .replace("__PRIPRAVY__", PRIPRAVY).replace("__PRIPRAVY_ODKAZ__", PRIPRAVY_ODKAZ)
             .replace("__VERSION__", VERSION))
+_zbyle = sorted(set(re.findall("__[A-Z]+__", html)))
+if _zbyle:
+    raise SystemExit("build: nedosazene znacky " + ", ".join(_zbyle))
 open("index.html", "w", encoding="utf-8", newline="\n").write(html)
 print(f"OK index.html ({len(html)//1024} kB, {len(topics)} témat, verze {VERSION})")
 
