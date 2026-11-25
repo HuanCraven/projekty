@@ -135,6 +135,14 @@ které na aktuální kameny nelze automaticky převést.
 
 ## Záložka Hlasování
 
+> **Stav k 25. 11. 2026: hlasování je na živém webu vypnuté** (`HLASOVANI = False`
+> v `tools/build_web.py`). Supabase projekt `projekty-hlasovani` se na bezplatném
+> tarifu po nečinnosti pozastavil a web teď slouží jen jako katalog témat
+> k inspiraci. Hlasování na 2. pololetí se přestavuje na Google Tabulku
+> (Apps Script). Kód modulu níže zůstává v generátoru — přepnutím na `True`
+> se vrátí původní hlasování přes Supabase (projekt je ale nejdřív potřeba
+> v dashboardu obnovit).
+
 Třetí záložka webu — učitelé si vyberou témata, která chtějí vést. Data jdou
 do Supabase projektu `projekty-hlasovani`, tabulka `votes`. V HTML je jen
 *publishable* klíč, nic tajného.

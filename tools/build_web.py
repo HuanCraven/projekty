@@ -3,7 +3,11 @@
 """Vygeneruje projekty.html – jednostránkový katalog témat s vloženými daty."""
 import json, re
 
-VERSION = "2026.09.23-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+VERSION = "2026.11.25-01"  # při každém buildu zvyš (RRRR.MM.DD-NN)
+# Záložka Hlasování na živém webu. False = web je jen katalog k inspiraci
+# (Supabase projekt je od podzimu 2026 pozastavený; hlasování na 2. pololetí
+# se přestavuje na Google Tabulku). True = původní hlasování přes Supabase.
+HLASOVANI = False
 
 topics = []
 for f in ["data/temata_sc4.json", "data/temata_sc1.json", "data/temata_sc5.json", "data/temata_sc8.json"]:
@@ -1066,8 +1070,6 @@ html = (HTML.replace("__POCET__", str(len(topics)))
 _zbyle = sorted(set(re.findall("__[A-Z]+__", html)))
 if _zbyle:
     raise SystemExit("build: nedosazene znacky " + ", ".join(_zbyle))
-open("index.html", "w", encoding="utf-8", newline="\n").write(html)
-print(f"OK index.html ({len(html)//1024} kB, {len(topics)} témat, verze {VERSION})")
 
 # --- kopie ke stažení (Google Disk) ----------------------------------------
 # Druhý výstup: jeden soubor, který funguje i po stažení na disk (file://)
@@ -1131,6 +1133,36 @@ def offline(h):
     return _nahrad(h, f"verze {VERSION}</footer>",
                    f"verze {VERSION} · kopie ke stažení</footer>", "patičku")
 
+
+def bez_hlasovani(h):
+    """Živý web bez záložky Hlasování — katalog jako databáze témat k inspiraci."""
+    h = _vyrizni(h, '<div id="hlas" style="display:none">', '<div id="overlay">', "sekci hlasování")
+    h = _nahrad(h, '    <span class="chip" data-view="hlas">Hlasování</span>\n', "", "záložku hlasování")
+    h = _nahrad(h, '<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n',
+                "", "načtení Supabase SDK")
+    h = _nahrad(h, '  document.getElementById("hlas").style.display = view==="hlas" ? "" : "none";\n',
+                "", "řádek render() ovládající sekci hlasování")
+    h = _nahrad(h,
+        "    <dt>Hlasování</dt><dd>Výběr témat, která chcete vést.\n"
+        "      <b>Hlasování běží</b> — v každém ze čtyř bloků si vyberte dvě témata,\n"
+        "      1. a 2. volbu.</dd>\n",
+        "", "položku hlasování v přehledu záložek")
+    h = _vyrizni(h, "  <h3>Hlasování krok za krokem</h3>", "  <h3>Když něco nesedí</h3>",
+                 "návod k hlasování")
+    h = _nahrad(h, "  <h3>Když něco nesedí</h3>",
+        "  <h3>Hlasování</h3>\n"
+        "  <p>Hlasování o tématech pro 1. pololetí skončilo. Katalog teď slouží jako\n"
+        "  zásobník nápadů pro výuku; hlasování na další pololetí připravujeme.</p>\n\n"
+        "  <h3>Když něco nesedí</h3>", "nadpis o chybách")
+    if 'getElementById("hlas")' in h or "supabase-js" in h:
+        raise SystemExit("build: ve webu bez hlasování zbyl přístup k sekci hlasování nebo Supabase SDK")
+    return h
+
+
+_web = html if HLASOVANI else bez_hlasovani(html)
+open("index.html", "w", encoding="utf-8", newline="\n").write(_web)
+print(f"OK index.html ({len(_web)//1024} kB, {len(topics)} témat, verze {VERSION}, "
+      f"hlasování {'ZAPNUTO' if HLASOVANI else 'vypnuto'})")
 
 _off = offline(html)
 if 'getElementById("hlas")' in _off:
